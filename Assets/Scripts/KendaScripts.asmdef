@@ -1,0 +1,16 @@
+{
+    "name": "KendaScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ba7d069dadcfae44a9469614a39f3391"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
