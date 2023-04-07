@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/SplashScreen.unity
-    guid: d863cb65d4a476b49a3cc65a4c9315fb
+    path: Assets/ExternalPackages/ColoringBook_MagicPen/_Scenes/MainScene.unity
+    guid: 946285f0755242679c19f7dd193cb4b8
+  - enabled: 1
+    path: Assets/ExternalPackages/ColoringBook_MagicPen/_Scenes/PaintScene.unity
+    guid: 81bb2ccd1d5a40799d6506092f7aac7d
   m_configObjects: {}
