@@ -1,0 +1,15 @@
+This asset is governed by the Asset Store EULA; however, the following components are governed by the licenses indicated below:
+
+All Music and Sound License is CC0: http://creativecommons.org/publicdomain/zero/1.0/
+
+1- Name: shutter.wav
+license : cc0 (Creative Commons 0)
+Link: https://freesound.org/people/Mafon2/sounds/275307/
+
+2- Name: ui_touch.wav
+license : cc0 (Creative Commons 0)
+Link: https://freesound.org/people/Breviceps/sounds/448081/
+
+3- Name: music.wav
+license : cc0 (Creative Commons 0)
+Link: https://freesound.org/people/code_box/sounds/561190/
