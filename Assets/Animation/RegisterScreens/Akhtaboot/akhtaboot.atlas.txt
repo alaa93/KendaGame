@@ -1,0 +1,14 @@
+akhtaboot.png
+size:512,512
+filter:Linear,Linear
+pma:true
+scale:0.7
+akhtaboot 1
+bounds:129,87,188,244
+offsets:22,3,227,278
+akhtaboot2
+bounds:2,81,150,250
+offsets:20,24,229,312
+aktaboot 3
+bounds:67,8,264,134
+offsets:1,0,293,144
