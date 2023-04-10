@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Login Background Spine_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 6261598ef9db9fa46be2884c1e978981, type: 2}
+  - {fileID: 11400000, guid: 198bb9b3be1aa4990bf5a7a6a261c362, type: 2}
   scale: 0.006
-  skeletonJSON: {fileID: 4900000, guid: 50bc3c8813fb8714fa78d85d57f77dc7, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 0642aa70860db453a903a6885a17c1cf, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

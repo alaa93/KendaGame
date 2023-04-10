@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: faab145e26dc8384dbda320f0dd4caba
+guid: 135d2c63eead342d1a92809d80636a76
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 1
     aniso: 1
-    mipBias: 0
+    mipBias: -0.5
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -63,14 +63,14 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,7 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +94,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,7 +118,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,85 +129,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Login Background Spine_0
+      name: fish small
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1790
-        width: 312
-        height: 249
+        x: 39
+        y: 18
+        width: 39
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 62f500e4ac92a43578f161730fba43c9
-      internalID: 885239623
+      spriteID: c0d327f1fe07e0e80800000000000000
+      internalID: -8210500898322760436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Login Background Spine_1
+      name: shark
       rect:
         serializedVersion: 2
-        x: 310
-        y: 1790
-        width: 285
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 318f6a246ef8e4a3d89316556f903d4e
-      internalID: 1721295590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Login Background Spine_2
-      rect:
-        serializedVersion: 2
-        x: 546
-        y: 1950
+        x: 185
+        y: 279
         width: 207
-        height: 61
+        height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4e80e821c14954269972a7e59c7bb736
-      internalID: -1000448780
+      spriteID: f363ea4829d7c1fe0800000000000000
+      internalID: -1216959731052169665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Login Background Spine_3
+      name: sish mid
       rect:
         serializedVersion: 2
         x: 2
-        y: 82
-        width: 788
-        height: 1706
+        y: 18
+        width: 35
+        height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ee84a2c5158194d079f526faffa4fe58
-      internalID: 752052195
+      spriteID: ee46f5c68f9ef44d0800000000000000
+      internalID: -3148040361329335058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weed 2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 18
+        width: 249
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 409651bc02f3d2340800000000000000
+      internalID: 4840594584571832580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weed1
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 18
+        width: 256
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f762aaba3c15efdd0800000000000000
+      internalID: -2450431246402443649
       vertices: []
       indices: 
       edges: []
@@ -223,10 +244,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Login Background Spine_0: 885239623
-      Login Background Spine_1: 1721295590
-      Login Background Spine_2: -1000448780
-      Login Background Spine_3: 752052195
+      fish small: -8210500898322760436
+      shark: -1216959731052169665
+      sish mid: -3148040361329335058
+      weed 2: 4840594584571832580
+      weed1: -2450431246402443649
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

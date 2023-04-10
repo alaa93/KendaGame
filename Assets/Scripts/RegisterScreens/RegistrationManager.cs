@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace KendaGame.RegistrationScreens {
   public class RegistrationManager : MonoBehaviour {
     [SerializeField]
@@ -13,7 +14,14 @@ namespace KendaGame.RegistrationScreens {
       for (int x = 0; x < RegistrationScreens.Length; x++) {
         RegistrationScreens[x].SetActive(false);
       }
+    }
 
+    public void ShowForgetPassword() {
+
+    }
+
+    public void AutoLogin() {
+      Debug.Log("auto login clicked");
     }
   }
 }

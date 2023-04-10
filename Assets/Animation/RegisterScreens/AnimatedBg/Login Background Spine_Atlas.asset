@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: Login Background Spine_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 74aef179b92c93d4d90b0cdecc864ffb, type: 3}
+  atlasFile: {fileID: 4900000, guid: e3d90217695af4aeba7aaa498c282ac3, type: 3}
   materials:
-  - {fileID: 2100000, guid: 8f3e84bddffbbbb408e50c80bd4a6c4e, type: 2}
+  - {fileID: 2100000, guid: 360099f5528a64c8fbca9bf98a9b0c5b, type: 2}

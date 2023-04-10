@@ -9,8 +9,8 @@ namespace KendaGame.UI {
     [SerializeField]
     UnityEvent onComplete;
 
-    private const float targetScale = 0.8f;
-    private const float duration = 0.16f;
+    private const float targetScale = 0.94f;
+    private const float duration = 0.12f;
 
     public void OnClick(Action onComplete) {
       float originalScale = gameObject.transform.localScale.x;
