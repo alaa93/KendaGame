@@ -182,10 +182,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Login
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_text: "\uFE97\uFEB4\uFEA0\uFEF4\uFEDE \u0627\uFEDF\uFEAA\uFEA7\uFEEE\u0644"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -209,12 +209,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 26
   m_fontSizeBase: 33.4
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 2
-  m_fontSizeMax: 30
+  m_fontSizeMin: 20
+  m_fontSizeMax: 26
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
@@ -396,10 +396,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sign Up
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_text: "\u0627\uFEDF\uFE98\uFEB4\uFEA0\uFEF4\uFEDE"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -561,8 +561,8 @@ GameObject:
   - component: {fileID: 75519409}
   - component: {fileID: 75519408}
   - component: {fileID: 75519407}
-  - component: {fileID: 75519411}
   - component: {fileID: 75519410}
+  - component: {fileID: 75519411}
   m_Layer: 5
   m_Name: SignUp
   m_TagString: Untagged
@@ -635,7 +635,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 75519411}
-        m_TargetAssemblyTypeName: KendaGame.UI.GenericButton, KendaScripts
+        m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -666,10 +666,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sign Up
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\u0627\uFEDF\uFE98\uFEB4\uFEA0\uFEF4\uFEDE"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -791,10 +791,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 75519405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbd4abf4955d4cbd89a729c17f22136, type: 3}
+  m_Script: {fileID: 11500000, guid: 7637bc846fc424dc6a3b0c2eb53cd284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onComplete:
+  startVal: {x: 0.9, y: 0.9, z: 0.9}
+  finalVal: {x: 1, y: 1, z: 1}
+  isScaleAnimation: 1
+  prewarm: 0
+  autoPlay: 0
+  autoPlayDelay: 0
+  sfxPlayDelay: 0
+  animationSpeed: 0.2
+  callBackFn:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1023341240}
@@ -810,6 +818,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onStartFn:
+    m_PersistentCalls:
+      m_Calls: []
+  ease: 28
+  isAnchoredUI: 0
+  audioClip: {fileID: 0}
 --- !u!1 &99830587
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +951,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 340b7949b5d6546e2850bc070c78fdcf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1106,7 +1120,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 795.463, y: 1409.4016}
+  referenceSize: {x: 795.1228, y: 1409.5529}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -1194,8 +1208,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4.8}
-  m_SizeDelta: {x: 170, y: 83}
+  m_AnchoredPosition: {x: -0.3, y: 2.72}
+  m_SizeDelta: {x: 200.37, y: 87.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201419617
 MonoBehaviour:
@@ -1364,8 +1378,8 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -1467,7 +1481,7 @@ MonoBehaviour:
   mTarget: {fileID: 304568409}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &304568407
 GameObject:
@@ -1528,10 +1542,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'or connect vIa '
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\u0623\u0648 \uFE97\uFEEE\uFEBB\uFEF4\uFEDE \uFEE3\uFEE6 \uFEA7\uFEFC\u0644"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1770,14 +1784,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 7
   m_RegexValue: 
   m_GlobalPointSize: 33.2
   m_CharacterLimit: 0
@@ -2104,7 +2118,7 @@ MonoBehaviour:
   mTarget: {fileID: 1494613778}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!114 &438077026
 MonoBehaviour:
@@ -2121,7 +2135,7 @@ MonoBehaviour:
   mTarget: {fileID: 75519408}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &443507334
 GameObject:
@@ -2135,7 +2149,7 @@ GameObject:
   - component: {fileID: 443507337}
   - component: {fileID: 443507336}
   - component: {fileID: 443507339}
-  - component: {fileID: 443507338}
+  - component: {fileID: 443507340}
   m_Layer: 5
   m_Name: ConfirmButton
   m_TagString: Untagged
@@ -2202,34 +2216,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443507334}
   m_CullTransparentMesh: 1
---- !u!114 &443507338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443507334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbd4abf4955d4cbd89a729c17f22136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1023341240}
-        m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
-          KendaScripts
-        m_MethodName: AutoLogin
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &443507339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2274,8 +2260,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 443507338}
-        m_TargetAssemblyTypeName: KendaGame.UI.GenericButton, KendaScripts
+      - m_Target: {fileID: 443507340}
+        m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -2286,6 +2272,48 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &443507340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443507334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7637bc846fc424dc6a3b0c2eb53cd284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startVal: {x: 0.9, y: 0.9, z: 0.9}
+  finalVal: {x: 1, y: 1, z: 1}
+  isScaleAnimation: 1
+  prewarm: 0
+  autoPlay: 0
+  autoPlayDelay: 0
+  sfxPlayDelay: 0
+  animationSpeed: 0.2
+  callBackFn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1023341240}
+        m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
+          KendaScripts
+        m_MethodName: ShowScreen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStartFn:
+    m_PersistentCalls:
+      m_Calls: []
+  ease: 28
+  isAnchoredUI: 0
+  audioClip: {fileID: 0}
 --- !u!114 &472808835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2301,7 +2329,7 @@ MonoBehaviour:
   mTarget: {fileID: 551081139}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &476119529
 GameObject:
@@ -2560,10 +2588,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Forget Password?
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\uFEE7\uFEB4\uFEF4\uFE96 \uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE\u061F"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3443,10 +3471,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pasword...
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_text: "\uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE..."
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3749,7 +3777,7 @@ MonoBehaviour:
   mTarget: {fileID: 1256461313}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!114 &663575060
 MonoBehaviour:
@@ -3766,7 +3794,7 @@ MonoBehaviour:
   mTarget: {fileID: 1807226705}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &682446514
 GameObject:
@@ -4148,14 +4176,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 7
   m_RegexValue: 
   m_GlobalPointSize: 33.2
   m_CharacterLimit: 0
@@ -4303,8 +4331,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4386,7 +4414,7 @@ MonoBehaviour:
   mTarget: {fileID: 487213075}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!114 &777333717
 MonoBehaviour:
@@ -4400,10 +4428,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481ab606793a67349be805c13febeba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 568454341}
+  mTarget: {fileID: 0}
   mAlignment_RTL: 4098
   mAlignment_LTR: 4098
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!114 &824662458
 MonoBehaviour:
@@ -4417,10 +4445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481ab606793a67349be805c13febeba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 12332806}
+  mTarget: {fileID: 6039548}
   mAlignment_RTL: 4098
   mAlignment_LTR: 4098
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &862414469
 GameObject:
@@ -4759,7 +4787,7 @@ MonoBehaviour:
   mTarget: {fileID: 1744305177}
   mAlignment_RTL: 4098
   mAlignment_LTR: 4098
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &975810458
 GameObject:
@@ -5063,7 +5091,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a9cfaa7d638ed42999f8cc55a3f72adf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5162,7 +5190,7 @@ MonoBehaviour:
   mTarget: {fileID: 2040882376}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &1092224720
 GameObject:
@@ -5255,7 +5283,7 @@ MonoBehaviour:
   mTarget: {fileID: 1839208573}
   mAlignment_RTL: 4098
   mAlignment_LTR: 4098
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!114 &1109016895
 MonoBehaviour:
@@ -5272,7 +5300,7 @@ MonoBehaviour:
   mTarget: {fileID: 2053726360}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &1124385971
 GameObject:
@@ -5436,7 +5464,7 @@ MonoBehaviour:
       m_Calls: []
   ease: 28
   isAnchoredUI: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 06f8b2ef0f57c46e5a237c3ffc19ddc3, type: 3}
 --- !u!1 &1147151806
 GameObject:
   m_ObjectHideFlags: 0
@@ -5473,8 +5501,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
-  m_SizeDelta: {x: -41.22, y: -20.07}
+  m_AnchoredPosition: {x: 14.039993, y: -0.0000038146973}
+  m_SizeDelta: {x: -69.3, y: -20.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1147151808
 MonoBehaviour:
@@ -5502,7 +5530,7 @@ GameObject:
   - component: {fileID: 1153228088}
   - component: {fileID: 1153228087}
   - component: {fileID: 1153228086}
-  - component: {fileID: 1153228085}
+  - component: {fileID: 1153228089}
   m_Layer: 5
   m_Name: SignUpBtn
   m_TagString: Untagged
@@ -5532,34 +5560,6 @@ RectTransform:
   m_AnchoredPosition: {x: 119, y: -152}
   m_SizeDelta: {x: 180.87, y: 103}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1153228085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153228083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbd4abf4955d4cbd89a729c17f22136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1023341240}
-        m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
-          KendaScripts
-        m_MethodName: ShowScreen
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1153228086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5604,8 +5604,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1153228085}
-        m_TargetAssemblyTypeName: KendaGame.UI.GenericButton, KendaScripts
+      - m_Target: {fileID: 1153228089}
+        m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -5654,6 +5654,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153228083}
   m_CullTransparentMesh: 1
+--- !u!114 &1153228089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153228083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7637bc846fc424dc6a3b0c2eb53cd284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startVal: {x: 0.9, y: 0.9, z: 0.9}
+  finalVal: {x: 1, y: 1, z: 1}
+  isScaleAnimation: 1
+  prewarm: 0
+  autoPlay: 0
+  autoPlayDelay: 0
+  sfxPlayDelay: 0
+  animationSpeed: 0.2
+  callBackFn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1023341240}
+        m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
+          KendaScripts
+        m_MethodName: ShowScreen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStartFn:
+    m_PersistentCalls:
+      m_Calls: []
+  ease: 28
+  isAnchoredUI: 0
+  audioClip: {fileID: 0}
 --- !u!114 &1155533809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5669,7 +5711,7 @@ MonoBehaviour:
   mTarget: {fileID: 1177560631}
   mAlignment_RTL: 4098
   mAlignment_LTR: 4098
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &1177560629
 GameObject:
@@ -5730,10 +5772,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_text: "\uFE97\uFEEE\uFE9B\uFEF4\uFED6"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6065,7 +6107,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6135,10 +6177,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Language
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\u0627\uFEDF\uFEE0\uFED0\uFE94"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6331,10 +6373,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm pasword...
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_text: "\uFE97\uFE84\uFEDB\uFEF4\uFEAA \uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE..."
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6676,8 +6718,8 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -7003,8 +7045,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7151,10 +7193,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Email...
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_text: "\u0627\uFEDF\uFE92\uFEAE\uFEF3\uFEAA \u0627\uFEFB\uFEDF\uFEDC\uFE98\uFEAE\u0648\uFEE7\uFEF2..."
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7564,7 +7606,7 @@ MonoBehaviour:
       m_Calls: []
   ease: 28
   isAnchoredUI: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 06f8b2ef0f57c46e5a237c3ffc19ddc3, type: 3}
 --- !u!1 &1665073353
 GameObject:
   m_ObjectHideFlags: 0
@@ -7778,8 +7820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 134.99, y: -130.83998}
-  m_SizeDelta: {x: 180.87, y: 103}
+  m_AnchoredPosition: {x: 118.62, y: -127.05}
+  m_SizeDelta: {x: 213.63, y: 105.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1711385758
 MonoBehaviour:
@@ -7826,7 +7868,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1711385761}
-        m_TargetAssemblyTypeName: KendaGame.UI.GenericButton, KendaScripts
+        m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -7884,25 +7926,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1711385756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbd4abf4955d4cbd89a729c17f22136, type: 3}
+  m_Script: {fileID: 11500000, guid: 7637bc846fc424dc6a3b0c2eb53cd284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onComplete:
+  startVal: {x: 0.9, y: 0.9, z: 0.9}
+  finalVal: {x: 1, y: 1, z: 1}
+  isScaleAnimation: 1
+  prewarm: 0
+  autoPlay: 0
+  autoPlayDelay: 0
+  sfxPlayDelay: 0
+  animationSpeed: 0.2
+  callBackFn:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1023341240}
         m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
           KendaScripts
-        m_MethodName: AutoLogin
-        m_Mode: 1
+        m_MethodName: ShowScreen
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onStartFn:
+    m_PersistentCalls:
+      m_Calls: []
+  ease: 28
+  isAnchoredUI: 0
+  audioClip: {fileID: 0}
 --- !u!1 &1716722939
 GameObject:
   m_ObjectHideFlags: 0
@@ -7991,8 +8047,8 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -8201,10 +8257,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Email...
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\u0627\uFEDF\uFE92\uFEAE\uFEF3\uFEAA \u0627\uFEFB\uFEDF\uFEDC\uFE98\uFEAE\u0648\uFEE7\uFEF2..."
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8522,11 +8578,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Please enter the four-digit verification code that has been sent to your
-    email address.
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\u0627\uFEDF\uFEAE\uFE9F\uFE8E\u0621 \u0627\u062F\uFEA7\uFE8E\u0644 \u0631\uFED7\uFEE2
+    \u0627\uFEDF\uFE98\uFEEE\uFE9B\uFEF4\uFED6 \u0627\uFEDF\uFEAC\u064A \uFE97\uFEE2
+    \u0627\u0631\uFEB3\uFE8E\uFEDF\uFEEA \u0627\uFEDF\uFBFD \uFE91\uFEAE\uFEF3\uFEAA\u0643
+    \u0627\uFEFB\uFEDF\uFEDC\uFE98\uFEAE\u0648\uFEE7\uFEF2"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8719,10 +8777,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pasword...
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE..."
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8977,7 +9035,7 @@ MonoBehaviour:
   mTarget: {fileID: 1265102001}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
-  mAlignmentWasRTL: 0
+  mAlignmentWasRTL: 1
   mInitializeAlignment: 0
 --- !u!1 &1890337536
 GameObject:
@@ -9158,7 +9216,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1962790049}
-        m_TargetAssemblyTypeName: KendaGame.UI.GenericButton, KendaScripts
+        m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -9216,10 +9274,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1962790044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbd4abf4955d4cbd89a729c17f22136, type: 3}
+  m_Script: {fileID: 11500000, guid: 7637bc846fc424dc6a3b0c2eb53cd284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onComplete:
+  startVal: {x: 0.9, y: 0.9, z: 0.9}
+  finalVal: {x: 1, y: 1, z: 1}
+  isScaleAnimation: 1
+  prewarm: 0
+  autoPlay: 0
+  autoPlayDelay: 0
+  sfxPlayDelay: 0
+  animationSpeed: 0.2
+  callBackFn:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1023341240}
@@ -9235,6 +9301,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onStartFn:
+    m_PersistentCalls:
+      m_Calls: []
+  ease: 28
+  isAnchoredUI: 0
+  audioClip: {fileID: 8300000, guid: ce62ad1ac9a884d499a6186e297dc490, type: 3}
 --- !u!1 &1965006753
 GameObject:
   m_ObjectHideFlags: 0
@@ -14426,8 +14498,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14561,8 +14633,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14641,8 +14713,8 @@ GameObject:
   - component: {fileID: 2040882377}
   - component: {fileID: 2040882376}
   - component: {fileID: 2040882375}
-  - component: {fileID: 2040882379}
   - component: {fileID: 2040882378}
+  - component: {fileID: 2040882379}
   m_Layer: 5
   m_Name: LoginOption
   m_TagString: Untagged
@@ -14715,7 +14787,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2040882379}
-        m_TargetAssemblyTypeName: KendaGame.UI.GenericButton, KendaScripts
+        m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -14746,10 +14818,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Login
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_text: "\uFE97\uFEB4\uFEA0\uFEF4\uFEDE \u0627\uFEDF\uFEAA\uFEA7\uFEEE\u0644"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14871,10 +14943,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2040882373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbd4abf4955d4cbd89a729c17f22136, type: 3}
+  m_Script: {fileID: 11500000, guid: 7637bc846fc424dc6a3b0c2eb53cd284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onComplete:
+  startVal: {x: 0.9, y: 0.9, z: 0.9}
+  finalVal: {x: 1, y: 1, z: 1}
+  isScaleAnimation: 1
+  prewarm: 0
+  autoPlay: 0
+  autoPlayDelay: 0
+  sfxPlayDelay: 0
+  animationSpeed: 0.2
+  callBackFn:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1023341240}
@@ -14890,6 +14970,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onStartFn:
+    m_PersistentCalls:
+      m_Calls: []
+  ease: 28
+  isAnchoredUI: 0
+  audioClip: {fileID: 0}
 --- !u!1 &2043168826
 GameObject:
   m_ObjectHideFlags: 0
@@ -15052,7 +15138,7 @@ MonoBehaviour:
       m_Calls: []
   ease: 28
   isAnchoredUI: 0
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 06f8b2ef0f57c46e5a237c3ffc19ddc3, type: 3}
 --- !u!1 &2053726358
 GameObject:
   m_ObjectHideFlags: 0
@@ -15112,10 +15198,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Verify Account
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_text: "\uFE97\uFEEE\uFE9B\uFEF4\uFED6 \u0627\uFEDF\uFEA4\uFEB4\uFE8E\u0628"
+  m_isRightToLeft: 1
+  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15295,8 +15381,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4293256677
+  m_fontColor: {r: 0.8980392, g: 0.8980392, b: 0.8980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15707,7 +15793,9 @@ MonoBehaviour:
   commonSfx:
     draggableSfx: []
     droppableSfx: []
-    clickableSfx: []
+    clickableSfx:
+    - {fileID: 8300000, guid: 7ef14f959ae3846e5aa6fb11bac878e5, type: 3}
+    - {fileID: 8300000, guid: e5b5721c75a4f43068ec3fd0837a0609, type: 3}
     CorrectSfx: []
     IncorrectSfx: []
 --- !u!1 &2111544968

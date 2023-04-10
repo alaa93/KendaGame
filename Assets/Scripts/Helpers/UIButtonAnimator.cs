@@ -111,16 +111,19 @@ namespace KendaGame.Helpers
             isAnimating = false;
         }
 
-        public void PlaySfx(AudioClip audioClip,float delay = 0f)
-        {
-            if (audioClip && AudioController.Instance && AudioController.Instance.GetSfxState())
-            {
-                if (playSfxCoroutine != null)
-                    StopCoroutine(playSfxCoroutine);
-                playSfxCoroutine = PlaySfxProcess(audioClip, delay);
-                StartCoroutine(playSfxCoroutine);
-            }
+    public void PlaySfx(AudioClip audioClip, float delay = 0f) {
+      if (AudioController.Instance && AudioController.Instance.GetSfxState()) {
+        if (audioClip) {
+          if (playSfxCoroutine != null)
+            StopCoroutine(playSfxCoroutine);
+          playSfxCoroutine = PlaySfxProcess(audioClip, delay);
+          StartCoroutine(playSfxCoroutine);
+        } else {
+          AudioController.Instance.PlayAudioAtPoint(AudioController.Instance.commonSfx.GetClickableSfx());
         }
+
+      }
+    }
 
         private IEnumerator PlaySfxProcess(AudioClip audioClip,float delay) 
         {
