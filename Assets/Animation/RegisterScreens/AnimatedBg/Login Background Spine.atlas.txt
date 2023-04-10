@@ -1,0 +1,16 @@
+Login Background Spine.png
+size:512,512
+filter:Linear,Linear
+pma:true
+scale:0.7
+fish small
+bounds:39,467,39,27
+shark
+bounds:185,171,207,62
+sish mid
+bounds:2,457,35,37
+weed 2
+bounds:2,182,249,312
+weed1
+bounds:238,208,256,286
+rotate:180
