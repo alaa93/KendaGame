@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace SteamTech.Utils
+namespace ScorpionSteps.Utils
 {
     public static class CollectionsUtils
     {
