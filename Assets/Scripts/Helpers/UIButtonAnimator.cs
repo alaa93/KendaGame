@@ -119,7 +119,7 @@ namespace KendaGame.Helpers
           playSfxCoroutine = PlaySfxProcess(audioClip, delay);
           StartCoroutine(playSfxCoroutine);
         } else {
-          AudioController.Instance.PlayAudioAtPoint(AudioController.Instance.commonSfx.GetClickableSfx());
+          AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetClickableSfx());
         }
 
       }

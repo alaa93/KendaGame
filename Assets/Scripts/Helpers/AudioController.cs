@@ -39,35 +39,40 @@ namespace KendaGame.Helpers
             return musicState;
         }
 
-        public void PlayAudioAtPoint(AudioClip audioClip) 
-        {
+        public void PlaySfxAtPoint(AudioClip audioClip) {
+          if (GetSfxState()) {
             AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position);
+          }
         }
 
-        public void PlayAudioAtPoint(AudioClip audioClip, float volume = 1f)
-        {
+        public void PlaySfxAtPoint(AudioClip audioClip, float volume = 1f) {
+          if (GetSfxState()) {
             AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, volume);
+          }
         }
 
-        public static event UnityAction<bool> SfxStateChanged;
+        public void PlayAudioAtPoint(AudioClip audioClip) {
+          if (GetMusicState()) {
+            AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position);
+          }
+        }
+
+        public void PlayAudioAtPoint(AudioClip audioClip, float volume = 1f) {
+          if (GetMusicState()) {
+            AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, volume);
+          }
+        }
+
+    public static event UnityAction<bool> SfxStateChanged;
         public static event UnityAction<bool> MusicStateChanged;
 
         [System.Serializable]
         public class CommonSfx 
         {
-            public AudioClip[] draggableSfx;
-            public AudioClip[] droppableSfx;
             public AudioClip[] clickableSfx;
             public AudioClip[] CorrectSfx;
             public AudioClip[] IncorrectSfx;
-            public AudioClip GetDraggableSfx() 
-            {
-                return draggableSfx[Random.Range(0, draggableSfx.Length)];
-            }
-            public AudioClip GetDroppableSfx()
-            {
-                return droppableSfx[Random.Range(0, droppableSfx.Length)];
-            }
+
             public AudioClip GetClickableSfx()
             {
                 return clickableSfx[Random.Range(0, clickableSfx.Length)];

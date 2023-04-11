@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: LoadingCanvas
+    uniqueID: 42034245
+    locked: 0
