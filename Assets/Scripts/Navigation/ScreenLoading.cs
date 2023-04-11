@@ -1,35 +1,53 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using KendaGame.Helpers;
+using System;
 
 namespace KendaGame.Navigation {
   public class ScreenLoading : MonoBehaviour {
     [SerializeField]
     Image upperCloud, leftCloud, rightCloud;
+    [SerializeField]
+    AudioClip windSfx;
+    [SerializeField][Range(0.4f,3f)]
+    float animationDuration = 0.6f;
+
     float leftCloudInScreen, rightCloudInScreen, upperCloudInScreen;
+    bool cloudClosed = true;
 
     private void Start() {
       CacheInitailPosition();
     }
-    private void OnEnable() {
-      Invoke("OpenClouds", 2f);
-      Invoke("CloseClouds", 4f);
-    }
+
     private void CacheInitailPosition() {
       leftCloudInScreen = leftCloud.transform.position.x;
       rightCloudInScreen = rightCloud.transform.position.x;
       upperCloudInScreen = upperCloud.transform.position.y;
     }
 
-    public void OpenClouds() {
-      upperCloud.transform.DOMoveY(GetTopScreenEdge().y, 0.4f);
-      leftCloud.transform.DOMoveX(GetLeftScreenEdge().x, 0.4f);
-      rightCloud.transform.DOMoveX(GetRightScreenEdge().x, 0.4f);
+    public void OpenClouds(Action<bool> onComplete, bool animated = true) {
+      if (cloudClosed) {
+        upperCloud.transform.DOMoveY(GetTopScreenEdge().y, animated ? animationDuration : 0.0f);
+        leftCloud.transform.DOMoveX(GetLeftScreenEdge().x, animated ? animationDuration : 0.0f);
+        rightCloud.transform.DOMoveX(GetRightScreenEdge().x, animated ? animationDuration : 0.0f).OnComplete(() => {
+          onComplete?.Invoke(animated);
+        });
+        AudioController.Instance.PlaySfxAtPoint(windSfx, animated ? 0.4f : 0f);
+        cloudClosed = false;
+      }
     }
-    public void CloseClouds() {
-      upperCloud.transform.DOMoveY(upperCloudInScreen, 0.4f);
-      leftCloud.transform.DOMoveX(leftCloudInScreen, 0.4f);
-      rightCloud.transform.DOMoveX(rightCloudInScreen, 0.4f);
+
+    public void CloseClouds(Action<bool> onComplete, bool animated = true) {
+      if (!cloudClosed) {
+        upperCloud.transform.DOMoveY(upperCloudInScreen, animated ? animationDuration : 0.0f);
+        leftCloud.transform.DOMoveX(leftCloudInScreen, animated ? animationDuration : 0.0f);
+        rightCloud.transform.DOMoveX(rightCloudInScreen, animated ? animationDuration : 0.0f).OnComplete(()=> {
+          onComplete?.Invoke(animated);
+        });
+        AudioController.Instance.PlaySfxAtPoint(windSfx, animated ? 0.4f : 0f);
+        cloudClosed = true;
+      }
     }
 
     private Vector3 GetRightScreenEdge() {
