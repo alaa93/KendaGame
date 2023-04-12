@@ -15,8 +15,129 @@ MonoBehaviour:
   mSource:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
+<<<<<<< Updated upstream
     GoogleLiveSyncIsUptoDate: 1
     mTerms: []
+=======
+    GoogleLiveSyncIsUptoDate: 0
+    mTerms:
+    - Term: LocalizeFonts
+      TermType: 9
+      Description: 
+      Languages:
+      - Lato-Regular
+      - DroidKufi-Regular
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LocalizeFonts_Bold
+      TermType: 9
+      Description: 
+      Languages:
+      - DANA-FAT SDF
+      - DroidKufi-Bold
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Signup
+      TermType: 0
+      Description: 
+      Languages:
+      - Sign Up
+      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: connect_via
+      TermType: 0
+      Description: 
+      Languages:
+      - 'or connect vIa '
+      - "\u0623\u0648 \u062A\u0648\u0635\u064A\u0644 \u0645\u0646 \u062E\u0644\u0627\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: email_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Email...
+      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: forget_password_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Forget Password?
+      - "\u0646\u0633\u064A\u062A \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631\u061F"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: language_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Language
+      - "\u0627\u0644\u0644\u063A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: login
+      TermType: 0
+      Description: 
+      Languages:
+      - Start Free Trial
+      - "\u0627\u0628\u062F\u0623 \u0627\u0644\u0625\u0635\u062F\u0627\u0631 \u0627\u0644\u062A\u062C\u0631\u064A\u0628\u064A "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: password_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Pasword...
+      - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: pasword_confirm_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm pasword...
+      - "\u062A\u0623\u0643\u064A\u062F \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: verify_account_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Verify Account
+      - "\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u062D\u0633\u0627\u0628"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: instruction_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Please enter the four-digit verification code that has been sent to your
+        email address.
+      - "\u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u062F\u062E\u0627\u0644 \u0631\u0642\u0645
+        \u0627\u0644\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u0630\u064A \u062A\u0645
+        \u0627\u0631\u0633\u0627\u0644\u0647 \u0627\u0644\u0649 \u0628\u0631\u064A\u062F\u0643
+        \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: confirm_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm
+      - "\u062A\u0648\u062B\u064A\u0642"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: change_email_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Change Email Address
+      - "\u062A\u063A\u064A\u064A\u0631 \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0643\u062A\u0631\u0648\u0646\u064A"
+      Flags: 0000
+      Languages_Touch: []
+>>>>>>> Stashed changes
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
