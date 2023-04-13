@@ -16,7 +16,7 @@ namespace KendaGame.Navigation {
       }
     }
     public enum Scenes {
-      LoginScene, SplashScreen
+      LoginScene, SplashScreen,Map
     }
 
     private void Awake() {
@@ -29,7 +29,7 @@ namespace KendaGame.Navigation {
     }
 
     private void Test() {
-      MoveTo(Scenes.SplashScreen);
+      MoveTo(Scenes.Map);
     }
 
     private void OnEnable() {
@@ -47,11 +47,18 @@ namespace KendaGame.Navigation {
     public void MoveTo(Scenes targetSceneName) {
       if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != targetSceneName.ToString()) {
         screenLoading.CloseClouds((animated) => {
+          UpdateScreenOrientation(targetSceneName);
           UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetSceneName.ToString());
         });
       } else {
         screenLoading.OpenClouds(null, false);
       }
+    }
+
+    private void UpdateScreenOrientation(Scenes targetSceneName) {
+      //if (targetSceneName != Scenes.LoginScene && (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)) {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+      //}
     }
 
     public void OnBackClicked() {
