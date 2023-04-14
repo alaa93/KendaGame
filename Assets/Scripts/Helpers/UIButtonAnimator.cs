@@ -2,59 +2,54 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using System;
 
+namespace KendaGame.Helpers {
+  public class UIButtonAnimator : MonoBehaviour {
+    public Vector3 startVal = Vector3.one * 0.8f;
+    public Vector3 finalVal = Vector3.one;
+    public bool isScaleAnimation = true;
+    public bool prewarm = false;
+    public bool autoPlay = false;
+    public float autoPlayDelay = 0f;
+    public float sfxPlayDelay = 0f;
+    [Range(0.1f, 3f)]
+    public float animationSpeed = 0.4f;
+    [Space]
+    [Space]
+    public UnityEvent callBackFn;
+    public Action clickCallback;
+    [Space]
+    public UnityEvent onStartFn;
 
-namespace KendaGame.Helpers
-{
-    public class UIButtonAnimator : MonoBehaviour
-    {
-        public Vector3 startVal = Vector3.one * 0.8f;
-        public Vector3 finalVal = Vector3.one;
-        public bool isScaleAnimation = true;
-        public bool prewarm = true;
-        public bool autoPlay = false;
-        public float autoPlayDelay = 0f;
-        public float sfxPlayDelay = 0f;
-        [Range(0.1f, 3f)]
-        public float animationSpeed = 0.4f;
-        [Space]
-        [Space]
-        public UnityEvent callBackFn;
+    public Ease ease = Ease.InOutBack;
+    public bool isAnchoredUI = false;
+    public AudioClip audioClip;
 
-        [Space]
-        public UnityEvent onStartFn;
+    private bool isAnimating = false;
+    private IEnumerator playSfxCoroutine;
 
-        public Ease ease = Ease.InOutBack;
-        public bool isAnchoredUI = false;
-        public AudioClip audioClip;
+    private void OnEnable() {
+      isAnimating = false;
 
-        private bool isAnimating = false;
-        private IEnumerator playSfxCoroutine;
+      if (prewarm) {
+        if (isScaleAnimation)
+          this.transform.localScale = startVal;
+        else
+          this.transform.localPosition = startVal;
+      }
+    }
 
-        private void OnEnable()
-        {
-            isAnimating = false;
+    private void Start() {
+      if (autoPlay)
+        StartCoroutine(PlayAnimOnly(autoPlayDelay));
+    }
 
-            if (prewarm)
-            {
-                if (isScaleAnimation)
-                    this.transform.localScale = startVal;
-                else
-                    this.transform.localPosition = startVal;
-            }
-                
-
-           // if (isScaleAnimation)
-             //   this.transform.localScale = finalVal;
-           // else
-               // this.transform.localPosition = finalVal;
-        }
-
-        private void Start()
-        {
-            if (autoPlay)
-                StartCoroutine(PlayAnimOnly(autoPlayDelay));
-        }
+    public void AddClickListener(Action callBackFn) {
+      this.clickCallback = callBackFn;
+      this.GetComponent<Button>().onClick.AddListener(OnClick);
+    }
 
     public virtual void OnClick() {
       if (isAnimating)
@@ -78,38 +73,35 @@ namespace KendaGame.Helpers
       StartCoroutine(OnClickProcess(animationSpeed + 0.2f));
     }
 
-        private IEnumerator PlayAnimOnly(float delay)
-        {
+    private IEnumerator PlayAnimOnly(float delay) {
 
-            yield return new WaitForSeconds(delay);
+      yield return new WaitForSeconds(delay);
 
-            isAnimating = true;
+      isAnimating = true;
 
-            onStartFn?.Invoke();
+      onStartFn?.Invoke();
 
-            if (isScaleAnimation)
-                this.transform.DOScale(startVal, 0.1f).SetEase(Ease.InBack).OnComplete(() =>
-                {
-                    this.transform.DOScale(finalVal, animationSpeed).SetEase(ease);
-                });
-            else
-                this.transform.DOLocalMove(startVal, 0.1f).SetEase(Ease.InBack).OnComplete(() =>
-                {
+      if (isScaleAnimation)
+        this.transform.DOScale(startVal, 0.1f).SetEase(Ease.InBack).OnComplete(() => {
+          this.transform.DOScale(finalVal, animationSpeed).SetEase(ease);
+        });
+      else
+        this.transform.DOLocalMove(startVal, 0.1f).SetEase(Ease.InBack).OnComplete(() => {
 
-                    this.transform.DOLocalMove(finalVal, animationSpeed).SetEase(ease);
+          this.transform.DOLocalMove(finalVal, animationSpeed).SetEase(ease);
 
-                });
+        });
 
-            yield return new WaitForSeconds(animationSpeed);
+      yield return new WaitForSeconds(animationSpeed);
 
-            isAnimating = false;
-        }
-        public virtual IEnumerator OnClickProcess(float timer)
-        {
-            yield return new WaitForSeconds(timer);
-            callBackFn?.Invoke();
-            isAnimating = false;
-        }
+      isAnimating = false;
+    }
+    public virtual IEnumerator OnClickProcess(float timer) {
+      yield return new WaitForSeconds(timer);
+      callBackFn?.Invoke();
+      clickCallback?.Invoke();
+      isAnimating = false;
+    }
 
     public void PlaySfx(AudioClip audioClip, float delay = 0f) {
       if (AudioController.Instance && AudioController.Instance.GetSfxState()) {
@@ -125,15 +117,13 @@ namespace KendaGame.Helpers
       }
     }
 
-        private IEnumerator PlaySfxProcess(AudioClip audioClip,float delay) 
-        {
-            yield return new WaitForSeconds(delay);
-            AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, 1f);
-        }
-
-        public void SetClickState(bool clickState)
-        {
-            this.GetComponent<Collider2D>().enabled = clickState;
-        }  
+    private IEnumerator PlaySfxProcess(AudioClip audioClip, float delay) {
+      yield return new WaitForSeconds(delay);
+      AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, 1f);
     }
+
+    public void SetClickState(bool clickState) {
+      this.GetComponent<Collider2D>().enabled = clickState;
+    }
+  }
 }

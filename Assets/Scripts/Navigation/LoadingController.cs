@@ -5,7 +5,7 @@ using KendaGame.Helpers;
 using System;
 
 namespace KendaGame.Navigation {
-  public class ScreenLoading : MonoBehaviour {
+  public class LoadingController : MonoBehaviour {
     [SerializeField]
     Image upperCloud, leftCloud, rightCloud;
     [SerializeField]
@@ -24,6 +24,10 @@ namespace KendaGame.Navigation {
       leftCloudInScreen = leftCloud.transform.position.x;
       rightCloudInScreen = rightCloud.transform.position.x;
       upperCloudInScreen = upperCloud.transform.position.y;
+
+      upperCloud.gameObject.SetActive(true);
+      leftCloud.gameObject.SetActive(true);
+      rightCloud.gameObject.SetActive(true);
     }
 
     public void OpenClouds(Action<bool> onComplete, bool animated = true) {
