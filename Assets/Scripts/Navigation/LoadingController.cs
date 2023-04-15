@@ -6,35 +6,45 @@ using System;
 
 namespace KendaGame.Navigation {
   public class LoadingController : MonoBehaviour {
+
+    [Header("Landscape Clouds")]
     [SerializeField]
-    Image upperCloud, leftCloud, rightCloud;
+    LoadingClouds landscapeClouds;
+    [Header("Portrait Clouds")]
+    [SerializeField]
+    LoadingClouds portraitClouds;
     [SerializeField]
     AudioClip windSfx;
-    [SerializeField][Range(0.4f,3f)]
+    [SerializeField]
+    [Range(0.4f, 3f)]
     float animationDuration = 0.6f;
-
-    float leftCloudInScreen, rightCloudInScreen, upperCloudInScreen;
     bool cloudClosed = true;
 
     private void Start() {
-      CacheInitailPosition();
+      UpdateClouds();
     }
 
-    private void CacheInitailPosition() {
-      leftCloudInScreen = leftCloud.transform.position.x;
-      rightCloudInScreen = rightCloud.transform.position.x;
-      upperCloudInScreen = upperCloud.transform.position.y;
+    private LoadingClouds GetLoadingClouds() {
+      if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
+        return portraitClouds;
+      } else {
+        return landscapeClouds;
+      }
+    }
 
-      upperCloud.gameObject.SetActive(true);
-      leftCloud.gameObject.SetActive(true);
-      rightCloud.gameObject.SetActive(true);
+    private void UpdateClouds() {
+      portraitClouds.SetCloudsState(false);
+      landscapeClouds.SetCloudsState(false);
+      GetLoadingClouds().SetCloudsState(true);
+      GetLoadingClouds().inScreenPosition = new Vector3(GetLoadingClouds().leftCloud.transform.position.x,
+      GetLoadingClouds().rightCloud.transform.position.x, GetLoadingClouds().upperCloud.transform.position.y);
     }
 
     public void OpenClouds(Action<bool> onComplete, bool animated = true) {
       if (cloudClosed) {
-        upperCloud.transform.DOMoveY(GetTopScreenEdge().y, animated ? animationDuration : 0.0f);
-        leftCloud.transform.DOMoveX(GetLeftScreenEdge().x, animated ? animationDuration : 0.0f);
-        rightCloud.transform.DOMoveX(GetRightScreenEdge().x, animated ? animationDuration : 0.0f).OnComplete(() => {
+        GetLoadingClouds().upperCloud.transform.DOMoveY(GetTopScreenEdge().y, animated ? animationDuration : 0.0f);
+        GetLoadingClouds().leftCloud.transform.DOMoveX(GetLeftScreenEdge().x, animated ? animationDuration : 0.0f);
+        GetLoadingClouds().rightCloud.transform.DOMoveX(GetRightScreenEdge().x, animated ? animationDuration : 0.0f).OnComplete(() => {
           onComplete?.Invoke(animated);
         });
         AudioController.Instance.PlaySfxAtPoint(windSfx, animated ? 0.4f : 0f);
@@ -44,9 +54,9 @@ namespace KendaGame.Navigation {
 
     public void CloseClouds(Action<bool> onComplete, bool animated = true) {
       if (!cloudClosed) {
-        upperCloud.transform.DOMoveY(upperCloudInScreen, animated ? animationDuration : 0.0f);
-        leftCloud.transform.DOMoveX(leftCloudInScreen, animated ? animationDuration : 0.0f);
-        rightCloud.transform.DOMoveX(rightCloudInScreen, animated ? animationDuration : 0.0f).OnComplete(()=> {
+        GetLoadingClouds().upperCloud.transform.DOMoveY(GetLoadingClouds().inScreenPosition.z, animated ? animationDuration : 0.0f);
+        GetLoadingClouds().leftCloud.transform.DOMoveX(GetLoadingClouds().inScreenPosition.x, animated ? animationDuration : 0.0f);
+        GetLoadingClouds().rightCloud.transform.DOMoveX(GetLoadingClouds().inScreenPosition.y, animated ? animationDuration : 0.0f).OnComplete(() => {
           onComplete?.Invoke(animated);
         });
         AudioController.Instance.PlaySfxAtPoint(windSfx, animated ? 0.4f : 0f);
@@ -68,6 +78,17 @@ namespace KendaGame.Navigation {
       Vector3 mPos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, 0));
       mPos.z = 0;
       return mPos;
+    }
+
+    [Serializable]
+    class LoadingClouds {
+      public Image upperCloud, leftCloud, rightCloud;
+      public Vector3 inScreenPosition;
+      public void SetCloudsState(bool state) {
+        upperCloud.gameObject.SetActive(state);
+        leftCloud.gameObject.SetActive(state);
+        rightCloud.gameObject.SetActive(state);
+      }
     }
   }
 }

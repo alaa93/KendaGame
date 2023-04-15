@@ -22,7 +22,7 @@ namespace KendaGame.Navigation {
     public List<string> navigationStack = new List<string>();
 
     public enum Scenes {
-      LoginScene, SplashScreen,Map
+      LoginScene, SplashScreen, Map
     }
 
     private void Awake() {
@@ -60,12 +60,13 @@ namespace KendaGame.Navigation {
     private void UpdateScreenOrientation(Scenes targetSceneName) {
       if (targetSceneName != Scenes.LoginScene && (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)) {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-
 #if UNITY_EDITOR
-        var gameViewType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView");
-        var gameViewWindow = UnityEditor.EditorWindow.GetWindow(gameViewType);
-        var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
-        sizeSelectionCallback.Invoke(gameViewWindow, new object[] { 32, null });
+        UpdateEditorOrientation(true);
+#endif
+      } else if (targetSceneName == Scenes.LoginScene || targetSceneName == Scenes.SplashScreen) {
+        Screen.orientation = ScreenOrientation.Portrait;
+#if UNITY_EDITOR
+        UpdateEditorOrientation(false);
 #endif
       }
     }
@@ -86,5 +87,14 @@ namespace KendaGame.Navigation {
         uiController.SetBackBtnState(true);
       }
     }
+
+#if UNITY_EDITOR
+    private void UpdateEditorOrientation(bool islandscape) {
+      var gameViewType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView");
+      var gameViewWindow = UnityEditor.EditorWindow.GetWindow(gameViewType);
+      var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
+      sizeSelectionCallback.Invoke(gameViewWindow, new object[] { islandscape ? 32 : 31, null });
+    }
+#endif
   }
 }
