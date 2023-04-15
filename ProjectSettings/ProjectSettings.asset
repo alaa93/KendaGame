@@ -157,6 +157,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.KendaAI.KendaGame
     Standalone: com.DefaultCompany.2DProject
+    iPhone: com.KendaAI.KendaGame
   buildNumber:
     Standalone: 0
     iPhone: 0

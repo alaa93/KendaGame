@@ -1,3 +1,4 @@
+using KendaGame.Navigation;
 using UnityEngine;
 
 namespace KendaGame.RegistrationScreens {
@@ -21,7 +22,9 @@ namespace KendaGame.RegistrationScreens {
     }
 
     public void AutoLogin() {
-      Debug.Log("auto login clicked");
+      if (SceneManager.Instance) {
+        SceneManager.Instance.MoveTo(SceneManager.Scenes.Map);
+      }
     }
   }
 }
