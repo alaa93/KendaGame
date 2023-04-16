@@ -243,7 +243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -53.940002}
+  m_AnchoredPosition: {x: 0, y: -53.93994}
   m_SizeDelta: {x: 191.77, y: 107.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928042145
@@ -294,8 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _img: {fileID: 928042145}
-  _x: 0.1
-  _y: -0.1
+  _scrollSpeed: 0.15
+  _submarine: {fileID: 1123355946}
+  edgeInnerMargin: 2
 --- !u!1 &1044085927
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,11 +495,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e471de8164eac47c6953bdd9137b19e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 1.5
+  autoMoveSpeed: 3.6
   turnDelay: 6
-  minRandomDistance: 3
-  maxRandomDistance: 6
-  manualMode: 1
+  minRandomDistance: 50
+  maxRandomDistance: 200
+  continuesMovement: 0
+  autoMove: 0
 --- !u!1 &1665073353
 GameObject:
   m_ObjectHideFlags: 0
