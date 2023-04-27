@@ -1,0 +1,17 @@
+promotion.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.8
+fish 1
+bounds:2,428,410,318
+offsets:0,47,410,410
+fish 23
+bounds:68,202,410,276
+offsets:0,67,410,410
+fish 4
+bounds:385,449,361,297
+offsets:21,87,410,410
+glow
+bounds:479,322,91,91
+offsets:130,142,410,410

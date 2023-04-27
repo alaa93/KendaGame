@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 
 namespace KendaGame.Helpers {
+  [RequireComponent(typeof(Button))]
   public class UIButtonAnimator : MonoBehaviour {
     public Vector3 startVal = Vector3.one * 0.8f;
     public Vector3 finalVal = Vector3.one;

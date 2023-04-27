@@ -23,7 +23,7 @@ namespace KendaGame.RegistrationScreens {
 
     public void AutoLogin() {
       if (SceneManager.Instance) {
-        SceneManager.Instance.MoveTo(SceneManager.Scenes.Map);
+        SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
       }
     }
   }
