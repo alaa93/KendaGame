@@ -1,3 +1,16 @@
 {
-	"name": "KendaEditorScripts"
+    "name": "KendaEditorScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:441c0eecb91e74ce7a77434fe158cebd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

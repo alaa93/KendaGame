@@ -6,8 +6,6 @@ using KendaGame.Helpers;
 namespace KendaGame.Navigation {
   public class UIController : MonoBehaviour {
     [SerializeField]
-    LoadingController loadingController;
-    [SerializeField]
     UIButtonAnimator backBtn;
     [SerializeField]
     GameObject coinsObject;

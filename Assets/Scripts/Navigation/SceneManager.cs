@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,10 +20,10 @@ namespace KendaGame.Navigation {
 
     private bool initialized;
     private static SceneManager _instance;
-    public List<string> navigationStack = new List<string>();
+    private List<string> navigationStack = new List<string>();
 
     public enum Scenes {
-      LoginScene, SplashScreen, Map
+      SplashScreen, LoginScene, HomeScreen, Map
     }
 
     private void Awake() {
@@ -41,16 +42,16 @@ namespace KendaGame.Navigation {
       UpdateBackBtnState(scene);
     }
 
-    public void MoveTo(Scenes targetSceneName) {
-      string sceneName = targetSceneName.ToString();
-      Debug.Log(sceneName);
-      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != sceneName) {
+    public void MoveTo(string targetSceneName) {
+      Debug.Log("MoveTo " + targetSceneName);
+      Scenes targetScene = (Scenes)Enum.Parse(typeof(Scenes), targetSceneName);
+      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != targetSceneName) {
         loadingController.CloseClouds((animated) => {
-          UpdateScreenOrientation(targetSceneName);
-          if (navigationStack != null && !navigationStack.Contains(sceneName)) {
-            navigationStack.Add(sceneName);
+          UpdateScreenOrientation(targetScene);
+          if (navigationStack != null && !navigationStack.Contains(targetSceneName)) {
+            navigationStack.Add(targetSceneName);
           }
-          UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+          UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetSceneName);
         });
       } else {
         loadingController.OpenClouds(null, false);
@@ -73,7 +74,7 @@ namespace KendaGame.Navigation {
 
     public void OnBackClicked() {
       if (navigationStack != null && navigationStack.Count > 1) {
-        MoveTo((Scenes)navigationStack.Count - 2);
+        MoveTo(navigationStack[navigationStack.Count - 2]);
         navigationStack.RemoveAt(navigationStack.Count - 1);
       } else {
         Debug.LogError("Stack is empty can't go back");
@@ -81,7 +82,7 @@ namespace KendaGame.Navigation {
     }
 
     private void UpdateBackBtnState(Scene scene) {
-      if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString()) {
+      if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.HomeScreen.ToString()) {
         uiController.SetBackBtnState(false);
       } else {
         uiController.SetBackBtnState(true);

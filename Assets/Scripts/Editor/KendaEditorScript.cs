@@ -1,30 +1,53 @@
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using KendaGame.Navigation;
 
-public class KendaEditorScript : EditorWindow {
+namespace KendaGame.EditorScripts {
+  public class KendaEditorScript : EditorWindow {
 
-  [MenuItem("Window/Set Game View Resolution")]
-  public static void ShowWindow() {
-    EditorWindow.GetWindow<KendaEditorScript>("Set Game View Resolution");
-  }
+    [MenuItem("KendaGame/Debug/Play from splash")]
+    public static void PlayFromSplashScreen() {
 
-  private int width = 2340;
-  private int height = 1080;
+      SaveAndLoadScene(SceneManager.Scenes.SplashScreen.ToString());
+      EnterPlayMode();
+    }
 
-  private void OnGUI() {
-    width = EditorGUILayout.IntField("Width", width);
-    height = EditorGUILayout.IntField("Height", height);
+    [MenuItem("Window/Set Game View Resolution")]
+    public static void ShowWindow() {
+      EditorWindow.GetWindow<KendaEditorScript>("Set Game View Resolution");
+    }
 
-    if (GUILayout.Button("Set Resolution")) {
-      SetResolution(width, height);
+    private int width = 2340;
+    private int height = 1080;
+
+    private void OnGUI() {
+      width = EditorGUILayout.IntField("Width", width);
+      height = EditorGUILayout.IntField("Height", height);
+
+      if (GUILayout.Button("Set Resolution")) {
+        SetResolution(width, height);
+      }
+    }
+
+    private void SetResolution(int width, int height) {
+      var gameViewType = typeof(Editor).Assembly.GetType("UnityEditor.GameView");
+      var gameViewWindow = EditorWindow.GetWindow(gameViewType);
+      var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
+      sizeSelectionCallback.Invoke(gameViewWindow, new object[] { 32, null });
+    }
+
+    private static void SaveAndLoadScene(string sceneName, bool editorScene = false) {
+      EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+      if (editorScene) {
+        EditorSceneManager.OpenScene("Assets/_Scenes/" + sceneName + ".unity");
+      } else {
+        EditorSceneManager.OpenScene("Assets/_Scenes/" + sceneName + ".unity");
+      }
+    }
+
+    private static void EnterPlayMode() {
+      EditorApplication.isPlaying = true;
     }
   }
-
-  private void SetResolution(int width, int height) {
-    var gameViewType = typeof(Editor).Assembly.GetType("UnityEditor.GameView");
-    var gameViewWindow = EditorWindow.GetWindow(gameViewType);
-    var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
-    sizeSelectionCallback.Invoke(gameViewWindow, new object[] { 32, null });
-  }
 }
-

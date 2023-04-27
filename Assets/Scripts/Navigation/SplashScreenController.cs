@@ -12,7 +12,7 @@ namespace KendaGame.UI {
 
     private void LoadNextScreen() {
       if (SceneManager.Instance) {
-        SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene);
+        SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
       }
     }
   }
