@@ -185,7 +185,8 @@ MonoBehaviour:
   m_text: "\uFE97\uFEB4\uFEA0\uFEF4\uFEDE \u0627\uFEDF\uFEAA\uFEA7\uFEEE\u0644"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -399,7 +400,8 @@ MonoBehaviour:
   m_text: "\u0627\uFEDF\uFE98\uFEB4\uFEA0\uFEF4\uFEDE"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -637,14 +639,14 @@ MonoBehaviour:
       - m_Target: {fileID: 75519411}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &75519408
 MonoBehaviour:
@@ -669,7 +671,8 @@ MonoBehaviour:
   m_text: "\u0627\uFEDF\uFE98\uFEB4\uFEA0\uFEF4\uFEDE"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1120,7 +1123,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 795.226, y: 1409.5068}
+  referenceSize: {x: 795.80066, y: 1409.2515}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -1545,7 +1548,8 @@ MonoBehaviour:
   m_text: "\u0623\u0648 \uFE97\uFEEE\uFEBB\uFEF4\uFEDE \uFEE3\uFEE6 \uFEA7\uFEFC\u0644"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2263,14 +2267,14 @@ MonoBehaviour:
       - m_Target: {fileID: 443507340}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &443507340
 MonoBehaviour:
@@ -2591,7 +2595,8 @@ MonoBehaviour:
   m_text: "\uFEE7\uFEB4\uFEF4\uFE96 \uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE\u061F"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2969,7 +2974,8 @@ MonoBehaviour:
   m_text: "\u0627\uFEDF\uFE98\uFEB4\uFEA0\uFEF4\uFEDE"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3390,7 +3396,8 @@ MonoBehaviour:
   m_text: "\uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE..."
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3565,7 +3572,8 @@ MonoBehaviour:
   m_text: "\uFE97\uFEB4\uFEA0\uFEF4\uFEDE \u0627\uFEDF\uFEAA\uFEA7\uFEEE\u0644"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3835,7 +3843,8 @@ MonoBehaviour:
   m_text: __ __ __ __
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
-  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
+  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4241,7 +4250,8 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4429,7 +4439,8 @@ MonoBehaviour:
   m_text: Change Email Address
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5341,16 +5352,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1124385976}
-        m_TargetAssemblyTypeName: SteamTech.UIButtonAnimator, KendaScripts
+        m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1124385976
 MonoBehaviour:
@@ -5536,14 +5547,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1153228089}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1153228087
 MonoBehaviour:
@@ -5704,7 +5715,8 @@ MonoBehaviour:
   m_text: "\uFE97\uFEEE\uFE9B\uFEF4\uFED6"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5958,14 +5970,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1244121671}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1244121669
 MonoBehaviour:
@@ -6109,7 +6121,8 @@ MonoBehaviour:
   m_text: "\u0627\uFEDF\uFEE0\uFED0\uFE94"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6305,7 +6318,8 @@ MonoBehaviour:
   m_text: "\uFE97\uFE84\uFEDB\uFEF4\uFEAA \uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE..."
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6796,7 +6810,8 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
-  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
+  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6968,7 +6983,8 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7125,7 +7141,8 @@ MonoBehaviour:
   m_text: "\u0627\uFEDF\uFE92\uFEAE\uFEF3\uFEAA \u0627\uFEFB\uFEDF\uFEDC\uFE98\uFEAE\u0648\uFEE7\uFEF2..."
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7498,14 +7515,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1665070419}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1665070419
 MonoBehaviour:
@@ -7744,14 +7761,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1711385761}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1711385759
 MonoBehaviour:
@@ -8134,7 +8151,8 @@ MonoBehaviour:
   m_text: "\u0627\uFEDF\uFE92\uFEAE\uFEF3\uFEAA \u0627\uFEFB\uFEDF\uFEDC\uFE98\uFEAE\u0648\uFEE7\uFEF2..."
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8458,7 +8476,8 @@ MonoBehaviour:
     \u0627\uFEFB\uFEDF\uFEDC\uFE98\uFEAE\u0648\uFEE7\uFEF2"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8654,7 +8673,8 @@ MonoBehaviour:
   m_text: "\uFEDB\uFEE0\uFEE4\uFE94 \u0627\uFEDF\uFEB4\uFEAE..."
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9092,14 +9112,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1962790049}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1962790047
 MonoBehaviour:
@@ -9269,14 +9289,14 @@ MonoBehaviour:
       - m_Target: {fileID: 1965006758}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1965006756
 MonoBehaviour:
@@ -14366,7 +14386,8 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14501,7 +14522,8 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
-  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
+  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14663,14 +14685,14 @@ MonoBehaviour:
       - m_Target: {fileID: 2040882379}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2040882376
 MonoBehaviour:
@@ -14695,7 +14717,8 @@ MonoBehaviour:
   m_text: "\uFE97\uFEB4\uFEA0\uFEF4\uFEDE \u0627\uFEDF\uFEAA\uFEA7\uFEEE\u0644"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14975,14 +14998,14 @@ MonoBehaviour:
       - m_Target: {fileID: 2043168831}
         m_TargetAssemblyTypeName: KendaGame.Helpers.UIButtonAnimator, KendaScripts
         m_MethodName: OnClick
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2043168831
 MonoBehaviour:
@@ -15088,7 +15111,8 @@ MonoBehaviour:
   m_text: "\uFE97\uFEEE\uFE9B\uFEF4\uFED6 \u0627\uFEDF\uFEA4\uFEB4\uFE8E\u0628"
   m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15262,7 +15286,8 @@ MonoBehaviour:
   m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15473,7 +15498,8 @@ MonoBehaviour:
   m_text: en
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
-  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
+  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

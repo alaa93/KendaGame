@@ -23,7 +23,7 @@ namespace KendaGame.Navigation {
     private List<string> navigationStack = new List<string>();
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map
+      SplashScreen, LoginScene, HomeScreen, Map, GameScene
     }
 
     private void Awake() {

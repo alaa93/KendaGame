@@ -25,8 +25,9 @@ namespace KendaGame.UI {
 
     public void OnPenClicked(ColoringPen pen) {
       for (int x = 0; x < penBtns.Length; x++) {
-        if (penBtns[x] != pen) {
-          penBtns[x].SelectionChanged(true);
+        int temp = x;
+        if (penBtns[temp] != pen) {
+          penBtns[temp].SelectionChanged(true);
         }
       }
       pen.SelectionChanged();

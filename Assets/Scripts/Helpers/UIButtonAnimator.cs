@@ -8,7 +8,7 @@ using System;
 namespace KendaGame.Helpers {
   [RequireComponent(typeof(Button))]
   public class UIButtonAnimator : MonoBehaviour {
-    public Vector3 startVal = Vector3.one * 0.8f;
+    public Vector3 startVal = Vector3.one * 0.96f;
     public Vector3 finalVal = Vector3.one;
     public bool isScaleAnimation = true;
     public bool prewarm = false;
@@ -16,7 +16,7 @@ namespace KendaGame.Helpers {
     public float autoPlayDelay = 0f;
     public float sfxPlayDelay = 0f;
     [Range(0.1f, 3f)]
-    public float animationSpeed = 0.4f;
+    public float animationSpeed = 0.3f;
     [Space]
     [Space]
     public UnityEvent callBackFn;

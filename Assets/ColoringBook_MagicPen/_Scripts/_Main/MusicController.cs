@@ -13,7 +13,7 @@ public class MusicController : MonoBehaviour
         if (USE == null)
         {
             USE = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             soundSource = transform.GetChild(0).GetComponent<AudioSource>();
 

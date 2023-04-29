@@ -6,7 +6,7 @@ using KendaGame.Navigation;
 namespace KendaGame.EditorScripts {
   public class KendaEditorScript : EditorWindow {
 
-    [MenuItem("KendaGame/Debug/Play from splash")]
+    [MenuItem("KendaGame/Debug/Play From SplashScreen")]
     public static void PlayFromSplashScreen() {
 
       SaveAndLoadScene(SceneManager.Scenes.SplashScreen.ToString());

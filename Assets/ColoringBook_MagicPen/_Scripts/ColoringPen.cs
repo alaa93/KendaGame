@@ -7,6 +7,10 @@ using DG.Tweening;
 namespace KendaGame.UI {
   public class ColoringPen : MonoBehaviour {
     private bool selected;
+    [Range(0, 9)]
+    public int colorId;
+    [SerializeField]
+    ColoringBookManager coloringBookManager;
 
     private void Awake() {
       GetComponent<UIButtonAnimator>().AddClickListener(OnPenClicked, false);
@@ -22,7 +26,14 @@ namespace KendaGame.UI {
       if (forceDeselect) {
         selected = false;
       }
-      transform.DOLocalMoveY(selected ? -226f : -316.2f, 0.2f).SetEase(Ease.Linear);
+      transform.DOLocalMoveY(selected ? -284f : -360.8f, 0.2f).SetEase(Ease.Linear);
+      coloringBookManager.OnChangeColorButtonClicked(selected ? colorId : 0);
+
+      if(colorId == 9) { // eraser make brush size larger for easier cleaning
+        coloringBookManager.OnChangeBrushSizeButtonClicked(2);
+      } else { // otherwise make brush smaller for more smooth coloring
+        coloringBookManager.OnChangeBrushSizeButtonClicked(1);
+      }
     }
   }
 }
