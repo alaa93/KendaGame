@@ -30,7 +30,7 @@ namespace KendaGame.UI {
       coloringBookManager.OnChangeColorButtonClicked(selected ? colorId : 0);
 
       if(colorId == 9) { // eraser make brush size larger for easier cleaning
-        coloringBookManager.OnChangeBrushSizeButtonClicked(2);
+        coloringBookManager.OnChangeBrushSizeButtonClicked(selected ? 2 : 1);
       } else { // otherwise make brush smaller for more smooth coloring
         coloringBookManager.OnChangeBrushSizeButtonClicked(1);
       }
