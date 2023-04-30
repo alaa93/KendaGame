@@ -23,7 +23,7 @@ namespace KendaGame.Games {
         {
             //endPosition.y = Random.Range(-6f, 6f);
             startPosition.y = Random.Range(-6f, 6f);
-            speed = Random.Range(6f, 10f);
+            speed = Random.Range(8, 12f);
             currentTarget = endPosition;
             rb = GetComponent<Rigidbody2D>();
             floatRange = Random.Range(5f, 15f);
@@ -41,6 +41,7 @@ namespace KendaGame.Games {
             // );
 
             Vector2 direction = (targetPosition - rb.position).normalized;
+            direction.y = Random.Range(-1f, 2f);
             rb.AddForce(direction * speed, ForceMode2D.Impulse);
         }
 
