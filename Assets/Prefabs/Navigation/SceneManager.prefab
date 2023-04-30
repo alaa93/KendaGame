@@ -1097,7 +1097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990eaa22fef77465585304f7e168fcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingController: {fileID: 0}
   backBtn: {fileID: 5550581815954986256}
   coinsObject: {fileID: 5712472901308556343}
 --- !u!1 &3743301397296068001
@@ -1169,7 +1168,8 @@ MonoBehaviour:
   m_text: 999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1895,7 +1895,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingController: {fileID: 8464889891705556808}
   uiController: {fileID: 1073988580634864741}
-  navigationStack: []
 --- !u!114 &8167890409091246873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,8 +1911,12 @@ MonoBehaviour:
     clickableSfx:
     - {fileID: 8300000, guid: 7ef14f959ae3846e5aa6fb11bac878e5, type: 3}
     - {fileID: 8300000, guid: e5b5721c75a4f43068ec3fd0837a0609, type: 3}
-    CorrectSfx: []
-    IncorrectSfx: []
+    CorrectSfx:
+    - {fileID: 8300000, guid: 7ef14f959ae3846e5aa6fb11bac878e5, type: 3}
+    - {fileID: 8300000, guid: 3134a95704bae4ac68b876891d1e42f2, type: 3}
+    IncorrectSfx:
+    - {fileID: 8300000, guid: 897b5cefc6e3c4b428ca59f3db5386d0, type: 3}
+    - {fileID: 8300000, guid: a431cf0ab05a69b448b6f4514273546f, type: 3}
 --- !u!1 &5712472901308556343
 GameObject:
   m_ObjectHideFlags: 0
