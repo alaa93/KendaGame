@@ -21,6 +21,7 @@ namespace KendaGame.Navigation {
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
+    private bool openManually;
 
     public enum Scenes {
       SplashScreen, LoginScene, HomeScreen, Map, GameScene
@@ -38,11 +39,25 @@ namespace KendaGame.Navigation {
       if (!initialized) {
         initialized = true;
       }
-      loadingController.OpenClouds(null);
-      UpdateBackBtnState(scene);
+        if (!openManually)
+        {
+            loadingController.OpenClouds(null);
+            UpdateBackBtnState(scene);
+        }
     }
 
-    public void MoveTo(string targetSceneName) {
+    public void OpenCloudsManually(Action<bool> onComplete = null, bool animated = true)
+    {
+        loadingController.OpenClouds(onComplete,animated);
+    }
+
+    public void CloseCloudsManually(Action<bool> onComplete = null, bool animated = true)
+    {
+        loadingController.CloseClouds(onComplete, animated);
+    }
+
+        public void MoveTo(string targetSceneName, bool openManually = false) {
+      this.openManually = openManually;
       Debug.Log("MoveTo " + targetSceneName);
       Scenes targetScene = (Scenes)Enum.Parse(typeof(Scenes), targetSceneName);
       if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != targetSceneName) {
@@ -79,6 +94,11 @@ namespace KendaGame.Navigation {
       } else {
         Debug.LogError("Stack is empty can't go back");
       }
+    }
+
+    public void SetBackBtnState(bool state)
+    {
+        uiController.SetBackBtnState(state);
     }
 
     private void UpdateBackBtnState(Scene scene) {

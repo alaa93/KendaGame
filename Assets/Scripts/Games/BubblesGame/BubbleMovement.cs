@@ -85,11 +85,12 @@ namespace KendaGame.Games {
                 this.GetComponent<SpriteRenderer>().color = Color.green;
                 GetComponent<Collider2D>().isTrigger = true;
                 AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+                GetComponentInParent<BubblesInstantiator>().OnCorrect();
             }
             else
             {
                 //not correct try again
-                rb.AddForce(new Vector2(Random.Range(-3f, -9f), Random.Range(-4f, 4f)) * (6f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(Random.Range(-3f, 9f), Random.Range(-4f, 4f)) * (25f), ForceMode2D.Impulse);
                 GetComponent<Collider2D>().isTrigger = true;
                 AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
                 StartCoroutine(FlashEffect());
