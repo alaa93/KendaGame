@@ -11,7 +11,7 @@ using System.IO;
     public Material maskTexMaterial;
     private Texture2D maskTex;
     public List<Sprite> maskTexList;
-    public static int maskTexIndex = -1;
+    public static int maskTexIndex = 0;
     public static string ID = "0";
 
     // list of drawmodes
