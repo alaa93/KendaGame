@@ -1,4 +1,5 @@
 using KendaGame.Helpers;
+using KendaGame.Navigation;
 using UnityEngine;
 
 namespace KendaGame.Games {
@@ -18,12 +19,15 @@ namespace KendaGame.Games {
     private float cameraHeight;
     private float cameraWidth;
     private bool startMovement;
-
-
     Vector2 mousePosition = Vector2.zero;
     Vector2 clampedPosition = Vector2.zero;
+    int correctCounter;
+    [SerializeField]
+    AudioClip endingSfx;
+    [SerializeField]
+    GameObject [] collectedLetters;
 
-    private void Start() {
+        private void Start() {
       mainCamera = Camera.main;
       cameraHeight = 2f * mainCamera.orthographicSize;
       cameraWidth = cameraHeight * mainCamera.aspect;
@@ -100,5 +104,36 @@ namespace KendaGame.Games {
       float clampedY = Mathf.Clamp(position.y, -halfHeight, halfHeight);
       return new Vector2(clampedX, clampedY);
     }
-  }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            FishMovement fish = collision.GetComponent<FishMovement>();
+            if(fish != null && fish.isBubble)
+            {
+                if (fish.isCorrectBubble)
+                {
+                    fish.gameObject.SetActive(false);
+                    if (AudioController.Instance)
+                    {
+                        AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+                        collectedLetters[correctCounter].SetActive(true);
+                        correctCounter++;
+                        if (correctCounter >= 3)
+                        {
+                            startMovement = false;
+                            AudioController.Instance.PlayAudioAtPoint(endingSfx);
+                            SceneManager.Instance.MoveTo(SceneManager.Scenes.Map.ToString());
+                        }
+                    }
+                }
+                else
+                {
+                    if (AudioController.Instance)
+                    {
+                        AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
+                    }
+                }
+            }
+        }
+    }
 }

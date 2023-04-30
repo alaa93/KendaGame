@@ -52,7 +52,14 @@ namespace KendaGame.UI {
         else
         {
             // start game 2 or 3
-            StartColoring();
+            if (PlayerPrefs.GetInt("ColoringCompleted", 0) == 0)
+            {
+                StartColoring();
+            }
+            else
+            {
+                SceneManager.Instance.MoveTo(SceneManager.Scenes.RobotGame.ToString());
+            }
         }
       }
     }
@@ -100,13 +107,12 @@ namespace KendaGame.UI {
         }
     }
 
-    public void TracingCompleted()
-    {
+        public void TracingCompleted()
+        {
             // show rating screen, close clouds then do something
-        SceneManager.Instance.CloseCloudsManually(onComplete: (state) => {
-           // Do something
-        });
-    }
+            PlayerPrefs.SetInt("ColoringCompleted", 1);
+            SceneManager.Instance.MoveTo(SceneManager.Scenes.RobotGame.ToString());
+        }
 
     private void StartColoring()
     {
