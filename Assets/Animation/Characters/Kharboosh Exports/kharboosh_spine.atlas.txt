@@ -1,0 +1,40 @@
+kharboosh_spine.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.7
+BUBEL
+bounds:2,6,225,227
+arm-hook
+bounds:719,2,622,743
+rotate:270
+eye patch
+bounds:766,1246,589,496
+rotate:90
+eyebrow
+bounds:284,265,214,248
+head
+bounds:2,1246,762,614
+hook
+bounds:2,235,280,289
+leg f 2
+bounds:471,801,443,1282
+rotate:90
+leg-b 1
+bounds:525,444,664,1260
+rotate:270
+leg-f 1
+bounds:479,108,1001,1112
+rotate:270
+mouth
+bounds:2,505,725,262
+nick
+bounds:1264,1209,651,342
+rotate:90
+pop
+bounds:2,795,449,467
+offsets:0,1,449,469
+rotate:90
+pupil
+bounds:229,144,89,89
+offsets:0,1,89,90

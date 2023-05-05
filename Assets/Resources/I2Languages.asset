@@ -16,23 +16,150 @@ MonoBehaviour:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
-    mTerms: []
+    mTerms:
+    - Term: LocalizeFonts
+      TermType: 9
+      Description: 
+      Languages:
+      - Lato-Regular
+      - DroidKufi-Regular
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LocalizeFonts_Bold
+      TermType: 9
+      Description: 
+      Languages:
+      - DANA-FAT SDF
+      - DroidKufi-Bold
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Signup
+      TermType: 0
+      Description: 
+      Languages:
+      - Sign Up
+      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: change_email_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Change Email Address
+      - "\u062A\u063A\u064A\u064A\u0631 \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0643\u062A\u0631\u0648\u0646\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: confirm_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm
+      - "\u062A\u0648\u062B\u064A\u0642"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: connect_via
+      TermType: 0
+      Description: 
+      Languages:
+      - 'or connect via '
+      - "\u0623\u0648 \u062A\u0648\u0635\u064A\u0644 \u0645\u0646 \u062E\u0644\u0627\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: email_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Email...
+      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: forget_password_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Forget Password?
+      - "\u0646\u0633\u064A\u062A \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631\u061F"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: instruction_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Please enter the four-digit verification code that has been sent to your
+        email address.
+      - "\u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u062F\u062E\u0627\u0644 \u0631\u0642\u0645
+        \u0627\u0644\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u0630\u064A \u062A\u0645
+        \u0627\u0631\u0633\u0627\u0644\u0647 \u0627\u0644\u0649 \u0628\u0631\u064A\u062F\u0643
+        \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: language_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Language
+      - "\u0627\u0644\u0644\u063A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: login
+      TermType: 0
+      Description: 
+      Languages:
+      - Login
+      - "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: password_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Pasword...
+      - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: pasword_confirm_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm pasword...
+      - "\u062A\u0623\u0643\u064A\u062F \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: verify_account_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Verify Account
+      - "\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u062D\u0633\u0627\u0628"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 
-    mLanguages: []
+    mLanguages:
+    - Name: English
+      Code: en
+      Flags: 0
+    - Name: Arabic
+      Code: ar
+      Flags: 0
     IgnoreDeviceLanguage: 0
     _AllowUnloadingLanguages: 0
-    Google_WebServiceURL: 
-    Google_SpreadsheetKey: 
-    Google_SpreadsheetName: 
-    Google_LastUpdatedVersion: 
-    Google_Password: change_this
-    GoogleUpdateFrequency: 3
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbzoSTi2vA0nI7pRgaxefwvDuKxL--hIb3s5vpHNti1ygofoEoLy8S2EZWUxlOXOT95B2w/exec
+    Google_SpreadsheetKey: 1M4yfRXvWjbfKooNAq--nWtBaxLHg-Gp1C8Prsc-A2wM
+    Google_SpreadsheetName: I2Loc KendaGame Localization
+    Google_LastUpdatedVersion: 1681167272064
+    Google_Password: bn98FXoh
+    GoogleUpdateFrequency: 2
     GoogleInEditorCheckFrequency: 2
-    GoogleUpdateSynchronization: 1
+    GoogleUpdateSynchronization: 2
     GoogleUpdateDelay: 0
-    Assets: []
+    Assets:
+    - {fileID: 11400000, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
+    - {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+    - {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+    - {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+    - {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
     Spreadsheet_LocalFileName: 
     Spreadsheet_LocalCSVSeparator: ','
     Spreadsheet_LocalCSVEncoding: utf-8

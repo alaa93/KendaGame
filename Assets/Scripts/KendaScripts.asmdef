@@ -2,7 +2,13 @@
     "name": "KendaScripts",
     "rootNamespace": "",
     "references": [
-        "GUID:ba7d069dadcfae44a9469614a39f3391"
+        "GUID:ba7d069dadcfae44a9469614a39f3391",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:68765d262e2128e4ab49c983f3411946",
+        "GUID:72d1fea872bd7a449bf3818f2b0a6708",
+        "GUID:3caf90d9f0ecf444e865b5fbaa0930af",
+        "GUID:6e5063adab271564ba0098a06a8cebda",
+        "GUID:2ace7ebb826df10459d12b4f3c4a9407"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
