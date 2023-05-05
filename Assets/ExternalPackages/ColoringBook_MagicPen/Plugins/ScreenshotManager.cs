@@ -6,10 +6,12 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Runtime.InteropServices;
+using UnityEngine.Networking;
 
 public class ScreenshotManager : MonoBehaviour
 {
     public static event Action ScreenshotFinishedSaving;
+    public static string  screenshotFilename;
 
 #if UNITY_IPHONE
 	[DllImport("__Internal")]
@@ -24,23 +26,43 @@ public class ScreenshotManager : MonoBehaviour
     }
 #endif
 
+    public static IEnumerator Upload(string filePath)
+    {
+        WWWForm form = new WWWForm();
+        form.AddBinaryData("Imageurl", File.ReadAllBytes(filePath)); // , "imageName.jpg"
+        form.AddField("RequiredClass", "alef");
 
-    public static IEnumerator SaveForPaint(Rect rect, string fileName, string albumName = "MyScreenshots", bool callback = false)
+        UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", form);
+        //www.SetRequestHeader("Content-Type", "application/json");
+        www.SetRequestHeader("Authorization", "8b38c163cdd104d13ca887f5c17fd4c3324c4a13");
+
+        yield return www.SendWebRequest();
+
+        if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log("photo upload complete! " + www.downloadHandler.text);
+
+        }
+    }
+
+    public static IEnumerator SaveForPaint(Rect rect, string fileName, string albumName = "MyScreenshots", bool callback = false, Action<string>onComplete = null)
     {
         bool photoSaved = false;
-
+        string share = "I drew this painting! ^_^";
+        share += '\n' + "Do you like drawing too? Then install Kids Coloring Book With Magic Pen!";
         string date = System.DateTime.Now.ToString("dd-MM-yy");
 
         ScreenshotManager.ScreenShotNumber++;
 
-        string screenshotFilename = fileName + "_" + ScreenshotManager.ScreenShotNumber + "_" + date + ".jpg";
+        screenshotFilename = fileName + "_" + ScreenshotManager.ScreenShotNumber + "_" + date + ".jpg";
 
         //Rect rect = new Rect(0, Screen.height * 0.2f, Screen.width * 0.8f, Screen.height * 0.8f);
 
         Debug.Log("Save screenshot " + screenshotFilename);
-
-        string share = "I drew this painting! ^_^";
-        share += '\n' + "Do you like drawing too? Then install Kids Coloring Book With Magic Pen!";
 
 #if UNITY_IPHONE
 		
@@ -141,8 +163,28 @@ public class ScreenshotManager : MonoBehaviour
             File.WriteAllBytes(Application.persistentDataPath + "/" + screenshotFilename, bytes);
 
             Destroy(texture);
-            //////////////
+
+            WWWForm form = new WWWForm();
+            form.AddBinaryData("Imageurl", bytes); // , "imageName.jpg"
+            form.AddField("RequiredClass", "alef");
+
+            UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", form);
+            www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", "Token 8b38c163cdd104d13ca887f5c17fd4c3324c4a13");
+
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.Log("upload error " + www.error);
+            }
+            else
+            {
+                Debug.Log("photo upload complete! " + www.downloadHandler.text);
+            }
         }
+
+
 
 #elif UNITY_WEBGL
 

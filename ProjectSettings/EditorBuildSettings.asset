@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/RobotGame.unity
     guid: 6f9c199525e8f4be6b95e286760b9ecd
+  - enabled: 1
+    path: Assets/_Scenes/TracingLetter.unity
+    guid: 39029981aedf3bf48af7081d59041259
   m_configObjects: {}

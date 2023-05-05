@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.EventSystems;
 using System.IO;
+using System;
 
-  public class ColoringBookManager : MonoBehaviour {
+public class ColoringBookManager : MonoBehaviour {
     #region variables
 
     public Material maskTexMaterial;
@@ -369,11 +370,11 @@ using System.IO;
       Texture2D selectedCustomBrushTexture = DuplicateTexture(sprayModeBrush);
       selectedCustomBrushTexture = ResizeTexture(selectedCustomBrushTexture, brushSize * 2, brushSize * 2);
 
-      if (Random.Range(0, 2) == 1) {
+      if (UnityEngine.Random.Range(0, 2) == 1) {
         selectedCustomBrushTexture = FlipTexture(selectedCustomBrushTexture, false);
       }
 
-      selectedCustomBrushTexture = RotateTexture(selectedCustomBrushTexture, Random.Range(-40, 40));
+      selectedCustomBrushTexture = RotateTexture(selectedCustomBrushTexture, UnityEngine.Random.Range(-40, 40));
 
       // NOTE: this works only for square brushes
       sprayModeWidth = selectedCustomBrushTexture.width;
@@ -773,7 +774,7 @@ using System.IO;
     private void ChangeMagicColor() {
       if (Time.time - changeMagicColorTime > 0.1f) {
         changeMagicColorTime = Time.time;
-        magicColor = paintColors[Random.Range(0, paintColors.Count)];
+        magicColor = paintColors[UnityEngine.Random.Range(0, paintColors.Count)];
 
         if (drawMode == DrawMode.Magic) {
           brushColorImage.sprite = null;
@@ -1005,30 +1006,23 @@ using System.IO;
       }
     }
 
-    public void OnScreenshotButtonClicked() {
-      StartCoroutine(OnSavePictureClickListener());
+    public void OnScreenshotButtonClicked(Action<string> onComplete = null) {
+      StartCoroutine(OnSavePictureClickListener(onComplete));
     }
 
-    private IEnumerator OnSavePictureClickListener() {
-#if UNITY_ANDROID
-        if (JavadRastadAndroidRuntimePermissions.RequestStoragePermissions())
-        {
-#endif
-      MusicController.USE.PlaySound(MusicController.USE.cameraSound);
+    private IEnumerator OnSavePictureClickListener(Action<string> onComplete = null) {
+#if UNITY_ANDROID && !UNITY_EDITOR
 
-      waterMark.SetActive(true);
-      StartCoroutine(ScreenshotManager.SaveForPaint(GUIRectWithObject(gameObject), "MyPicture", "ColoringBook"));
-
-      yield return new WaitForSeconds(1f);
-      waterMark.SetActive(false);
-#if UNITY_ANDROID
-        }
-        else
+        if (!JavadRastadAndroidRuntimePermissions.RequestStoragePermissions())
         {
             AndroidRuntimePermissions.OpenSettings();
         }
 #endif
 
+      MusicController.USE.PlaySound(MusicController.USE.cameraSound);
+      StartCoroutine(ScreenshotManager.SaveForPaint(GUIRectWithObject(gameObject), "MyPicture", "ColoringBook",onComplete:(path)=> { 
+      
+      }));
       yield return null;
     }
 
@@ -1162,7 +1156,7 @@ using System.IO;
           if (!useLockArea || (useLockArea && lockMaskPixels[pixel] == 1)) {
 
 
-            if (Random.Range(0, 2) == 1) {
+            if (UnityEngine.Random.Range(0, 2) == 1) {
               pixels[pixel] = (byte)Mathf.Lerp(pixels[pixel], magicColor.r, magicColor.a / 255f * 0.1f);
               pixels[pixel + 1] = (byte)Mathf.Lerp(pixels[pixel + 1], magicColor.g, magicColor.a / 255f * 0.1f);
               pixels[pixel + 2] = (byte)Mathf.Lerp(pixels[pixel + 2], magicColor.b, magicColor.a / 255f * 0.1f);
@@ -1628,7 +1622,7 @@ using System.IO;
           brushPixel = (sprayModeWidth * (y) + x) << 2;
 
           if (sprayModeBrushBytes[brushPixel + 3] > 0 && (!useLockArea || (useLockArea && lockMaskPixels[pixel] == 1))) {
-            if (Random.Range(0, 2) == 1) {
+            if (UnityEngine.Random.Range(0, 2) == 1) {
               pixels[pixel] = (byte)Mathf.Lerp(pixels[pixel], paintColor.r, paintColor.a / 255f * 0.1f);
               pixels[pixel + 1] = (byte)Mathf.Lerp(pixels[pixel + 1], paintColor.g, paintColor.a / 255f * 0.1f);
               pixels[pixel + 2] = (byte)Mathf.Lerp(pixels[pixel + 2], paintColor.b, paintColor.a / 255f * 0.1f);
