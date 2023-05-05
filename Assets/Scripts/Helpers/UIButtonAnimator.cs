@@ -8,7 +8,7 @@ using System;
 namespace KendaGame.Helpers {
   [RequireComponent(typeof(Button))]
   public class UIButtonAnimator : MonoBehaviour {
-    public Vector3 startVal = Vector3.one * 0.8f;
+    public Vector3 startVal = Vector3.one * 0.96f;
     public Vector3 finalVal = Vector3.one;
     public bool isScaleAnimation = true;
     public bool prewarm = false;
@@ -16,7 +16,7 @@ namespace KendaGame.Helpers {
     public float autoPlayDelay = 0f;
     public float sfxPlayDelay = 0f;
     [Range(0.1f, 3f)]
-    public float animationSpeed = 0.4f;
+    public float animationSpeed = 0.3f;
     [Space]
     [Space]
     public UnityEvent callBackFn;
@@ -47,31 +47,36 @@ namespace KendaGame.Helpers {
         StartCoroutine(PlayAnimOnly(autoPlayDelay));
     }
 
-    public void AddClickListener(Action callBackFn) {
+    public void AddClickListener(Action callBackFn,bool animate = true) {
       this.clickCallback = callBackFn;
-      this.GetComponent<Button>().onClick.AddListener(OnClick);
+      this.GetComponent<Button>().onClick.AddListener(() => OnClick(animate));
     }
 
-    public virtual void OnClick() {
+    public virtual void OnClick(bool animate = true) {
       if (isAnimating)
         return;
 
       isAnimating = true;
 
       onStartFn?.Invoke();
-
-      if (isScaleAnimation)
-        this.transform.DOScale(startVal, animationSpeed).SetEase(Ease.OutBack).OnComplete(() => {
-          this.transform.DOScale(finalVal, animationSpeed).SetEase(Ease.OutBack).OnComplete(() => {
+      if (animate) {
+        if (isScaleAnimation)
+          this.transform.DOScale(startVal, animationSpeed).SetEase(Ease.OutBack).OnComplete(() => {
+            this.transform.DOScale(finalVal, animationSpeed).SetEase(Ease.OutBack).OnComplete(() => {
+            });
           });
-        });
-      else
-        this.transform.DOLocalMove(startVal, animationSpeed).SetEase(Ease.OutBack).OnComplete(() => {
-          this.transform.DOLocalMove(finalVal, animationSpeed).SetEase(Ease.OutBack);
-        });
-
-      PlaySfx(audioClip, sfxPlayDelay);
-      StartCoroutine(OnClickProcess(animationSpeed + 0.2f));
+        else
+          this.transform.DOLocalMove(startVal, animationSpeed).SetEase(Ease.OutBack).OnComplete(() => {
+            this.transform.DOLocalMove(finalVal, animationSpeed).SetEase(Ease.OutBack);
+          });
+        PlaySfx(audioClip, sfxPlayDelay);
+        StartCoroutine(OnClickProcess(animationSpeed + 0.2f));
+      } else {
+        PlaySfx(audioClip, sfxPlayDelay);
+        callBackFn?.Invoke();
+        clickCallback?.Invoke();
+        isAnimating = false;
+      }
     }
 
     private IEnumerator PlayAnimOnly(float delay) {

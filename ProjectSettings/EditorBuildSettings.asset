@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Map.unity
     guid: 9bcb9f20abd826947be61c8ab127f34d
+  - enabled: 1
+    path: Assets/_Scenes/GameScene.unity
+    guid: fdf794761fdb849bd9c3e426eb7803f9
+  - enabled: 1
+    path: Assets/_Scenes/RobotGame.unity
+    guid: 6f9c199525e8f4be6b95e286760b9ecd
   m_configObjects: {}

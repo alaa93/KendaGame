@@ -1,0 +1,67 @@
+This asset is governed by the Asset Store EULA; however, the following components are governed by the licenses indicated below:
+
+All Texture License is Pixabay License : https://pixabay.com/service/terms/#license
+
+1- Name: 000.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/airplane-plane-aircraft-propeller-40374/
+
+2- Name: 001.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/walrus-fish-sea-life-animal-310169/
+
+3- Name: 002.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/automobile-car-vehicle-oldtimer-154864/
+
+4- Name: 003.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/dog-domestic-pet-animal-canine-303586/
+
+5- Name: 004.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/elephant-animal-silhouette-cartoon-296586/
+
+6- Name: 005.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/flowers-blossoms-blooms-floral-145700/
+
+7- Name: 006.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/helicopter-flies-copter-aircraft-145477/
+
+8- Name: 007.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/fish-smiling-cartoon-animal-304888/
+
+9- Name: 008.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/duckling-hat-easter-house-duck-6122936/
+
+10- Name: 009.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/turtle-animal-reptile-carapace-top-305209/
+
+11- Name: 010.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/honey-bee-wasp-bee-black-white-303599/
+
+12- Name: 011.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/hippo-head-cartoon-cute-zoo-304449/
+
+13- Name: 012.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/owl-bird-baby-animal-cute-kawaii-6387500/
+
+14- Name: 013.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/lion-baby-cat-feline-animal-cute-6387505/
+
+15- Name: 014.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/tomato-food-eat-cute-fruit-6387879/
+
+16- Name: 015.png
+licence: Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/kids-drawing-lines-girl-boy-child-3871755/
