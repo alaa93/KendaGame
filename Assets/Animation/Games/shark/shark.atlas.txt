@@ -1,0 +1,9 @@
+shark.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+Untitled-1
+bounds:2,90,241,424
+Untitled-2
+bounds:245,2,149,512
