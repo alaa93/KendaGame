@@ -70,7 +70,7 @@ namespace KendaGame.UI {
                     }
                     else
                     {
-                        SceneManager.Instance.MoveTo(SceneManager.Scenes.RobotGame.ToString());
+                        SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
                     }
                 }
             }
@@ -124,7 +124,7 @@ namespace KendaGame.UI {
         {
             // show rating screen, close clouds then do something
             PlayerPrefs.SetInt("ColoringCompleted", 1);
-            SceneManager.Instance.MoveTo(SceneManager.Scenes.RobotGame.ToString());
+            SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
         }
 
     private void StartColoring()
@@ -159,10 +159,11 @@ namespace KendaGame.UI {
 
         public void OnTracingLetterCompleted()
         {
-            GameObject.FindAnyObjectByType<ColoringBookManager>().OnScreenshotButtonClicked((path)=> {
-                Debug.Log("file name " + ScreenshotManager.screenshotFilename);
-                StartCoroutine(Upload(path));
-            });
+      //GameObject.FindAnyObjectByType<ColoringBookManager>().OnScreenshotButtonClicked((path)=> {
+      //    Debug.Log("file name " + ScreenshotManager.screenshotFilename);
+      //    StartCoroutine(Upload(path));
+      //});
+        GameObject.FindObjectOfType<PopUpsManager>().LoadRatingLetter();
         }
 
 

@@ -2365,6 +2365,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f82235bb2da4500a2622d8c07c7d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 646544041}
+  RatingLetter: {fileID: 8962936491546838304, guid: c6d57d5b68208438c9e6b3729bb3ad68,
+    type: 3}
+  RatingLevel: {fileID: 2036297990351327069, guid: 3bb9b7902eafb457fac035aac2d2ba17,
+    type: 3}
 --- !u!4 &425318239
 Transform:
   m_ObjectHideFlags: 0
