@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.Video;
 
 namespace KendaGame.UI {
@@ -31,38 +33,49 @@ namespace KendaGame.UI {
     }
 
 
-    private void OnEnable() {
-      if (PlayerPrefs.GetInt("PlayIntro1", -1) == -1) {
-        PlayerPrefs.SetInt("PlayIntro1", 1);
-        for (int x = 0; x < ColoringStuff.Length; x++) {
-          ColoringStuff[x].SetActive(false);
-        }
-        VideoRenderer.SetActive(true);
-        videoPlayer.Prepare();
-        videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
-        }
-        else {
-        SceneManager.Instance.OpenCloudsManually();
-        VideoRenderer.SetActive(false);
-        videoPlayer.Stop();
-        if(PlayerPrefs.GetInt("Game1Completed", 0) == 0)
+        private void OnEnable()
         {
-            SetGame1(true);
-        }
-        else
-        {
-            // start game 2 or 3
-            if (PlayerPrefs.GetInt("ColoringCompleted", 0) == 0)
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(SceneManager.Scenes.TracingLetter.ToString()))
             {
-                StartColoring();
+                SceneManager.Instance.OpenCloudsManually();
+                return;
+            }
+
+            if (PlayerPrefs.GetInt("PlayIntro1", -1) == -1)
+            {
+                PlayerPrefs.SetInt("PlayIntro1", 1);
+                for (int x = 0; x < ColoringStuff.Length; x++)
+                {
+                    ColoringStuff[x].SetActive(false);
+                }
+                VideoRenderer.SetActive(true);
+                videoPlayer.Prepare();
+                videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
             }
             else
             {
-                SceneManager.Instance.MoveTo(SceneManager.Scenes.RobotGame.ToString());
+                SceneManager.Instance.OpenCloudsManually();
+                VideoRenderer.SetActive(false);
+                videoPlayer.Stop();
+                if (PlayerPrefs.GetInt("Game1Completed", 0) == 0)
+                {
+                    SetGame1(true);
+                }
+                else
+                {
+                    // start game 2 or 3
+                    if (PlayerPrefs.GetInt("ColoringCompleted", 0) == 0)
+                    {
+                        StartColoring();
+                    }
+                    else
+                    {
+                        SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
+                    }
+                }
             }
+           
         }
-      }
-    }
 
         private void VideoPlayer_prepareCompleted(VideoPlayer source)
         {
@@ -111,7 +124,7 @@ namespace KendaGame.UI {
         {
             // show rating screen, close clouds then do something
             PlayerPrefs.SetInt("ColoringCompleted", 1);
-            SceneManager.Instance.MoveTo(SceneManager.Scenes.RobotGame.ToString());
+            SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
         }
 
     private void StartColoring()
@@ -142,5 +155,39 @@ namespace KendaGame.UI {
         }
       pen.SelectionChanged();
     }
-  }
+
+
+        public void OnTracingLetterCompleted()
+        {
+      //GameObject.FindAnyObjectByType<ColoringBookManager>().OnScreenshotButtonClicked((path)=> {
+      //    Debug.Log("file name " + ScreenshotManager.screenshotFilename);
+      //    StartCoroutine(Upload(path));
+      //});
+        GameObject.FindObjectOfType<PopUpsManager>().LoadRatingLetter();
+        }
+
+
+        public IEnumerator Upload(string filePath)
+        {
+            WWWForm form = new WWWForm();
+            form.AddBinaryData("Imageurl", File.ReadAllBytes(filePath)); // , "imageName.jpg"
+            form.AddField("RequiredClass", "alef");
+
+            UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", form);
+            //www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", "8b38c163cdd104d13ca887f5c17fd4c3324c4a13");
+
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("photo upload complete! " + www.downloadHandler.text);
+
+            }
+        }
+    }
 }

@@ -24,7 +24,7 @@ namespace KendaGame.Navigation {
     private bool openManually;
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, GameScene, RobotGame
+      SplashScreen, LoginScene, HomeScreen, Map, GameScene, SharkGame, TracingLetter
     }
 
     private void Awake() {

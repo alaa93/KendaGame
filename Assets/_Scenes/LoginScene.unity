@@ -1123,7 +1123,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 795.80066, y: 1409.2515}
+  referenceSize: {x: 1997.8591, y: 1118.5347}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -9518,7 +9518,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1993094824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724b7c89f5405f742af42e41cd824fae, type: 3}
+  m_Script: {fileID: 11500000, guid: 16f0b0b6d0b7542bfbd20a3e05b04ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
