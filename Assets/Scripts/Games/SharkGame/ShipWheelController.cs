@@ -80,6 +80,8 @@ namespace KendaGame.Games {
       canRotate = false;
       if (wheelBubble.IsCorrectLetter()) {
         correctCounter++;
+        AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+        wheelBubble.PlayHitEffect(true);
         if (correctCounter >= 3) {
           canRotate = false;
           this.gameCompleted = true;
@@ -87,10 +89,9 @@ namespace KendaGame.Games {
           StartCoroutine(OnGameCompleted(gameWin.length + 0.2f));
           onComplete?.Invoke(true, true);
           return;
+        } else {
+          onComplete?.Invoke(false, true);
         }
-        AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
-        wheelBubble.PlayHitEffect(true);
-        onComplete?.Invoke(false, true);
       } else {
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
         wheelBubble.PlayHitEffect(false);
