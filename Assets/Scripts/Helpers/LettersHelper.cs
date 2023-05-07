@@ -29,7 +29,6 @@ namespace KendaGame.Helpers {
     }
 
     public static string GetLetterByIndex(int index) {
-      Debug.Log("index "+index);
       return arabicAlphabet[index];
     }
 

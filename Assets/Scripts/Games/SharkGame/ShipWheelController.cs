@@ -36,7 +36,8 @@ namespace KendaGame.Games {
       }
     }
 
-    private void AssignLetters() {
+    public void AssignLetters() {
+      canRotate = true;
       int correctLetterIndex = UnityEngine.Random.Range(0, wheelBubbles.Length);
       wheelBubbles[correctLetterIndex].SetLetter(LettersHelper.GetActiveLetter());
       for (int x = 0; x < wheelBubbles.Length; x++) {
@@ -75,27 +76,26 @@ namespace KendaGame.Games {
       return rand;
     }
 
-    public void OnBubbleHit(ShipWheelBubble wheelBubble, Action<bool> gameCompleted) {
+    public void OnBubbleHit(ShipWheelBubble wheelBubble, Action<bool, bool> onComplete) {
+      canRotate = false;
       if (wheelBubble.IsCorrectLetter()) {
-        // correct letter
-        AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
-        wheelBubble.gameObject.SetActive(false);
         correctCounter++;
         if (correctCounter >= 3) {
           canRotate = false;
           this.gameCompleted = true;
           AudioController.Instance.PlayAudioAtPoint(gameWin);
           StartCoroutine(OnGameCompleted(gameWin.length + 0.2f));
-          gameCompleted?.Invoke(true);
+          onComplete?.Invoke(true, true);
           return;
         }
-        gameCompleted?.Invoke(false);
+        AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+        wheelBubble.PlayHitEffect(true);
+        onComplete?.Invoke(false, true);
       } else {
-        // in correct letter
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
-        gameCompleted?.Invoke(false);
+        wheelBubble.PlayHitEffect(false);
+        onComplete?.Invoke(false, false);
       }
-      AssignLetters();
     }
 
     private IEnumerator OnGameCompleted(float delay) {
