@@ -1,0 +1,11 @@
+Stars.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.8
+StarLose
+bounds:2,2,398,410
+offsets:6,0,410,410
+StarWin
+bounds:2,414,398,410
+offsets:6,0,410,410
