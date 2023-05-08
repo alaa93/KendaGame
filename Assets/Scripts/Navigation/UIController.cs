@@ -29,5 +29,9 @@ namespace KendaGame.Navigation {
     public void SetBackBtnState(bool state) {
       backBtn.gameObject.SetActive(state);
     }
+
+    public void SetCoinsObjectState(bool state) {
+      coinsObject.gameObject.SetActive(state);
+    }
   }
 }

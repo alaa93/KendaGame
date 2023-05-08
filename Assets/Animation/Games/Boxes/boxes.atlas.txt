@@ -1,0 +1,25 @@
+boxes.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+BigBoxMoney
+bounds:2,2,256,95
+offsets:0,80,256,256
+BoxesShadow
+bounds:260,39,256,58
+offsets:0,99,256,256
+Lock
+bounds:260,4,49,33
+MidBoxMoney
+bounds:2,115,256,112
+offsets:0,72,256,256
+OpenBox
+bounds:2,311,513,220
+SmallBoxMoney
+bounds:260,99,222,128
+offsets:17,64,256,256
+box
+bounds:2,533,513,291
+box up
+bounds:2,229,512,80

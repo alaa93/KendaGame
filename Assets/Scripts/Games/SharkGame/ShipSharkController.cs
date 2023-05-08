@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using KendaGame.Helpers;
 using Spine.Unity;
+using ScorpionSteps.Utils;
 
 namespace KendaGame.Games {
   public class ShipSharkController : MonoBehaviour {
@@ -17,11 +18,12 @@ namespace KendaGame.Games {
     ShipWheelController shipWheelController;
     [SerializeField]
     SkeletonAnimation skeletonAnimation;
-    
+    float positionOffet = 1.6f;
     private bool released;
     private Vector3 initialPosition;
 
     private void Awake() {
+      this.transform.position = new Vector3(CameraUtils.GetRightScreenEdge().x - positionOffet, this.transform.position.y, 0f);
       initialPosition = this.transform.position;
     }
     private void OnMouseDown() {

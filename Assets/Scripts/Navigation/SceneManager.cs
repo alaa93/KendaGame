@@ -101,6 +101,10 @@ namespace KendaGame.Navigation {
         uiController.SetBackBtnState(state);
     }
 
+    public void SetCoinsObjectState(bool state) {
+      uiController.SetCoinsObjectState(state);
+    }
+
     private void UpdateBackBtnState(Scene scene) {
       if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.HomeScreen.ToString()) {
         uiController.SetBackBtnState(false);

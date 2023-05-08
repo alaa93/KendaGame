@@ -1,0 +1,34 @@
+ba22.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/Ba22NewM2
+bounds:198,276,174,111
+2x/Ba22NewM3
+bounds:459,164,102,134
+2x/ba22newbody
+bounds:2,389,873,486
+Alf-ba22Arm
+bounds:154,148,374,239
+Alf-eyeBrow
+bounds:282,253,48,21
+Alf-eyesout
+bounds:682,275,100,112
+Alf-pupple
+bounds:383,166,74,74
+Ba2-head_1
+bounds:2,201,195,186
+Ba2-leg
+bounds:198,219,82,55
+Ba2-lowermouth
+bounds:2,152,95,47
+Ba2-ta2 cheeck
+bounds:99,148,51,51
+Ba2-uppermouth
+bounds:563,164,117,111
+eye close
+bounds:517,300,123,26
+offsets:1,0,125,27
+ta2-leg
+bounds:784,189,87,198

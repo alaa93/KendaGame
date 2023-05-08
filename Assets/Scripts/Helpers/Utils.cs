@@ -119,143 +119,75 @@ namespace ScorpionSteps.Utils
         }
     }
 
-    public static class CameraUtils
-    {
-        public static float GetCameraAspectRatio()
-        {
-            return (Mathf.Round(Camera.main.aspect * 100f) / 100f);
-        }
-
-        /// <summary>
-        /// Is it 1280 : 800 (odd landscape) aspect screen
-        /// </summary>
-        /// <returns></returns>
-        public static bool IsNarrowWidthTablet()
-        {
-            return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.6f) <= 0.2f;
-        }
-        /// <summary>
-        /// Is it 2.06 aspect screen
-        /// </summary>
-        /// <returns> Boolan </returns>
-        public static bool IsWideWidthScreen()
-        {
-            return (Mathf.Round(Camera.main.aspect * 100f) / 100f) >= 2.0f;
-        }
-        /// <summary>
-        /// Is it 2.30 aspect screen (Longest landscape)
-        /// </summary>
-        /// <returns></returns>
-        public static bool IsWidestScreen()
-        {
-            return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 2.30f) <= 0.2f;
-        }
-        /// <summary>
-        /// Is it 1920 : 1080 aspect screen
-        /// </summary>
-        /// <returns> Boolan </returns>
-        public static bool IsHD()
-        {
-            return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.78f) <= 0.2f;
-        }
-
-        public static bool Is4By3Screen()
-        {
-            return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.33f) <= 0.2f;
-        }
-
-        /// <summary>
-        /// Is it 2048 : 1536 aspect screen
-        /// </summary>
-        /// <returns> Boolan </returns>
-        public static bool IsNarrowWidthTablet_2()
-        {
-            return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.32f) <= 0.2f;
-        }
-
-        /// <summary>
-        /// Return a screen position for a given world vector parameter
-        /// </summary>
-        /// <param name="worldPosition"></param>
-        /// <returns> Vector3 </returns>
-        public static Vector3 GetViewportPosition(Vector3 worldPosition)
-        {
-            return Camera.main.WorldToViewportPoint(worldPosition);
-        }
-
-        /// <summary>
-        /// Return a screen position for a given world vector parameter
-        /// </summary>
-        /// <param name="worldPosition"></param>
-        /// <returns> Vector3 </returns>
-        public static Vector3 GetScreenPosition(Vector3 worldPosition)
-        {
-            return Camera.main.WorldToScreenPoint(worldPosition);
-        }
-
-        /// <summary>
-        /// Return a screen bounds based on the center of the world
-        /// </summary>
-        /// <returns> Vector3 </returns>
-        public static Vector3 GetScreenBounds()
-        {
-            return Camera.main.WorldToViewportPoint(Vector3.zero);
-        }
-
-        /// <summary>
-        /// Return left screen edge based on the center of the world
-        /// </summary>
-        /// <returns></returns>
-        public static Vector3 GetLeftScreenBound()
-        {
-            Vector3 screenBound = GetScreenBounds();
-            screenBound.x = 0;
-            screenBound.y = 0;
-            return screenBound;
-        }
-
-        /// <summary>
-        /// Return right screen edge based on the center of the world
-        /// </summary>
-        /// <returns></returns>
-        public static Vector3 GetRightScreenBound()
-        {
-            Vector3 screenBound = GetScreenBounds();
-            screenBound.x = 1;
-            screenBound.y = 0;
-            return screenBound;
-        }
-
-        /// <summary>
-        /// Return the world position for a given viewport vector position parameter
-        /// </summary>
-        /// <param name="screenPosition"></param>
-        /// <returns> Vector3 </returns>
-        public static Vector3 GetWorldPosition(Vector3 screenPosition)
-        {
-            return Camera.main.ViewportToWorldPoint(screenPosition);
-        }
-
-        /// <summary>
-        /// Return the world position for a given screen vector position parameter
-        /// </summary>
-        /// <param name="screenPosition"></param>
-        /// <returns> Vector3 </returns>
-        public static Vector3 GetWorldPositionFromScreenPos(Vector3 screenPosition)
-        {
-            return Camera.main.ScreenToWorldPoint(screenPosition); 
-        }
-
-        public static Vector3 GetViewportFromScreenPos(Vector3 screenPosition) 
-        {
-            return Camera.main.ScreenToViewportPoint(screenPosition);
-        }
-
-        public static Vector3 GetViewportFromWorldPos(Vector3 worldPosition)
-        {
-            return Camera.main.WorldToViewportPoint(worldPosition);
-        }
+  public static class CameraUtils {
+    public static float GetCameraAspectRatio() {
+      return (Mathf.Round(Camera.main.aspect * 100f) / 100f);
     }
+
+    /// <summary>
+    /// Is it 1280 : 800 (odd landscape) aspect screen
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsNarrowWidthTablet() {
+      return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.6f) <= 0.2f;
+    }
+    /// <summary>
+    /// Is it 2.06 aspect screen
+    /// </summary>
+    /// <returns> Boolan </returns>
+    public static bool IsWideWidthScreen() {
+      return (Mathf.Round(Camera.main.aspect * 100f) / 100f) >= 2.0f;
+    }
+    /// <summary>
+    /// Is it 2.30 aspect screen (Longest landscape)
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsWidestScreen() {
+      return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 2.30f) <= 0.2f;
+    }
+    /// <summary>
+    /// Is it 1920 : 1080 aspect screen
+    /// </summary>
+    /// <returns> Boolan </returns>
+    public static bool IsHD() {
+      return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.78f) <= 0.2f;
+    }
+
+    public static bool Is4By3Screen() {
+      return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.33f) <= 0.2f;
+    }
+
+    /// <summary>
+    /// Is it 2048 : 1536 aspect screen
+    /// </summary>
+    /// <returns> Boolan </returns>
+    public static bool IsNarrowWidthTablet_2() {
+      return Mathf.Abs((Mathf.Round(Camera.main.aspect * 100f) / 100f) - 1.32f) <= 0.2f;
+    }
+
+    public static Vector3 GetRightScreenEdge() {
+      Vector3 mPos = Camera.main.ViewportToWorldPoint(new Vector3(1f, 0.5f, 0));
+      mPos.z = 0;
+      return mPos;
+    }
+    public static Vector3 GetLeftScreenEdge() {
+      Vector3 mPos = Camera.main.ViewportToWorldPoint(new Vector3(0, 0f, 0));
+      mPos.z = 0;
+      return mPos;
+    }
+    public static Vector3 GetTopScreenEdge() {
+      Vector3 mPos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 1f, 0));
+      mPos.z = 0;
+      return mPos;
+    }
+
+    public static Vector3 GetBottomScreenEdge() {
+      Vector3 mPos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 0));
+      mPos.z = 0;
+      return mPos;
+    }
+
+  }
 
     public static class Printer
     {
