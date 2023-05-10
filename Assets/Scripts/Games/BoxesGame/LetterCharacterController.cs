@@ -20,6 +20,7 @@ namespace KendaGame.Games {
     bool isDragging = false;
     GameObject targetbox;
     bool completed;
+    int shouldJump = -1;
 
     private void Awake() {
       initialPos = this.transform.position;
@@ -67,14 +68,17 @@ namespace KendaGame.Games {
           if (!completed) {
             if (letterId == LettersHelper.GetActiveLetter() && treasureBox.letterId == LettersHelper.GetActiveLetter()) {
               completed = true;
-              GameObject.FindObjectOfType<BoxesLettersController>().OnCorrectLetter();
+              BoxesLettersController.Instance.OnCorrectLetter();
               treasureBox.OnTriggered(this.gameObject);
             } else {
               // incorrect
             }
           }
         } else {
-          Jump();
+            shouldJump = Random.Range(0, 4);
+          if(shouldJump > 1) {
+            Jump();
+          }
         }
       }
     }
