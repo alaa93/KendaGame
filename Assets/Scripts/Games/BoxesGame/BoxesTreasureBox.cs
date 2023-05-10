@@ -18,7 +18,9 @@ namespace KendaGame.Games {
     }
 
     public void PlayCloseAnim() {
-      draggedLetter.gameObject.SetActive(false);
+      if (draggedLetter != null) {
+        draggedLetter.gameObject.SetActive(false);
+      }
       skeletonAnimation.AnimationState.SetAnimation(0, "close", false);
     }
 
@@ -26,15 +28,6 @@ namespace KendaGame.Games {
       draggedLetter = letter;
       PlayOpenAnim();
       Invoke(nameof(PlayCloseAnim), 0.3f);
-      //skeletonAnimation.AnimationState.Event += AnimationState_Event;
-    }
-
-    private void AnimationState_Event(Spine.TrackEntry trackEntry, Spine.Event e) {
-      ResetAnim();
-    }
-
-    private void ResetAnim() {
-      Invoke(nameof(PlayCloseAnim), 1f);
     }
   }
 }

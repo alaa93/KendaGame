@@ -1972,6 +1972,9 @@ MonoBehaviour:
     IncorrectSfx:
     - {fileID: 8300000, guid: 897b5cefc6e3c4b428ca59f3db5386d0, type: 3}
     - {fileID: 8300000, guid: a431cf0ab05a69b448b6f4514273546f, type: 3}
+    EndingSfx:
+    - {fileID: 8300000, guid: ead3651a5f565e34db2c826831f89511, type: 3}
+    - {fileID: 8300000, guid: a1bde31195bf7014daf1021c99bcc9fa, type: 3}
 --- !u!1 &5712472901308556343
 GameObject:
   m_ObjectHideFlags: 0

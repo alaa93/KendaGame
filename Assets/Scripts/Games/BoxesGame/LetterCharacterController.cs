@@ -63,10 +63,16 @@ namespace KendaGame.Games {
     private void OnTriggerEnter2D(Collider2D collision) {
       BoxesTreasureBox treasureBox = collision.GetComponent<BoxesTreasureBox>();
       if (treasureBox != null) {
-        if (isDragging && letterId == LettersHelper.GetActiveLetter() && treasureBox.letterId == LettersHelper.GetActiveLetter() && !completed) {
-          completed = true;
-          GameObject.FindObjectOfType<BoxesLettersController>().OnCorrectLetter();
-          treasureBox.OnTriggered(this.gameObject);
+        if (isDragging) {
+          if (!completed) {
+            if (letterId == LettersHelper.GetActiveLetter() && treasureBox.letterId == LettersHelper.GetActiveLetter()) {
+              completed = true;
+              GameObject.FindObjectOfType<BoxesLettersController>().OnCorrectLetter();
+              treasureBox.OnTriggered(this.gameObject);
+            } else {
+              // incorrect
+            }
+          }
         } else {
           Jump();
         }

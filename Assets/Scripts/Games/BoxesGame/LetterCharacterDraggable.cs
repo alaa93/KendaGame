@@ -5,7 +5,7 @@ using UnityEngine;
 namespace KendaGame.Games {
   public class LetterCharacterDraggable : MonoBehaviour {
     LetterCharacterController letterController;
-    private bool mouseDown;
+    public bool mouseDown;
 
 
     private void Awake() {
