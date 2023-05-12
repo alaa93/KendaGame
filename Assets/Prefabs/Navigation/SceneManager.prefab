@@ -1594,6 +1594,8 @@ MonoBehaviour:
     type: 3}
   RatingLevel: {fileID: 2036297990351327069, guid: 3bb9b7902eafb457fac035aac2d2ba17,
     type: 3}
+  TutorialObject: {fileID: 1240531360023848310, guid: a76af497cbc1f421e9bce0ed575ea3f2,
+    type: 3}
 --- !u!1 &4759960178631716387
 GameObject:
   m_ObjectHideFlags: 0

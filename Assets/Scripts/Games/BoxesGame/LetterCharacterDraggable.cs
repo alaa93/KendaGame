@@ -12,9 +12,11 @@ namespace KendaGame.Games {
       letterController = this.GetComponent<LetterCharacterController>();
     }
     private void OnMouseDown() {
-      mouseDown = true;
-      letterController.SetRunState(false);
-      letterController.SetHoldingAnimation(true);
+      if (!letterController.IsFreezed()) {
+        mouseDown = true;
+        letterController.SetRunState(false);
+        letterController.SetHoldingAnimation(true);
+      }
     }
 
     private void OnMouseUp() {

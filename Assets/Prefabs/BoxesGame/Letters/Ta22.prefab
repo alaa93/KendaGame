@@ -163,8 +163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  jumpForce: 7
+  jumpForce: 8
   skeletonAnimation: {fileID: 547568945980327125}
+  isGrounded: 0
   letterId: "\u062A"
 --- !u!70 &1246106376721237659
 CapsuleCollider2D:
@@ -210,3 +211,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c089d49d2d641e98eed2e321b31a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseDown: 0

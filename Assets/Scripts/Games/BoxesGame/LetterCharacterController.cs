@@ -1,4 +1,5 @@
 using KendaGame.Helpers;
+using KendaGame.Navigation;
 using Spine.Unity;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace KendaGame.Games {
     GameObject targetbox;
     bool completed;
     int shouldJump = -1;
+    bool freeze;
 
     private void Awake() {
       initialPos = this.transform.position;
@@ -62,37 +64,47 @@ namespace KendaGame.Games {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+      BoxesTreasureBoxTrigger boxTrigger = collision.GetComponent<BoxesTreasureBoxTrigger>();
       BoxesTreasureBox treasureBox = collision.GetComponent<BoxesTreasureBox>();
-      if (treasureBox != null) {
+      if (boxTrigger != null) {
         if (isDragging) {
           if (!completed) {
-            if (letterId == LettersHelper.GetActiveLetter() && treasureBox.letterId == LettersHelper.GetActiveLetter()) {
+            if (letterId == LettersHelper.GetActiveLetter() && boxTrigger.letterId == LettersHelper.GetActiveLetter()) {
               completed = true;
               BoxesLettersController.Instance.OnCorrectLetter();
-              treasureBox.OnTriggered(this.gameObject);
+              this.gameObject.SetActive(false);
+              boxTrigger.ActivatePart();
             } else {
-              // incorrect
+              Jump(true);
+              GetComponent<LetterCharacterDraggable>().mouseDown = false;
+              SetHoldingAnimation(false);
+              SetRunState(true);
+              BoxesLettersController.Instance.OnInCorrectLetter();
             }
           }
-        } else {
-            shouldJump = Random.Range(0, 4);
-          if(shouldJump > 1) {
+        }
+      }
+
+      if (treasureBox != null) {
+        if (!isDragging) {
+          shouldJump = Random.Range(0, 4);
+          if (shouldJump > 1) {
             Jump();
           }
         }
       }
+
+      if (collision.gameObject.tag == "Tutorial") {
+        CheckPlayTutorial();
+      }
     }
 
-    private void AnimationState_Event(Spine.TrackEntry trackEntry, Spine.Event e) {
-      Invoke(nameof(ResetBoxAnim), 2f);
+    private void CheckPlayTutorial() {
+      BoxesLettersController.Instance.CheckPlayTutorial(this.transform, letterId);
     }
 
-    private void ResetBoxAnim() {
-      targetbox.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "close", false);
-    }
-
-    public void Jump() {
-      if (isGrounded) {
+    public void Jump(bool forceJump = false) {
+      if (isGrounded || forceJump) {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
       }
     }
@@ -126,6 +138,28 @@ namespace KendaGame.Games {
       isDragging = state;
       skeletonAnimation.AnimationState.SetAnimation(0, state ? "Fighting" : "Jump", state ? true : false);
       rb.gravityScale = 0.5f;
+    }
+
+    public void SetAnimation(bool state) {
+      isDragging = false;
+      skeletonAnimation.AnimationState.SetAnimation(0, state? "runinng" : "Idle", true);
+    }
+
+    public void SetDancingAnimation() {
+      isDragging = false;
+      skeletonAnimation.AnimationState.SetAnimation(0, "Dancing", true);
+    }
+
+    public void SetFreezeState(bool freeze) {
+      this.freeze = freeze;
+    }
+
+    public bool IsFreezed() {
+      return freeze;
+    }
+
+    public string GetLetterId() {
+      return letterId;
     }
   }
 }

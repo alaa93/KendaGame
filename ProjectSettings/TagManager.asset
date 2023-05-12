@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TreasureBox
   - Ground
+  - Tutorial
   layers:
   - Default
   - TransparentFX
