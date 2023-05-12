@@ -11,9 +11,9 @@ namespace KendaGame.UI {
     [SerializeField]
     SkeletonGraphic starsAnimation;
     [SerializeField]
-    UIButtonAnimator nextBtn, RestartBtn;
+    UIButtonAnimator nextBtn, restartBtn;
     Spine.AnimationState animationState;
-    
+    private string source;
 
     private void Awake() {
       SkeletonDataAsset skeletonDataAsset = starsAnimation.skeletonDataAsset;
@@ -22,14 +22,28 @@ namespace KendaGame.UI {
       starsAnimation.skeletonDataAsset = skeletonDataAsset;
 
       nextBtn.AddClickListener(animate: true, callBackFn: () => {
-        SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.SharkGame.ToString()) {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingLetter.ToString());
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.GameScene.ToString()) {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingLetter.ToString()) {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.BoxesGame.ToString());
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.BoxesGame.ToString()) {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
+        }
+          Destroy(this.gameObject);
+      });
+      restartBtn.AddClickListener(animate: true, callBackFn: () => {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        Destroy(this.gameObject);
       });
     }
 
     private void OnEnable() {
-      activeLetter.text = LettersHelper.GetActiveLetter();
+      if (activeLetter != null) {
+        activeLetter.text = LettersHelper.GetActiveLetter();
+      }
       //PlayStarAnimation(LettersHelper.GetLetterRating(LettersHelper.GetActiveLetter()));
-     
     }
 
     private void PlayStarAnimation(int rating) {
@@ -53,6 +67,10 @@ namespace KendaGame.UI {
           animationState.SetAnimation(0, "3Stars", false);
           break;
       }
+    }
+
+    public void SetSource(string source) {
+      this.source = source;
     }
   }
 }

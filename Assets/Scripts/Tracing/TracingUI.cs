@@ -21,6 +21,7 @@ namespace KendaGame.UI {
     GameObject [] ColoringStuff;
     [SerializeField]
     AudioSource musicLoop;
+    public GameObject tracingGuide;
 
     private static TracingUI _instance;
     public static TracingUI Instance {
@@ -38,10 +39,19 @@ namespace KendaGame.UI {
             if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(SceneManager.Scenes.TracingLetter.ToString()))
             {
                 SceneManager.Instance.OpenCloudsManually();
+                PlayerPrefs.SetInt("ColoringList", 0);
+                PlayerPrefs.Save();
+
+                ColoringBookManager.maskTexIndex = -1;
+                ColoringBookManager.ID = "ColoringList0";
+
+                if (SceneManager.tracingGuide > 0) {
+                  tracingGuide.SetActive(false);
+                }
                 return;
             }
 
-            if (PlayerPrefs.GetInt("PlayIntro1", -1) == -1)
+            if (PlayerPrefs.GetInt("PlayIntro12", -1) == -1)
             {
                 PlayerPrefs.SetInt("PlayIntro1", 1);
                 for (int x = 0; x < ColoringStuff.Length; x++)
@@ -57,14 +67,13 @@ namespace KendaGame.UI {
                 SceneManager.Instance.OpenCloudsManually();
                 VideoRenderer.SetActive(false);
                 videoPlayer.Stop();
-                if (PlayerPrefs.GetInt("Game1Completed", 0) == 0)
+                if (PlayerPrefs.GetInt("Game1Completed1", 0) == 0)
                 {
                     SetGame1(true);
                 }
                 else
                 {
-                    // start game 2 or 3
-                    if (PlayerPrefs.GetInt("ColoringCompleted", 0) == 0)
+                    if (PlayerPrefs.GetInt("ColoringCompleted1", 0) == 0)
                     {
                         StartColoring();
                     }
@@ -120,12 +129,12 @@ namespace KendaGame.UI {
         }
     }
 
-        public void TracingCompleted()
-        {
-            // show rating screen, close clouds then do something
-            PlayerPrefs.SetInt("ColoringCompleted", 1);
-            SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
-        }
+    public void TracingCompleted() {
+      // show rating screen, close clouds then do something
+      PlayerPrefs.SetInt("ColoringCompleted", 1);
+      PopUpsManager.Instance.LoadRatingLetter();
+      //SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
+    }
 
     private void StartColoring()
     {
@@ -157,14 +166,14 @@ namespace KendaGame.UI {
     }
 
 
-        public void OnTracingLetterCompleted()
-        {
+    public void OnTracingLetterCompleted() {
       //GameObject.FindAnyObjectByType<ColoringBookManager>().OnScreenshotButtonClicked((path)=> {
       //    Debug.Log("file name " + ScreenshotManager.screenshotFilename);
       //    StartCoroutine(Upload(path));
       //});
-        GameObject.FindObjectOfType<PopUpsManager>().LoadRatingLetter();
-        }
+      SceneManager.tracingGuide = 1;
+      GameObject.FindObjectOfType<PopUpsManager>().LoadRatingLetter();
+    }
 
 
         public IEnumerator Upload(string filePath)

@@ -87,10 +87,7 @@ namespace KendaGame.Games {
 
       if (treasureBox != null) {
         if (!isDragging) {
-          shouldJump = Random.Range(0, 4);
-          if (shouldJump > 1) {
-            Jump();
-          }
+          Jump();
         }
       }
 

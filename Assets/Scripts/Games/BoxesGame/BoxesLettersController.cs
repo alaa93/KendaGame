@@ -48,7 +48,7 @@ namespace KendaGame.Games {
         instantiatedLetters[x] = Instantiate(letterPrefabs[x], null, false).GetComponent<LetterCharacterController>();
         instantiatedLetters[x].SetInitalPos(LettersInitalPos.position);
         if (IsTutorialSeen()) {
-          Invoke(nameof(StartCharactersWave), Random.Range(1, 2));
+          Invoke(nameof(StartCharactersWave), Random.Range(2, 4));
         } else {
           if(x == 0) {
             Invoke(nameof(StartCharactersWave), Random.Range(1, 2));

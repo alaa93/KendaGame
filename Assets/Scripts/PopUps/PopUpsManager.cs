@@ -9,7 +9,7 @@ namespace KendaGame.Navigation {
     public GameObject RatingLevel;
     public GameObject TutorialObject;
     private TutorialController tutorialController;
-
+    private GameObject letterRatingObj,gameRatingObj;
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
       get {
@@ -21,7 +21,7 @@ namespace KendaGame.Navigation {
     }
 
     public void LoadRatingLetter() {
-      GameObject rating = Instantiate(RatingLetter, Parent, false);
+        letterRatingObj = Instantiate(RatingLetter, Parent, false);
     }
 
     public void LoadRatingLevel() {
