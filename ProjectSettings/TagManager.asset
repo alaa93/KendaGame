@@ -5,14 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - TreasureBox
+  - Ground
+  - Tutorial
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - letterCharacters
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 

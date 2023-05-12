@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using KendaGame.Tutorial;
 using UnityEngine;
 
 namespace KendaGame.Navigation {
@@ -8,6 +7,8 @@ namespace KendaGame.Navigation {
     public Transform Parent;
     public GameObject RatingLetter;
     public GameObject RatingLevel;
+    public GameObject TutorialObject;
+    private TutorialController tutorialController;
 
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
@@ -19,16 +20,23 @@ namespace KendaGame.Navigation {
       }
     }
 
-    private void Awake() {
-      
-    }
-
     public void LoadRatingLetter() {
-      GameObject rating = Instantiate(RatingLetter, Parent,false);
+      GameObject rating = Instantiate(RatingLetter, Parent, false);
     }
 
     public void LoadRatingLevel() {
       GameObject rating = Instantiate(RatingLevel, Parent, false);
+    }
+
+    public TutorialController LoadTutorial(Transform parentObj) {
+      if (tutorialController == null) {
+        GameObject tutorialObject = Instantiate(TutorialObject, parentObj, false);
+        TutorialController tutorial = tutorialObject.GetComponent<TutorialController>();
+        if (tutorial != null) {
+          return tutorial;
+        }
+      }
+      return null;
     }
   }
 }

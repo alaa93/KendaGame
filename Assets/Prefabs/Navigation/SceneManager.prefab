@@ -1176,8 +1176,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1594,6 +1594,8 @@ MonoBehaviour:
     type: 3}
   RatingLevel: {fileID: 2036297990351327069, guid: 3bb9b7902eafb457fac035aac2d2ba17,
     type: 3}
+  TutorialObject: {fileID: 1240531360023848310, guid: a76af497cbc1f421e9bce0ed575ea3f2,
+    type: 3}
 --- !u!1 &4759960178631716387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,6 +1974,9 @@ MonoBehaviour:
     IncorrectSfx:
     - {fileID: 8300000, guid: 897b5cefc6e3c4b428ca59f3db5386d0, type: 3}
     - {fileID: 8300000, guid: a431cf0ab05a69b448b6f4514273546f, type: 3}
+    EndingSfx:
+    - {fileID: 8300000, guid: ead3651a5f565e34db2c826831f89511, type: 3}
+    - {fileID: 8300000, guid: a1bde31195bf7014daf1021c99bcc9fa, type: 3}
 --- !u!1 &5712472901308556343
 GameObject:
   m_ObjectHideFlags: 0

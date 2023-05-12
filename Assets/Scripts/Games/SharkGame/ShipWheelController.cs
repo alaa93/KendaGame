@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
+using ScorpionSteps.Utils;
 using UnityEngine;
 
 namespace KendaGame.Games {
@@ -14,8 +15,8 @@ namespace KendaGame.Games {
     private bool canRotate;
     [SerializeField]
     AudioClip gameWin;
-
     bool gameCompleted;
+    private float positionOffet = 3.3f;
 
     List<string> selectedLetters = new List<string>();
     int correctCounter;
@@ -24,6 +25,12 @@ namespace KendaGame.Games {
     private void Start() {
       wheelBubbles = GameObject.FindObjectsOfType<ShipWheelBubble>();
       AssignLetters();
+      SetScreenPosition();
+      SceneManager.Instance.SetCoinsObjectState(true);
+    }
+
+    private void SetScreenPosition() {
+      this.transform.parent.position = new Vector3(CameraUtils.GetLeftScreenEdge().x + positionOffet, this.transform.parent.position.y, 0f);
     }
 
     private void Update() {
