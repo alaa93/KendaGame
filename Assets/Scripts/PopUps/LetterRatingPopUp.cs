@@ -26,12 +26,14 @@ namespace KendaGame.UI {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingLetter.ToString());
         } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.GameScene.ToString()) {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingLetter.ToString()) {
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingLetter.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.BoxesGame.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.BoxesGame.ToString()) {
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingLetter.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.BoxesGame.ToString()) {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingLetter.ToString());
         }
-          Destroy(this.gameObject);
+        Destroy(this.gameObject);
       });
       restartBtn.AddClickListener(animate: true, callBackFn: () => {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);

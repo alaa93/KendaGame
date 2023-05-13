@@ -95,6 +95,7 @@ namespace KendaGame.Games {
     }
 
     private IEnumerator GameCompleted(float delay) {
+      PlayerPrefs.SetInt("Boxes_Game_Completed", 1);
       yield return new WaitForSeconds(delay);
       AudioClip sfx = AudioController.Instance.commonSfx.GetEndingSfx();
       AudioController.Instance.PlaySfxAtPoint(sfx);
