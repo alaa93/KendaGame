@@ -2787,7 +2787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 9a42b560c81d3ec4db78a445a963439c, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 92091682f69000448950839fb17f9ad1, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -2812,7 +2812,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: 
+  _animationName: Letters
   loop: 0
   timeScale: 1
 --- !u!114 &2351877238185988841
@@ -2831,13 +2831,13 @@ MonoBehaviour:
   animations:
   - animationProperty: swimFast
     is_loop: 1
-    track: 0
+    track: 1
   - animationProperty: idle
     is_loop: 1
-    track: 0
+    track: 1
   - animationProperty: swimming
     is_loop: 0
-    track: 1
+    track: 2
 --- !u!1 &5765890303180698207
 GameObject:
   m_ObjectHideFlags: 0
@@ -3343,13 +3343,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 794514625877500580, guid: 99d7dcfa781a94045ae99911f5f02b02,
         type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.45490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 794514625877500580, guid: 99d7dcfa781a94045ae99911f5f02b02,
+        type: 3}
       propertyPath: InitialModule.startSpeed.minMaxState
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 794514625877500580, guid: 99d7dcfa781a94045ae99911f5f02b02,
         type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 794514625877500580, guid: 99d7dcfa781a94045ae99911f5f02b02,
         type: 3}
@@ -3409,12 +3414,12 @@ PrefabInstance:
     - target: {fileID: 8504636260383076738, guid: 99d7dcfa781a94045ae99911f5f02b02,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1864283
+      value: -0.191587
       objectReference: {fileID: 0}
     - target: {fileID: 8504636260383076738, guid: 99d7dcfa781a94045ae99911f5f02b02,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6956133
+      value: 1.7017926
       objectReference: {fileID: 0}
     - target: {fileID: 8504636260383076738, guid: 99d7dcfa781a94045ae99911f5f02b02,
         type: 3}

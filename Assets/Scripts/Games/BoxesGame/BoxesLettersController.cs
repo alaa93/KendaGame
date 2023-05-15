@@ -149,11 +149,10 @@ namespace KendaGame.Games {
       AudioClip sfx = AudioController.Instance.commonSfx.GetCorrectSfx();
       AudioController.Instance.PlaySfxAtPoint(sfx);
       if (correctSolvedParts >= totalPartsToSolve) {
-                if (octopusAnimated != null)
-                {
+               
                     octopusAnimated.SetActive(true);
                     allPartsObject.SetActive(false);
-                }
+                
                 musicLoop.DOFade(0, 0.6f);
         StartCoroutine(GameCompleted(Mathf.Clamp(sfx.length, 0f, 1.5f)));
       }

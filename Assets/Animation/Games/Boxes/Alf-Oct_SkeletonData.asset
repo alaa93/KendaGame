@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: AlfOct_SkeletonData
+  m_Name: Alf-Oct_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
   - {fileID: 11400000, guid: 58b7c000730abf541935f990e44d1f31, type: 2}
-  scale: 0.009
-  skeletonJSON: {fileID: 4900000, guid: 87bcfebcaf79e3a40976799b875d4e67, type: 3}
+  scale: 0.01
+  skeletonJSON: {fileID: 4900000, guid: 335c5f7af01290948a152a9f5fd9c2ff, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
