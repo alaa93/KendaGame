@@ -4,6 +4,7 @@ using KendaGame.Navigation;
 using UnityEngine;
 using DG.Tweening;
 using KendaGame.Tutorial;
+using Spine.Unity;
 
 namespace KendaGame.Games {
   public class BoxesLettersController : MonoBehaviour {
@@ -21,7 +22,10 @@ namespace KendaGame.Games {
     public BoxesTreasureBoxTrigger boxTrigger;
     public Transform CorrectBoxPos;
     public GameObject allPartsObject;
-    public GameObject[] letterStaticParts;
+    public GameObject Box;
+    public GameObject octopusAnimated;
+
+        public GameObject[] letterStaticParts;
     public GameObject[] letterAnimatedParts;
     public GameObject[] letterPrefabs;
     public Transform LettersInitalPos;
@@ -108,7 +112,9 @@ namespace KendaGame.Games {
         instantiatedLetters[x].gameObject.SetActive(false);
       }
       allPartsObject.SetActive(true);
-      AudioController.Instance.PlaySfxAtPoint(showPartsSfx);
+         //   Box.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "faded", false);
+
+            AudioController.Instance.PlaySfxAtPoint(showPartsSfx);
       CorrectBoxPos.GetComponent<BoxesTreasureBox>().OnTriggered(null);
       for (int x = 0; x < letterStaticParts.Length; x++) {
         letterStaticParts[x].gameObject.SetActive(true);
@@ -136,11 +142,19 @@ namespace KendaGame.Games {
     }
 
     public void OnGamePartSolved() {
-      correctSolvedParts++;
+          
+
+
+            correctSolvedParts++;
       AudioClip sfx = AudioController.Instance.commonSfx.GetCorrectSfx();
       AudioController.Instance.PlaySfxAtPoint(sfx);
       if (correctSolvedParts >= totalPartsToSolve) {
-        musicLoop.DOFade(0, 0.6f);
+                if (octopusAnimated != null)
+                {
+                    octopusAnimated.SetActive(true);
+                    allPartsObject.SetActive(false);
+                }
+                musicLoop.DOFade(0, 0.6f);
         StartCoroutine(GameCompleted(Mathf.Clamp(sfx.length, 0f, 1.5f)));
       }
     }
