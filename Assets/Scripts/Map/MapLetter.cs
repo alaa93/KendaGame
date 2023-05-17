@@ -12,7 +12,7 @@ namespace KendaGame.Navigation {
 
     private void Awake() {
       GetComponent<UIButtonAnimator>().AddClickListener(() => {
-        SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingLetter.ToString(),true);
+        SceneManager.Instance.MoveTo(SceneManager.Scenes.GameScene.ToString(),true);
       });
     }
   }

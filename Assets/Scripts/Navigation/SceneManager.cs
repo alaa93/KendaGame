@@ -17,14 +17,14 @@ namespace KendaGame.Navigation {
     LoadingController loadingController;
     [SerializeField]
     UIController uiController;
-
+    public static int tracingGuide = 0;
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
     private bool openManually;
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, GameScene, SharkGame, TracingLetter
+      SplashScreen, LoginScene, HomeScreen, Map, GameScene, SharkGame, TracingLetter, BoxesGame
     }
 
     private void Awake() {
@@ -39,24 +39,21 @@ namespace KendaGame.Navigation {
       if (!initialized) {
         initialized = true;
       }
-        if (!openManually)
-        {
-            loadingController.OpenClouds(null);
-            UpdateBackBtnState(scene);
-        }
+      if (!openManually) {
+        loadingController.OpenClouds(null);
+        UpdateBackBtnState(scene);
+      }
     }
 
-    public void OpenCloudsManually(Action<bool> onComplete = null, bool animated = true)
-    {
-        loadingController.OpenClouds(onComplete,animated);
+    public void OpenCloudsManually(Action<bool> onComplete = null, bool animated = true) {
+      loadingController.OpenClouds(onComplete, animated);
     }
 
-    public void CloseCloudsManually(Action<bool> onComplete = null, bool animated = true)
-    {
-        loadingController.CloseClouds(onComplete, animated);
+    public void CloseCloudsManually(Action<bool> onComplete = null, bool animated = true) {
+      loadingController.CloseClouds(onComplete, animated);
     }
 
-        public void MoveTo(string targetSceneName, bool openManually = false) {
+    public void MoveTo(string targetSceneName, bool openManually = false) {
       this.openManually = openManually;
       Debug.Log("MoveTo " + targetSceneName);
       Scenes targetScene = (Scenes)Enum.Parse(typeof(Scenes), targetSceneName);
@@ -96,9 +93,8 @@ namespace KendaGame.Navigation {
       }
     }
 
-    public void SetBackBtnState(bool state)
-    {
-        uiController.SetBackBtnState(state);
+    public void SetBackBtnState(bool state) {
+      uiController.SetBackBtnState(state);
     }
 
     public void SetCoinsObjectState(bool state) {
@@ -115,10 +111,10 @@ namespace KendaGame.Navigation {
 
 #if UNITY_EDITOR
     private void UpdateEditorOrientation(bool islandscape) {
-      var gameViewType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView");
-      var gameViewWindow = UnityEditor.EditorWindow.GetWindow(gameViewType);
-      var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
-      sizeSelectionCallback.Invoke(gameViewWindow, new object[] { islandscape ? 32 : 31, null });
+      //var gameViewType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView");
+      //var gameViewWindow = UnityEditor.EditorWindow.GetWindow(gameViewType);
+      //var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
+      //sizeSelectionCallback.Invoke(gameViewWindow, new object[] { islandscape ? 32 : 31, null });
     }
 #endif
   }

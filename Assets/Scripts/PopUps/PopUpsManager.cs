@@ -1,4 +1,5 @@
 using KendaGame.Tutorial;
+using KendaGame.UI;
 using UnityEngine;
 
 namespace KendaGame.Navigation {
@@ -9,7 +10,7 @@ namespace KendaGame.Navigation {
     public GameObject RatingLevel;
     public GameObject TutorialObject;
     private TutorialController tutorialController;
-
+    private GameObject letterRatingObj,gameRatingObj;
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
       get {
@@ -21,7 +22,13 @@ namespace KendaGame.Navigation {
     }
 
     public void LoadRatingLetter() {
-      GameObject rating = Instantiate(RatingLetter, Parent, false);
+        letterRatingObj = Instantiate(RatingLetter, Parent, false);
+      letterRatingObj.GetComponent<LetterRatingPopUp>();
+    }
+
+    public LetterRatingPopUp LoadRatingLetterInstance() {
+      letterRatingObj = Instantiate(RatingLetter, Parent, false);
+      return letterRatingObj.GetComponent<LetterRatingPopUp>();
     }
 
     public void LoadRatingLevel() {

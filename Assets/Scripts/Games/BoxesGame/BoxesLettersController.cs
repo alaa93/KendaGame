@@ -37,6 +37,8 @@ namespace KendaGame.Games {
     private TutorialController tutorialController;
     string cachedLetterId;
     string tutorialPrefsKey = "BoxesGameTutorial123455";
+    public bool gameCompleted;
+
     private void Start() {
       InitializeLetters();
     }
@@ -48,7 +50,11 @@ namespace KendaGame.Games {
         instantiatedLetters[x] = Instantiate(letterPrefabs[x], null, false).GetComponent<LetterCharacterController>();
         instantiatedLetters[x].SetInitalPos(LettersInitalPos.position);
         if (IsTutorialSeen()) {
-          Invoke(nameof(StartCharactersWave), Random.Range(1, 2));
+          if (x == 0) {
+            Invoke(nameof(StartCharactersWave), 0.5f);
+          } else {
+            Invoke(nameof(StartCharactersWave), x + Random.Range(0.5f, 2f));
+          }
         } else {
           if(x == 0) {
             Invoke(nameof(StartCharactersWave), Random.Range(1, 2));
@@ -64,17 +70,15 @@ namespace KendaGame.Games {
       }
     }
 
-    private void ContinueWaveLoad() {
-      for (int x = 1; x < instantiatedLetters.Length; x++) {
-        Invoke(nameof(StartCharactersWave), Random.Range(1, 2));
-      }
-    }
-
     public void OnCorrectLetter() {
+      if(gameCompleted) {
+        return;
+      }
       levelWord.material.SetFloat("_FillAmount", levelWord.material.GetFloat("_FillAmount") + 0.3f);
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       if (correctCount >= 3) {
+        gameCompleted = true;
         for (int x = 0; x < instantiatedLetters.Length; x++) {
           instantiatedLetters[x].SetRunState(false);
           instantiatedLetters[x].Jump();
@@ -85,7 +89,6 @@ namespace KendaGame.Games {
         tutorialController.HideTutorial(() => {
           PlayerPrefs.SetInt(tutorialPrefsKey, 1);
           OnTutorialCompleted();
-          ContinueWaveLoad();
         });
       }
     }
@@ -95,6 +98,7 @@ namespace KendaGame.Games {
     }
 
     private IEnumerator GameCompleted(float delay) {
+      PlayerPrefs.SetInt("Boxes_Game_Completed", 1);
       yield return new WaitForSeconds(delay);
       AudioClip sfx = AudioController.Instance.commonSfx.GetEndingSfx();
       AudioController.Instance.PlaySfxAtPoint(sfx);
@@ -159,10 +163,17 @@ namespace KendaGame.Games {
     }
 
     private void OnTutorialCompleted() {
-      for (int x = 0; x < instantiatedLetters.Length; x++) {
-        instantiatedLetters[x].SetFreezeState(false);
-        instantiatedLetters[x].SetAnimation(true);
-        instantiatedLetters[x].SetRunState(true);
+      for (int x = 1; x < instantiatedLetters.Length; x++) {
+        Invoke(nameof(ResumeWaveAfterTutorial), x + Random.Range(0.5f, 2f));
+      }
+    }
+
+    private void ResumeWaveAfterTutorial() {
+      currentLetterIndex++;
+      if (currentLetterIndex < instantiatedLetters.Length) {
+        instantiatedLetters[currentLetterIndex].SetFreezeState(false);
+        instantiatedLetters[currentLetterIndex].SetAnimation(true);
+        instantiatedLetters[currentLetterIndex].SetRunState(true);
       }
     }
 
