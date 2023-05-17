@@ -64,6 +64,9 @@ namespace KendaGame.Games {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+      if (BoxesLettersController.Instance.gameCompleted) {
+        return;
+      }
       BoxesTreasureBoxTrigger boxTrigger = collision.GetComponent<BoxesTreasureBoxTrigger>();
       BoxesTreasureBox treasureBox = collision.GetComponent<BoxesTreasureBox>();
       if (boxTrigger != null) {

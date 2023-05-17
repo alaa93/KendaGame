@@ -828,7 +828,6 @@ public class ColoringBookManager : MonoBehaviour {
 
     public void OnChangeColorButtonClicked(int num) {
       selectedColorNumber = num;
-      Debug.Log("selected color "+selectedColorNumber);
       paintColor = paintColors[selectedColorNumber];
       brushColorImage.sprite = null;
       brushColorImage.color = paintColor;
@@ -1026,7 +1025,7 @@ public class ColoringBookManager : MonoBehaviour {
       yield return null;
     }
 
-    private Rect GUIRectWithObject(GameObject go) {
+    public Rect GUIRectWithObject(GameObject go) {
       Vector3 cen = go.GetComponent<Renderer>().bounds.center;
       Vector3 ext = go.GetComponent<Renderer>().bounds.extents;
       Vector2[] extentPoints = new Vector2[8]

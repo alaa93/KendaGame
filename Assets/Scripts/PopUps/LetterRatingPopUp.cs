@@ -9,18 +9,17 @@ namespace KendaGame.UI {
     [SerializeField]
     TextMeshProUGUI activeLetter;
     [SerializeField]
-    SkeletonGraphic starsAnimation;
+    SkeletonGraphic stars3Animation;
+    [SerializeField]
+    SkeletonGraphic stars2Animation;
+    [SerializeField]
+    SkeletonGraphic stars1Animation;
     [SerializeField]
     UIButtonAnimator nextBtn, restartBtn;
     Spine.AnimationState animationState;
     private string source;
 
     private void Awake() {
-      SkeletonDataAsset skeletonDataAsset = starsAnimation.skeletonDataAsset;
-      animationState = new Spine.AnimationState(skeletonDataAsset.GetAnimationStateData());
-      animationState.SetAnimation(0, "1Stars_lose", false);
-      starsAnimation.skeletonDataAsset = skeletonDataAsset;
-
       nextBtn.AddClickListener(animate: true, callBackFn: () => {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.SharkGame.ToString()) {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingLetter.ToString());
@@ -73,6 +72,18 @@ namespace KendaGame.UI {
 
     public void SetSource(string source) {
       this.source = source;
+    }
+
+    public void SetAnimation(int rating) {
+      stars3Animation.gameObject.SetActive(false);
+      if (rating == 3) {
+        stars3Animation.AnimationState.SetAnimation(0, "3Stars", false);
+      } else if (rating == 2) {
+        stars3Animation.AnimationState.SetAnimation(0, "2Stars", false);
+      } else {
+        stars3Animation.AnimationState.SetAnimation(0, "1Stars_lose", false);
+      }
+      stars3Animation.gameObject.SetActive(true);
     }
   }
 }

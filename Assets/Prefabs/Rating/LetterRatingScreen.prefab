@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 8962936491076769268}
   - component: {fileID: 8962936491076769271}
   m_Layer: 0
-  m_Name: Stars
+  m_Name: 3Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeLetter: {fileID: 8962936491131426408}
-  starsAnimation: {fileID: 8962936491076769269}
+  stars3Animation: {fileID: 8962936491076769269}
+  stars2Animation: {fileID: 0}
+  stars1Animation: {fileID: 0}
   nextBtn: {fileID: 504903028181099497}
   restartBtn: {fileID: 5770193529041298993}
 --- !u!1 &8962936491694686271
