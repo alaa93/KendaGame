@@ -49,7 +49,6 @@ namespace KendaGame.UI {
         fillImage.fillAmount += fillSpeed;
         yield return new WaitForSeconds(fillDelay);
       }
-      HideLoadingBar();
     }
 
   }

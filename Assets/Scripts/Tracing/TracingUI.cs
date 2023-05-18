@@ -20,9 +20,6 @@ namespace KendaGame.UI {
     UIButtonAnimator[] fontSizeBtns;
     [SerializeField]
     Image tracingGuide;
-    [SerializeField]
-    GameObject coloringBoard;
-
 
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
@@ -60,10 +57,8 @@ namespace KendaGame.UI {
     private void PrepareBoard() {
       PlayerPrefs.SetInt("ColoringList", 0);
       PlayerPrefs.Save();
-
       ColoringBookManager.maskTexIndex = -1;
       ColoringBookManager.ID = "ColoringList0";
-      coloringBoard.SetActive(true);
       //coloringMaterial.SetVector("_MaskTex",new Vector4(0.68f,1f, 0.16f,1.02f));
       //if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
       //  //TODO load related guide letter
@@ -97,12 +92,13 @@ namespace KendaGame.UI {
     public void OnTracingLetterCompleted() {
       SceneManager.tracingGuide = 1;
       StartCoroutine(CropLetterArea((bytes) => {
-        RequestLetterRating(bytes);
+        Debug.Log("finished cropping letter area");
       }));
     }
 
     private void RequestLetterRating(byte[] bytes) {
       if (bytes != null) {
+        Debug.Log("inside RequestLetterRating");
         LoadingBar loadingBar = PopUpsManager.Instance.LoadLoadingBar();
         loadingBar.ShowLoadingBar(title: "Uploading In Progress"); // I2.Loc.LocalizationManager.GetTermTranslation("")
         HTTPRequestHandler.Instance.UploadTracingLetter(bytes, LettersHelper.GetActiveLetterClass(), (success, ratingData) => {
@@ -141,15 +137,24 @@ namespace KendaGame.UI {
     }
 
     private IEnumerator CropLetterArea(Action<byte[]> callBack) {
+      tracingGuide.gameObject.SetActive(false);
       yield return new WaitForEndOfFrame();
       Rect rect = CameraUtils.GUIRectWithObject(ColoringBookManager.Instance.gameObject);
       Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
       texture.ReadPixels(rect, 0, 0);
       texture.Apply();
-      screenshotRef.texture = texture;
+      //screenshotRef.texture = texture; // Just for Testing
       byte[] bytes = texture.EncodeToPNG();
-      callBack?.Invoke(bytes);
-      //Destroy(texture);
+      tracingGuide.gameObject.SetActive(true);
+      if (bytes != null) {
+        Debug.Log("RequestLetterRating");
+        RequestLetterRating(bytes);
+      } else {
+        Debug.LogError("null image bytes");
+        yield return null;
+      }
+      //callBack?.Invoke(bytes);
+      Destroy(texture);
     }
   }
 }
