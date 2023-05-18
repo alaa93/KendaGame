@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using KendaGame.Helpers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace KendaGame.Navigation {
@@ -24,8 +25,10 @@ namespace KendaGame.Navigation {
     private bool openManually;
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, GameScene, SharkGame, TracingLetter, BoxesGame
+      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer
     }
+
+    private Scenes activeScene;
 
     private void Awake() {
       DontDestroyOnLoad(gameObject);
@@ -63,6 +66,7 @@ namespace KendaGame.Navigation {
           if (navigationStack != null && !navigationStack.Contains(targetSceneName)) {
             navigationStack.Add(targetSceneName);
           }
+          activeScene = targetScene;
           UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetSceneName);
         });
       } else {
@@ -106,6 +110,32 @@ namespace KendaGame.Navigation {
         uiController.SetBackBtnState(false);
       } else {
         uiController.SetBackBtnState(true);
+      }
+    }
+
+    public Scenes GetActiveScene() {
+      return activeScene;
+    }
+
+    public void OnMapLetterClicked(string mapLetter) {
+      if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
+        if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+          Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+        } else {
+          // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
+          Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+        }
+      } else {
+        Instance.MoveTo(Scenes.VideoPlayer.ToString(), true);
+      }
+    }
+
+    public void OnVideoCompletedMoveTo() {
+      if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+      } else {
+        // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
+        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
       }
     }
 

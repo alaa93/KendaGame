@@ -1408,6 +1408,7 @@ GameObject:
   - component: {fileID: 1952446700663183638}
   - component: {fileID: 5795571192807417040}
   - component: {fileID: 8167890409091246873}
+  - component: {fileID: 4615262080338712953}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -1472,6 +1473,18 @@ MonoBehaviour:
     EndingSfx:
     - {fileID: 8300000, guid: ead3651a5f565e34db2c826831f89511, type: 3}
     - {fileID: 8300000, guid: a1bde31195bf7014daf1021c99bcc9fa, type: 3}
+--- !u!114 &4615262080338712953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5635037688969786683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c02bca4b6e44629ac8cea08a4f8f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5712472901308556343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 894.9998, y: 0}
+  m_AnchoredPosition: {x: 894.9999, y: 0}
   m_SizeDelta: {x: 3020.4, y: 1504.9}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2210894462442747932

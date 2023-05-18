@@ -22,15 +22,15 @@ namespace KendaGame.UI {
     private void Awake() {
       nextBtn.AddClickListener(animate: true, callBackFn: () => {
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.SharkGame.ToString()) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingLetter.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.GameScene.ToString()) {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingAdvanced.ToString());
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.ColoringEngine.ToString()) {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingLetter.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingAdvanced.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.BoxesGame.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingLetter.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
+        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingAdvanced.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
           SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
         } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.BoxesGame.ToString()) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingLetter.ToString());
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingAdvanced.ToString());
         }
         Destroy(this.gameObject);
       });

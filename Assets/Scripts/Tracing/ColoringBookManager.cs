@@ -7,8 +7,17 @@ using System.IO;
 using System;
 
 public class ColoringBookManager : MonoBehaviour {
-    #region variables
+  #region variables
 
+  public static ColoringBookManager _instance;
+  public static ColoringBookManager Instance {
+    get {
+      if(_instance == null) {
+        _instance = FindObjectOfType<ColoringBookManager>();
+      }
+      return _instance;
+    }
+  }
     public Material maskTexMaterial;
     private Texture2D maskTex;
     public List<Sprite> maskTexList;
