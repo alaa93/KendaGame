@@ -34,13 +34,16 @@ namespace KendaGame.UI {
       }
     }
 
-    private void Start() {
+    private void Awake() {
       SceneManager.Instance.OpenCloudsManually();
       InitFontSizeBtns();
       PrepareBoard();
       StartTracing();
     }
 
+    public void SetTracingGuide(bool state) {
+      tracingGuide.gameObject.SetActive(state);
+    }
     private void InitFontSizeBtns() {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
         int temp = x;
@@ -57,7 +60,6 @@ namespace KendaGame.UI {
     private void PrepareBoard() {
       PlayerPrefs.SetInt("ColoringList", 0);
       PlayerPrefs.Save();
-      ColoringBookManager.maskTexIndex = -1;
       ColoringBookManager.ID = "ColoringList0";
       //coloringMaterial.SetVector("_MaskTex",new Vector4(0.68f,1f, 0.16f,1.02f));
       //if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
@@ -91,9 +93,10 @@ namespace KendaGame.UI {
 
     public void OnTracingLetterCompleted() {
       SceneManager.tracingGuide = 1;
-      StartCoroutine(CropLetterArea((bytes) => {
-        Debug.Log("finished cropping letter area");
-      }));
+      HTTPRequestHandler.Instance.UploadLetter();
+      //StartCoroutine(CropLetterArea((bytes) => {
+      //  Debug.Log("finished cropping letter area");
+      //}));
     }
 
     private void RequestLetterRating(byte[] bytes) {

@@ -23,25 +23,29 @@ namespace KendaGame.UI {
       this.fillDelay = fillDelay;
       this.gameObject.SetActive(true);
 
-      if (progressBarRoutine == null) {
-        progressBarRoutine = StartCoroutine(StartProgressBar());
-      } else {
-        ResetLoadingBar();
-        StopCoroutine(progressBarRoutine);
-        progressBarRoutine = StartCoroutine(StartProgressBar());
-      }
+      //if (progressBarRoutine == null) {
+      //  progressBarRoutine = StartCoroutine(StartProgressBar());
+      //} else {
+      //  ResetLoadingBar();
+      //  StopCoroutine(progressBarRoutine);
+      //  progressBarRoutine = StartCoroutine(StartProgressBar());
+      //}
     }
 
     public void HideLoadingBar() {
       inProgress = false;
-      if (progressBarRoutine != null) {
-        StopCoroutine(progressBarRoutine);
-      }
+      //if (progressBarRoutine != null) {
+      //  StopCoroutine(progressBarRoutine);
+      //}
       gameObject.SetActive(false);
     }
 
     private void ResetLoadingBar() {
       fillImage.fillAmount = 0f;
+    }
+
+    public void IncreaseLoadingBar(float amount) {
+      fillImage.fillAmount += amount;
     }
 
     IEnumerator StartProgressBar() {

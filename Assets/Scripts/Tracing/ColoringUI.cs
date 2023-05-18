@@ -52,10 +52,7 @@ namespace KendaGame.UI {
     private void PrepareBoard() {
       PlayerPrefs.SetInt("ColoringList", 0);
       PlayerPrefs.Save();
-
-      ColoringBookManager.maskTexIndex = -1;
       ColoringBookManager.ID = "ColoringList0";
-      //coloringMaterial.SetVector("_MaskTex",new Vector4(0.68f,1f, 0.16f,1.02f));
     }
 
     public void OnColoringCompleted() {
