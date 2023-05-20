@@ -1598,7 +1598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maskTexMaterial: {fileID: 2100000, guid: 0b18c9f7f08448d2bc71c32bb346a29d, type: 2}
   maskTexList:
-  - {fileID: 21300000, guid: cfb355b08390640f096d31ed58835e1b, type: 3}
+  - {fileID: 21300000, guid: d55616c73768440649b91a8413993f58, type: 3}
   - {fileID: 21300000, guid: 5c414db9776f4a14942318bf15fa28e6, type: 3}
   - {fileID: 21300000, guid: 6596596fe7fa40649562a47d3e15e9b5, type: 3}
   - {fileID: 21300000, guid: 7c27816de26540cfb2e5d5f731d7f69c, type: 3}
