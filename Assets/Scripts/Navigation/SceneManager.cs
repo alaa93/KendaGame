@@ -114,7 +114,8 @@ namespace KendaGame.Navigation {
     }
 
     public Scenes GetActiveScene() {
-      return activeScene;
+      string loadedScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.ToString();
+      return (Scenes)Enum.Parse(typeof(Scenes), loadedScene);
     }
 
     public void OnMapLetterClicked(string mapLetter) {

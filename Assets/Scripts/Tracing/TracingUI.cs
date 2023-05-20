@@ -42,8 +42,16 @@ namespace KendaGame.UI {
     }
 
     public void SetTracingGuide(bool state) {
-      tracingGuide.gameObject.SetActive(state);
+      if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingBasic) {
+        tracingGuide.gameObject.SetActive(state);
+      }
     }
+
+    private void LoadTracingGuide() {
+      //TODO load tracing guide based on active letter
+      //tracingGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
+    }
+
     private void InitFontSizeBtns() {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
         int temp = x;
@@ -61,10 +69,7 @@ namespace KendaGame.UI {
       PlayerPrefs.SetInt("ColoringList", 0);
       PlayerPrefs.Save();
       ColoringBookManager.ID = "ColoringList0";
-      //coloringMaterial.SetVector("_MaskTex",new Vector4(0.68f,1f, 0.16f,1.02f));
-      //if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
-      //  //TODO load related guide letter
-      //}
+      LoadTracingGuide();
     }
 
     private void StartTracing() {
@@ -86,28 +91,29 @@ namespace KendaGame.UI {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
         fontSizeBtns[x].GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.6f);
       }
-      //fontBtn.GetComponent<Image>().sprite = selectedFontSize;
-      fontBtn.GetComponent<Image>().color = new Color(255f, 255f, 255f, 1f);
+      fontBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 1);
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
     }
 
     public void OnTracingLetterCompleted() {
       SceneManager.tracingGuide = 1;
-      HTTPRequestHandler.Instance.UploadLetter();
-      //StartCoroutine(CropLetterArea((bytes) => {
-      //  Debug.Log("finished cropping letter area");
-      //}));
+      StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
     }
 
-    private void RequestLetterRating(byte[] bytes) {
-      if (bytes != null) {
-        Debug.Log("inside RequestLetterRating");
-        LoadingBar loadingBar = PopUpsManager.Instance.LoadLoadingBar();
-        loadingBar.ShowLoadingBar(title: "Uploading In Progress"); // I2.Loc.LocalizationManager.GetTermTranslation("")
-        HTTPRequestHandler.Instance.UploadTracingLetter(bytes, LettersHelper.GetActiveLetterClass(), (success, ratingData) => {
-          OnRatingCompleted(success, ratingData);
-        });
-      }
+    private IEnumerator PrepareLetterForUpload(Action<bool, RatingData> onComplete) {
+      MusicController.USE.PlaySound(MusicController.USE.cameraSound);
+      SetTracingGuide(false);
+      yield return new WaitForEndOfFrame();
+      Debug.Log("uploading screenshot to server...");
+      Rect rect = ColoringBookManager.Instance.GUIRectWithObject(ColoringBookManager.Instance.gameObject);
+      Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
+      texture.ReadPixels(rect, 0, 0);
+      texture.Apply();
+      yield return 0;
+      byte[] bytes = texture.EncodeToPNG();
+      Destroy(texture);
+      SetTracingGuide(true);
+      HTTPRequestHandler.Instance.UploadTracingLetter(bytes, onComplete);
     }
 
     private void OnRatingCompleted(bool success, RatingData ratingData) {
@@ -139,26 +145,6 @@ namespace KendaGame.UI {
       }
     }
 
-    private IEnumerator CropLetterArea(Action<byte[]> callBack) {
-      tracingGuide.gameObject.SetActive(false);
-      yield return new WaitForEndOfFrame();
-      Rect rect = CameraUtils.GUIRectWithObject(ColoringBookManager.Instance.gameObject);
-      Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
-      texture.ReadPixels(rect, 0, 0);
-      texture.Apply();
-      //screenshotRef.texture = texture; // Just for Testing
-      byte[] bytes = texture.EncodeToPNG();
-      tracingGuide.gameObject.SetActive(true);
-      if (bytes != null) {
-        Debug.Log("RequestLetterRating");
-        RequestLetterRating(bytes);
-      } else {
-        Debug.LogError("null image bytes");
-        yield return null;
-      }
-      //callBack?.Invoke(bytes);
-      Destroy(texture);
-    }
   }
 }
 

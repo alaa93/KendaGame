@@ -11,13 +11,8 @@ namespace KendaGame.UI {
     [SerializeField]
     SkeletonGraphic stars3Animation;
     [SerializeField]
-    SkeletonGraphic stars2Animation;
-    [SerializeField]
-    SkeletonGraphic stars1Animation;
-    [SerializeField]
     UIButtonAnimator nextBtn, restartBtn;
     Spine.AnimationState animationState;
-    private string source;
 
     private void Awake() {
       nextBtn.AddClickListener(animate: true, callBackFn: () => {
@@ -44,34 +39,24 @@ namespace KendaGame.UI {
       if (activeLetter != null) {
         activeLetter.text = LettersHelper.GetActiveLetter();
       }
-      //PlayStarAnimation(LettersHelper.GetLetterRating(LettersHelper.GetActiveLetter()));
     }
 
     private void PlayStarAnimation(int rating) {
       switch (rating) {
         case 0:
         case -1:
-          //starsAnimation.startingAnimation = "0Star";
           animationState.SetAnimation(0, "0Star", false);
-          //skeletonAnimation.state.SetAnimation();
           break;
         case 1:
-          //starsAnimation.startingAnimation = "1Stars_lose";
           animationState.SetAnimation(0, "1Stars_lose", false);
           break;
         case 2:
-          //starsAnimation.startingAnimation = "2Stars";
           animationState.SetAnimation(0, "2Stars", false);
           break;
         case 3:
-          //starsAnimation.startingAnimation = "3Stars";
           animationState.SetAnimation(0, "3Stars", false);
           break;
       }
-    }
-
-    public void SetSource(string source) {
-      this.source = source;
     }
 
     public void SetAnimation(int rating) {
