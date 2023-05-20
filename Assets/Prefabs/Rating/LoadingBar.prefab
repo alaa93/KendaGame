@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 4109028286987377326}
   - component: {fileID: 4109028286987377325}
   - component: {fileID: 4109028286987377324}
-  - component: {fileID: 4109028286987377327}
+  - component: {fileID: 253962219712701913}
   m_Layer: 5
   m_Name: UploadingMsg
   m_TagString: Untagged
@@ -300,8 +300,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Rating In Progress...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
-  m_sharedMaterial: {fileID: -3731043624279594842, guid: db4c0bdf5f409934ab001cfd97bd1f3d,
+  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4109028286987377327
+--- !u!114 &253962219712701913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344445a89b4f74a0e9a0a766903df87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTerm: tracing.rating_in_progress
+  mTerm: '-'
   mTermSecondary: LocalizeFonts
   PrimaryTermModifier: 0
   SecondaryTermModifier: 0
@@ -497,5 +497,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847bd6fb093864121b289b63d4e18202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: {fileID: 4109028286987377324}
   fillImage: {fileID: 4109028286931089265}
+  localize: {fileID: 253962219712701913}

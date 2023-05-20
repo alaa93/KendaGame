@@ -14,6 +14,7 @@ namespace KendaGame.Navigation {
         return _instance;
       }
     }
+
     [SerializeField]
     LoadingController loadingController;
     [SerializeField]
@@ -28,6 +29,7 @@ namespace KendaGame.Navigation {
       SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer
     }
 
+    public Scenes ActiveScene { get => activeScene; set => activeScene = value; }
     private Scenes activeScene;
 
     private void Awake() {
@@ -66,7 +68,7 @@ namespace KendaGame.Navigation {
           if (navigationStack != null && !navigationStack.Contains(targetSceneName)) {
             navigationStack.Add(targetSceneName);
           }
-          activeScene = targetScene;
+          ActiveScene = targetScene;
           UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetSceneName);
         });
       } else {
@@ -118,13 +120,14 @@ namespace KendaGame.Navigation {
       return (Scenes)Enum.Parse(typeof(Scenes), loadedScene);
     }
 
-    public void OnMapLetterClicked(string mapLetter) {
+    public void OnMapLetterClicked(int mapLetterIndex) {
       if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
+        //TODO implement inside letter progress through playerPrefs class
         if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
-          Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+          Instance.MoveTo(Scenes.BubblesGame.ToString());
         } else {
           // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
-          Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+          Instance.MoveTo(Scenes.BubblesGame.ToString());
         }
       } else {
         Instance.MoveTo(Scenes.VideoPlayer.ToString(), true);
@@ -140,7 +143,7 @@ namespace KendaGame.Navigation {
       }
     }
 
-    public void OnTracingCompleted() {
+    public void OnNextScreenBtnClicked() {
       if (GetActiveScene() == Scenes.SharkGame) {
         Instance.MoveTo(Scenes.TracingAdvanced.ToString());
       } else if (GetActiveScene() == Scenes.ColoringEngine) {

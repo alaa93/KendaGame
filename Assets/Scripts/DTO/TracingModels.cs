@@ -6,6 +6,7 @@ namespace KendaGame.Models {
     public class RatingData {
       public float PredictedScore;
       public string PredictedClass;
+      public int StarRating;
     }
 
   }
