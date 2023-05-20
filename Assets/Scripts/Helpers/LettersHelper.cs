@@ -6,6 +6,7 @@ namespace KendaGame.Helpers {
     static string[] arabicAlphabet = new string[] {
     "أ", "ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"
 };
+    static string[] arabicAlphabetClass = new string[] { "alef", "ba", "ta", "tha", "jem", "7ah", "kha", "dal", "thal", "ra", "zen", "sen", "shen", "sad", "thad", "taah", "thaaah", "aen", "gen", "fa", "qaf", "kaf", "lam", "mem", "non", "haa", "wow", "yah" };
 
     public static void SetActiveLetter(string letter) {
       for (int x = 0; x < arabicAlphabet.Length; x++) {
@@ -27,6 +28,11 @@ namespace KendaGame.Helpers {
     public static string GetActiveLetter() {
       return arabicAlphabet[PlayerPrefs.GetInt("ActiveLetterIndex", 0)];
     }
+
+    public static string GetActiveLetterClass() {
+      return arabicAlphabetClass[GetActiveLetterIndex()];
+    }
+
 
     public static string GetLetterByIndex(int index) {
       return arabicAlphabet[index];

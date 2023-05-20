@@ -21,7 +21,6 @@ namespace KendaGame.Games {
     bool isDragging = false;
     GameObject targetbox;
     bool completed;
-    int shouldJump = -1;
     bool freeze;
 
     private void Awake() {

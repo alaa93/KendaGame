@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using KendaGame.Helpers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace KendaGame.Navigation {
@@ -17,15 +18,17 @@ namespace KendaGame.Navigation {
     LoadingController loadingController;
     [SerializeField]
     UIController uiController;
-    public static int tracingGuide = 0;
+
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
     private bool openManually;
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, GameScene, SharkGame, TracingLetter, BoxesGame
+      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer
     }
+
+    private Scenes activeScene;
 
     private void Awake() {
       DontDestroyOnLoad(gameObject);
@@ -57,12 +60,13 @@ namespace KendaGame.Navigation {
       this.openManually = openManually;
       Debug.Log("MoveTo " + targetSceneName);
       Scenes targetScene = (Scenes)Enum.Parse(typeof(Scenes), targetSceneName);
-      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != targetSceneName) {
+      if (GetActiveScene().ToString() != targetSceneName) {
         loadingController.CloseClouds((animated) => {
           UpdateScreenOrientation(targetScene);
           if (navigationStack != null && !navigationStack.Contains(targetSceneName)) {
             navigationStack.Add(targetSceneName);
           }
+          activeScene = targetScene;
           UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetSceneName);
         });
       } else {
@@ -107,6 +111,51 @@ namespace KendaGame.Navigation {
       } else {
         uiController.SetBackBtnState(true);
       }
+    }
+
+    public Scenes GetActiveScene() {
+      string loadedScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.ToString();
+      return (Scenes)Enum.Parse(typeof(Scenes), loadedScene);
+    }
+
+    public void OnMapLetterClicked(string mapLetter) {
+      if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
+        if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+          Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+        } else {
+          // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
+          Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+        }
+      } else {
+        Instance.MoveTo(Scenes.VideoPlayer.ToString(), true);
+      }
+    }
+
+    public void OnVideoCompletedMoveTo() {
+      if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+      } else {
+        // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
+        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+      }
+    }
+
+    public void OnTracingCompleted() {
+      if (GetActiveScene() == Scenes.SharkGame) {
+        Instance.MoveTo(Scenes.TracingAdvanced.ToString());
+      } else if (GetActiveScene() == Scenes.ColoringEngine) {
+        Instance.MoveTo(Scenes.SharkGame.ToString());
+      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
+        Instance.MoveTo(Scenes.BoxesGame.ToString());
+      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
+        Instance.MoveTo(Scenes.HomeScreen.ToString());
+      } else if (GetActiveScene() == Scenes.BoxesGame) {
+        Instance.MoveTo(Scenes.TracingAdvanced.ToString());
+      }
+    }
+
+    public void ReloadScene() {
+      UnityEngine.SceneManagement.SceneManager.LoadScene(GetActiveScene().ToString());
     }
 
 #if UNITY_EDITOR

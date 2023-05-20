@@ -18,15 +18,27 @@ EditorBuildSettings:
     path: Assets/_Scenes/Map.unity
     guid: 9bcb9f20abd826947be61c8ab127f34d
   - enabled: 1
-    path: Assets/_Scenes/GameScene.unity
+    path: Assets/_Scenes/VideoPlayer.unity
+    guid: 6ee7a9225cf4b489897e56d54c261be0
+  - enabled: 1
+    path: Assets/_Scenes/BubblesGame.unity
+    guid: 86b32e93d96a14e1cbdb6adbe2cb1af5
+  - enabled: 1
+    path: Assets/_Scenes/ColoringEngine.unity
     guid: fdf794761fdb849bd9c3e426eb7803f9
+  - enabled: 1
+    path: Assets/ExternalPackages/ColoringBook_MagicPen/_Scenes/PaintScene.unity
+    guid: 81bb2ccd1d5a40799d6506092f7aac7d
   - enabled: 1
     path: Assets/_Scenes/SharkGame.unity
     guid: 6f9c199525e8f4be6b95e286760b9ecd
   - enabled: 1
-    path: Assets/_Scenes/TracingLetter.unity
-    guid: 39029981aedf3bf48af7081d59041259
+    path: Assets/_Scenes/TracingBasic.unity
+    guid: 276140d6386c2481c897a4d8ae42944b
   - enabled: 1
     path: Assets/_Scenes/BoxesGame.unity
     guid: 98c31cef1d48948ada13426a221c497f
+  - enabled: 1
+    path: Assets/_Scenes/TracingAdvanced.unity
+    guid: 7dc3bc33683074e04ab6011c3b1844a2
   m_configObjects: {}

@@ -9,8 +9,12 @@ namespace KendaGame.Navigation {
     public GameObject RatingLetter;
     public GameObject RatingLevel;
     public GameObject TutorialObject;
+    public LoadingBar ProgressBar;
+
     private TutorialController tutorialController;
     private GameObject letterRatingObj,gameRatingObj;
+    private LoadingBar loadingBar;
+
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
       get {
@@ -38,12 +42,28 @@ namespace KendaGame.Navigation {
     public TutorialController LoadTutorial(Transform parentObj) {
       if (tutorialController == null) {
         GameObject tutorialObject = Instantiate(TutorialObject, parentObj, false);
-        TutorialController tutorial = tutorialObject.GetComponent<TutorialController>();
-        if (tutorial != null) {
-          return tutorial;
+        tutorialController = tutorialObject.GetComponent<TutorialController>();
+        if (tutorialController != null) {
+          return tutorialController;
+        } else {
+          return null;
         }
       }
-      return null;
+      return tutorialController;
     }
+
+    public LoadingBar LoadLoadingBar(Transform parentObj = null) {
+      if (loadingBar == null) {
+        GameObject loadingBarObj = Instantiate(ProgressBar.gameObject, parentObj == null ? Parent : parentObj, false);
+        loadingBar = loadingBarObj.GetComponent<LoadingBar>();
+        if (loadingBar != null) {
+          return loadingBar;
+        } else {
+          return null;
+        }
+      }
+      return loadingBar;
+    }
+
   }
 }
