@@ -1264,9 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeLetter: {fileID: 8962936491131426408}
-  stars3Animation: {fileID: 8962936491076769269}
-  stars2Animation: {fileID: 0}
-  stars1Animation: {fileID: 0}
+  starsAnimation: {fileID: 8962936491076769269}
   nextBtn: {fileID: 504903028181099497}
   restartBtn: {fileID: 5770193529041298993}
 --- !u!1 &8962936491694686271

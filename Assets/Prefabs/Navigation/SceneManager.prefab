@@ -1466,6 +1466,7 @@ MonoBehaviour:
     clickableSfx:
     - {fileID: 8300000, guid: 7ef14f959ae3846e5aa6fb11bac878e5, type: 3}
     - {fileID: 8300000, guid: e5b5721c75a4f43068ec3fd0837a0609, type: 3}
+    - {fileID: 8300000, guid: 4788632b345e6a0488dc7a9377ed638a, type: 3}
     CorrectSfx:
     - {fileID: 8300000, guid: 7ef14f959ae3846e5aa6fb11bac878e5, type: 3}
     - {fileID: 8300000, guid: 3134a95704bae4ac68b876891d1e42f2, type: 3}

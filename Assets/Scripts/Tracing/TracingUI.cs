@@ -20,6 +20,8 @@ namespace KendaGame.UI {
     UIButtonAnimator[] fontSizeBtns;
     [SerializeField]
     Image tracingGuide;
+    [SerializeField]
+    AudioClip cameraShutter;
 
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
@@ -96,12 +98,11 @@ namespace KendaGame.UI {
     }
 
     public void OnTracingLetterCompleted() {
-      SceneManager.tracingGuide = 1;
       StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
     }
 
     private IEnumerator PrepareLetterForUpload(Action<bool, RatingData> onComplete) {
-      MusicController.USE.PlaySound(MusicController.USE.cameraSound);
+      AudioController.Instance.PlaySfxAtPoint(cameraShutter);
       SetTracingGuide(false);
       yield return new WaitForEndOfFrame();
       Debug.Log("uploading screenshot to server...");
@@ -138,156 +139,11 @@ namespace KendaGame.UI {
     }
 
     private void SetRating(float rating, LetterRatingPopUp ratingPopUp) {
-      if (rating < 0.50f) {
-        ratingPopUp.SetAnimation(1);
+      if (rating < ratingPopUp.OneStarRating) {
+        ratingPopUp.PlayStarsAnimation(1);
       } else {
-        ratingPopUp.SetAnimation(rating >= 0.80f ? 3 : 2);
+        ratingPopUp.PlayStarsAnimation(rating >= ratingPopUp.FullStarsRating ? 3 : 2);
       }
     }
-
   }
 }
-
-//using System.Collections;
-//using KendaGame.Navigation;
-//using UnityEngine;
-//using UnityEngine.Networking;
-//using UnityEngine.UI;
-
-//namespace KendaGame.UI {
-//  public class TracingUI : MonoBehaviour {
-//    [SerializeField]
-//    ColoringPen[] penBtns;
-//    [SerializeField]
-//    AudioSource musicLoop;
-
-//    public GameObject tracingGuide;
-//    public RawImage screenshotRef;
-//    public ColoringBookManager coloringBookManager;
-//    public Image fillLoadingBar;
-//    public GameObject loadingBar;
-
-//    private static TracingUI _instance;
-//    public static TracingUI Instance {
-//      get {
-//        if (_instance == null) {
-//          _instance = FindObjectOfType<TracingUI>();
-//        }
-//        return _instance;
-//      }
-//    }
-
-
-//    private void OnEnable() {
-//      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(SceneManager.Scenes.TracingLetter.ToString())) {
-//        SceneManager.Instance.OpenCloudsManually();
-//        PlayerPrefs.SetInt("ColoringList", 0);
-//        PlayerPrefs.Save();
-
-//        ColoringBookManager.maskTexIndex = -1;
-//        ColoringBookManager.ID = "ColoringList0";
-
-//        if (SceneManager.tracingGuide > 0) {
-//          tracingGuide.SetActive(false);
-//        }
-//        return;
-//      }
-//      StartColoring();
-//    }
-
-//    public void TracingCompleted() {
-//      // show rating screen, close clouds then do something
-//      PlayerPrefs.SetInt("ColoringCompleted", 1);
-//      PopUpsManager.Instance.LoadRatingLetter();
-//    }
-
-//    private void StartColoring() {
-//      musicLoop.Play();
-//      penBtns = FindObjectsOfType<ColoringPen>();
-//    }
-
-//    public void OnPenClicked(ColoringPen pen) {
-//      for (int x = 0; x < penBtns.Length; x++) {
-//        int temp = x;
-//        if (penBtns[temp] != pen) {
-//          penBtns[temp].SelectionChanged(true);
-//        }
-//      }
-//      pen.SelectionChanged();
-//    }
-
-
-//    public void OnTracingLetterCompleted() {
-//      StartCoroutine(Upload());
-//      SceneManager.tracingGuide = 1;
-//    }
-
-//    public IEnumerator Upload() {
-
-//      if (tracingGuide != null) {
-//        tracingGuide.SetActive(false);
-//      }
-//      MusicController.USE.PlaySound(MusicController.USE.cameraSound);
-//      yield return new WaitForEndOfFrame();
-//      Debug.Log("uploading screenshot to server...");
-//      Rect rect = coloringBookManager.GUIRectWithObject(coloringBookManager.gameObject);
-//      Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
-//      texture.ReadPixels(rect, 0, 0);
-//      texture.Apply();
-//      yield return 0;
-//      byte[] bytes = texture.EncodeToPNG();
-//      Destroy(texture);
-//      if (tracingGuide != null && SceneManager.tracingGuide == 0) {
-//        tracingGuide.SetActive(true);
-//      }
-//      //string base64Image = $"data:image/png;base64,{System.Convert.ToBase64String(bytes)}"
-//      string _headerValue = "Token 8b38c163cdd104d13ca887f5c17fd4c3324c4a13";
-//      WWWForm formrequest = new WWWForm();
-//      formrequest.AddBinaryData("Imageurl", bytes, "test.jpeg", "image/jpeg");
-//      formrequest.AddField("RequiredClass", "alef");
-//      UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", formrequest);
-//      www.SetRequestHeader("Authorization", _headerValue);
-//      StartCoroutine(UploadProgressBar(www));
-//      yield return www.SendWebRequest();
-//      if (www.downloadHandler != null && www.downloadHandler.error != null)
-//        Debug.Log(www.downloadHandler.error);
-//      if (www.downloadHandler != null && www.downloadHandler.text != null) {
-//        Debug.Log(www.downloadHandler.text);
-//        LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.LoadRatingLetterInstance();
-//        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
-//          letterRatingPopUp.SetAnimation(1);
-//        } else {
-//          RatingData ratingData = JsonUtility.FromJson<RatingData>(www.downloadHandler.text);
-//          if (ratingData != null && ratingData.PredictedClass == "alef") {
-//            Debug.Log("Rating Data letter " + ratingData.PredictedClass);
-//            Debug.Log("Rating Data letter SCORE " + ratingData.PredictedScore);
-//            if (ratingData.PredictedScore < 0.50f) {
-//              letterRatingPopUp.SetAnimation(1);
-//            } else {
-//              letterRatingPopUp.SetAnimation(ratingData.PredictedScore >= 0.85f ? 3 : 2);
-//            }
-//          } else {
-//            letterRatingPopUp.SetAnimation(1);
-//          }
-//        }
-//      }
-//    }
-
-//    IEnumerator UploadProgressBar(UnityWebRequest request) {
-//      loadingBar.SetActive(true);
-//      while (!request.isDone) {
-//        fillLoadingBar.fillAmount += 0.1f;
-//        yield return new WaitForSeconds(1f);
-//      }
-//      loadingBar.SetActive(false);
-//    }
-//  }
-
-
-//  //{"PredictedScore":"0.81","PredictedClass":"alef"}
-//  [System.Serializable]
-//  public class RatingData {
-//    public float PredictedScore;
-//    public string PredictedClass;
-//  }
-//}

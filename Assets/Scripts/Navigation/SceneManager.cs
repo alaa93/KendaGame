@@ -18,7 +18,7 @@ namespace KendaGame.Navigation {
     LoadingController loadingController;
     [SerializeField]
     UIController uiController;
-    public static int tracingGuide = 0;
+
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
@@ -60,7 +60,7 @@ namespace KendaGame.Navigation {
       this.openManually = openManually;
       Debug.Log("MoveTo " + targetSceneName);
       Scenes targetScene = (Scenes)Enum.Parse(typeof(Scenes), targetSceneName);
-      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != targetSceneName) {
+      if (GetActiveScene().ToString() != targetSceneName) {
         loadingController.CloseClouds((animated) => {
           UpdateScreenOrientation(targetScene);
           if (navigationStack != null && !navigationStack.Contains(targetSceneName)) {
@@ -138,6 +138,24 @@ namespace KendaGame.Navigation {
         // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
         Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
       }
+    }
+
+    public void OnTracingCompleted() {
+      if (GetActiveScene() == Scenes.SharkGame) {
+        Instance.MoveTo(Scenes.TracingAdvanced.ToString());
+      } else if (GetActiveScene() == Scenes.ColoringEngine) {
+        Instance.MoveTo(Scenes.SharkGame.ToString());
+      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
+        Instance.MoveTo(Scenes.BoxesGame.ToString());
+      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
+        Instance.MoveTo(Scenes.HomeScreen.ToString());
+      } else if (GetActiveScene() == Scenes.BoxesGame) {
+        Instance.MoveTo(Scenes.TracingAdvanced.ToString());
+      }
+    }
+
+    public void ReloadScene() {
+      UnityEngine.SceneManagement.SceneManager.LoadScene(GetActiveScene().ToString());
     }
 
 #if UNITY_EDITOR

@@ -9,28 +9,19 @@ namespace KendaGame.UI {
     [SerializeField]
     TextMeshProUGUI activeLetter;
     [SerializeField]
-    SkeletonGraphic stars3Animation;
+    SkeletonGraphic starsAnimation;
     [SerializeField]
     UIButtonAnimator nextBtn, restartBtn;
-    Spine.AnimationState animationState;
+    public readonly float FullStarsRating = 0.8f;
+    public readonly float OneStarRating = 0.5f;
 
     private void Awake() {
       nextBtn.AddClickListener(animate: true, callBackFn: () => {
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.SharkGame.ToString()) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingAdvanced.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.ColoringEngine.ToString()) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingAdvanced.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.BoxesGame.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.TracingAdvanced.ToString() && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
-        } else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneManager.Scenes.BoxesGame.ToString()) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.TracingAdvanced.ToString());
-        }
+        SceneManager.Instance.OnTracingCompleted();
         Destroy(this.gameObject);
       });
       restartBtn.AddClickListener(animate: true, callBackFn: () => {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        SceneManager.Instance.ReloadScene();
         Destroy(this.gameObject);
       });
     }
@@ -41,34 +32,34 @@ namespace KendaGame.UI {
       }
     }
 
-    private void PlayStarAnimation(int rating) {
+    public void PlayStarsAnimation(int rating) {
+      starsAnimation.gameObject.SetActive(false);
       switch (rating) {
         case 0:
         case -1:
-          animationState.SetAnimation(0, "0Star", false);
-          break;
         case 1:
-          animationState.SetAnimation(0, "1Stars_lose", false);
+          starsAnimation.AnimationState.SetAnimation(0, "1Stars_lose", false);
           break;
         case 2:
-          animationState.SetAnimation(0, "2Stars", false);
+          starsAnimation.AnimationState.SetAnimation(0, "2Stars", false);
           break;
         case 3:
-          animationState.SetAnimation(0, "3Stars", false);
+          starsAnimation.AnimationState.SetAnimation(0, "3Stars", false);
           break;
       }
+      starsAnimation.gameObject.SetActive(true);
     }
 
     public void SetAnimation(int rating) {
-      stars3Animation.gameObject.SetActive(false);
+      starsAnimation.gameObject.SetActive(false);
       if (rating == 3) {
-        stars3Animation.AnimationState.SetAnimation(0, "3Stars", false);
+        starsAnimation.AnimationState.SetAnimation(0, "3Stars", false);
       } else if (rating == 2) {
-        stars3Animation.AnimationState.SetAnimation(0, "2Stars", false);
+        starsAnimation.AnimationState.SetAnimation(0, "2Stars", false);
       } else {
-        stars3Animation.AnimationState.SetAnimation(0, "1Stars_lose", false);
+        starsAnimation.AnimationState.SetAnimation(0, "1Stars_lose", false);
       }
-      stars3Animation.gameObject.SetActive(true);
+      starsAnimation.gameObject.SetActive(true);
     }
   }
 }
