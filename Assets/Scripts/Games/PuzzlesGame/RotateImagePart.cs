@@ -42,11 +42,9 @@ namespace KendaGame.Games {
         targetRot.z += rotAmount;
         AudioController.Instance.PlaySfxAtPoint(RotateImageGameController.Instance.GetRotateSfx());
         transform.DORotate(targetRot, 0.2f).SetEase(Ease.Linear).OnComplete(() => {
-          Debug.Log("Mathf.Abs(targetRot.z) " + Mathf.Abs(targetRot.z));
           if (Mathf.Abs(targetRot.z) <= 10f || (Mathf.Abs(targetRot.z) >= 350f && Mathf.Abs(targetRot.z) < 380f)) {
             targetRot.z = 0f;
             transform.DORotate(targetRot, 0.2f);
-            btn.interactable = false;
             RotateImageGameController.Instance.OnCorrect();
           } else {
             canRotate = true;

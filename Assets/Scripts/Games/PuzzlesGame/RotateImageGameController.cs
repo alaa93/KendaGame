@@ -25,7 +25,7 @@ namespace KendaGame.Games {
     private static RotateImageGameController _instance;
 
     private void Start() {
-      Invoke(nameof(InitLevel), 0.3f);
+      Invoke(nameof(InitLevel), 0.6f);
     }
 
     private void InitLevel() {
