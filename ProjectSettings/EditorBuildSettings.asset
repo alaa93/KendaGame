@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/TracingAdvanced.unity
     guid: 7dc3bc33683074e04ab6011c3b1844a2
+  - enabled: 1
+    path: Assets/_Scenes/PuzzleGame.unity
+    guid: 74d564ccc512d41998ab41111396ea7c
   m_configObjects: {}
