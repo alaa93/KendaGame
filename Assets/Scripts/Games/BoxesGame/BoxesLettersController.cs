@@ -103,7 +103,7 @@ namespace KendaGame.Games {
       AudioClip sfx = AudioController.Instance.commonSfx.GetEndingSfx();
       AudioController.Instance.PlaySfxAtPoint(sfx);
       yield return new WaitForSeconds(sfx.length);
-      PopUpsManager.Instance.LoadRatingLevel();
+      PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
     }
 
     private void ShowGameParts() {

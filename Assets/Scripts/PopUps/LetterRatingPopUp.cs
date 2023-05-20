@@ -12,17 +12,17 @@ namespace KendaGame.UI {
     SkeletonGraphic starsAnimation;
     [SerializeField]
     UIButtonAnimator nextBtn, restartBtn;
-    public readonly float FullStarsRating = 0.8f;
-    public readonly float OneStarRating = 0.5f;
+    public static float FullStarsRating = 0.8f;
+    public static float OneStarRating = 0.5f;
 
     private void Awake() {
       nextBtn.AddClickListener(animate: true, callBackFn: () => {
-        SceneManager.Instance.OnTracingCompleted();
-        Destroy(this.gameObject);
+        SceneManager.Instance.OnNextScreenBtnClicked();
+        gameObject.SetActive(false);
       });
       restartBtn.AddClickListener(animate: true, callBackFn: () => {
         SceneManager.Instance.ReloadScene();
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
       });
     }
 
@@ -50,16 +50,5 @@ namespace KendaGame.UI {
       starsAnimation.gameObject.SetActive(true);
     }
 
-    public void SetAnimation(int rating) {
-      starsAnimation.gameObject.SetActive(false);
-      if (rating == 3) {
-        starsAnimation.AnimationState.SetAnimation(0, "3Stars", false);
-      } else if (rating == 2) {
-        starsAnimation.AnimationState.SetAnimation(0, "2Stars", false);
-      } else {
-        starsAnimation.AnimationState.SetAnimation(0, "1Stars_lose", false);
-      }
-      starsAnimation.gameObject.SetActive(true);
-    }
   }
 }

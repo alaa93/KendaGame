@@ -22,6 +22,7 @@ namespace KendaGame.Helpers {
         return _instance;
       }
     }
+    LoadingBar loadingBar;
 
     public void UploadTracingLetter(byte[] bytes, Action<bool, RatingData> statusCallback) {
       StartCoroutine(UploadTracingLetterProcess(bytes, statusCallback));
@@ -33,8 +34,11 @@ namespace KendaGame.Helpers {
       formrequest.AddField("RequiredClass", LettersHelper.GetActiveLetterClass());
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + TRACING_MODULE, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
-      StartCoroutine(UploadProgressBar(www, I2.Loc.LocalizationManager.GetTermTranslation("tracing.rating_in_progress")));
+      StartCoroutine(UploadProgressBar(www, "tracing.rating_in_progress"));
       yield return www.SendWebRequest();
+      if(loadingBar != null) {
+        loadingBar.HideLoadingBar();
+      }
       if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
         Debug.Log("Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null);
@@ -52,7 +56,7 @@ namespace KendaGame.Helpers {
     }
 
     private IEnumerator UploadProgressBar(UnityWebRequest request, string loadingTitle) {
-      LoadingBar loadingBar = PopUpsManager.Instance.LoadLoadingBar();
+      loadingBar = PopUpsManager.Instance.LoadLoadingBar();
       loadingBar.ShowLoadingBar(loadingTitle);
       while (!request.isDone) {
         loadingBar.IncreaseLoadingBar(0.1f);

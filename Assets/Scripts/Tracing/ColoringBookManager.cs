@@ -35,7 +35,7 @@ public class ColoringBookManager : MonoBehaviour {
 
   //	*** Default settings ***
   public List<Color32> paintColors;
-  private Color32 paintColor = new Color32(255, 0, 0, 255);
+  public Color32 paintColor = new Color32(255, 0, 0, 255);
   private int brushSize = 0; // default brush size
   public List<int> brushesSize;
   private DrawMode drawMode = DrawMode.Pencil;

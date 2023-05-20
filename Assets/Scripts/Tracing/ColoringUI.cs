@@ -14,6 +14,10 @@ namespace KendaGame.UI {
     Sprite selectedFontSize, noneSelectedFontSize;
     [SerializeField]
     UIButtonAnimator[] fontSizeBtns;
+    [SerializeField]
+    UIButtonAnimator[] fontSizeColors;
+    [SerializeField]
+    UIButtonAnimator[] fontSizeBtnsOutline;
 
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
@@ -56,8 +60,7 @@ namespace KendaGame.UI {
     }
 
     public void OnColoringCompleted() {
-      // show rating screen, close clouds then do something
-      PopUpsManager.Instance.LoadRatingLetter();
+      PopUpsManager.Instance.GetLetterRatingPopUp().PlayStarsAnimation(3);
     }
 
     private void StartColoring() {
@@ -73,14 +76,19 @@ namespace KendaGame.UI {
         }
       }
       pen.SelectionChanged();
+      for (int x = 0; x < fontSizeColors.Length; x++) {
+        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      }
     }
 
-    public void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
+    private void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
-        fontSizeBtns[x].GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.6f);
+        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+        fontSizeBtnsOutline[x].gameObject.SetActive(false);
+        if (fontSizeBtns[x] == fontBtn) {
+          fontSizeBtnsOutline[x].gameObject.SetActive(true);
+        }
       }
-      //fontBtn.GetComponent<Image>().sprite = selectedFontSize;
-      fontBtn.GetComponent<Image>().color = new Color(255f, 255f, 255f, 1f);
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
     }
 

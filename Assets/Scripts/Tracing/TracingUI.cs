@@ -3,6 +3,7 @@ using System.Collections;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using ScorpionSteps.Utils;
+using Spine.Unity;
 using UnityEngine;
 using UnityEngine.UI;
 using static KendaGame.Models.TracingModels;
@@ -13,16 +14,29 @@ namespace KendaGame.UI {
     [SerializeField]
     AudioSource musicLoop;
     [SerializeField]
-    Material coloringMaterial;
-    [SerializeField]
-    Sprite selectedFontSize, noneSelectedFontSize;
-    [SerializeField]
     UIButtonAnimator[] fontSizeBtns;
+    [SerializeField]
+    UIButtonAnimator[] fontSizeColors;
+    [SerializeField]
+    UIButtonAnimator[] fontSizeBtnsOutline;
     [SerializeField]
     Image tracingGuide;
     [SerializeField]
+    Sprite[] tracingGuides;
+    [SerializeField]
     AudioClip cameraShutter;
 
+    [Header("Advanced Tracing")]
+    [SerializeField]
+    GameObject ratingPopUp;
+    [SerializeField]
+    GameObject [] tracingBoard;
+    [SerializeField]
+    Image letterGuide, playerLetter;
+    [SerializeField]
+    GameObject[] partsToHide;
+    [SerializeField]
+    SkeletonGraphic skeletonGraphic;
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
 
@@ -43,15 +57,20 @@ namespace KendaGame.UI {
       StartTracing();
     }
 
-    public void SetTracingGuide(bool state) {
+    private void SetTracingGuide(bool state) {
       if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingBasic) {
         tracingGuide.gameObject.SetActive(state);
       }
     }
 
+    private void SetPartsOnScreenShot(bool state) {
+      for (int x = 0; x < partsToHide.Length; x++) {
+        partsToHide[x].SetActive(state);
+      }
+    }
+
     private void LoadTracingGuide() {
-      //TODO load tracing guide based on active letter
-      //tracingGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
+      tracingGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
     }
 
     private void InitFontSizeBtns() {
@@ -87,23 +106,31 @@ namespace KendaGame.UI {
         }
       }
       pen.SelectionChanged();
+      for (int x = 0; x < fontSizeColors.Length; x++) {
+        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      }
     }
 
     public void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
-        fontSizeBtns[x].GetComponent<Image>().color = new Color(255f, 255f, 255f, 0.6f);
+        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+        fontSizeBtnsOutline[x].gameObject.SetActive(false);
+        if (fontSizeBtns[x] == fontBtn) {
+          fontSizeBtnsOutline[x].gameObject.SetActive(true);
+        }
       }
-      fontBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 1);
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
     }
 
     public void OnTracingLetterCompleted() {
+      AudioUtils.FadeOutAudio(musicLoop, 0.4f);
       StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
     }
 
     private IEnumerator PrepareLetterForUpload(Action<bool, RatingData> onComplete) {
       AudioController.Instance.PlaySfxAtPoint(cameraShutter);
       SetTracingGuide(false);
+      SetPartsOnScreenShot(false);
       yield return new WaitForEndOfFrame();
       Debug.Log("uploading screenshot to server...");
       Rect rect = ColoringBookManager.Instance.GUIRectWithObject(ColoringBookManager.Instance.gameObject);
@@ -112,38 +139,60 @@ namespace KendaGame.UI {
       texture.Apply();
       yield return 0;
       byte[] bytes = texture.EncodeToPNG();
-      Destroy(texture);
+      screenshotRef.texture = texture;
       SetTracingGuide(true);
+      SetPartsOnScreenShot(true);
       HTTPRequestHandler.Instance.UploadTracingLetter(bytes, onComplete);
+      SetPlayerTracingLetter(texture);
     }
 
+    private void SetPlayerTracingLetter(Texture2D texture2D) {
+      if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
+        playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+      }
+    }
     private void OnRatingCompleted(bool success, RatingData ratingData) {
-      LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.LoadRatingLetterInstance();
-      if (success) {
+      if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
+        ShowAdvancedTracingRating(success, ratingData);
+      } else {
+        ShowNormalRating(success, ratingData);
+      }
+    }
+    private void ShowAdvancedTracingRating(bool success, RatingData ratingData) {
+
+      ratingPopUp.SetActive(true);
+      for (int x = 0; x < tracingBoard.Length; x++) {
+        tracingBoard[x].SetActive(false);
+      }
+      string animation = "1Stars_lose";
+      if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
+        letterGuide.sprite = tracingGuide.sprite;
+        playerLetter.sprite = Sprite.Create((Texture2D)screenshotRef.texture, new Rect(0, 0, screenshotRef.texture.width, screenshotRef.texture.height), Vector2.zero, 100);
+        playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
+        if (ratingData.StarRating > 1) {
+          animation = $"{ratingData.StarRating}Stars";
+        }
+      }
+      skeletonGraphic.AnimationState.SetAnimation(0, animation, false);
+    }
+    private void ShowNormalRating(bool success, RatingData ratingData) {
+      LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.GetLetterRatingPopUp();
+      if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
         if (ratingData != null) {
-          Debug.Log("ratingData.PredictedClass " + ratingData.PredictedClass);
-          Debug.Log("ratingData.PredictedClass " + ratingData.PredictedScore);
-          if (letterRatingPopUp != null) {
-            SetRating(ratingData.PredictedScore, letterRatingPopUp);
-          }
-        } else {
-          if (letterRatingPopUp != null) {
-            SetRating(0f, letterRatingPopUp);
-          }
+          letterRatingPopUp.PlayStarsAnimation(ratingData.StarRating);
         }
       } else {
-        if (letterRatingPopUp != null) {
-          SetRating(0f, letterRatingPopUp);
-        }
+        letterRatingPopUp.PlayStarsAnimation(1);
       }
     }
 
-    private void SetRating(float rating, LetterRatingPopUp ratingPopUp) {
-      if (rating < ratingPopUp.OneStarRating) {
-        ratingPopUp.PlayStarsAnimation(1);
-      } else {
-        ratingPopUp.PlayStarsAnimation(rating >= ratingPopUp.FullStarsRating ? 3 : 2);
-      }
+    public void OnNextBtnClicked() {
+      SceneManager.Instance.OnNextScreenBtnClicked();
     }
+
+    public void OnRestartClicked() {
+      SceneManager.Instance.ReloadScene();
+    }
+
   }
 }

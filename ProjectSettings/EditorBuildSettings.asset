@@ -27,9 +27,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/ColoringEngine.unity
     guid: fdf794761fdb849bd9c3e426eb7803f9
   - enabled: 1
-    path: Assets/ExternalPackages/ColoringBook_MagicPen/_Scenes/PaintScene.unity
-    guid: 81bb2ccd1d5a40799d6506092f7aac7d
-  - enabled: 1
     path: Assets/_Scenes/SharkGame.unity
     guid: 6f9c199525e8f4be6b95e286760b9ecd
   - enabled: 1

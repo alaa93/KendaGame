@@ -31,10 +31,6 @@ namespace KendaGame.UI {
       }
       transform.DOLocalMoveY(selected ? -330.74f : -427.74f, 0.2f).SetEase(Ease.Linear);
       ColoringBookManager.Instance.OnChangeColorButtonClicked(selected ? colorId : 0);
-
-      //if(colorId == 9) { // eraser make brush size larger for easier cleaning
-      //  ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(selected ? 2 : 1);
-      //}
     }
   }
 }
