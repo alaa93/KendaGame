@@ -1,26 +1,44 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
+using ScorpionSteps.Utils;
+using Spine.Unity;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.Video;
+using UnityEngine.UI;
+using static KendaGame.Models.TracingModels;
 
 namespace KendaGame.UI {
   public class TracingUI : MonoBehaviour {
-    [SerializeField]
-    ColoringPen[] penBtns;
-    [SerializeField]
-    GameObject Game1;
-    [SerializeField]
-    GameObject VideoRenderer;
-    [SerializeField]
-    VideoPlayer videoPlayer;
-    [SerializeField]
-    GameObject [] ColoringStuff;
+
     [SerializeField]
     AudioSource musicLoop;
+    [SerializeField]
+    UIButtonAnimator[] fontSizeBtns;
+    [SerializeField]
+    UIButtonAnimator[] fontSizeColors;
+    [SerializeField]
+    UIButtonAnimator[] fontSizeBtnsOutline;
+    [SerializeField]
+    Image tracingGuide;
+    [SerializeField]
+    Sprite[] tracingGuides;
+    [SerializeField]
+    AudioClip cameraShutter;
+
+    [Header("Advanced Tracing")]
+    [SerializeField]
+    GameObject ratingPopUp;
+    [SerializeField]
+    GameObject [] tracingBoard;
+    [SerializeField]
+    Image letterGuide, playerLetter;
+    [SerializeField]
+    GameObject[] partsToHide;
+    [SerializeField]
+    SkeletonGraphic skeletonGraphic;
+    private ColoringPen[] penBtns;
+    public RawImage screenshotRef;
 
     private static TracingUI _instance;
     public static TracingUI Instance {
@@ -32,162 +50,149 @@ namespace KendaGame.UI {
       }
     }
 
-
-        private void OnEnable()
-        {
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(SceneManager.Scenes.TracingLetter.ToString()))
-            {
-                SceneManager.Instance.OpenCloudsManually();
-                return;
-            }
-
-            if (PlayerPrefs.GetInt("PlayIntro1", -1) == -1)
-            {
-                PlayerPrefs.SetInt("PlayIntro1", 1);
-                for (int x = 0; x < ColoringStuff.Length; x++)
-                {
-                    ColoringStuff[x].SetActive(false);
-                }
-                VideoRenderer.SetActive(true);
-                videoPlayer.Prepare();
-                videoPlayer.prepareCompleted += VideoPlayer_prepareCompleted;
-            }
-            else
-            {
-                SceneManager.Instance.OpenCloudsManually();
-                VideoRenderer.SetActive(false);
-                videoPlayer.Stop();
-                if (PlayerPrefs.GetInt("Game1Completed", 0) == 0)
-                {
-                    SetGame1(true);
-                }
-                else
-                {
-                    // start game 2 or 3
-                    if (PlayerPrefs.GetInt("ColoringCompleted", 0) == 0)
-                    {
-                        StartColoring();
-                    }
-                    else
-                    {
-                        SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
-                    }
-                }
-            }
-           
-        }
-
-        private void VideoPlayer_prepareCompleted(VideoPlayer source)
-        {
-            SceneManager.Instance.SetBackBtnState(false);
-            SceneManager.Instance.OpenCloudsManually(animated : true);
-            videoPlayer.Play();
-            videoPlayer.loopPointReached += VideoCompletedPlaying;
-        }
-
-        private void VideoCompletedPlaying(VideoPlayer source)
-        {
-            SceneManager.Instance.CloseCloudsManually(animated: true,onComplete:(state)=> {
-                VideoRenderer.SetActive(false);
-                videoPlayer.Stop();
-                SetGame1(true);
-                SceneManager.Instance.SetBackBtnState(true);
-                SceneManager.Instance.OpenCloudsManually(animated: true);
-            });
-        }
-
-        private IEnumerator VideoPlaying() {
-      yield return new WaitForSeconds(36.5f);
-     
+    private void Awake() {
+      SceneManager.Instance.OpenCloudsManually();
+      InitFontSizeBtns();
+      PrepareBoard();
+      StartTracing();
     }
 
-    private void SetGame1(bool state)
-    {
-        Game1.SetActive(state);
-    }
-
-    public void OnGameCompleted(int gameId)
-    {
-        Debug.Log("game "+gameId + "completed");
-        if(gameId == 1)
-        {
-            PlayerPrefs.SetInt("Game1Completed", 1);
-            SceneManager.Instance.CloseCloudsManually(onComplete:(state)=> {
-                SetGame1(false);
-                StartColoring();
-                SceneManager.Instance.OpenCloudsManually();
-            });
-        }
-    }
-
-        public void TracingCompleted()
-        {
-            // show rating screen, close clouds then do something
-            PlayerPrefs.SetInt("ColoringCompleted", 1);
-            SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
-        }
-
-    private void StartColoring()
-    {
-        musicLoop.Play();
-        for (int x = 0; x < ColoringStuff.Length; x++)
-        {
-            ColoringStuff[x].SetActive(true);
-        }
-         penBtns = FindObjectsOfType<ColoringPen>();
-    }
-
-    private void OnVideoCompletedPlaying(VideoPlayer source) {
-      VideoRenderer.SetActive(false);
-      videoPlayer.Stop();
-      for (int x = 0; x < ColoringStuff.Length; x++) {
-        ColoringStuff[x].SetActive(true);
+    private void SetTracingGuide(bool state) {
+      if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingBasic) {
+        tracingGuide.gameObject.SetActive(state);
       }
+    }
+
+    private void SetPartsOnScreenShot(bool state) {
+      for (int x = 0; x < partsToHide.Length; x++) {
+        partsToHide[x].SetActive(state);
+      }
+    }
+
+    private void LoadTracingGuide() {
+      tracingGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
+    }
+
+    private void InitFontSizeBtns() {
+      for (int x = 0; x < fontSizeBtns.Length; x++) {
+        int temp = x;
+        fontSizeBtns[temp].AddClickListener(animate: true, callBackFn: () => {
+          OnFontBtnClicked(fontSizeBtns[temp], temp + 1);
+        });
+      }
+    }
+
+    private void OnFontBtnClicked(UIButtonAnimator fontBtn, int fontSize) {
+      OnFontSizeSelected(fontBtn, fontSize);
+    }
+
+    private void PrepareBoard() {
+      PlayerPrefs.SetInt("ColoringList", 0);
+      PlayerPrefs.Save();
+      ColoringBookManager.ID = "ColoringList0";
+      LoadTracingGuide();
+    }
+
+    private void StartTracing() {
+      musicLoop.Play();
+      penBtns = FindObjectsOfType<ColoringPen>();
     }
 
     public void OnPenClicked(ColoringPen pen) {
       for (int x = 0; x < penBtns.Length; x++) {
-            int temp = x;
-            if(penBtns[temp] != pen)
-            {
-                penBtns[temp].SelectionChanged(true);
-            }
+        int temp = x;
+        if (penBtns[temp] != pen) {
+          penBtns[temp].SelectionChanged(true);
         }
+      }
       pen.SelectionChanged();
+      for (int x = 0; x < fontSizeColors.Length; x++) {
+        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      }
     }
 
-
-        public void OnTracingLetterCompleted()
-        {
-      //GameObject.FindAnyObjectByType<ColoringBookManager>().OnScreenshotButtonClicked((path)=> {
-      //    Debug.Log("file name " + ScreenshotManager.screenshotFilename);
-      //    StartCoroutine(Upload(path));
-      //});
-        GameObject.FindObjectOfType<PopUpsManager>().LoadRatingLetter();
+    public void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
+      for (int x = 0; x < fontSizeBtns.Length; x++) {
+        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+        fontSizeBtnsOutline[x].gameObject.SetActive(false);
+        if (fontSizeBtns[x] == fontBtn) {
+          fontSizeBtnsOutline[x].gameObject.SetActive(true);
         }
-
-
-        public IEnumerator Upload(string filePath)
-        {
-            WWWForm form = new WWWForm();
-            form.AddBinaryData("Imageurl", File.ReadAllBytes(filePath)); // , "imageName.jpg"
-            form.AddField("RequiredClass", "alef");
-
-            UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", form);
-            //www.SetRequestHeader("Content-Type", "application/json");
-            www.SetRequestHeader("Authorization", "8b38c163cdd104d13ca887f5c17fd4c3324c4a13");
-
-            yield return www.SendWebRequest();
-
-            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log("photo upload complete! " + www.downloadHandler.text);
-
-            }
-        }
+      }
+      ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
     }
+
+    public void OnTracingLetterCompleted() {
+      AudioUtils.FadeOutAudio(musicLoop, 0.4f);
+      StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
+    }
+
+    private IEnumerator PrepareLetterForUpload(Action<bool, RatingData> onComplete) {
+      AudioController.Instance.PlaySfxAtPoint(cameraShutter);
+      SetTracingGuide(false);
+      SetPartsOnScreenShot(false);
+      yield return new WaitForEndOfFrame();
+      Debug.Log("uploading screenshot to server...");
+      Rect rect = ColoringBookManager.Instance.GUIRectWithObject(ColoringBookManager.Instance.gameObject);
+      Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
+      texture.ReadPixels(rect, 0, 0);
+      texture.Apply();
+      yield return 0;
+      byte[] bytes = texture.EncodeToPNG();
+      screenshotRef.texture = texture;
+      SetTracingGuide(true);
+      SetPartsOnScreenShot(true);
+      HTTPRequestHandler.Instance.UploadTracingLetter(bytes, onComplete);
+      SetPlayerTracingLetter(texture);
+    }
+
+    private void SetPlayerTracingLetter(Texture2D texture2D) {
+      if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
+        playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+      }
+    }
+    private void OnRatingCompleted(bool success, RatingData ratingData) {
+      if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
+        ShowAdvancedTracingRating(success, ratingData);
+      } else {
+        ShowNormalRating(success, ratingData);
+      }
+    }
+    private void ShowAdvancedTracingRating(bool success, RatingData ratingData) {
+
+      ratingPopUp.SetActive(true);
+      for (int x = 0; x < tracingBoard.Length; x++) {
+        tracingBoard[x].SetActive(false);
+      }
+      string animation = "1Stars_lose";
+      if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
+        letterGuide.sprite = tracingGuide.sprite;
+        playerLetter.sprite = Sprite.Create((Texture2D)screenshotRef.texture, new Rect(0, 0, screenshotRef.texture.width, screenshotRef.texture.height), Vector2.zero, 100);
+        playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
+        if (ratingData.StarRating > 1) {
+          animation = $"{ratingData.StarRating}Stars";
+        }
+      }
+      skeletonGraphic.AnimationState.SetAnimation(0, animation, false);
+    }
+    private void ShowNormalRating(bool success, RatingData ratingData) {
+      LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.GetLetterRatingPopUp();
+      if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
+        if (ratingData != null) {
+          letterRatingPopUp.PlayStarsAnimation(ratingData.StarRating);
+        }
+      } else {
+        letterRatingPopUp.PlayStarsAnimation(1);
+      }
+    }
+
+    public void OnNextBtnClicked() {
+      SceneManager.Instance.OnNextScreenBtnClicked();
+    }
+
+    public void OnRestartClicked() {
+      SceneManager.Instance.ReloadScene();
+    }
+
+  }
 }

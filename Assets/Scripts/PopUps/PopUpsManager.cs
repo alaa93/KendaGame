@@ -1,4 +1,5 @@
 using KendaGame.Tutorial;
+using KendaGame.UI;
 using UnityEngine;
 
 namespace KendaGame.Navigation {
@@ -8,7 +9,12 @@ namespace KendaGame.Navigation {
     public GameObject RatingLetter;
     public GameObject RatingLevel;
     public GameObject TutorialObject;
+    public LoadingBar ProgressBar;
+
     private TutorialController tutorialController;
+    private LoadingBar loadingBar;
+    private GameRatingPopUp gameRating;
+    private LetterRatingPopUp letterRating;
 
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
@@ -20,23 +26,57 @@ namespace KendaGame.Navigation {
       }
     }
 
-    public void LoadRatingLetter() {
-      GameObject rating = Instantiate(RatingLetter, Parent, false);
+    public LetterRatingPopUp GetLetterRatingPopUp() {
+      if (letterRating == null) {
+        GameObject letterRatingObj = Instantiate(RatingLetter, Parent, false);
+        letterRating = letterRatingObj.GetComponent<LetterRatingPopUp>();
+        if (letterRating != null) {
+          return letterRating;
+        } else {
+          return null;
+        }
+      }
+      return letterRating;
     }
 
-    public void LoadRatingLevel() {
-      GameObject rating = Instantiate(RatingLevel, Parent, false);
+    public GameRatingPopUp LoadRatingLevel() {
+      if (gameRating == null) {
+        GameObject gameRatingObj = Instantiate(RatingLevel, Parent, false);
+        gameRating = gameRatingObj.GetComponent<GameRatingPopUp>();
+        if (gameRating != null) {
+          return gameRating;
+        } else {
+          return null;
+        }
+      }
+      return gameRating;
     }
 
     public TutorialController LoadTutorial(Transform parentObj) {
       if (tutorialController == null) {
         GameObject tutorialObject = Instantiate(TutorialObject, parentObj, false);
-        TutorialController tutorial = tutorialObject.GetComponent<TutorialController>();
-        if (tutorial != null) {
-          return tutorial;
+        tutorialController = tutorialObject.GetComponent<TutorialController>();
+        if (tutorialController != null) {
+          return tutorialController;
+        } else {
+          return null;
         }
       }
-      return null;
+      return tutorialController;
     }
+
+    public LoadingBar LoadLoadingBar(Transform parentObj = null) {
+      if (loadingBar == null) {
+        GameObject loadingBarObj = Instantiate(ProgressBar.gameObject, parentObj == null ? Parent : parentObj, false);
+        loadingBar = loadingBarObj.GetComponent<LoadingBar>();
+        if (loadingBar != null) {
+          return loadingBar;
+        } else {
+          return null;
+        }
+      }
+      return loadingBar;
+    }
+
   }
 }

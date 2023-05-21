@@ -11,48 +11,44 @@ namespace KendaGame.UI {
     [SerializeField]
     SkeletonGraphic starsAnimation;
     [SerializeField]
-    UIButtonAnimator nextBtn, RestartBtn;
-    Spine.AnimationState animationState;
-    
+    UIButtonAnimator nextBtn, restartBtn;
+    public static float FullStarsRating = 0.8f;
+    public static float OneStarRating = 0.5f;
 
     private void Awake() {
-      SkeletonDataAsset skeletonDataAsset = starsAnimation.skeletonDataAsset;
-      animationState = new Spine.AnimationState(skeletonDataAsset.GetAnimationStateData());
-      animationState.SetAnimation(0, "1Stars_lose", false);
-      starsAnimation.skeletonDataAsset = skeletonDataAsset;
-
       nextBtn.AddClickListener(animate: true, callBackFn: () => {
-        SceneManager.Instance.MoveTo(SceneManager.Scenes.SharkGame.ToString());
+        SceneManager.Instance.OnNextScreenBtnClicked();
+        gameObject.SetActive(false);
+      });
+      restartBtn.AddClickListener(animate: true, callBackFn: () => {
+        SceneManager.Instance.ReloadScene();
+        gameObject.SetActive(false);
       });
     }
 
     private void OnEnable() {
-      activeLetter.text = LettersHelper.GetActiveLetter();
-      //PlayStarAnimation(LettersHelper.GetLetterRating(LettersHelper.GetActiveLetter()));
-     
+      if (activeLetter != null) {
+        activeLetter.text = LettersHelper.GetActiveLetter();
+      }
     }
 
-    private void PlayStarAnimation(int rating) {
+    public void PlayStarsAnimation(int rating) {
+      starsAnimation.gameObject.SetActive(false);
       switch (rating) {
         case 0:
         case -1:
-          //starsAnimation.startingAnimation = "0Star";
-          animationState.SetAnimation(0, "0Star", false);
-          //skeletonAnimation.state.SetAnimation();
-          break;
         case 1:
-          //starsAnimation.startingAnimation = "1Stars_lose";
-          animationState.SetAnimation(0, "1Stars_lose", false);
+          starsAnimation.AnimationState.SetAnimation(0, "1Stars_lose", false);
           break;
         case 2:
-          //starsAnimation.startingAnimation = "2Stars";
-          animationState.SetAnimation(0, "2Stars", false);
+          starsAnimation.AnimationState.SetAnimation(0, "2Stars", false);
           break;
         case 3:
-          //starsAnimation.startingAnimation = "3Stars";
-          animationState.SetAnimation(0, "3Stars", false);
+          starsAnimation.AnimationState.SetAnimation(0, "3Stars", false);
           break;
       }
+      starsAnimation.gameObject.SetActive(true);
     }
+
   }
 }

@@ -1123,7 +1123,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 1997.8591, y: 1118.5347}
+  referenceSize: {x: 2194.8567, y: 1092.4283}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -5620,8 +5620,8 @@ MonoBehaviour:
       - m_Target: {fileID: 1023341240}
         m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
           KendaScripts
-        m_MethodName: ShowScreen
-        m_Mode: 3
+        m_MethodName: AutoLogin
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7834,8 +7834,8 @@ MonoBehaviour:
       - m_Target: {fileID: 1023341240}
         m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
           KendaScripts
-        m_MethodName: ShowScreen
-        m_Mode: 3
+        m_MethodName: AutoLogin
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

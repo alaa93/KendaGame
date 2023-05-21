@@ -39,14 +39,14 @@ namespace KendaGame.Tutorial {
 
     }
 
-    public void PlayTutorial(Transform startPos, Transform endPos) {
+    public void PlayTutorial(Transform startPos, Transform endPos, bool clickTutorial = false) {
       FadeIn(() => {
         isTutorialPlaying = true;
-        StartCoroutine(StartTutorial(startPos, endPos));
+        StartCoroutine(StartTutorial(startPos, endPos, clickTutorial));
       });
     }
 
-    private IEnumerator StartTutorial(Transform startPos, Transform endPos) {
+    private IEnumerator StartTutorial(Transform startPos, Transform endPos, bool clickTutorial = false) {
       yield return new WaitForSeconds(0.5f);
       this.followEndPos = endPos;
       this.followStartPos = startPos;
@@ -56,7 +56,12 @@ namespace KendaGame.Tutorial {
       yield return new WaitForSeconds(0.4f);
       shouldFollow = true;
       yield return new WaitForSeconds(1f);
-      handIcon.transform.DOMove(followEndPos.position, 1.5f).SetLoops(-1);
+      if (clickTutorial) {
+        Vector3 newScale = new Vector3(handIcon.transform.localScale.x - 0.2f, handIcon.transform.localScale.y - 0.2f, handIcon.transform.localScale.z - 0.2f);
+        handIcon.transform.DOScale(newScale, 1f).SetLoops(-1);
+      } else {
+        handIcon.transform.DOMove(followEndPos.position, 1.5f).SetLoops(-1);
+      }
     }
 
     private void Update() {

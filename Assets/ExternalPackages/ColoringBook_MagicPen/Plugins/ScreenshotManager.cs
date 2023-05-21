@@ -7,11 +7,13 @@ using System.IO;
 using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEngine.Networking;
+using System.Text;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
-public class ScreenshotManager : MonoBehaviour
-{
-    public static event Action ScreenshotFinishedSaving;
-    public static string  screenshotFilename;
+public class ScreenshotManager : MonoBehaviour {
+  public static event Action ScreenshotFinishedSaving;
+  public static string screenshotFilename;
 
 #if UNITY_IPHONE
 	[DllImport("__Internal")]
@@ -26,43 +28,37 @@ public class ScreenshotManager : MonoBehaviour
     }
 #endif
 
-    public static IEnumerator Upload(string filePath)
-    {
-        WWWForm form = new WWWForm();
-        form.AddBinaryData("Imageurl", File.ReadAllBytes(filePath)); // , "imageName.jpg"
-        form.AddField("RequiredClass", "alef");
+  public static IEnumerator Upload(string filePath) {
+    WWWForm form = new WWWForm();
+    form.AddBinaryData("Imageurl", File.ReadAllBytes(filePath)); // , "imageName.jpg"
+    form.AddField("RequiredClass", "alef");
 
-        UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", form);
-        //www.SetRequestHeader("Content-Type", "application/json");
-        www.SetRequestHeader("Authorization", "8b38c163cdd104d13ca887f5c17fd4c3324c4a13");
+    UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", form);
+    //www.SetRequestHeader("Content-Type", "application/json");
+    www.SetRequestHeader("Authorization", "8b38c163cdd104d13ca887f5c17fd4c3324c4a13");
 
-        yield return www.SendWebRequest();
+    yield return www.SendWebRequest();
 
-        if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            Debug.Log("photo upload complete! " + www.downloadHandler.text);
+    if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError) {
+      Debug.Log(www.error);
+    } else {
+      Debug.Log("photo upload complete! " + www.downloadHandler.text);
 
-        }
     }
+  }
+  public static IEnumerator SaveForPaint(Rect rect, string fileName, string albumName = "MyScreenshots", bool callback = false, Action<string> onComplete = null) {
+    bool photoSaved = false;
+    string share = "I drew this painting! ^_^";
+    share += '\n' + "Do you like drawing too? Then install Kids Coloring Book With Magic Pen!";
+    string date = System.DateTime.Now.ToString("dd-MM-yy");
 
-    public static IEnumerator SaveForPaint(Rect rect, string fileName, string albumName = "MyScreenshots", bool callback = false, Action<string>onComplete = null)
-    {
-        bool photoSaved = false;
-        string share = "I drew this painting! ^_^";
-        share += '\n' + "Do you like drawing too? Then install Kids Coloring Book With Magic Pen!";
-        string date = System.DateTime.Now.ToString("dd-MM-yy");
+    ScreenshotManager.ScreenShotNumber++;
 
-        ScreenshotManager.ScreenShotNumber++;
+    screenshotFilename = fileName + "_" + ScreenshotManager.ScreenShotNumber + "_" + date + ".png";
 
-        screenshotFilename = fileName + "_" + ScreenshotManager.ScreenShotNumber + "_" + date + ".png";
+    //Rect rect = new Rect(0, Screen.height * 0.2f, Screen.width * 0.8f, Screen.height * 0.8f);
 
-        //Rect rect = new Rect(0, Screen.height * 0.2f, Screen.width * 0.8f, Screen.height * 0.8f);
-
-        Debug.Log("Save screenshot " + screenshotFilename);
+    Debug.Log("Save screenshot " + screenshotFilename);
 
 #if UNITY_IPHONE
 		
@@ -146,65 +142,67 @@ public class ScreenshotManager : MonoBehaviour
 			
 #elif UNITY_ANDROID
 
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            Debug.Log("Android platform detected");
+    if (Application.platform == RuntimePlatform.Android) {
+      Debug.Log("Android platform detected");
 
-            yield return new WaitForEndOfFrame();
+      yield return new WaitForEndOfFrame();
 
-            Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
-            texture.ReadPixels(rect, 0, 0);
-            texture.Apply();
+      Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
+      texture.ReadPixels(rect, 0, 0);
+      texture.Apply();
 
-            yield return 0;
+      yield return 0;
 
-            byte[] bytes = texture.EncodeToJPG();
+      byte[] bytes = texture.EncodeToJPG();
 
-            string path = Path.Combine(Application.temporaryCachePath, screenshotFilename);
-            File.WriteAllBytes(path, bytes);
+      string path = Path.Combine(Application.temporaryCachePath, screenshotFilename);
+      File.WriteAllBytes(path, bytes);
 
-            NativeGallery.SaveImageToGallery(bytes, albumName, screenshotFilename);
+      NativeGallery.SaveImageToGallery(bytes, albumName, screenshotFilename);
 
-            Destroy(texture);
+      Destroy(texture);
 
-            new NativeShare().AddFile(path).SetSubject(albumName).SetText(share).Share();
-        }
-        else
-        {
-            //////////////
-            yield return new WaitForEndOfFrame();
+      new NativeShare().AddFile(path).SetSubject(albumName).SetText(share).Share();
+    } else {
+      //////////////
+      yield return new WaitForEndOfFrame();
+      Debug.Log("uploading screenshot to server...");
+      Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
+      texture.ReadPixels(rect, 0, 0);
 
-            Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
-            texture.ReadPixels(rect, 0, 0);
+      texture.Apply();
 
-            texture.Apply();
+      yield return 0;
 
-            yield return 0;
+      byte[] bytes = texture.EncodeToPNG();
+      //string base64Image = $"data:image/png;base64,{System.Convert.ToBase64String(bytes)}";
+      //File.WriteAllBytes(Application.persistentDataPath + "/" + screenshotFilename, bytes);
+      //Destroy(texture);
+      GameObject gameObject1 = new GameObject("RowImage");
+      gameObject1.AddComponent<RectTransform>();
+      gameObject1.transform.parent = GameObject.FindObjectOfType<Canvas>().transform;
+      gameObject1.transform.localScale = Vector3.one;
+      RawImage image = gameObject1.AddComponent<RawImage>();
+      image.texture = texture;
+      
+      string _headerValue = "Token 8b38c163cdd104d13ca887f5c17fd4c3324c4a13";
 
-            byte[] bytes = texture.EncodeToJPG();
-            File.WriteAllBytes(Application.persistentDataPath + "/" + screenshotFilename, bytes);
+      
+      WWWForm formrequest = new WWWForm();
+      formrequest.AddBinaryData("Imageurl", bytes, "test.jpeg", "image/jpeg");
+      formrequest.AddField("RequiredClass", "alef");
 
-            Destroy(texture);
+      UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", formrequest);
 
-            WWWForm form = new WWWForm();
-            form.AddBinaryData("Imageurl", bytes); // , "imageName.jpg"
-            form.AddField("RequiredClass", "alef");
+      www.SetRequestHeader("Authorization", _headerValue);
 
-            UnityWebRequest www = UnityWebRequest.Post("http://137.184.184.223:8000/ClientPredict/", form);
-            www.SetRequestHeader("Content-Type", "application/json");
-            www.SetRequestHeader("Authorization", "Token 8b38c163cdd104d13ca887f5c17fd4c3324c4a13");
+      yield return www.SendWebRequest();
+      if (www.downloadHandler != null && www.downloadHandler.error != null)
+        Debug.Log(www.downloadHandler.error);
+      if (www.downloadHandler != null && www.downloadHandler.text != null)
+        Debug.Log(www.downloadHandler.text);
 
-            yield return www.SendWebRequest();
-
-            if (www.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.Log("upload error " + www.error);
-            }
-            else
-            {
-                Debug.Log("photo upload complete! " + www.downloadHandler.text);
-            }
-        }
+    }
 
 
 
@@ -233,9 +231,40 @@ public class ScreenshotManager : MonoBehaviour
             photoSaved = true;
         }
 #endif
-        if (callback)
-            ScreenshotFinishedSaving();
+    if (callback)
+      ScreenshotFinishedSaving();
+  }
+
+  IEnumerator Uploadimage(string url, string _headerKey, byte [] imageBytes) {
+
+    string _headerValue = "Token 8b38c163cdd104d13ca887f5c17fd4c3324c4a13";
+
+    byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes("");
+    string dirPath = Application.persistentDataPath + "/saveImages/";
+    System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(dirPath);
+    System.IO.FileInfo[] fileInfo = info.GetFiles();
+    if (fileInfo[fileInfo.Length - 1].Extension.ToString() == ".jpg" && fileInfo[fileInfo.Length - 1].Name.ToString().Substring(0, 5) == "Image") {
+      byte[] byteArray = System.IO.File.ReadAllBytes(dirPath + fileInfo[fileInfo.Length - 1].Name.ToString());
+      bodyRaw = byteArray;
     }
+
+    WWWForm formrequest = new WWWForm();
+    formrequest.AddBinaryData("Imageurl", imageBytes, "test.jpeg", "image/jpeg");
+    formrequest.AddField("RequiredClass", "alef");
+
+    UnityWebRequest www = UnityWebRequest.Post(url, formrequest);
+
+
+    //set jwt
+    if (_headerKey != null)
+      www.SetRequestHeader(_headerKey, _headerValue);
+
+    yield return www.SendWebRequest();
+    if (www.downloadHandler != null && www.downloadHandler.error != null)
+      Debug.Log(www.downloadHandler.error);
+    if (www.downloadHandler != null && www.downloadHandler.text != null)
+      Debug.Log(www.downloadHandler.text);
+  }
 
   static string Authenticate() {
     string auth = "Token" + " " + "8b38c163cdd104d13ca887f5c17fd4c3324c4a13";
@@ -244,10 +273,9 @@ public class ScreenshotManager : MonoBehaviour
     return auth;
   }
 
-  public static int ScreenShotNumber
-    {
-        set { PlayerPrefs.SetInt("screenShotNumber", value); }
+  public static int ScreenShotNumber {
+    set { PlayerPrefs.SetInt("screenShotNumber", value); }
 
-        get { return PlayerPrefs.GetInt("screenShotNumber"); }
-    }
+    get { return PlayerPrefs.GetInt("screenShotNumber"); }
+  }
 }

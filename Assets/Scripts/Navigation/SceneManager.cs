@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using KendaGame.Helpers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace KendaGame.Navigation {
@@ -13,6 +14,7 @@ namespace KendaGame.Navigation {
         return _instance;
       }
     }
+
     [SerializeField]
     LoadingController loadingController;
     [SerializeField]
@@ -24,8 +26,11 @@ namespace KendaGame.Navigation {
     private bool openManually;
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, GameScene, SharkGame, TracingLetter
+      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer
     }
+
+    public Scenes ActiveScene { get => activeScene; set => activeScene = value; }
+    private Scenes activeScene;
 
     private void Awake() {
       DontDestroyOnLoad(gameObject);
@@ -39,33 +44,31 @@ namespace KendaGame.Navigation {
       if (!initialized) {
         initialized = true;
       }
-        if (!openManually)
-        {
-            loadingController.OpenClouds(null);
-            UpdateBackBtnState(scene);
-        }
+      if (!openManually) {
+        loadingController.OpenClouds(null);
+        UpdateBackBtnState(scene);
+      }
     }
 
-    public void OpenCloudsManually(Action<bool> onComplete = null, bool animated = true)
-    {
-        loadingController.OpenClouds(onComplete,animated);
+    public void OpenCloudsManually(Action<bool> onComplete = null, bool animated = true) {
+      loadingController.OpenClouds(onComplete, animated);
     }
 
-    public void CloseCloudsManually(Action<bool> onComplete = null, bool animated = true)
-    {
-        loadingController.CloseClouds(onComplete, animated);
+    public void CloseCloudsManually(Action<bool> onComplete = null, bool animated = true) {
+      loadingController.CloseClouds(onComplete, animated);
     }
 
-        public void MoveTo(string targetSceneName, bool openManually = false) {
+    public void MoveTo(string targetSceneName, bool openManually = false) {
       this.openManually = openManually;
       Debug.Log("MoveTo " + targetSceneName);
       Scenes targetScene = (Scenes)Enum.Parse(typeof(Scenes), targetSceneName);
-      if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != targetSceneName) {
+      if (GetActiveScene().ToString() != targetSceneName) {
         loadingController.CloseClouds((animated) => {
           UpdateScreenOrientation(targetScene);
           if (navigationStack != null && !navigationStack.Contains(targetSceneName)) {
             navigationStack.Add(targetSceneName);
           }
+          ActiveScene = targetScene;
           UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetSceneName);
         });
       } else {
@@ -96,9 +99,8 @@ namespace KendaGame.Navigation {
       }
     }
 
-    public void SetBackBtnState(bool state)
-    {
-        uiController.SetBackBtnState(state);
+    public void SetBackBtnState(bool state) {
+      uiController.SetBackBtnState(state);
     }
 
     public void SetCoinsObjectState(bool state) {
@@ -113,12 +115,58 @@ namespace KendaGame.Navigation {
       }
     }
 
+    public Scenes GetActiveScene() {
+      string loadedScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.ToString();
+      return (Scenes)Enum.Parse(typeof(Scenes), loadedScene);
+    }
+
+    public void OnMapLetterClicked(int mapLetterIndex) {
+      if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
+        //TODO implement inside letter progress through playerPrefs class
+        if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+          Instance.MoveTo(Scenes.BubblesGame.ToString());
+        } else {
+          // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
+          Instance.MoveTo(Scenes.BubblesGame.ToString());
+        }
+      } else {
+        Instance.MoveTo(Scenes.VideoPlayer.ToString(), true);
+      }
+    }
+
+    public void OnVideoCompletedMoveTo() {
+      if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+      } else {
+        // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
+        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+      }
+    }
+
+    public void OnNextScreenBtnClicked() {
+      if (GetActiveScene() == Scenes.SharkGame) {
+        Instance.MoveTo(Scenes.TracingAdvanced.ToString());
+      } else if (GetActiveScene() == Scenes.ColoringEngine) {
+        Instance.MoveTo(Scenes.SharkGame.ToString());
+      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
+        Instance.MoveTo(Scenes.BoxesGame.ToString());
+      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
+        Instance.MoveTo(Scenes.HomeScreen.ToString());
+      } else if (GetActiveScene() == Scenes.BoxesGame) {
+        Instance.MoveTo(Scenes.TracingAdvanced.ToString());
+      }
+    }
+
+    public void ReloadScene() {
+      UnityEngine.SceneManagement.SceneManager.LoadScene(GetActiveScene().ToString());
+    }
+
 #if UNITY_EDITOR
     private void UpdateEditorOrientation(bool islandscape) {
-      var gameViewType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView");
-      var gameViewWindow = UnityEditor.EditorWindow.GetWindow(gameViewType);
-      var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
-      sizeSelectionCallback.Invoke(gameViewWindow, new object[] { islandscape ? 32 : 31, null });
+      //var gameViewType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView");
+      //var gameViewWindow = UnityEditor.EditorWindow.GetWindow(gameViewType);
+      //var sizeSelectionCallback = gameViewType.GetMethod("SizeSelectionCallback");
+      //sizeSelectionCallback.Invoke(gameViewWindow, new object[] { islandscape ? 32 : 31, null });
     }
 #endif
   }

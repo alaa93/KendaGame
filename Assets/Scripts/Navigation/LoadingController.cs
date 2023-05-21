@@ -7,10 +7,7 @@ using System;
 namespace KendaGame.Navigation {
   public class LoadingController : MonoBehaviour {
 
-    [Header("Landscape Clouds")]
-    [SerializeField]
-    LoadingClouds landscapeClouds;
-    [Header("Portrait Clouds")]
+    [Header("Clouds")]
     [SerializeField]
     LoadingClouds portraitClouds;
     [SerializeField]
@@ -25,16 +22,11 @@ namespace KendaGame.Navigation {
     }
 
     private LoadingClouds GetLoadingClouds() {
-      if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown) {
-        return portraitClouds;
-      } else {
-        return landscapeClouds;
-      }
+      return portraitClouds;
     }
 
     private void UpdateClouds() {
       portraitClouds.SetCloudsState(false);
-      landscapeClouds.SetCloudsState(false);
       GetLoadingClouds().SetCloudsState(true);
       GetLoadingClouds().inScreenPosition = new Vector3(GetLoadingClouds().leftCloud.transform.position.x,
       GetLoadingClouds().rightCloud.transform.position.x, GetLoadingClouds().upperCloud.transform.position.y);

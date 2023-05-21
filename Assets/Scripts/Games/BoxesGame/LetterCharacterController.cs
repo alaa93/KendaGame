@@ -21,7 +21,6 @@ namespace KendaGame.Games {
     bool isDragging = false;
     GameObject targetbox;
     bool completed;
-    int shouldJump = -1;
     bool freeze;
 
     private void Awake() {
@@ -64,6 +63,9 @@ namespace KendaGame.Games {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+      if (BoxesLettersController.Instance.gameCompleted) {
+        return;
+      }
       BoxesTreasureBoxTrigger boxTrigger = collision.GetComponent<BoxesTreasureBoxTrigger>();
       BoxesTreasureBox treasureBox = collision.GetComponent<BoxesTreasureBox>();
       if (boxTrigger != null) {
@@ -87,10 +89,7 @@ namespace KendaGame.Games {
 
       if (treasureBox != null) {
         if (!isDragging) {
-          shouldJump = Random.Range(0, 4);
-          if (shouldJump > 1) {
-            Jump();
-          }
+          Jump();
         }
       }
 
