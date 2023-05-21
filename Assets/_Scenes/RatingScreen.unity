@@ -705,8 +705,7 @@ MonoBehaviour:
   m_text: "\u062F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e3c311fc27694a419baca451fc975d1, type: 2}
-  m_sharedMaterial: {fileID: 21268714557401158, guid: 1e3c311fc27694a419baca451fc975d1,
-    type: 2}
+  m_sharedMaterial: {fileID: 21268714557401158, guid: 1e3c311fc27694a419baca451fc975d1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -943,8 +942,7 @@ MonoBehaviour:
   m_text: Level Complete
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
-  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b,
-    type: 2}
+  m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1483,7 +1481,7 @@ MonoBehaviour:
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
-  startingAnimation: 3Stars
+  startingAnimation: 1Stars_lose
   startingLoop: 0
   timeScale: 1
   freeze: 0
@@ -1542,10 +1540,8 @@ MonoBehaviour:
   VectorySFX: {fileID: 8300000, guid: ead3651a5f565e34db2c826831f89511, type: 3}
   TotalVectorySFX: {fileID: 8300000, guid: 633e9dd97e9b7df4e98cfec95a2c8582, type: 3}
   LoseSFX: {fileID: 8300000, guid: 2baf577a71793c949a1b3be4b4ea7ad6, type: 3}
-  StarsParticle: {fileID: 5376360161690050644, guid: 248334e03bc547340a29b49f4b52e0f4,
-    type: 3}
-  ConfettiParticle: {fileID: 4413428602257061176, guid: a163ed6f4c61a274e9e59148e0c72fe6,
-    type: 3}
+  StarsParticle: {fileID: 5376360161690050644, guid: 248334e03bc547340a29b49f4b52e0f4, type: 3}
+  ConfettiParticle: {fileID: 4413428602257061176, guid: a163ed6f4c61a274e9e59148e0c72fe6, type: 3}
   star1Position: {fileID: 1519789121}
   star2Position: {fileID: 1687737571}
   star3Position: {fileID: 66316754}
@@ -2749,10 +2745,8 @@ MonoBehaviour:
   VectorySFX: {fileID: 8300000, guid: ead3651a5f565e34db2c826831f89511, type: 3}
   TotalVectorySFX: {fileID: 8300000, guid: 633e9dd97e9b7df4e98cfec95a2c8582, type: 3}
   LoseSFX: {fileID: 8300000, guid: 2baf577a71793c949a1b3be4b4ea7ad6, type: 3}
-  StarsParticle: {fileID: 5376360161690050644, guid: 248334e03bc547340a29b49f4b52e0f4,
-    type: 3}
-  ConfettiParticle: {fileID: 4413428602257061176, guid: a163ed6f4c61a274e9e59148e0c72fe6,
-    type: 3}
+  StarsParticle: {fileID: 5376360161690050644, guid: 248334e03bc547340a29b49f4b52e0f4, type: 3}
+  ConfettiParticle: {fileID: 4413428602257061176, guid: a163ed6f4c61a274e9e59148e0c72fe6, type: 3}
   star1Position: {fileID: 871117416}
   star2Position: {fileID: 1186863188}
   star3Position: {fileID: 1094015771}

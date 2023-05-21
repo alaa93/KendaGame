@@ -14,7 +14,7 @@ namespace KendaGame.Games {
     }
 
     public void PlayOpenAnim() {
-      skeletonAnimation.AnimationState.SetAnimation(0, "faded", false);
+      skeletonAnimation.AnimationState.SetAnimation(0, "Open", false);
     }
 
     public void PlayCloseAnim() {
@@ -27,7 +27,7 @@ namespace KendaGame.Games {
     public void OnTriggered(GameObject letter) {
       draggedLetter = letter;
       PlayOpenAnim();
-      //Invoke(nameof(PlayCloseAnim), 0.3f);
+      Invoke(nameof(PlayCloseAnim), 0.3f);
     }
   }
 }

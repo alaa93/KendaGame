@@ -1,8 +1,0 @@
-Octobus letterHolder.png
-size:2048,2048
-filter:Linear,Linear
-pma:true
-scale:2.0
-LetterOctobusArm
-bounds:2,2,860,1024
-offsets:85,0,1024,1024
