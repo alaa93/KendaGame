@@ -1770,7 +1770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812954275846570938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 1.29, z: 0}
+  m_LocalPosition: {x: 0, y: 1.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2023,7 +2023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: ee9059bf087b94134b0e64faa4b6c445, type: 2}
-  initialSkinName: BigBox
+  initialSkinName: MidBox
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0
@@ -2247,6 +2247,7 @@ MonoBehaviour:
   musicLoop: {fileID: 812954275912670085}
   showPartsSfx: {fileID: 8300000, guid: 06f8b2ef0f57c46e5a237c3ffc19ddc3, type: 3}
   totalPartsToSolve: 4
+  gameCompleted: 0
 --- !u!1 &812954276325165240
 GameObject:
   m_ObjectHideFlags: 0
