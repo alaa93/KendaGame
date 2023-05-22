@@ -121,6 +121,7 @@ namespace KendaGame.Navigation {
     }
 
     public void OnMapLetterClicked(int mapLetterIndex) {
+      LettersHelper.SetActiveLetter(mapLetterIndex);
       if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
         //TODO implement inside letter progress through playerPrefs class
         if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
