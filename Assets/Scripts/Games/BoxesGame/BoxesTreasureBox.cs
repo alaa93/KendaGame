@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using KendaGame.Helpers;
 using Spine.Unity;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace KendaGame.Games {
 
     private void Awake() {
       skeletonAnimation = GetComponent<SkeletonAnimation>();
+      InvokeRepeating(nameof(PlayShakeAnim),1f,5f);
     }
 
     public void PlayOpenAnim() {
@@ -26,8 +28,15 @@ namespace KendaGame.Games {
 
     public void OnTriggered(GameObject letter) {
       draggedLetter = letter;
+      CancelInvoke(nameof(PlayShakeAnim));
       PlayOpenAnim();
       Invoke(nameof(PlayCloseAnim), 0.3f);
+    }
+
+    private void PlayShakeAnim() {
+      if(letterId == LettersHelper.GetActiveLetter()) {
+        skeletonAnimation.AnimationState.SetAnimation(0, "shake", false);
+      }
     }
   }
 }
