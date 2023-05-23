@@ -42,9 +42,6 @@ namespace Coffee.UIExtensions
             s_ActiveAttractors.Remove(attractor);
         }
 
-#if UNITY_EDITOR
-        [UnityEditor.InitializeOnLoadMethod]
-#endif
         [RuntimeInitializeOnLoadMethod]
         private static void InitializeOnLoad()
         {

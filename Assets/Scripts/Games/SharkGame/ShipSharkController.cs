@@ -15,9 +15,14 @@ namespace KendaGame.Games {
     [SerializeField]
     Ease releaseEase = Ease.Linear;
     [SerializeField]
+    GameObject particles;
+    [SerializeField]
     ShipWheelController shipWheelController;
     [SerializeField]
     SkeletonAnimation skeletonAnimation;
+    [SerializeField]
+    float scalRate = 0.5f;
+    float scaleCount = 1;
     float positionOffet = 1.6f;
     private bool released;
     private Vector3 initialPosition;
@@ -29,6 +34,7 @@ namespace KendaGame.Games {
     private void OnMouseDown() {
       if (!released) {
         ReleaseShark();
+        particles.SetActive(true);
       }
     }
 
@@ -39,24 +45,33 @@ namespace KendaGame.Games {
     }
 
     public void ResetShark() {
+      particles.SetActive(false);
+
       DOTween.Pause(this.transform);
       DOTween.Kill(this.transform);
       released = false;
       this.transform.position = initialPosition;
       this.GetComponent<Collider2D>().enabled = true;
+
       skeletonAnimation.AnimationState.SetAnimation(0, "idle", true);
       shipWheelController.AssignLetters();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
       ShipWheelBubble wheelBubble = collision.gameObject.GetComponent<ShipWheelBubble>();
-      if (wheelBubble != null) {
+      if (wheelBubble != null && released) {
         this.GetComponent<Collider2D>().enabled = false;
+        if (wheelBubble.IsCorrectLetter()) {
+          this.transform.DOScale(transform.localScale * (1 + (scalRate * scaleCount)), 0.4f);
+          scaleCount++;
+          scalRate -= 0.05f;
+        }
         shipWheelController.OnBubbleHit(wheelBubble, (gameCompleted, correctAnswer) => {
           if (!gameCompleted) {
             skeletonAnimation.AnimationState.SetAnimation(0, correctAnswer ? "swim" : "hitWrong", true);
             Invoke(nameof(ResetShark), 1f);
           }
+
         });
       }
     }

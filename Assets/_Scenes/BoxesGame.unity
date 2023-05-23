@@ -155,7 +155,7 @@ MonoBehaviour:
   gameLevels:
   - level: {fileID: 2751377922918451978, guid: 871f7747cd275412096819ecb1238cf3, type: 3}
     levelLetter: "\u0623"
-  - level: {fileID: 2751377922918451978, guid: 871f7747cd275412096819ecb1238cf3, type: 3}
+  - level: {fileID: 2751377922918451978, guid: d0b1a4f9fc17841ec8693781cfac434a, type: 3}
     levelLetter: "\u0628"
 --- !u!4 &288863394
 Transform:

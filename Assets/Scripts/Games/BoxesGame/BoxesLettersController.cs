@@ -4,6 +4,7 @@ using KendaGame.Navigation;
 using UnityEngine;
 using DG.Tweening;
 using KendaGame.Tutorial;
+using Spine.Unity;
 
 namespace KendaGame.Games {
   public class BoxesLettersController : MonoBehaviour {
@@ -21,6 +22,7 @@ namespace KendaGame.Games {
     public BoxesTreasureBoxTrigger boxTrigger;
     public Transform CorrectBoxPos;
     public GameObject allPartsObject;
+    public SkeletonAnimation endingAnim;
     public GameObject[] letterStaticParts;
     public GameObject[] letterAnimatedParts;
     public GameObject[] letterPrefabs;
@@ -74,7 +76,7 @@ namespace KendaGame.Games {
       if(gameCompleted) {
         return;
       }
-      levelWord.material.SetFloat("_FillAmount", levelWord.material.GetFloat("_FillAmount") + 0.3f);
+      levelWord.material.SetFloat("_FillAmount", levelWord.material.GetFloat("_FillAmount") + 0.25f);
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       if (correctCount >= 3) {
@@ -100,9 +102,17 @@ namespace KendaGame.Games {
     private IEnumerator GameCompleted(float delay) {
       PlayerPrefs.SetInt("Boxes_Game_Completed", 1);
       yield return new WaitForSeconds(delay);
+      endingAnim.gameObject.SetActive(true);
+      allPartsObject.SetActive(false);
+      endingAnim.AnimationState.SetAnimation(0, "idle", false);
+      yield return new WaitForSeconds(1.5f);
+      endingAnim.AnimationState.SetAnimation(0, "Letters", false);
+      yield return new WaitForSeconds(2f);
       AudioClip sfx = AudioController.Instance.commonSfx.GetEndingSfx();
       AudioController.Instance.PlaySfxAtPoint(sfx);
       yield return new WaitForSeconds(sfx.length);
+      endingAnim.AnimationState.SetAnimation(0, "swimming", false);
+      yield return new WaitForSeconds(2f);
       PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
     }
 
