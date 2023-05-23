@@ -33,6 +33,7 @@ namespace KendaGame.UI {
     }
 
     public void PlayStarsAnimation(int rating) {
+      gameObject.SetActive(true);
       starsAnimation.gameObject.SetActive(false);
       switch (rating) {
         case 0:

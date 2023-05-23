@@ -26,7 +26,7 @@ namespace KendaGame.Navigation {
     private bool openManually;
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer
+      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame
     }
 
     public Scenes ActiveScene { get => activeScene; set => activeScene = value; }
@@ -123,12 +123,13 @@ namespace KendaGame.Navigation {
     public void OnMapLetterClicked(int mapLetterIndex) {
       LettersHelper.SetActiveLetter(mapLetterIndex);
       if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
+        PlayerPrefs.SetInt("PlayIntro1", 1);
         //TODO implement inside letter progress through playerPrefs class
         if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
           Instance.MoveTo(Scenes.BubblesGame.ToString());
         } else {
           // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
-          Instance.MoveTo(Scenes.BubblesGame.ToString());
+          Instance.MoveTo(Scenes.PuzzleGame.ToString());
         }
       } else {
         Instance.MoveTo(Scenes.VideoPlayer.ToString(), true);
@@ -140,21 +141,23 @@ namespace KendaGame.Navigation {
         Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
       } else {
         // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
-        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+        Instance.MoveTo(Scenes.PuzzleGame.ToString(), true);
       }
     }
 
     public void OnNextScreenBtnClicked() {
-      if (GetActiveScene() == Scenes.SharkGame) {
-        Instance.MoveTo(Scenes.TracingAdvanced.ToString());
-      } else if (GetActiveScene() == Scenes.ColoringEngine) {
+      if (GetActiveScene() == Scenes.BubblesGame || GetActiveScene() == Scenes.PuzzleGame) {
+        Instance.MoveTo(Scenes.ColoringEngine.ToString());
+      }else if(GetActiveScene() == Scenes.ColoringEngine) {
         Instance.MoveTo(Scenes.SharkGame.ToString());
-      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) == 0) {
+      } else if (GetActiveScene() == Scenes.SharkGame) {
+        Instance.MoveTo(Scenes.TracingBasic.ToString());
+      } else if (GetActiveScene() == Scenes.TracingBasic) {
         Instance.MoveTo(Scenes.BoxesGame.ToString());
-      } else if (GetActiveScene() == Scenes.TracingAdvanced && PlayerPrefs.GetInt("Boxes_Game_Completed", 0) > 0) {
-        Instance.MoveTo(Scenes.HomeScreen.ToString());
       } else if (GetActiveScene() == Scenes.BoxesGame) {
         Instance.MoveTo(Scenes.TracingAdvanced.ToString());
+      } else if (GetActiveScene() == Scenes.TracingAdvanced) {
+        Instance.MoveTo(Scenes.Map.ToString());
       }
     }
 

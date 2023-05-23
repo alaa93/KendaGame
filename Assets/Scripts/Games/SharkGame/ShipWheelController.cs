@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using ScorpionSteps.Utils;
+using TMPro;
 using UnityEngine;
 
 namespace KendaGame.Games {
   public class ShipWheelController : MonoBehaviour {
 
+    [SerializeField]
+    TextMeshPro wheelLetter;
     [SerializeField]
     private float rotationSpeed = 50f; // The speed of rotation in degrees per second
     [SerializeField]
@@ -27,6 +30,7 @@ namespace KendaGame.Games {
       AssignLetters();
       SetScreenPosition();
       SceneManager.Instance.SetCoinsObjectState(true);
+      wheelLetter.text = LettersHelper.GetActiveLetter();
     }
 
     private void SetScreenPosition() {
@@ -109,7 +113,7 @@ namespace KendaGame.Games {
     private IEnumerator OnGameCompleted(float delay) {
       yield return new WaitForSeconds(delay);
       if (PopUpsManager.Instance != null) {
-        PopUpsManager.Instance.LoadRatingLevel();
+        PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
       }
     }
 
