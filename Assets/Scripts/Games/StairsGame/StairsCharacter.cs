@@ -1,52 +1,63 @@
+using System.Threading.Tasks;
+using DG.Tweening;
+using KendaGame.Helpers;
+using Spine.Unity;
 using UnityEngine;
 
 namespace KendaGame.Games {
   public class StairsCharacter : MonoBehaviour {
-    public Transform platformA;  // Reference to Platform A
-    public Transform platformB;  // Reference to Platform B
+    [SerializeField]
+    SkeletonAnimation skeletonAnimation;
+    [SerializeField]
+    Rigidbody2D rigidbody2DRef;
+    [SerializeField]
+    float offsetX;
+    [SerializeField]
+    float offsetY;
+    [SerializeField]
+    AudioClip jumpSfx;
 
-    public AnimationCurve jumpCurve;  // Animation curve controlling the jump physics
-
-    public float jumpDuration = 1f;  // Duration of the jump
-    public float jumpHeight = 5f;    // Height of the jump
-
-    public bool shouldJump = false;  // Flag to determine if the character should jump
-    private float jumpTimer = 0f;     // Timer to track the progress of the jump
-
-    private Rigidbody2D rb;
-
-    private void Awake() {
-      rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void PerformJump(GameObject targetRock = null) {
-      GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-      // Calculate the direction from Platform A to Platform B
-      Vector2 direction = StairsLevelManager.Instance.GetNextRock().transform.position - StairsLevelManager.Instance.GetActiveRock().transform.position;
-      direction.y += 3f;
-      // Normalize the direction vector
-      direction.Normalize();
-
-      // Calculate the jump force based on the animation curve
-      float normalizedTime = jumpTimer / jumpDuration;
-      float jumpForce = jumpCurve.Evaluate(normalizedTime) * jumpHeight;
-
-      // Apply the jump force in the calculated direction
-      rb.AddForce(direction * jumpForce, ForceMode2D.Impulse);
-
-      // Start the jump timer
-      jumpTimer = 0f;
-    }
-
-    private void FixedUpdate() {
-      if (jumpTimer <= jumpDuration) {
-        jumpTimer += Time.fixedDeltaTime;
+    public void AnimatedJump(StairsRock targetRock) {
+      float difference = Mathf.Abs(targetRock.GetId() - StairsLevelManager.Instance.GetActiveRock().GetId());
+      if (difference > 2) { /// invalid Jump ignore
+        OnInvalidJump();
+      } else {
+        rigidbody2DRef.isKinematic = true;
+        skeletonAnimation.AnimationState.SetAnimation(0, "Jump", true);
+        AudioController.Instance.PlaySfxAtPoint(jumpSfx);
+        rigidbody2DRef.constraints = RigidbodyConstraints2D.FreezeAll;
+        this.transform.DOMove(new Vector3(targetRock.transform.position.x + offsetX, targetRock.transform.position.y + (difference > 1 ? offsetY + 0.3f : offsetY), 0f), difference).OnComplete(() => {
+          rigidbody2DRef.isKinematic = false;
+          rigidbody2DRef.constraints = RigidbodyConstraints2D.None;
+          skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+        });
       }
     }
 
-    // This method can be called externally to trigger the jump
-    public void SetJump(bool value) {
-      shouldJump = value;
+    private async void OnInvalidJump() {
+      AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
+      skeletonAnimation.AnimationState.SetAnimation(0, "Fighting", true);
+      await Task.Delay(1000);
+      skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+    }
+
+    public async void OnInCorrectRockLanded(StairsRock rollBackRock, StairsRock inCorrectRock) {
+      skeletonAnimation.AnimationState.SetAnimation(0, "Fighting", true);
+      await Task.Delay(1000);
+      skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+      AnimatedJump(rollBackRock);
+      AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
+      inCorrectRock.GetComponent<Rigidbody2D>().isKinematic = false;
+    }
+
+
+    public void PlaySwimmingAnim() {
+      AudioController.Instance.PlaySfxAtPoint(jumpSfx);
+      skeletonAnimation.AnimationState.SetAnimation(0, "Jump", true);
+    }
+
+    public void PlayDanceAnim() {
+      skeletonAnimation.AnimationState.SetAnimation(0, "Dancing", true);
     }
   }
 }

@@ -19,6 +19,8 @@ namespace KendaGame.Navigation {
     LoadingController loadingController;
     [SerializeField]
     UIController uiController;
+    [SerializeField]
+    Camera uiCamera;
 
     private bool initialized;
     private static SceneManager _instance;
@@ -69,6 +71,7 @@ namespace KendaGame.Navigation {
             navigationStack.Add(targetSceneName);
           }
           ActiveScene = targetScene;
+          uiCamera.transform.position = new Vector3(0f, 0f, -10f);
           UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetSceneName);
         });
       } else {

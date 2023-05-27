@@ -1450,6 +1450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingController: {fileID: 8464889891705556808}
   uiController: {fileID: 1073988580634864741}
+  uiCamera: {fileID: 4113046901913872485}
 --- !u!114 &8167890409091246873
 MonoBehaviour:
   m_ObjectHideFlags: 0

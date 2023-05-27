@@ -14,9 +14,14 @@ namespace KendaGame.Games {
     GameObject[] levelRocks;
     [SerializeField]
     StairsCharacter stairsCharacter;
+    [SerializeField]
+    StairsGameCamera gameCamera;
+    [SerializeField]
+    StairsSubmarine stairsSubmarine;
 
     GameObject activeRock;
     int activeRockIndex = 0;
+    StairsRock lastTouchedRock;
 
     private static StairsLevelManager _instance;
     public static StairsLevelManager Instance {
@@ -28,50 +33,100 @@ namespace KendaGame.Games {
       }
     }
 
+    private void Awake() {
+      if (gameCamera == null) {
+        if (Camera.main != null) {
+          if (Camera.main.gameObject.GetComponent<StairsGameCamera>() == null) {
+            gameCamera = Camera.main.gameObject.AddComponent<StairsGameCamera>();
+          } else {
+            gameCamera = Camera.main.gameObject.GetComponent<StairsGameCamera>();
+          }
+          gameCamera.transform.position = new Vector3(2.5f, 2.6f, -10f);
+        } else {
+          Debug.LogError("something is wrong can't find main camera");
+        }
+      }
+    }
+
     private void Start() {
       LoadLevel();
     }
 
     private void LoadLevel() {
-      Instantiate(levels[LettersHelper.GetActiveLetterIndex()], null);
+      GameObject level = Instantiate(levels[LettersHelper.GetActiveLetterIndex()], null);
+      stairsCharacter = level.GetComponent<StairsCharacter>();
       AssignLetters();
+      gameCamera.StartFollowing(level.transform);
+    }
+
+    public void CameraStopFollowing() {
+      gameCamera.StopFollowing();
     }
 
     public void AssignLetters() {
+      LettersHelper.SetActiveLetter(1);
       levelGuide.text = LettersHelper.GetActiveLetter();
       string[] inCorrectLetters = LettersHelper.GetInCorrectLetters();
       inCorrectLetters = CollectionsUtils.ShuffleArray(inCorrectLetters);
-      for (int x = 0; x < levelRocks.Length; x++) {
+      levelRocks[0].GetComponent<StairsRock>().InitRock(0, LettersHelper.GetActiveLetter());
+
+      for (int x = 1; x < levelRocks.Length; x++) {
         if (x < inCorrectLetters.Length) {
-          levelRocks[x].GetComponentInChildren<TextMeshPro>().text = inCorrectLetters[x];
+          if (x % 2 != 0) {
+            levelRocks[x].GetComponent<StairsRock>().InitRock(x, inCorrectLetters[x]);
+          } else {
+            levelRocks[x].GetComponent<StairsRock>().InitRock(x, LettersHelper.GetActiveLetter());
+          }
         }
       }
     }
 
-    public void OnRockTouched(GameObject rock) {
-      for (int x = 0; x < levelRocks.Length; x++) {
-        if(levelRocks[x] == rock) {
-          activeRock = rock;
-          activeRockIndex = x;
-          break;
+    public void OnRockTouched(StairsRock targetRock) {
+      activeRock = targetRock.gameObject;
+      activeRockIndex = targetRock.GetId();
+      if (targetRock.GetLetter() != LettersHelper.GetActiveLetter()) {
+        stairsCharacter.OnInCorrectRockLanded(lastTouchedRock, targetRock);
+      } else {
+        if (targetRock.GetId() > 0) {
+          AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+        }
+
+        lastTouchedRock = targetRock;
+        if (targetRock.GetId() == levelRocks.Length - 1) {
+          stairsCharacter.PlayDanceAnim();
+          gameCamera.SetEndingOffset();
+          stairsSubmarine.ReachedLastStair();
         }
       }
     }
 
     public GameObject GetNextRock() {
       if (activeRockIndex + 1 < levelRocks.Length) {
-        return levelRocks[activeRockIndex + 1];
+        activeRockIndex++;
+        return levelRocks[activeRockIndex];
       }
       return levelRocks[0];
     }
 
-    public GameObject GetActiveRock() {
-      return activeRock != null ? activeRock : levelRocks[0];
+    public StairsRock GetActiveRock() {
+      return activeRock != null ? activeRock.GetComponent<StairsRock>() : levelRocks[0].GetComponent<StairsRock>();
+    }
+
+    public int GetActiveRockIndex() {
+      return activeRock != null ? activeRockIndex : 0;
     }
 
 
-    public void OnRockSelected(GameObject targetRock) {
-      stairsCharacter.PerformJump();
+    public void OnRockSelected(StairsRock targetRock) {
+      stairsCharacter.AnimatedJump(targetRock);
+    }
+
+    public GameObject GetActiveCharacter() {
+      return stairsCharacter.gameObject;
+    }
+
+    public StairsCharacter GetActiveCharacterRef() {
+      return stairsCharacter;
     }
   }
 }
