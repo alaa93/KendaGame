@@ -69,7 +69,7 @@ namespace KendaGame.Helpers {
 
     public static string[] GetInCorrectLetters() {
       List<string> otherLetters = new List<string>();
-      for (int x = 0; x < otherLetters.Count; x++) {
+      for (int x = 0; x < GetLettersCount(); x++) {
         if (arabicAlphabet[x] != GetActiveLetter()) {
           otherLetters.Add(arabicAlphabet[x]);
         }

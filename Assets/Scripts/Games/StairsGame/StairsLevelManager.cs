@@ -64,7 +64,6 @@ namespace KendaGame.Games {
     }
 
     public void AssignLetters() {
-      LettersHelper.SetActiveLetter(1);
       levelGuide.text = LettersHelper.GetActiveLetter();
       string[] inCorrectLetters = LettersHelper.GetInCorrectLetters();
       inCorrectLetters = CollectionsUtils.ShuffleArray(inCorrectLetters);

@@ -28,7 +28,7 @@ namespace KendaGame.Navigation {
     private bool openManually;
 
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame
+      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame
     }
 
     public Scenes ActiveScene { get => activeScene; set => activeScene = value; }
@@ -131,7 +131,6 @@ namespace KendaGame.Navigation {
         if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
           Instance.MoveTo(Scenes.BubblesGame.ToString());
         } else {
-          // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
           Instance.MoveTo(Scenes.PuzzleGame.ToString());
         }
       } else {
@@ -140,7 +139,7 @@ namespace KendaGame.Navigation {
     }
 
     public void OnVideoCompletedMoveTo() {
-      if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+      if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {// this is to ensure we always have different set of games for each letter
         Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
       } else {
         // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
@@ -151,9 +150,13 @@ namespace KendaGame.Navigation {
     public void OnNextScreenBtnClicked() {
       if (GetActiveScene() == Scenes.BubblesGame || GetActiveScene() == Scenes.PuzzleGame) {
         Instance.MoveTo(Scenes.ColoringEngine.ToString());
-      }else if(GetActiveScene() == Scenes.ColoringEngine) {
-        Instance.MoveTo(Scenes.SharkGame.ToString());
-      } else if (GetActiveScene() == Scenes.SharkGame) {
+      } else if (GetActiveScene() == Scenes.ColoringEngine) {
+        if (LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+          Instance.MoveTo(Scenes.SharkGame.ToString());
+        } else {
+          Instance.MoveTo(Scenes.StairsGame.ToString());
+        }
+      } else if (GetActiveScene() == Scenes.SharkGame || GetActiveScene() == Scenes.StairsGame) {
         Instance.MoveTo(Scenes.TracingBasic.ToString());
       } else if (GetActiveScene() == Scenes.TracingBasic) {
         Instance.MoveTo(Scenes.BoxesGame.ToString());
