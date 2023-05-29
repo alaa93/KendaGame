@@ -24,6 +24,10 @@ namespace KendaGame.UI {
     [SerializeField]
     Sprite[] tracingGuides;
     [SerializeField]
+    SkeletonGraphic animatedTracingGuide;
+    [SerializeField]
+    SkeletonDataAsset[] animatedTracingGuides;
+    [SerializeField]
     AudioClip cameraShutter;
 
     [Header("Advanced Tracing")]
@@ -33,6 +37,8 @@ namespace KendaGame.UI {
     GameObject [] tracingBoard;
     [SerializeField]
     Image letterGuide, playerLetter;
+    [SerializeField]
+    SkeletonGraphic animatedTracingGuideRating;
     [SerializeField]
     GameObject[] partsToHide;
     [SerializeField]
@@ -59,7 +65,7 @@ namespace KendaGame.UI {
 
     private void SetTracingGuide(bool state) {
       if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingBasic) {
-        tracingGuide.gameObject.SetActive(state);
+        animatedTracingGuide.gameObject.SetActive(state);
       }
     }
 
@@ -70,7 +76,12 @@ namespace KendaGame.UI {
     }
 
     private void LoadTracingGuide() {
-      tracingGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
+      if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingBasic) {
+        animatedTracingGuide.skeletonDataAsset = animatedTracingGuides[LettersHelper.GetActiveLetterIndex()];
+        animatedTracingGuide.AnimationState.SetAnimation(0, "animation", true);
+      } else {
+        tracingGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
+      }
     }
 
     private void InitFontSizeBtns() {
@@ -140,7 +151,7 @@ namespace KendaGame.UI {
       yield return 0;
       byte[] bytes = texture.EncodeToPNG();
       screenshotRef.texture = texture;
-      SetTracingGuide(true);
+      //SetTracingGuide(true);
       SetPartsOnScreenShot(true);
       HTTPRequestHandler.Instance.UploadTracingLetter(bytes, onComplete);
       SetPlayerTracingLetter(texture);
@@ -158,15 +169,17 @@ namespace KendaGame.UI {
         ShowNormalRating(success, ratingData);
       }
     }
-    private void ShowAdvancedTracingRating(bool success, RatingData ratingData) {
 
+    private void ShowAdvancedTracingRating(bool success, RatingData ratingData) {
       ratingPopUp.SetActive(true);
       for (int x = 0; x < tracingBoard.Length; x++) {
         tracingBoard[x].SetActive(false);
       }
       string animation = "1Stars_lose";
       if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
-        letterGuide.sprite = tracingGuide.sprite;
+        animatedTracingGuideRating.skeletonDataAsset = animatedTracingGuides[LettersHelper.GetActiveLetterIndex()];
+        animatedTracingGuideRating.AnimationState.SetAnimation(0, "animation", true);
+        //letterGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
         playerLetter.sprite = Sprite.Create((Texture2D)screenshotRef.texture, new Rect(0, 0, screenshotRef.texture.width, screenshotRef.texture.height), Vector2.zero, 100);
         playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
         if (ratingData.StarRating > 1) {
@@ -175,6 +188,7 @@ namespace KendaGame.UI {
       }
       skeletonGraphic.AnimationState.SetAnimation(0, animation, false);
     }
+
     private void ShowNormalRating(bool success, RatingData ratingData) {
       LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.GetLetterRatingPopUp();
       if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
