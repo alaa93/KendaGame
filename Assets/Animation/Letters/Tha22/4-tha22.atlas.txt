@@ -1,0 +1,26 @@
+4-tha22.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/tha227rashif
+bounds:438,443,99,106
+2x/tha22Dot
+bounds:2,858,155,148
+2x/tha22body
+bounds:2,439,1004,567
+2x/tha2Smile
+bounds:539,551,143,65
+2x/tha2Z3nfa
+bounds:297,502,151,179
+Alf-eyeBrow
+bounds:159,909,48,21
+Alf-eyesout
+bounds:2,744,100,112
+Alf-pupple
+bounds:159,932,74,74
+AlfSmile
+bounds:539,481,107,68
+eye close
+bounds:2,716,123,26
+offsets:1,0,125,27

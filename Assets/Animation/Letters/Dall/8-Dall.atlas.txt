@@ -1,0 +1,20 @@
+8-Dall.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/Dall hand
+bounds:2,149,148,171
+2x/Dall hand2
+bounds:129,386,190,138
+2x/Dall tail
+bounds:2,290,212,165
+2x/DallBody
+bounds:2,2,595,691
+Alf-eyeBrow
+bounds:2,672,48,21
+Alf-pupple
+bounds:215,316,74,74
+eye close
+bounds:291,358,123,26
+offsets:1,0,125,27

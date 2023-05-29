@@ -1,0 +1,36 @@
+5-Jeem.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/Jeem Dot
+bounds:400,43,138,138
+2x/JeemArm1
+bounds:2,24,166,111
+2x/JeemArm2
+bounds:445,183,195,135
+2x/JeemBody
+bounds:2,2,650,1091
+2x/JeemHai1
+bounds:499,16,119,227
+2x/JeemHair
+bounds:336,552,62,253
+2x/JeemLeg1
+bounds:244,687,165,152
+2x/JeemMouth
+bounds:181,795,77,46
+2x/JeemZ3nofa
+bounds:433,519,211,211
+2x/Jeemleg2
+bounds:479,711,167,150
+2x/jeem1leg
+bounds:238,735,160,215
+2x/jeem2leg
+bounds:169,568,160,216
+Alf-eyeBrow
+bounds:78,1072,48,21
+Alf-pupple
+bounds:2,1019,74,74
+eye close
+bounds:346,841,123,26
+offsets:1,0,125,27

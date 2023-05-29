@@ -30,5 +30,3 @@ bounds:563,164,117,111
 eye close
 bounds:517,300,123,26
 offsets:1,0,125,27
-ta2-leg
-bounds:784,189,87,198
