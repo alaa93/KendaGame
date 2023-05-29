@@ -5,10 +5,12 @@ namespace KendaGame.Games {
   public class RotateImageGameLevelManager : MonoBehaviour {
 
     [SerializeField]
-    GameObject [] levels;
+    Transform parent;
+    [SerializeField]
+    GameObject[] levels;
 
     private void Awake() {
-      GameObject level = Instantiate(levels[LettersHelper.GetActiveLetterIndex()], GetComponentInParent<Canvas>().transform, false);
+      Instantiate(levels[LettersHelper.GetActiveLetterIndex()], parent, false);
     }
   }
 }
