@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/PuzzleGame.unity
     guid: 74d564ccc512d41998ab41111396ea7c
+  - enabled: 1
+    path: Assets/_Scenes/StairsGame.unity
+    guid: d4e63efdc787dae418f88b5985faf0e3
   m_configObjects: {}

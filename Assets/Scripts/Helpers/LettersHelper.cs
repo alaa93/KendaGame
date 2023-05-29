@@ -1,4 +1,5 @@
-
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KendaGame.Helpers {
@@ -66,5 +67,14 @@ namespace KendaGame.Helpers {
       return arabicAlphabet.Length;
     }
 
+    public static string[] GetInCorrectLetters() {
+      List<string> otherLetters = new List<string>();
+      for (int x = 0; x < GetLettersCount(); x++) {
+        if (arabicAlphabet[x] != GetActiveLetter()) {
+          otherLetters.Add(arabicAlphabet[x]);
+        }
+      }
+      return otherLetters.ToArray();
+    }
   }
 }
