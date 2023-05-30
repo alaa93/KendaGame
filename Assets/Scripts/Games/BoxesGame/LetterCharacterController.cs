@@ -72,10 +72,16 @@ namespace KendaGame.Games {
         if (isDragging) {
           if (!completed) {
             if (letterId == LettersHelper.GetActiveLetter() && boxTrigger.letterId == LettersHelper.GetActiveLetter()) {
+              if (boxTrigger.solved) {
+                return;
+              }
+              boxTrigger.solved = true;
               completed = true;
+              if (treasureBox != null && treasureBox.letterId == LettersHelper.GetActiveLetter()) {
+                treasureBox.OnSolved();
+              }
               BoxesLettersController.Instance.OnCorrectLetter();
               this.gameObject.SetActive(false);
-              boxTrigger.ActivatePart();
             } else {
               Jump(true);
               GetComponent<LetterCharacterDraggable>().mouseDown = false;
@@ -130,6 +136,10 @@ namespace KendaGame.Games {
 
     public void SetInitalPos(Vector3 pos) {
       initialPos = pos;
+      this.transform.position = initialPos;
+    }
+
+    public void ResetPosition() {
       this.transform.position = initialPos;
     }
 

@@ -19,6 +19,12 @@ rotate:90
 Alf-mouth
 bounds:163,345,69,35
 Alf-pupple
-bounds:420,79,74,74
-ta2-leg
-bounds:462,378,87,198
+bounds:344,21,74,74
+AlfMouthbreath
+bounds:420,50,104,103
+AlfSmile
+bounds:263,257,107,68
+rotate:90
+eye close
+bounds:420,22,123,26
+offsets:1,0,125,27

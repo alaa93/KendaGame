@@ -1,0 +1,22 @@
+6-7a22.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/7a22Body
+bounds:2,2,887,1012
+2x/7a22Mouth
+bounds:2,973,144,41
+2x/7a22Z3nofaYamee
+bounds:511,427,174,240
+2x/7a22Zo3nofaYsar
+bounds:202,549,220,150
+Alf-eyeBrow
+bounds:2,908,48,21
+Alf-pupple
+bounds:233,690,74,74
+eye close
+bounds:247,766,123,26
+offsets:1,0,125,27
+mouth (2)
+bounds:2,931,73,40

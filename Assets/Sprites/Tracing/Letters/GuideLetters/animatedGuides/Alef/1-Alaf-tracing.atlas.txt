@@ -1,0 +1,14 @@
+1-Alaf-tracing.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.75
+arrow direct
+bounds:2,257,51,558
+rotate:90
+arrow3
+bounds:2,310,313,312
+ألف
+bounds:562,293,60,329
+همزة
+bounds:317,528,87,94

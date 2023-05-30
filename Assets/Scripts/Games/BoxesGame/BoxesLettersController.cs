@@ -27,7 +27,6 @@ namespace KendaGame.Games {
     public GameObject[] letterAnimatedParts;
     public GameObject[] letterPrefabs;
     public Transform LettersInitalPos;
-    public SpriteRenderer levelWord;
     public AudioSource musicLoop;
     public AudioClip showPartsSfx;
 
@@ -76,7 +75,7 @@ namespace KendaGame.Games {
       if(gameCompleted) {
         return;
       }
-      levelWord.material.SetFloat("_FillAmount", levelWord.material.GetFloat("_FillAmount") + 0.25f);
+      //levelWord.material.SetFloat("_FillAmount", levelWord.material.GetFloat("_FillAmount") + 0.25f);//Deprecated
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       if (correctCount >= 3) {
@@ -112,12 +111,12 @@ namespace KendaGame.Games {
       AudioController.Instance.PlaySfxAtPoint(sfx);
       yield return new WaitForSeconds(sfx.length);
       endingAnim.AnimationState.SetAnimation(0, "swimming", false);
-      yield return new WaitForSeconds(2f);
+      yield return new WaitForSeconds(4f);
       PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
     }
 
     private void ShowGameParts() {
-      boxTrigger.gameObject.SetActive(false);
+      //boxTrigger.gameObject.SetActive(false);
       for (int x = 0; x < instantiatedLetters.Length; x++) {
         instantiatedLetters[x].gameObject.SetActive(false);
       }

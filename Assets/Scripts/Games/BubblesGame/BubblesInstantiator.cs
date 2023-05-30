@@ -1,11 +1,16 @@
-﻿using KendaGame.Helpers;
+﻿using DG.Tweening;
+using KendaGame.Helpers;
 using KendaGame.Navigation;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace KendaGame.Games {
   public class BubblesInstantiator : MonoBehaviour {
+
+    [SerializeField]
+    TextMeshPro letterGuide;
     [SerializeField]
     bool canInstantiate;
     [SerializeField]
@@ -16,7 +21,23 @@ namespace KendaGame.Games {
     AudioClip endingSfx;
     [SerializeField]
     AudioSource gameMusic;
+    [SerializeField]
+    GameObject coins;
+    [SerializeField]
+    ParticleSystem coinsEffect;
+
+    private static BubblesInstantiator _instance;
+    public static BubblesInstantiator Instance {
+      get {
+        if (_instance == null) {
+          _instance = FindObjectOfType<BubblesInstantiator>();
+        }
+        return _instance;
+      }
+    }
+
     List<BubbleMovement> bubbles = new List<BubbleMovement>();
+
     int counter = 0;
     int correctCounter = 0;
     int correctAnswers;
@@ -39,7 +60,7 @@ namespace KendaGame.Games {
           if (correctCounter >= 3) {
             correctCounter = 0;
             bubble.targetLetter = 0;
-            bubble.letterText.text = LettersHelper.GetActiveLetter();
+            bubble.letterText.text = arabicAlphabet[bubble.targetLetter];
           } else {
             bubble.targetLetter = Random.Range(0, arabicAlphabet.Length - 1);
             bubble.letterText.text = arabicAlphabet[bubble.targetLetter];
@@ -50,7 +71,8 @@ namespace KendaGame.Games {
 
     public void OnCorrect() {
       correctAnswers++;
-
+      coins.transform.DOMoveY(coins.transform.position.y + 0.35f, 1);
+      coinsEffect.Play();
       if (correctAnswers >= 3) {
         canInstantiate = false;
         gameMusic.Stop();

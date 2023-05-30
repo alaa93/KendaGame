@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 585544776f8520f4f8906a716e63062b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letterText: {fileID: 8874101771767327532}
   startPosition: {x: 14.35, y: 0}
-  endPosition: {x: -6.38286, y: -2.76}
+  endPosition: {x: -8.5, y: -4}
   speed: 1
   floatRange: 10
   bubbleRadius: 2.56
@@ -223,7 +223,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 9
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &8874101771767327532
 MonoBehaviour:
