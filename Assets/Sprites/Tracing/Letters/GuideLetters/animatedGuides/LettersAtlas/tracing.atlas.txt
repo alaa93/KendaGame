@@ -1,0 +1,30 @@
+tracing.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.75
+Asset 11
+bounds:611,175,200,197
+rotate:90
+Asset 13
+bounds:612,377,191,232
+Asset 15
+bounds:2,175,406,288
+Asset 8
+bounds:2,465,424,459
+arrow direct
+bounds:811,366,51,558
+arrow3
+bounds:428,611,313,312
+rotate:90
+baa2
+bounds:427,181,428,182
+rotate:90
+dooot
+bounds:810,198,70,70
+dot
+bounds:742,863,62,61
+ألف
+bounds:864,595,60,329
+همزة
+bounds:810,270,87,94
