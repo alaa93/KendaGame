@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 1-Alaf-tracing_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 47bb09a0c01f8431f8ec5cd0c08d5c93, type: 2}
+  - {fileID: 11400000, guid: 6ffdee04f051a488eac4e9d810a47be1, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 178389ccf1aa94be4a913fe8a7b0e57e, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: f1b0e1fe3638e43deb017b506878fe46, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
