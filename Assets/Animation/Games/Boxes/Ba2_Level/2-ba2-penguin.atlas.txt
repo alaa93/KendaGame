@@ -1,0 +1,26 @@
+2-ba2-penguin.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+Ba22NewM3
+bounds:625,353,48,63
+b hair
+bounds:560,236,75,53
+b-body
+bounds:2,235,216,423
+rotate:90
+b-browser
+bounds:2,437,18,14
+b-hand
+bounds:410,241,103,172
+b-leg
+bounds:481,237,77,52
+b-word2
+bounds:2,453,749,298
+bb
+bounds:560,291,63,60
+eye close
+bounds:630,236,81,18
+eyes
+bounds:161,420,29,31

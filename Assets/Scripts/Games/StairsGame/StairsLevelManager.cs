@@ -86,7 +86,9 @@ namespace KendaGame.Games {
       if (targetRock.GetLetter() != LettersHelper.GetActiveLetter()) {
         stairsCharacter.OnInCorrectRockLanded(lastTouchedRock, targetRock);
       } else {
-        if (targetRock.GetId() > 0) {
+        //targetRock.GetId() > lastTouchedRock.GetId() this to insure we don't play correct sfx unless its the next rock,
+        //otherwise player is jumping to previous rock and we shouldn't play correct sfx
+        if (targetRock.GetId() > 0 && (lastTouchedRock == null || targetRock.GetId() > lastTouchedRock.GetId())) {
           AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
         }
 

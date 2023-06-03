@@ -75,7 +75,6 @@ namespace KendaGame.Games {
       if(gameCompleted) {
         return;
       }
-      //levelWord.material.SetFloat("_FillAmount", levelWord.material.GetFloat("_FillAmount") + 0.25f);//Deprecated
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       if (correctCount >= 3) {
@@ -103,26 +102,34 @@ namespace KendaGame.Games {
       yield return new WaitForSeconds(delay);
       endingAnim.gameObject.SetActive(true);
       allPartsObject.SetActive(false);
-      endingAnim.AnimationState.SetAnimation(0, "idle", false);
-      yield return new WaitForSeconds(1.5f);
-      endingAnim.AnimationState.SetAnimation(0, "Letters", false);
-      yield return new WaitForSeconds(2f);
-      AudioClip sfx = AudioController.Instance.commonSfx.GetEndingSfx();
-      AudioController.Instance.PlaySfxAtPoint(sfx);
-      yield return new WaitForSeconds(sfx.length);
-      endingAnim.AnimationState.SetAnimation(0, "swimming", false);
-      yield return new WaitForSeconds(4f);
+
+      AudioClip endingSfx = AudioController.Instance.commonSfx.GetEndingSfx();
+      AudioController.Instance.PlaySfxAtPoint(endingSfx);
+
+      if (LettersHelper.GetActiveLetterIndex() == 0) {
+        endingAnim.AnimationState.SetAnimation(0, "idle", false);
+        yield return new WaitForSeconds(1.5f);
+        endingAnim.AnimationState.SetAnimation(0, "Letters", false);
+        yield return new WaitForSeconds(2f);
+        AudioClip sfx = AudioController.Instance.commonSfx.GetEndingSfx();
+        AudioController.Instance.PlaySfxAtPoint(sfx);
+        yield return new WaitForSeconds(sfx.length);
+        endingAnim.AnimationState.SetAnimation(0, "swimming", false);
+        yield return new WaitForSeconds(4f);
+      } else {
+        yield return new WaitForSeconds(8f);
+      }
       PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
     }
 
     private void ShowGameParts() {
-      //boxTrigger.gameObject.SetActive(false);
       for (int x = 0; x < instantiatedLetters.Length; x++) {
         instantiatedLetters[x].gameObject.SetActive(false);
       }
       allPartsObject.SetActive(true);
       AudioController.Instance.PlaySfxAtPoint(showPartsSfx);
       CorrectBoxPos.GetComponent<BoxesTreasureBox>().OnTriggered(null);
+      BoxesTreasureBox[] boxes = FindObjectsOfType<BoxesTreasureBox>();
       for (int x = 0; x < letterStaticParts.Length; x++) {
         letterStaticParts[x].gameObject.SetActive(true);
         letterStaticParts[x].GetComponent<SpriteRenderer>().DOFade(0, 0f);
@@ -132,6 +139,10 @@ namespace KendaGame.Games {
       for (int x = 0; x < letterAnimatedParts.Length; x++) {
         int temp = x;
         OnLetterAnimationCompleted(temp);
+      }
+
+      for (int x = 0; x < boxes.Length; x++) {
+        boxes[x].gameObject.SetActive(false);
       }
     }
 

@@ -2,15 +2,24 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using KendaGame.Navigation;
+using KendaGame.Helpers;
 
 namespace KendaGame.EditorScripts {
   public class KendaEditorScript : EditorWindow {
+
+    private string inputValue = "";
 
     [MenuItem("KendaGame/Debug/Play From SplashScreen")]
     public static void PlayFromSplashScreen() {
 
       SaveAndLoadScene(SceneManager.Scenes.SplashScreen.ToString());
       EnterPlayMode();
+    }
+
+    [MenuItem("KendaGame/Debug/Set Active Letter")]
+    public static void SetActiveLetter() {
+      KendaEditorScript window = GetWindow<KendaEditorScript>("Set Active Letter");
+      window.minSize = new Vector2(200f, 100f);
     }
 
     [MenuItem("Window/Set Game View Resolution")]
@@ -27,6 +36,17 @@ namespace KendaGame.EditorScripts {
 
       if (GUILayout.Button("Set Resolution")) {
         SetResolution(width, height);
+      }
+
+      ActiveLetterWindow();
+    }
+
+    private void ActiveLetterWindow() {
+      GUILayout.Label("Enter a value:", EditorStyles.boldLabel);
+      inputValue = EditorGUILayout.TextField("Input Value:", inputValue);
+
+      if (GUILayout.Button("Submit")) {
+        LettersHelper.SetActiveLetter(inputValue);
       }
     }
 

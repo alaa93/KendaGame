@@ -1,0 +1,21 @@
+4-tha2-Sanke.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.5
+1x/Asset 10
+bounds:1234,1059,38,49
+1x/Asset 11
+bounds:1324,1036,22,26
+1x/Asset 12
+bounds:1287,1055,35,29
+1x/Asset 9
+bounds:1234,1130,133,237
+b-browser
+bounds:1234,1044,18,14
+eye close
+bounds:1234,1110,81,18
+eyes
+bounds:1256,1034,29,31
+tha2 word
+bounds:2,1033,1230,334

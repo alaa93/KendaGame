@@ -1,14 +1,27 @@
+using DG.Tweening;
 using UnityEngine;
-using KendaGame.Navigation;
+using UnityEngine.UI;
+
 namespace KendaGame.UI {
   public class MapController : MonoBehaviour {
 
     [SerializeField]
-    Canvas mapCanvas;
-    private void Awake() {
-      if (mapCanvas && Camera.main) {
-        mapCanvas.worldCamera = Camera.main;
-      }
+    float fadeDuration = 2f;
+    [SerializeField]
+    Image[] overlay;
+
+    private void Start() {
+      //PlayOverlayAnimation(overlay[0]);
+      //PlayOverlayAnimation(overlay[1]);
+      //PlayOverlayAnimation(overlay[2]);
+    }
+
+    private void PlayOverlayAnimation(Image image) {
+      image.DOFade(0.5f, fadeDuration).OnComplete(() => {
+        image.DOFade(1f, fadeDuration).OnComplete(() => {
+          PlayOverlayAnimation(image);
+        });
+      });
     }
   }
 }
