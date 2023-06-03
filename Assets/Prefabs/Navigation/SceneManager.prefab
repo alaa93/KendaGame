@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backBtn: {fileID: 5550581815954986256}
-  coinsObject: {fileID: 5712472901308556343}
+  coinsObject: {fileID: 5442922545709322926}
   coinsText: {fileID: 1178826032593973608}
 --- !u!1 &3743301397296068001
 GameObject:
@@ -1439,7 +1439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 207.61, y: -96.14}
+  m_AnchoredPosition: {x: 207.60999, y: -96.140015}
   m_SizeDelta: {x: 0, y: 107}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5138422073203245187

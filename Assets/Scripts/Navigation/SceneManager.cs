@@ -132,6 +132,10 @@ namespace KendaGame.Navigation {
       } else {
         uiController.SetCoinsObjectState(true);
       }
+
+      if(scene.name == Scenes.HomeScreen.ToString()) {
+        uiController.SetCoinsObjectState(true);
+      }
     }
 
     public Scenes GetActiveScene() {

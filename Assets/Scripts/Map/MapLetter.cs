@@ -25,7 +25,7 @@ namespace KendaGame.Navigation {
     }
 
     private void OnLetterClicked() {
-      if (id > 8) {
+      if (id >= 8) {
         return;
       }
       SceneManager.Instance.OnMapLetterClicked(id);
