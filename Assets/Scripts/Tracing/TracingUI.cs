@@ -41,6 +41,11 @@ namespace KendaGame.UI {
     GameObject[] partsToHide;
     [SerializeField]
     SkeletonGraphic skeletonGraphic;
+    [SerializeField]
+    Vector2[] popUpAnimatedLetterAligments;
+    [SerializeField]
+    Vector2[] popUpAnimatedLetterScale;
+
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
     private Texture2D texture2D;
@@ -56,7 +61,6 @@ namespace KendaGame.UI {
     }
 
     private void Awake() {
-      LettersHelper.SetActiveLetter(0);
       SceneManager.Instance.OpenCloudsManually();
       InitFontSizeBtns();
       PrepareBoard();
@@ -212,13 +216,16 @@ namespace KendaGame.UI {
 
     private void ShowLetterComparison() {
       //Player Letter
-      playerLetter.sprite = Sprite.Create((Texture2D)texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+      playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
       playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
       //Correct Letter
       animatedTracingGuideRating.skeletonDataAsset = animatedTracingGuides[LettersHelper.GetActiveLetterIndex()];
       animatedTracingGuideRating.Initialize(true);
       animatedTracingGuideRating.MatchRectTransformWithBounds();
-      //animatedTracingGuide.GetComponent<RectTransform>().anchoredPosition = animatedGuidesAligments[LettersHelper.GetActiveLetterIndex()];
+      animatedTracingGuide.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+      animatedTracingGuide.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+      animatedTracingGuide.GetComponent<RectTransform>().anchoredPosition = popUpAnimatedLetterAligments[LettersHelper.GetActiveLetterIndex()];
+      animatedTracingGuide.GetComponent<RectTransform>().sizeDelta = popUpAnimatedLetterScale[LettersHelper.GetActiveLetterIndex()];
       animatedTracingGuideRating.AnimationState.SetAnimation(0, "animation", true);
     }
 

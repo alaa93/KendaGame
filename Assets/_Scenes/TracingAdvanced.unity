@@ -3433,6 +3433,26 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a545a30c453e7466eaebe6e109054d39, type: 2}
   - {fileID: 11400000, guid: 0e4a5d03332f04f8f8fb161b0135e5e0, type: 2}
   - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
+  - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
   animatedGuidesAligments:
   - {x: -25.789, y: -42.57277}
   - {x: -25.789, y: -42.57277}
@@ -3440,6 +3460,26 @@ MonoBehaviour:
   - {x: -20, y: 20}
   - {x: -20, y: 18}
   - {x: -20, y: 18}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
+  - {x: -20, y: -98.39999}
   - {x: -20, y: -98.39999}
   - {x: -20, y: -98.39999}
   cameraShutter: {fileID: 8300000, guid: d949e54efe301514ab129ecdad39f875, type: 3}
@@ -3455,6 +3495,24 @@ MonoBehaviour:
   - {fileID: 871719319}
   - {fileID: 1334946330}
   skeletonGraphic: {fileID: 1287928576}
+  popUpAnimatedLetterAligments:
+  - {x: 13.4442, y: -35.18}
+  - {x: 13.4442, y: -35.18}
+  - {x: 9.536743, y: -85}
+  - {x: 13.4442, y: -35.18}
+  - {x: 13.4442, y: -35.18}
+  - {x: 13.4442, y: -35.18}
+  - {x: 13.4442, y: -35.18}
+  - {x: 13.4442, y: -35.18}
+  popUpAnimatedLetterScale:
+  - {x: 74.69, y: 342.05}
+  - {x: 74.69, y: 342.05}
+  - {x: 74.69, y: 135.35}
+  - {x: 74.69, y: 342.05}
+  - {x: 74.69, y: 342.05}
+  - {x: 74.69, y: 342.05}
+  - {x: 74.69, y: 342.05}
+  - {x: 74.69, y: 342.05}
   screenshotRef: {fileID: 0}
 --- !u!1 &1100903759
 GameObject:
@@ -6160,7 +6218,7 @@ MonoBehaviour:
   startingLoop: 1
   timeScale: 1
   freeze: 0
-  layoutScaleMode: 3
+  layoutScaleMode: 1
   referenceSize: {x: 125, y: 572.49994}
   referenceScale: 1
   rectTransformSize: {x: 125, y: 572.49994}
