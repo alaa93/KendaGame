@@ -67,7 +67,7 @@ namespace KendaGame.Games {
     }
 
     private void OnGameCompleted() {
-      PopUpsManager.Instance.GetGameRatingPopUp();
+      PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
     }
   }
 }

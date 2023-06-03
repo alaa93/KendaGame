@@ -49,7 +49,7 @@ namespace KendaGame.Games {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-      if (collision.tag == "TreasureBox" && clicked && targetLetter == 0) {
+      if (collision.tag == "TreasureBox" && clicked && targetLetter == LettersHelper.GetActiveLetterIndex()) {
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
         GetComponent<Collider2D>().isTrigger = true;
@@ -62,7 +62,7 @@ namespace KendaGame.Games {
     private void OnMouseDown() {
       clicked = true;
 
-      if (targetLetter == 0) {
+      if (targetLetter == LettersHelper.GetActiveLetterIndex()) {
         //Correct
         speed = 100f;
         Vector2 direction = (currentTarget - rb.position).normalized;
@@ -70,7 +70,6 @@ namespace KendaGame.Games {
         this.GetComponent<SpriteRenderer>().color = Color.green;
         GetComponent<Collider2D>().isTrigger = true;
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
-        BubblesInstantiator.Instance.OnCorrect();
       } else {
         //not correct try again
         rb.AddForce(new Vector2(Random.Range(-3f, 9f), Random.Range(-4f, 4f)) * (25f), ForceMode2D.Impulse);
