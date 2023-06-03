@@ -20,13 +20,11 @@ namespace KendaGame.UI {
     [SerializeField]
     UIButtonAnimator[] fontSizeBtnsOutline;
     [SerializeField]
-    Image tracingGuide;
-    [SerializeField]
-    Sprite[] tracingGuides;
-    [SerializeField]
     SkeletonGraphic animatedTracingGuide;
     [SerializeField]
     SkeletonDataAsset[] animatedTracingGuides;
+    [SerializeField]
+    Vector2 [] animatedGuidesAligments;
     [SerializeField]
     AudioClip cameraShutter;
 
@@ -58,6 +56,7 @@ namespace KendaGame.UI {
     }
 
     private void Awake() {
+      LettersHelper.SetActiveLetter(0);
       SceneManager.Instance.OpenCloudsManually();
       InitFontSizeBtns();
       PrepareBoard();
@@ -81,11 +80,8 @@ namespace KendaGame.UI {
         animatedTracingGuide.skeletonDataAsset = animatedTracingGuides[LettersHelper.GetActiveLetterIndex()];
         animatedTracingGuide.Initialize(true);
         animatedTracingGuide.MatchRectTransformWithBounds();
-        Center(animatedTracingGuide.GetComponent<RectTransform>());
+        animatedTracingGuide.GetComponent<RectTransform>().anchoredPosition = animatedGuidesAligments[LettersHelper.GetActiveLetterIndex()];
         animatedTracingGuide.AnimationState.SetAnimation(0, "animation", true);
-
-      } else {
-        tracingGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
       }
     }
 
@@ -208,36 +204,22 @@ namespace KendaGame.UI {
         tracingBoard[x].SetActive(false);
       }
       string animation = "1Stars_lose";
-      if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
-        animatedTracingGuideRating.skeletonDataAsset = animatedTracingGuides[LettersHelper.GetActiveLetterIndex()];
-        animatedTracingGuideRating.Initialize(true);
-        animatedTracingGuideRating.MatchRectTransformWithBounds();
-        Center(animatedTracingGuideRating.GetComponent<RectTransform>());
-        animatedTracingGuideRating.AnimationState.SetAnimation(0, "animation", true);
-        //letterGuide.sprite = tracingGuides[LettersHelper.GetActiveLetterIndex()];
-        playerLetter.sprite = Sprite.Create((Texture2D)texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
-        playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
-        if (ratingData.StarRating > 1) {
-          animation = $"{ratingData.StarRating}Stars";
-        }
-      }
+      ShowLetterComparison();
+      bool successfullyRated = success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass() && ratingData.StarRating > 1;
+      animation = successfullyRated ? $"{ratingData.StarRating}Stars" : animation;
       skeletonGraphic.AnimationState.SetAnimation(0, animation, false);
     }
 
-    private void MatchRectTransformWithMesh(SkeletonGraphic skeletonGraphic) {
-      // Get the mesh from the SkeletonGraphic component
-      Mesh mesh = skeletonGraphic.GetLastMesh();
-
-      if (mesh != null) {
-        // Calculate the bounds of the mesh
-        Bounds meshBounds = mesh.bounds;
-
-        // Set the size of the RectTransform to match the mesh bounds
-        skeletonGraphic.GetComponent<RectTransform>().sizeDelta = new Vector2(meshBounds.size.x, meshBounds.size.y);
-
-        // Set the position of the RectTransform to match the mesh bounds center
-        skeletonGraphic.GetComponent<RectTransform>().position = new Vector2(meshBounds.center.x, meshBounds.center.y);
-      }
+    private void ShowLetterComparison() {
+      //Player Letter
+      playerLetter.sprite = Sprite.Create((Texture2D)texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+      playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
+      //Correct Letter
+      animatedTracingGuideRating.skeletonDataAsset = animatedTracingGuides[LettersHelper.GetActiveLetterIndex()];
+      animatedTracingGuideRating.Initialize(true);
+      animatedTracingGuideRating.MatchRectTransformWithBounds();
+      //animatedTracingGuide.GetComponent<RectTransform>().anchoredPosition = animatedGuidesAligments[LettersHelper.GetActiveLetterIndex()];
+      animatedTracingGuideRating.AnimationState.SetAnimation(0, "animation", true);
     }
 
     private void ShowNormalRating(bool success, RatingData ratingData) {
