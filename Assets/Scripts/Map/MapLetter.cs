@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using KendaGame.Helpers;
 using UnityEngine.UI;
+using KendaGame.UI;
 
 namespace KendaGame.Navigation {
   [RequireComponent(typeof(UIButtonAnimator))]
@@ -24,13 +25,20 @@ namespace KendaGame.Navigation {
     }
 
     private void OnLetterClicked() {
+      if (id > 8) {
+        return;
+      }
       SceneManager.Instance.OnMapLetterClicked(id);
     }
 
     private void LoadLetterRating() {
-      //for (int x = 0; x < rating.Length; x++) {
-      //  rating[x].sprite = //eather colored star or empty star based on rating from 3
-      //}
+      int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + id), out int storedRating);
+      if (storedRating != -1) {
+        for (int x = 0; x < storedRating; x++) {
+          rating[x].sprite = MapController.Instance.coloredStar;
+        }
+      }
     }
+
   }
 }

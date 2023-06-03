@@ -2021,7 +2021,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6f6ba4832a8e455d89379c480b294c5, type: 2}
   - {fileID: 11400000, guid: 84d6da01318c14a9a865a21dd38cfb44, type: 2}
   - {fileID: 11400000, guid: 0bfb48a8bd1a94289a75a7c0899a2f59, type: 2}
-  - {fileID: 11400000, guid: 4063edbae323142c5a3a57620705dad9, type: 2}
+  - {fileID: 11400000, guid: 7a2c5625f8a704ad584bae960b122f62, type: 2}
   - {fileID: 11400000, guid: a545a30c453e7466eaebe6e109054d39, type: 2}
   - {fileID: 11400000, guid: 0e4a5d03332f04f8f8fb161b0135e5e0, type: 2}
   - {fileID: 11400000, guid: 9f6f69ac873bb46f59210b8333f06db9, type: 2}
@@ -2042,6 +2042,8 @@ MonoBehaviour:
   animatedTracingGuideRating: {fileID: 0}
   partsToHide: []
   skeletonGraphic: {fileID: 0}
+  popUpAnimatedLetterAligments: []
+  popUpAnimatedLetterScale: []
   screenshotRef: {fileID: 0}
 --- !u!1 &1100903759
 GameObject:
@@ -2290,7 +2292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  skeletonDataAsset: {fileID: 11400000, guid: 4063edbae323142c5a3a57620705dad9, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: e23a93743d6f444b9bebb9120e62748e, type: 2}
   additiveMaterial: {fileID: 2100000, guid: 2e8245019faeb8c43b75f9ca3ac8ee34, type: 2}
   multiplyMaterial: {fileID: 2100000, guid: e74a1f8978a7da348a721508d0d58834, type: 2}
   screenMaterial: {fileID: 2100000, guid: bab24c479f34eec45be6ea8595891569, type: 2}

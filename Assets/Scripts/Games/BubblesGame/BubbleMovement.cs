@@ -55,6 +55,7 @@ namespace KendaGame.Games {
         GetComponent<Collider2D>().isTrigger = true;
         this.transform.DOMove(new Vector3(-7.38f, -2.2f, 0f), 0.3f);
         this.transform.DOScale(0f, 1f);
+        BubblesInstantiator.Instance.PlayFillEffect();
       }
     }
 

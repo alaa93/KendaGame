@@ -89,30 +89,6 @@ namespace KendaGame.UI {
       }
     }
 
-    private void CenterLetterVertically() {
-      // Get the parent RectTransform
-      RectTransform parentRectTransform = animatedTracingGuide.transform.parent.GetComponent<RectTransform>();
-
-      // Calculate the desired y position
-      float desiredY = parentRectTransform.rect.height * 0.5f;
-
-      // Set the anchored position to center vertically
-      animatedTracingGuide.GetComponent<RectTransform>().anchoredPosition = new Vector2(animatedTracingGuide.GetComponent<RectTransform>().anchoredPosition.x, desiredY);
-    }
-
-    private void Center(RectTransform targetRect) {
-      // Get the parent RectTransform
-      RectTransform parentRectTransform = targetRect.transform.parent.GetComponent<RectTransform>();
-
-      // Calculate the desired position
-      Vector2 desiredPosition = parentRectTransform.rect.center;
-
-      // Set the anchored position to center the RectTransform
-      float x = targetRect.GetComponent<RectTransform>().anchoredPosition.x;
-      float y = targetRect.GetComponent<RectTransform>().rect.height / 2;
-      targetRect.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, desiredPosition.y - y + 20f);
-    }
-
     private void InitFontSizeBtns() {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
         int temp = x;
@@ -212,6 +188,10 @@ namespace KendaGame.UI {
       bool successfullyRated = success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass() && ratingData.StarRating > 1;
       animation = successfullyRated ? $"{ratingData.StarRating}Stars" : animation;
       skeletonGraphic.AnimationState.SetAnimation(0, animation, false);
+
+      int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
+      currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
+      StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
     }
 
     private void ShowLetterComparison() {
@@ -234,6 +214,9 @@ namespace KendaGame.UI {
       if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
         if (ratingData != null) {
           letterRatingPopUp.PlayStarsAnimation(ratingData.StarRating);
+          int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
+          currentRating += Math.Clamp(ratingData.StarRating, 0, 1);
+          StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
         }
       } else {
         letterRatingPopUp.PlayStarsAnimation(1);

@@ -93,6 +93,7 @@ namespace KendaGame.Games {
         correctCounter++;
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
         wheelBubble.PlayHitEffect(true);
+        SceneManager.Instance.IncrementCoins(10);
         if (correctCounter >= 3) {
           canRotate = false;
           this.gameCompleted = true;
@@ -113,7 +114,7 @@ namespace KendaGame.Games {
     private IEnumerator OnGameCompleted(float delay) {
       yield return new WaitForSeconds(delay);
       if (PopUpsManager.Instance != null) {
-        PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
+        PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
       }
     }
 

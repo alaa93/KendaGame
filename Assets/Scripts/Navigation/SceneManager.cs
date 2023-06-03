@@ -48,7 +48,7 @@ namespace KendaGame.Navigation {
       }
       if (!openManually) {
         loadingController.OpenClouds(null);
-        UpdateBackBtnState(scene);
+        UpdateUIBtnsState(scene);
       }
     }
 
@@ -94,6 +94,12 @@ namespace KendaGame.Navigation {
     }
 
     public void OnBackClicked() {
+      if(PopUpsManager.Instance.IsGameRatingActive()) {
+        PopUpsManager.Instance.GetGameRatingPopUp().gameObject.SetActive(false);
+      }
+      if (PopUpsManager.Instance.IsLetterRatingActive()) {
+        PopUpsManager.Instance.GetLetterRatingPopUp().gameObject.SetActive(false);
+      }
       if (navigationStack != null && navigationStack.Count > 1) {
         MoveTo(navigationStack[navigationStack.Count - 2]);
         navigationStack.RemoveAt(navigationStack.Count - 1);
@@ -110,11 +116,21 @@ namespace KendaGame.Navigation {
       uiController.SetCoinsObjectState(state);
     }
 
-    private void UpdateBackBtnState(Scene scene) {
+    public void IncrementCoins(int addedAmount) {
+      uiController.IncrementCoins(addedAmount);
+    }
+
+    private void UpdateUIBtnsState(Scene scene) {
       if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.HomeScreen.ToString()) {
         uiController.SetBackBtnState(false);
       } else {
         uiController.SetBackBtnState(true);
+      }
+
+      if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.Map.ToString() || scene.name != Scenes.HomeScreen.ToString() || !scene.name.Contains("Game")) {
+        uiController.SetCoinsObjectState(false);
+      } else {
+        uiController.SetCoinsObjectState(true);
       }
     }
 

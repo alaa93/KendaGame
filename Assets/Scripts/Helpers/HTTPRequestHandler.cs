@@ -51,6 +51,8 @@ namespace KendaGame.Helpers {
           statusCallback?.Invoke(true, ratingData);
         }
       } else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null);
       }
     }

@@ -1,4 +1,5 @@
 using KendaGame.Helpers;
+using KendaGame.Navigation;
 using ScorpionSteps.Utils;
 using TMPro;
 using UnityEngine;
@@ -90,6 +91,7 @@ namespace KendaGame.Games {
         //otherwise player is jumping to previous rock and we shouldn't play correct sfx
         if (targetRock.GetId() > 0 && (lastTouchedRock == null || targetRock.GetId() > lastTouchedRock.GetId())) {
           AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+          SceneManager.Instance.IncrementCoins(20);
         }
 
         lastTouchedRock = targetRock;

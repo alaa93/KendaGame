@@ -4,6 +4,8 @@ namespace KendaGame.Helpers {
   public static class StorageHelper {
 
     public static string CurrentLocale = "ar";
+    public static string MapLetterProgress = "MapLetterProgress";
+    public static string CoinsAmount = "CoinsAmount";
 
     public static void WriteStorage(string key, string value) {
       PlayerPrefs.SetString(key, value);
