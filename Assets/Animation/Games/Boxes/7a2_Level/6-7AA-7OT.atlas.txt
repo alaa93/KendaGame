@@ -1,0 +1,21 @@
+6-7AA-7OT.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.5
+1x/Asset 43
+bounds:1204,1036,234,402
+1x/Asset 46
+bounds:1343,946,67,89
+1x/Asset 47
+bounds:1267,922,74,108
+1x/Asset 48
+bounds:1204,973,129,122
+7a word
+bounds:2,921,1200,517
+b-browser
+bounds:1204,924,18,14
+eye close
+bounds:1327,926,81,18
+eyes
+bounds:1204,940,29,31

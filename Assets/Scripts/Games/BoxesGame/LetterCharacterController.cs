@@ -67,17 +67,17 @@ namespace KendaGame.Games {
         return;
       }
       BoxesTreasureBoxTrigger boxTrigger = collision.GetComponent<BoxesTreasureBoxTrigger>();
-      BoxesTreasureBox treasureBox = collision.GetComponent<BoxesTreasureBox>();
+      BoxesTreasureBox treasureBox = collision.GetComponentInParent<BoxesTreasureBox>();
       if (boxTrigger != null) {
         if (isDragging) {
           if (!completed) {
-            if (letterId == LettersHelper.GetActiveLetter() && boxTrigger.letterId == LettersHelper.GetActiveLetter()) {
+            if (letterId == LettersHelper.GetActiveLetter()) {
               if (boxTrigger.solved) {
                 return;
               }
               boxTrigger.solved = true;
               completed = true;
-              if (treasureBox != null && treasureBox.letterId == LettersHelper.GetActiveLetter()) {
+              if (treasureBox != null) {
                 treasureBox.OnSolved();
               }
               BoxesLettersController.Instance.OnCorrectLetter();

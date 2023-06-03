@@ -155,8 +155,20 @@ MonoBehaviour:
   gameLevels:
   - level: {fileID: 2751377922918451978, guid: 871f7747cd275412096819ecb1238cf3, type: 3}
     levelLetter: "\u0623"
-  - level: {fileID: 2751377922918451978, guid: d0b1a4f9fc17841ec8693781cfac434a, type: 3}
+  - level: {fileID: 1039915824042470159, guid: 6ff5bdec4e3a14e4595fe08842627fed, type: 3}
     levelLetter: "\u0628"
+  - level: {fileID: 6952041830964667487, guid: 4a184327548a7478bacac10c3c95c386, type: 3}
+    levelLetter: "\u062A"
+  - level: {fileID: 6952041830964667487, guid: 9008cdbb561f54d3eb816830034fd04e, type: 3}
+    levelLetter: "\u062B"
+  - level: {fileID: 6952041830964667487, guid: fe3d3da470ffa41e18ec1656f5a1f80f, type: 3}
+    levelLetter: "\u062C"
+  - level: {fileID: 6952041830964667487, guid: cc887ff9e0e104b8582f67e5bfa2302f, type: 3}
+    levelLetter: "\u062D"
+  - level: {fileID: 6952041830964667487, guid: 35aa1a519933c4737b6b35b1648d7ab0, type: 3}
+    levelLetter: "\u062E"
+  - level: {fileID: 6952041830964667487, guid: 5cc813c875bd44784bc502b710c97909, type: 3}
+    levelLetter: "\u062F"
 --- !u!4 &288863394
 Transform:
   m_ObjectHideFlags: 0

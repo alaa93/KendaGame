@@ -1,0 +1,23 @@
+8-DAL-DOLPHIN.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.5
+1x/Asset 11
+bounds:1413,1024,22,26
+1x/Asset 2
+bounds:1413,1282,197,328
+1x/Asset 3
+bounds:1413,1105,59,67
+1x/Asset 4
+bounds:1413,1174,64,68
+1x/Asset 5
+bounds:1413,1244,82,65
+b-browser
+bounds:1413,1008,18,14
+dal word
+bounds:2,990,1409,620
+eye close
+bounds:1413,1085,81,18
+eyes
+bounds:1413,1052,29,31
