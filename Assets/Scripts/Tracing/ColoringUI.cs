@@ -61,6 +61,11 @@ namespace KendaGame.UI {
 
     public void OnColoringCompleted() {
       PopUpsManager.Instance.GetLetterRatingPopUp().PlayStarsAnimation(3);
+      int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
+      if (currentRating <= 0) {
+        currentRating += 1;
+      }
+      StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), $"{currentRating}");
     }
 
     private void StartColoring() {

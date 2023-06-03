@@ -70,9 +70,6 @@ namespace KendaGame.Games {
     }
 
     public void OnCorrect() {
-      correctAnswers++;
-      coins.transform.DOMoveY(coins.transform.position.y + 0.35f, 1);
-      coinsEffect.Play();
       if (correctAnswers >= 3) {
         canInstantiate = false;
         gameMusic.Stop();
@@ -86,9 +83,16 @@ namespace KendaGame.Games {
       }
     }
 
+    public void PlayFillEffect() {
+      correctAnswers++;
+      coins.transform.DOMoveY(coins.transform.position.y + 0.35f, 1);
+      coinsEffect.Play();
+      SceneManager.Instance.IncrementCoins(10);
+    }
+
     private IEnumerator OnGameCompleted(float waitSeconds) {
       yield return new WaitForSeconds(waitSeconds);
-      PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
+      PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
     }
   }
 }

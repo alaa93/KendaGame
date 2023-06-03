@@ -77,6 +77,7 @@ namespace KendaGame.Games {
       }
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+      SceneManager.Instance.IncrementCoins(30);
       if (correctCount >= 3) {
         gameCompleted = true;
         for (int x = 0; x < instantiatedLetters.Length; x++) {
@@ -119,7 +120,7 @@ namespace KendaGame.Games {
       } else {
         yield return new WaitForSeconds(8f);
       }
-      PopUpsManager.Instance.LoadRatingLevel().ShowPopUp();
+      PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
     }
 
     private void ShowGameParts() {

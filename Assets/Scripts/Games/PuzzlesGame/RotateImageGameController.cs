@@ -48,6 +48,7 @@ namespace KendaGame.Games {
     public void OnCorrect() {
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
+      SceneManager.Instance.IncrementCoins(20);
       if (correctCount >= imageParts.Length) {
         Debug.Log("GAME COMPLETED");
         AudioUtils.FadeOutAudio(musicLoop, 0.4f);
@@ -66,7 +67,7 @@ namespace KendaGame.Games {
     }
 
     private void OnGameCompleted() {
-      PopUpsManager.Instance.LoadRatingLevel();
+      PopUpsManager.Instance.GetGameRatingPopUp();
     }
   }
 }

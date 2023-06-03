@@ -25923,6 +25923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855a99194f42843b98ab24e410112dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coloredStar: {fileID: 21300000, guid: cd3f99c74ba3ebd4393e9fe98fa90bc9, type: 3}
+  emptyStar: {fileID: 21300000, guid: 4a0d7cbaf8d13f640bdb88373a08a03a, type: 3}
   fadeDuration: 2
   overlay:
   - {fileID: 83781540}

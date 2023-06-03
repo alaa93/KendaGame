@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using KendaGame.Helpers;
+using TMPro;
 
 namespace KendaGame.Navigation {
   public class UIController : MonoBehaviour {
@@ -9,14 +10,20 @@ namespace KendaGame.Navigation {
     UIButtonAnimator backBtn;
     [SerializeField]
     GameObject coinsObject;
+    [SerializeField]
+    TextMeshProUGUI coinsText;
+    int coinsAmount = 0;
 
     private void Awake() {
       InitUI();
     }
 
     private void InitUI() {
-      coinsObject.SetActive(false);
       InitBackBtn();
+      coinsObject.SetActive(false);
+      int.TryParse(StorageHelper.ReadStorage(StorageHelper.CoinsAmount), out int coins);
+      coinsAmount = coins;
+      coinsText.text = $"{coinsAmount}";
     }
 
     private void InitBackBtn() {
@@ -32,6 +39,12 @@ namespace KendaGame.Navigation {
 
     public void SetCoinsObjectState(bool state) {
       coinsObject.gameObject.SetActive(state);
+    }
+
+    public void IncrementCoins(int addedAmount) {
+      coinsAmount += addedAmount;
+      coinsText.text = $"{coinsAmount}";
+      StorageHelper.WriteStorage(StorageHelper.CoinsAmount, $"{coinsAmount}");
     }
   }
 }

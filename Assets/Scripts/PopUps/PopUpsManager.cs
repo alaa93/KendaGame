@@ -39,7 +39,7 @@ namespace KendaGame.Navigation {
       return letterRating;
     }
 
-    public GameRatingPopUp LoadRatingLevel() {
+    public GameRatingPopUp GetGameRatingPopUp() {
       if (gameRating == null) {
         GameObject gameRatingObj = Instantiate(RatingLevel, Parent, false);
         gameRating = gameRatingObj.GetComponent<GameRatingPopUp>();
@@ -50,6 +50,14 @@ namespace KendaGame.Navigation {
         }
       }
       return gameRating;
+    }
+
+    public bool IsLetterRatingActive() {
+      return letterRating != null && letterRating.gameObject.activeInHierarchy;
+    }
+
+    public bool IsGameRatingActive() {
+      return gameRating != null && gameRating.gameObject.activeInHierarchy;
     }
 
     public TutorialController LoadTutorial(Transform parentObj) {
