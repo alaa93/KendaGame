@@ -37,7 +37,7 @@ namespace KendaGame.Games {
       this.transform.DOMoveX(-30f, 6f);
       AudioController.Instance.PlaySfxAtPoint(winSfx);
       await Task.Delay(2500);
-      PopUpsManager.Instance.GetGameRatingPopUp();
+      PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
     }
 
     public void ReachedLastStair() {
