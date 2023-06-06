@@ -10,8 +10,9 @@ namespace KendaGame.Games {
     private void OnTriggerStay2D(Collider2D collision) {
       DraggablePart draggable = collision.GetComponent<DraggablePart>();
 
-      if(draggable && draggable.id == this.id && !locked && !draggable.mouseDown) {
+      if(draggable && draggable.id == this.id && !locked && !draggable.mouseDown && !draggable.IsReseting()) {
         this.GetComponent<SpriteRenderer>().enabled = true;
+        this.GetComponent<SpriteRenderer>().color = Color.white;
         this.GetComponent<Collider2D>().enabled = false;
         locked = true;
         draggable.locked = true;

@@ -28,6 +28,7 @@ namespace KendaGame.Navigation {
       if (id >= 8) {
         return;
       }
+      Debug.Log("map letter index "+id);
       SceneManager.Instance.OnMapLetterClicked(id);
     }
 

@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 namespace KendaGame.Games {
@@ -6,6 +7,7 @@ namespace KendaGame.Games {
     public int id = 0;
     public bool locked;
     Vector2 initialPos;
+    bool isReseting = false;
 
     private void Awake() {
       initialPos = this.transform.position;
@@ -18,7 +20,7 @@ namespace KendaGame.Games {
       mouseDown = false;
 
       if (!mouseDown && !locked) {
-        this.transform.DOMove(initialPos, 0.4f);
+        ResetPart();
       }
     }
 
@@ -32,5 +34,18 @@ namespace KendaGame.Games {
       Vector2 dragPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       this.transform.position = dragPos;
     }
+
+    private async void ResetPart() {
+      this.transform.DOMove(initialPos, 0.4f).SetDelay(0.1f);
+      await Task.Delay(100);
+      isReseting = true;
+      await Task.Delay(400);
+      isReseting = false;
+    }
+
+    public bool IsReseting() {
+      return isReseting;
+    }
+
   }
 }
