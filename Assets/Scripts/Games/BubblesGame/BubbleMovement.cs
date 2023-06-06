@@ -17,6 +17,7 @@ namespace KendaGame.Games {
     private Vector2 currentTarget;     // Current target position of the bubble
     private Rigidbody2D rb;            // Rigidbody2D component of the bubble
     bool clicked;
+
     private void Start() {
       startPosition.y = Random.Range(-6f, 6f);
       speed = Random.Range(8, 12f);
@@ -31,7 +32,7 @@ namespace KendaGame.Games {
       }
 
       Vector2 direction = (targetPosition - rb.position).normalized;
-      direction.y = Random.Range(-1f, 2f);
+      direction.y = Random.Range(-0.2f, 0.2f);
       rb.AddForce(direction * speed, ForceMode2D.Impulse);
     }
 

@@ -67,6 +67,10 @@ namespace KendaGame.Navigation {
       if (GetActiveScene().ToString() != targetSceneName) {
         loadingController.CloseClouds((animated) => {
           UpdateScreenOrientation(targetScene);
+          if (targetScene == Scenes.Map) {
+            navigationStack.Clear();
+            navigationStack.Add(Scenes.HomeScreen.ToString());
+          }
           if (navigationStack != null && !navigationStack.Contains(targetSceneName)) {
             navigationStack.Add(targetSceneName);
           }
@@ -145,25 +149,32 @@ namespace KendaGame.Navigation {
 
     public void OnMapLetterClicked(int mapLetterIndex) {
       LettersHelper.SetActiveLetter(mapLetterIndex);
-      if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
-        PlayerPrefs.SetInt("PlayIntro1", 1);
-        //TODO implement inside letter progress through playerPrefs class
-        if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
-          Instance.MoveTo(Scenes.BubblesGame.ToString());
-        } else {
-          Instance.MoveTo(Scenes.PuzzleGame.ToString());
-        }
+
+      if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+        Instance.MoveTo(Scenes.BubblesGame.ToString());
       } else {
-        Instance.MoveTo(Scenes.VideoPlayer.ToString(), true);
+        Instance.MoveTo(Scenes.PuzzleGame.ToString());
       }
+
+      //if (PlayerPrefs.GetInt("PlayIntro1", 0) > 0) {
+      //  PlayerPrefs.SetInt("PlayIntro1", 1);
+      //  //TODO implement inside letter progress through playerPrefs class
+      //  if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {
+      //    Instance.MoveTo(Scenes.BubblesGame.ToString());
+      //  } else {
+      //    Instance.MoveTo(Scenes.PuzzleGame.ToString());
+      //  }
+      //} else {
+      //  Instance.MoveTo(Scenes.VideoPlayer.ToString(), true);
+      //}
     }
 
     public void OnVideoCompletedMoveTo() {
       if (LettersHelper.GetActiveLetterIndex() == 0 || LettersHelper.GetActiveLetterIndex() % 2 == 0) {// this is to ensure we always have different set of games for each letter
-        Instance.MoveTo(Scenes.BubblesGame.ToString(), true);
+        Instance.MoveTo(Scenes.BubblesGame.ToString());
       } else {
         // for now keep loading bubbles game but later this should be changed to load puzzle game or steps game
-        Instance.MoveTo(Scenes.PuzzleGame.ToString(), true);
+        Instance.MoveTo(Scenes.PuzzleGame.ToString());
       }
     }
 

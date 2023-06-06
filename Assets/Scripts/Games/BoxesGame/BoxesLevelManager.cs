@@ -6,11 +6,11 @@ namespace KendaGame.Games {
 
     [SerializeField]
     BoxesGameLevels[] gameLevels;
-    private void Start() {
 
+    private void Start() {
       for (int x = 0; x < gameLevels.Length; x++) {
         if (gameLevels[x].levelLetter == LettersHelper.GetActiveLetter()) {
-          Instantiate(gameLevels[x].level,null,false);
+          Instantiate(gameLevels[x].level, null, false);
           break;
         }
       }
@@ -19,7 +19,7 @@ namespace KendaGame.Games {
     [System.Serializable]
     private class BoxesGameLevels {
       public GameObject level;
-      public string levelLetter = "أ"; 
+      public string levelLetter = "أ";
     }
   }
 
