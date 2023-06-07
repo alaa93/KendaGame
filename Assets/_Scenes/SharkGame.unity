@@ -15759,7 +15759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: b21b1a5bab2e04d1b85f1276af527834, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 6bb11ab08511b4a79b641b7583eeb285, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -15807,7 +15807,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6fdfa78962f524fb7a2be926603c1a2a, type: 2}
+  - {fileID: 2100000, guid: 578c79c99154042bf862bcd5661937d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26593,6 +26593,7 @@ MonoBehaviour:
   rotationSpeed: -50
   canRotate: 1
   gameWin: {fileID: 8300000, guid: a1bde31195bf7014daf1021c99bcc9fa, type: 3}
+  shipSharkController: {fileID: 1330572683}
 --- !u!1 &1890409691
 GameObject:
   m_ObjectHideFlags: 0

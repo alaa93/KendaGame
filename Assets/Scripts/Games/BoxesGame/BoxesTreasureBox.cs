@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Threading.Tasks;
 using Spine.Unity;
 using UnityEngine;
+using DG.Tweening;
 
 namespace KendaGame.Games {
   public class BoxesTreasureBox : MonoBehaviour {
@@ -9,7 +11,6 @@ namespace KendaGame.Games {
     bool solved;
     private void Awake() {
       skeletonAnimation = GetComponent<SkeletonAnimation>();
-      //InvokeRepeating(nameof(PlayShakeAnim), Random.Range(1f, 2f), Random.Range(4f, 6f));
       float rand = Random.Range(2f, 3f);
       Invoke(nameof(PlayShakeAnim), rand);
       StartCoroutine(PlayAnim(rand));
@@ -31,15 +32,23 @@ namespace KendaGame.Games {
       solved = true;
       CancelInvoke();
       StopAllCoroutines();
-      PlayOpenAnim();
-      Invoke(nameof(PlayCloseAnim), 0.3f);
+      Invoke(nameof(HideBoxLetter), 2f);
     }
 
-    public void OnSolved() {
+    public void OnSolved(GameObject letter) {
       solved = true;
       CancelInvoke();
       StopAllCoroutines();
-      skeletonAnimation.AnimationState.SetAnimation(0, "close", false);
+      OpenAndJump(letter);
+    }
+
+    private async void OpenAndJump(GameObject letter) {
+      PlayOpenAnim();
+      await Task.Delay(400);
+      letter.transform.DOScale(0f, 0.2f);
+      letter.transform.DOMove(new Vector2(transform.position.x, transform.position.y + 0.5f), 0.2f);
+      await Task.Delay(300);
+      skeletonAnimation.AnimationState.SetAnimation(0, "JumpCloseFade", false);
     }
 
     private void PlayShakeAnim() {
@@ -47,6 +56,20 @@ namespace KendaGame.Games {
         skeletonAnimation.AnimationState.SetAnimation(0, "shake", false);
       } else {
         skeletonAnimation.AnimationState.SetAnimation(0, "close", false);
+      }
+    }
+
+    public void HideBoxLetter() {
+      FadeBoxLetter();
+    }
+
+    private void FadeBoxLetter() {
+      SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+      if (spriteRenderer != null) {
+        spriteRenderer.enabled = false;
+        Debug.Log("sprite renderer found and disabled");
+      } else {
+        Debug.Log("sprite renderer is null");
       }
     }
 

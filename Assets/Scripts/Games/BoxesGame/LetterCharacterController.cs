@@ -78,10 +78,9 @@ namespace KendaGame.Games {
               boxTrigger.solved = true;
               completed = true;
               if (treasureBox != null) {
-                treasureBox.OnSolved();
+                treasureBox.OnSolved(this.gameObject);
+                BoxesLettersController.Instance.OnCorrectLetter(treasureBox);
               }
-              BoxesLettersController.Instance.OnCorrectLetter();
-              this.gameObject.SetActive(false);
             } else {
               Jump(true);
               GetComponent<LetterCharacterDraggable>().mouseDown = false;

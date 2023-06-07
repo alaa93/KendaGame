@@ -61,8 +61,12 @@ namespace KendaGame.Games {
     }
 
     private void OnMouseDown() {
-      clicked = true;
 
+      if (BubblesInstantiator.Instance.IsGameCompleted() || !BubblesInstantiator.Instance.CanClickBubble()) {
+        return;
+      }
+      clicked = true;
+      rb.isKinematic = false;
       if (targetLetter == LettersHelper.GetActiveLetterIndex()) {
         //Correct
         speed = 100f;
@@ -92,6 +96,22 @@ namespace KendaGame.Games {
       this.GetComponent<SpriteRenderer>().color = Color.red;
       yield return new WaitForSeconds(0.1f);
       this.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    public void SetMovement(bool state) {
+      if (!state) {
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+      } else {
+        rb.isKinematic = false;
+        Vector2 targetPosition = currentTarget;
+        if (Vector2.Distance(rb.position, targetPosition) < 0.01f) {
+          currentTarget = currentTarget == endPosition ? startPosition : endPosition;
+        }
+        Vector2 direction = (targetPosition - rb.position).normalized;
+        direction.y = Random.Range(-0.2f, 0.2f);
+        rb.AddForce(direction * speed, ForceMode2D.Impulse);
+      }
     }
   }
 }
