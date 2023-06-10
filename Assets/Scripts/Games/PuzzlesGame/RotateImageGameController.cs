@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using KendaGame.Tutorial;
 using ScorpionSteps.Utils;
+using Spine.Unity;
 using UnityEngine;
 
 namespace KendaGame.Games {
@@ -12,6 +14,16 @@ namespace KendaGame.Games {
     AudioClip rotateSfx;
     [SerializeField]
     AudioSource musicLoop;
+    [SerializeField]
+    GameObject background;
+    [SerializeField]
+    SkeletonGraphic endingAnim;
+    [SerializeField]
+    int endingAnimDuration = 2;
+    TutorialController tutorialController;
+
+    string puzzleGameTutorial = "ImagePuzzleGameTutorial";
+    bool tutorialPlayed = false;
 
     int correctCount;
     public static RotateImageGameController Instance {
@@ -29,14 +41,14 @@ namespace KendaGame.Games {
     }
 
     private void InitLevel() {
-      bool showTutorial = PlayerPrefs.GetInt("ImagePuzzleGameTutorial", 0) == 0;
+      bool showTutorial = PlayerPrefs.GetInt(puzzleGameTutorial, 0) == 0;
       for (int x = 0; x < imageParts.Length; x++) {
         if (showTutorial) {
-          imageParts[x].SetRandomRotation(false);
+          imageParts[x].SetRandomRotation(true);
         }
       }
       if (showTutorial) {
-        TutorialController tutorialController = PopUpsManager.Instance.LoadTutorial(null);
+        tutorialController = PopUpsManager.Instance.LoadTutorial(null);
         imageParts[0].SetTutorialPos(tutorialController);
       }
     }
@@ -46,28 +58,49 @@ namespace KendaGame.Games {
     }
 
     public void OnCorrect() {
+      tutorialPlayed = true;
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       SceneManager.Instance.IncrementCoins(20);
       if (correctCount >= imageParts.Length) {
-        Debug.Log("GAME COMPLETED");
-        AudioUtils.FadeOutAudio(musicLoop, 0.4f);
-        AudioClip endingSfx = AudioController.Instance.commonSfx.GetEndingSfx();
-        AudioController.Instance.PlaySfxAtPoint(endingSfx);
-        Invoke(nameof(OnGameCompleted), endingSfx.length);
+        OnGameCompleted();
       }
     }
 
-    public void OnTutorialCompleted(TutorialController tutorialController) {
-      tutorialController.HideTutorial(() => {
-        for (int x = 1; x < imageParts.Length; x++) {
-          imageParts[x].SetClickState(true);
-        }
-      });
+    public void OnTutorialCompleted() {
+      if (tutorialController != null) {
+        tutorialController.HideTutorial(() => {
+          //PlayerPrefs.SetInt(puzzleGameTutorial, 1);
+          for (int x = 1; x < imageParts.Length; x++) {
+            imageParts[x].SetClickState(true);
+          }
+        });
+      }
     }
 
-    private void OnGameCompleted() {
+    private async void OnGameCompleted() {
+      Debug.Log("GAME COMPLETED");
+      AudioUtils.FadeOutAudio(musicLoop, 0.4f);
+      AudioClip endingSfx = AudioController.Instance.commonSfx.GetEndingSfx();
+      AudioController.Instance.PlaySfxAtPoint(endingSfx);
+      await Task.Delay(500);
+      background.SetActive(false);
+      for (int x = 0; x < imageParts.Length; x++) {
+        imageParts[x].gameObject.SetActive(false);
+      }
+      endingAnim.gameObject.SetActive(true);
+      await Task.Delay(endingAnimDuration * 1000);
       PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
+    }
+
+    public bool IsTutorialPlayed() {
+      return tutorialPlayed;
+    }
+    public void SetTutorialPlayed() {
+      tutorialPlayed = true;
+      for (int x = 0; x < imageParts.Length; x++) {
+        imageParts[x].SetClickState(true);
+      }
     }
   }
 }

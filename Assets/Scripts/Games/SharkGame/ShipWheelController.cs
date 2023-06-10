@@ -18,6 +18,9 @@ namespace KendaGame.Games {
     private bool canRotate;
     [SerializeField]
     AudioClip gameWin;
+    [SerializeField]
+    ShipSharkController shipSharkController;
+
     bool gameCompleted;
     private float positionOffet = 3.3f;
 
@@ -98,6 +101,7 @@ namespace KendaGame.Games {
           canRotate = false;
           this.gameCompleted = true;
           AudioController.Instance.PlayAudioAtPoint(gameWin);
+          shipSharkController.PlayWinAnim();
           StartCoroutine(OnGameCompleted(gameWin.length + 0.2f));
           onComplete?.Invoke(true, true);
           return;

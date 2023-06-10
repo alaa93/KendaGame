@@ -71,9 +71,12 @@ namespace KendaGame.Games {
             skeletonAnimation.AnimationState.SetAnimation(0, correctAnswer ? "swim" : "hitWrong", true);
             Invoke(nameof(ResetShark), 1f);
           }
-
         });
       }
+    }
+
+    public void PlayWinAnim() {
+      skeletonAnimation.AnimationState.SetAnimation(0, "win", false);
     }
   }
 }
