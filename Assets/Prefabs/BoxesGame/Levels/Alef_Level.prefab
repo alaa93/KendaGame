@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321635818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.06, y: 1.05, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.3, y: 1.57, z: 0}
+  m_LocalScale: {x: 0.8964303, y: 0.8964303, z: 0.8964303}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7742624496883847625}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3015ad10dbbc27742bbe7c4e363eeeab, type: 2}
+  - {fileID: 2100000, guid: 2a0905875548a4c67ab02217e3f7f79b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 92091682f69000448950839fb17f9ad1, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: ae0f6cae13d3e4fc0bf2e2a357f504ff, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -553,7 +553,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e27ebee833e34675a3bfdd0742ddff7, type: 2}
+  - {fileID: 2100000, guid: 884ccd6c145344bbd8e9e47b26216a6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: ee9059bf087b94134b0e64faa4b6c445, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: faf68c2c89d944f35bf9a5b2da5efdd3, type: 2}
   initialSkinName: MidBox
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -643,7 +643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2ea0b4d50ae40e797e0598ee3ad278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterId: "\u0623"
 --- !u!1 &812954274967076017
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +941,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812954275186521193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6815, y: 0.48000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1747,7 +1746,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e27ebee833e34675a3bfdd0742ddff7, type: 2}
+  - {fileID: 2100000, guid: 884ccd6c145344bbd8e9e47b26216a6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1781,7 +1780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: ee9059bf087b94134b0e64faa4b6c445, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: faf68c2c89d944f35bf9a5b2da5efdd3, type: 2}
   initialSkinName: MidBox
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -1821,7 +1820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2ea0b4d50ae40e797e0598ee3ad278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterId: "\u0623"
 --- !u!1 &812954276124954207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,11 +1981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259613f10ad58434b9abb4c3a9d7c5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxTrigger: {fileID: 309106888019700818}
-  CorrectBoxPos: {fileID: 812954275974720506}
+  boxTrigger: {fileID: 2442920149208049811}
   allPartsObject: {fileID: 812954275186521193}
   endingAnim: {fileID: 1321635819}
-  letterStaticParts: []
   letterAnimatedParts:
   - {fileID: 812954276325165240}
   - {fileID: 812954276124954207}
@@ -2190,7 +2186,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e27ebee833e34675a3bfdd0742ddff7, type: 2}
+  - {fileID: 2100000, guid: 884ccd6c145344bbd8e9e47b26216a6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2224,7 +2220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: ee9059bf087b94134b0e64faa4b6c445, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: faf68c2c89d944f35bf9a5b2da5efdd3, type: 2}
   initialSkinName: MidBox
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -2290,7 +2286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2ea0b4d50ae40e797e0598ee3ad278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterId: "\u0623"
 --- !u!1 &812954276416250175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,7 +2603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcb4d39536f949a2a13a14ccb6f7e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterId: "\u0623"
   solved: 0
 --- !u!1 &6069313822508686497
 GameObject:
@@ -2810,7 +2804,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcb4d39536f949a2a13a14ccb6f7e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterId: "\u0623"
   solved: 0
 --- !u!1 &7409483900472003215
 GameObject:
@@ -3164,7 +3157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcb4d39536f949a2a13a14ccb6f7e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letterId: "\u0623"
   solved: 0
 --- !u!1 &9180985645634134142
 GameObject:

@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using KendaGame.Tutorial;
 using Spine.Unity;
+using System.Threading.Tasks;
 
 namespace KendaGame.Games {
   public class BoxesLettersController : MonoBehaviour {
@@ -20,10 +21,8 @@ namespace KendaGame.Games {
     }
 
     public BoxesTreasureBoxTrigger boxTrigger;
-    public Transform CorrectBoxPos;
     public GameObject allPartsObject;
     public SkeletonAnimation endingAnim;
-    public GameObject[] letterStaticParts;
     public GameObject[] letterAnimatedParts;
     public GameObject[] letterPrefabs;
     public Transform LettersInitalPos;
@@ -35,13 +34,26 @@ namespace KendaGame.Games {
     int correctCount;
     int correctSolvedParts;
     public int totalPartsToSolve;
+    private int partsPerBox;
+    private int partsToSolve;
     private TutorialController tutorialController;
     string cachedLetterId;
-    string tutorialPrefsKey = "BoxesGameTutorial123455";
+    string tutorialPrefsKey = "BoxesGameTutorial1234r";
     public bool gameCompleted;
+    private int unlockedParts;
+    private int unlockChunk = 1;
+
 
     private void Start() {
       InitializeLetters();
+      InitGameParts();
+    }
+
+    private void InitGameParts() {
+      unlockChunk = letterAnimatedParts.Length <= 4 ? 1 : 2;
+      for (int x = 0; x < letterAnimatedParts.Length; x++) {
+        letterAnimatedParts[x].SetActive(false);
+      }
     }
 
     private void InitializeLetters() {
@@ -71,20 +83,21 @@ namespace KendaGame.Games {
       }
     }
 
-    public void OnCorrectLetter() {
+    public void OnCorrectLetter(BoxesTreasureBox box) {
       if(gameCompleted) {
         return;
       }
       correctCount++;
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       SceneManager.Instance.IncrementCoins(30);
+      ShowGameParts(box);
+
       if (correctCount >= 3) {
         gameCompleted = true;
         for (int x = 0; x < instantiatedLetters.Length; x++) {
           instantiatedLetters[x].SetRunState(false);
           instantiatedLetters[x].Jump();
-        }
-        Invoke(nameof(ShowGameParts), 1f);
+        } 
       }
       if (tutorialController != null && tutorialController.IsTutorialPlaying()) {
         tutorialController.HideTutorial(() => {
@@ -123,41 +136,50 @@ namespace KendaGame.Games {
       PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
     }
 
-    private void ShowGameParts() {
-      for (int x = 0; x < instantiatedLetters.Length; x++) {
-        instantiatedLetters[x].gameObject.SetActive(false);
-      }
+    private async void ShowGameParts(BoxesTreasureBox box) {
       allPartsObject.SetActive(true);
       AudioController.Instance.PlaySfxAtPoint(showPartsSfx);
-      CorrectBoxPos.GetComponent<BoxesTreasureBox>().OnTriggered(null);
-      BoxesTreasureBox[] boxes = FindObjectsOfType<BoxesTreasureBox>();
-      for (int x = 0; x < letterStaticParts.Length; x++) {
-        letterStaticParts[x].gameObject.SetActive(true);
-        letterStaticParts[x].GetComponent<SpriteRenderer>().DOFade(0, 0f);
-        letterStaticParts[x].GetComponent<SpriteRenderer>().DOFade(1, 0.6f);
-      }
+      box.OnTriggered(null);
+      await Task.Delay(2300);
 
-      for (int x = 0; x < letterAnimatedParts.Length; x++) {
-        int temp = x;
-        OnLetterAnimationCompleted(temp);
+      int counter = 0;
+      for (int x = unlockedParts; x < letterAnimatedParts.Length; x++) {
+        if (unlockedParts >= 4) {
+          int temp = x;
+          AnimateLetter(temp, box.transform.position);
+        } else {
+          if (counter < unlockChunk) {
+            int temp = x;
+            AnimateLetter(temp, box.transform.position);
+            counter++;
+          }
+        }
       }
+      unlockedParts += unlockChunk;
+      unlockChunk = unlockedParts > 0 ? 2 : 1;
 
-      for (int x = 0; x < boxes.Length; x++) {
-        boxes[x].gameObject.SetActive(false);
+      if (partsToSolve >= letterAnimatedParts.Length) {
+        for (int x = 0; x < instantiatedLetters.Length; x++) {
+          instantiatedLetters[x].gameObject.SetActive(false);
+        }
+        for (int x = 0; x < letterAnimatedParts.Length; x++) {
+          letterAnimatedParts[x].GetComponent<Collider2D>().enabled = true;
+        }
       }
+      partsToSolve += unlockedParts;
     }
 
-    private void OnLetterAnimationCompleted(int index) {
+
+
+    private void AnimateLetter(int index, Vector2 startPos) {
       letterAnimatedParts[index].GetComponent<Collider2D>().enabled = false;
       letterAnimatedParts[index].gameObject.SetActive(true);
       Vector3 scale = letterAnimatedParts[index].transform.localScale;
       Vector3 pos = letterAnimatedParts[index].transform.position;
-      letterAnimatedParts[index].transform.position = CorrectBoxPos.position;
+      letterAnimatedParts[index].transform.position = startPos;
       letterAnimatedParts[index].transform.localScale = Vector3.zero;
       letterAnimatedParts[index].transform.DOScale(scale, 0.5f);
-      letterAnimatedParts[index].transform.DOMove(pos, 0.7f).OnComplete(() => {
-        letterAnimatedParts[index].GetComponent<Collider2D>().enabled = true;
-      });
+      letterAnimatedParts[index].transform.DOMove(pos, 0.7f);
     }
 
     public void OnGamePartSolved() {
