@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Alf-Oct_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 58b7c000730abf541935f990e44d1f31, type: 2}
-  scale: 0.009
-  skeletonJSON: {fileID: 4900000, guid: 335c5f7af01290948a152a9f5fd9c2ff, type: 3}
+  - {fileID: 11400000, guid: 73dd631e1de044b5c914f4a7356edee7, type: 2}
+  scale: 0.01
+  skeletonJSON: {fileID: 4900000, guid: dbb8e8ea7c6ba476ca6fbdf6f9b6750d, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

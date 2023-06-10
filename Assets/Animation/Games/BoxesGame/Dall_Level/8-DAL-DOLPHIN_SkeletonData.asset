@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 8-DAL-DOLPHIN_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 9cf2b0d259a54284995d9a50b22113ac, type: 2}
+  - {fileID: 11400000, guid: f76db2e1d5383499da239aaf790b306c, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 62d406360c9414340ac793bdb6ce94b2, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 8d9cee281fd4141b5b6f94250d365894, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

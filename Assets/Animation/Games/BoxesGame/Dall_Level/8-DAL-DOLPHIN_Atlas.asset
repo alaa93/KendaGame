@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: 8-DAL-DOLPHIN_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: d3a629d5fb177e049a55630dfa53b43d, type: 3}
+  atlasFile: {fileID: 4900000, guid: afe50b5f19b6648e5aab0968211b4bc4, type: 3}
   materials:
-  - {fileID: 2100000, guid: 9b47456fd38094d40bc622735a307fe6, type: 2}
+  - {fileID: 2100000, guid: f3a904b057d3a4a359f4c81e06d870de, type: 2}

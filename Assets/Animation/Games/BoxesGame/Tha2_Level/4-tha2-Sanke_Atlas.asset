@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: 4-tha2-Sanke_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: cd64572d1630416438dd35e90c852f03, type: 3}
+  atlasFile: {fileID: 4900000, guid: c0f2ec847af58497ca0cd7f995ff3c2c, type: 3}
   materials:
-  - {fileID: 2100000, guid: a355d8f257105c54ab1332a71b5f8ebe, type: 2}
+  - {fileID: 2100000, guid: b229889ac389f4029bc1e7ffb8f5edcf, type: 2}

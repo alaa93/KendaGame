@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: 2-ba2-penguin_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 4de53dfb4f662b74fbae14cefcedd254, type: 3}
+  atlasFile: {fileID: 4900000, guid: b4b598c9195764d3f8924758a4d8fcf5, type: 3}
   materials:
-  - {fileID: 2100000, guid: 0085e4579f71f46498b05036e5dbf975, type: 2}
+  - {fileID: 2100000, guid: 78d6d743198a74399812e7ad25adffa8, type: 2}

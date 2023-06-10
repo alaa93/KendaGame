@@ -41,18 +41,18 @@ namespace KendaGame.Tutorial {
 
     }
 
-    public void PlayTutorial(Transform startPos, Transform endPos, bool clickTutorial = false) {
+    public void PlayTutorial(Transform startPos, Transform endPos, bool clickTutorial = false, bool swipeTutorial = false) {
       if (clickTutorial) {
         handIcon.GetComponent<SpriteRenderer>().enabled = false;
         skeletonAnimation.gameObject.SetActive(true);
       }
       FadeIn(() => {
         isTutorialPlaying = true;
-        StartCoroutine(StartTutorial(startPos, endPos, clickTutorial));
+        StartCoroutine(StartTutorial(startPos, endPos, clickTutorial, swipeTutorial));
       });
     }
 
-    private IEnumerator StartTutorial(Transform startPos, Transform endPos, bool clickTutorial = false) {
+    private IEnumerator StartTutorial(Transform startPos, Transform endPos, bool clickTutorial = false, bool swipeTutorial = false) {
       yield return new WaitForSeconds(0.5f);
       this.followEndPos = endPos;
       this.followStartPos = startPos;
@@ -61,14 +61,17 @@ namespace KendaGame.Tutorial {
       handIcon.transform.DOMove(startPos.position, 0.3f);
       yield return new WaitForSeconds(0.4f);
       shouldFollow = true;
-      yield return new WaitForSeconds(1f);
+      yield return new WaitForSeconds(0.3f);
       if (clickTutorial) {
         skeletonAnimation.AnimationState.SetAnimation(0, "touch", true);
         Vector3 newScale = new Vector3(handIcon.transform.localScale.x - 0.2f, handIcon.transform.localScale.y - 0.2f, handIcon.transform.localScale.z - 0.2f);
         handIcon.transform.DOScale(newScale, 1f).SetLoops(-1);
       } else {
-        handIcon.transform.DOMove(followEndPos.position, 1.5f).SetLoops(-1);
-        //skeletonAnimation.AnimationState.SetAnimation(0, "drag&drop", true);
+        if (swipeTutorial) {
+          skeletonAnimation.AnimationState.SetAnimation(0, "drag&drop", true);
+        } else {
+          handIcon.transform.DOMove(followEndPos.position, 1.5f).SetLoops(-1);
+        }
       }
     }
 

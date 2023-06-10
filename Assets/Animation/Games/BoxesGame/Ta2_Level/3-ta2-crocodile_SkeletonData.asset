@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 3-ta2-crocodile_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 8057b1c23dace4f4eb9efcf5e943bc1d, type: 2}
+  - {fileID: 11400000, guid: 8f9945eea980745cbbb86abba3856d83, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 160948d4394774a478d5cfe42105b8c8, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 7f4a40626f5c14e69858a345cb222912, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

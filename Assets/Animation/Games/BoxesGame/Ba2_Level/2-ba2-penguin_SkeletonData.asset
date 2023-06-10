@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 2-ba2-penguin_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 8925dec0b4cccb840b45af620e3c2f5c, type: 2}
+  - {fileID: 11400000, guid: a00a144d146ad46b19bbf0ff7270dd05, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 18df5a5eb43e55642a0ad8253cc25e2f, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 6fbd1173b90b44f908086ee07ff228b4, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0
