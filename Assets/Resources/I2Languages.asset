@@ -17,6 +17,14 @@ MonoBehaviour:
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
     mTerms:
+    - Term: App_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - Habbar
+      - "\u062D\u0628\u0627\u0631"
+      Flags: 0000
+      Languages_Touch: []
     - Term: LocalizeFonts
       TermType: 9
       Description: 
@@ -38,7 +46,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Sign Up
-      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644"
+      - "\u062A\u0633\u062C\u064A\u0644"
       Flags: 0000
       Languages_Touch: []
     - Term: change_email_text
@@ -62,7 +70,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - 'or connect via '
-      - "\u0623\u0648 \u062A\u0648\u0635\u064A\u0644 \u0645\u0646 \u062E\u0644\u0627\u0644"
+      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0645\u0646 \u062E\u0644\u0627\u0644: "
       Flags: 0000
       Languages_Touch: []
     - Term: email_text
@@ -70,7 +78,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Email...
-      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A..."
+      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0625\u0644\u0643\u062A\u0631\u0648\u0646\u064A..."
       Flags: 0000
       Languages_Touch: []
     - Term: forget_password_text
@@ -78,7 +86,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Forget Password?
-      - "\u0646\u0633\u064A\u062A \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631\u061F"
+      - "\u0647\u0644 \u0646\u0633\u064A\u062A \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631\u061F"
       Flags: 0000
       Languages_Touch: []
     - Term: instruction_text
@@ -87,10 +95,10 @@ MonoBehaviour:
       Languages:
       - Please enter the four-digit verification code that has been sent to your
         email address.
-      - "\u0627\u0644\u0631\u062C\u0627\u0621 \u0627\u062F\u062E\u0627\u0644 \u0631\u0642\u0645
+      - "\u0627\u0644\u0631\u062C\u0627\u0621 \u0625\u062F\u062E\u0627\u0644 \u0631\u0645\u0632
         \u0627\u0644\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u0630\u064A \u062A\u0645
-        \u0627\u0631\u0633\u0627\u0644\u0647 \u0627\u0644\u0649 \u0628\u0631\u064A\u062F\u0643
-        \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
+        \u0625\u0631\u0633\u0627\u0644\u0647 \u0625\u0644\u0649 \u0628\u0631\u064A\u062F\u0643
+        \u0627\u0644\u0625\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
       Flags: 0000
       Languages_Touch: []
     - Term: language_text
@@ -98,7 +106,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Language
-      - "\u0627\u0644\u0644\u063A\u0629"
+      - "\u0627\u062E\u062A\u0631 \u0627\u0644\u0644\u063A\u0629"
       Flags: 0000
       Languages_Touch: []
     - Term: login
@@ -114,7 +122,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - Pasword...
-      - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631..."
+      - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631..."
       Flags: 0000
       Languages_Touch: []
     - Term: pasword_confirm_text
@@ -122,7 +130,48 @@ MonoBehaviour:
       Description: 
       Languages:
       - Confirm pasword...
-      - "\u062A\u0623\u0643\u064A\u062F \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631..."
+      - "\u062A\u0623\u0643\u064A\u062F \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: popups.game_rating_title
+      TermType: 0
+      Description: 
+      Languages:
+      - Level Completed
+      - "\u0627\u0646\u062A\u0647\u062A \u0627\u0644\u0645\u0631\u062D\u0644\u0629
+        \u0628\u0646\u062C\u0627\u062D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration.app_languages.ar
+      TermType: 0
+      Description: 
+      Languages:
+      - Arabic
+      - "\u0627\u0644\u0639\u0631\u0628\u064A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration.app_languages.en
+      TermType: 0
+      Description: 
+      Languages:
+      - English
+      - "\u0627\u0646\u062C\u0644\u064A\u0632\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration.pick_language
+      TermType: 0
+      Description: 
+      Languages:
+      - Select Language
+      - "\u0627\u062E\u062A\u0631 \u0627\u0644\u0644\u063A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: tracing.rating_in_progress
+      TermType: 0
+      Description: 
+      Languages:
+      - Rating In Progress...
+      - "\u062C\u0627\u0631\u064D \u0627\u0644\u062A\u0642\u064A\u064A\u0645..."
       Flags: 0000
       Languages_Touch: []
     - Term: verify_account_text
@@ -133,29 +182,12 @@ MonoBehaviour:
       - "\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u062D\u0633\u0627\u0628"
       Flags: 0000
       Languages_Touch: []
-    - Term: tracing.rating_in_progress
+    - Term: registration.skip_registration
       TermType: 0
       Description: 
       Languages:
-      - Rating In Progress...
-      - "\u062C\u0627\u0631\u064A \u0627\u0644\u062A\u0642\u064A\u064A\u0645..."
-      Flags: 0000
-      Languages_Touch: []
-    - Term: popups.game_rating_title
-      TermType: 0
-      Description: 
-      Languages:
-      - Level Complete
-      - "\u0627\u0646\u0647\u064A\u062A \u0627\u0644\u0645\u0631\u062D\u0644\u0629
-        \u0628\u0646\u062C\u0627\u062D"
-      Flags: 0000
-      Languages_Touch: []
-    - Term: App_Name
-      TermType: 0
-      Description: 
-      Languages:
-      - Habbar
-      - "\u062D\u0628\u0627\u0631"
+      - Skip
+      - "\u062A\u062E\u0637\u0649"
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
@@ -173,7 +205,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbzoSTi2vA0nI7pRgaxefwvDuKxL--hIb3s5vpHNti1ygofoEoLy8S2EZWUxlOXOT95B2w/exec
     Google_SpreadsheetKey: 1M4yfRXvWjbfKooNAq--nWtBaxLHg-Gp1C8Prsc-A2wM
     Google_SpreadsheetName: I2Loc KendaGame Localization
-    Google_LastUpdatedVersion: 1684584488113
+    Google_LastUpdatedVersion: 1686695090861
     Google_Password: bn98FXoh
     GoogleUpdateFrequency: 2
     GoogleInEditorCheckFrequency: 2
