@@ -1169,7 +1169,7 @@ MonoBehaviour:
     type: 3}
   TutorialObject: {fileID: 1240531360023848310, guid: a76af497cbc1f421e9bce0ed575ea3f2,
     type: 3}
-  ProgressBar: {fileID: -6962533130967013290, guid: 708cfbbaf5ee942f790c4920bed3c4c2,
+  ProgressBar: {fileID: 5575195040230566667, guid: 383756b259558414d9f0a7d6090ce17e,
     type: 3}
 --- !u!1 &4759960178631716387
 GameObject:

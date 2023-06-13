@@ -1,3 +1,4 @@
+using KendaGame.Helpers;
 using KendaGame.Navigation;
 using UnityEngine;
 
@@ -5,6 +6,14 @@ namespace KendaGame.RegistrationScreens {
   public class RegistrationManager : MonoBehaviour {
     [SerializeField]
     GameObject [] RegistrationScreens;
+    [SerializeField]
+    UIButtonAnimator skipBtn;
+
+    private void Awake() {
+      skipBtn.AddClickListener(() => {
+        AutoLogin();
+      }, true);
+    }
 
     public void ShowScreen(int screenId) {
       ClearActiveScreens();
