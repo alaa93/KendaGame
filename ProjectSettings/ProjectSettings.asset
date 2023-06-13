@@ -157,10 +157,10 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.KendaAI.KendaGame
-    Standalone: "unity.RoyalCompany.\u062F\u0647\u06A9\u062F\u0647 \u06CC \u0634\u0627\u062F\u06CC"
+    Android: com.KendaAI.HabbarGame
+    Standalone: com.KendaAI.HabbarGame
     Tizen: biz.labhand.happyvillage
-    iPhone: com.digismile.happyvillage
+    iPhone: com.KendaAI.HabbarGame
     tvOS: biz.labhand.happyvillage
   buildNumber:
     Standalone: 0
@@ -897,7 +897,7 @@ PlayerSettings:
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
   enableRoslynAnalyzers: 1
-  selectedPlatform: 2
+  selectedPlatform: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 0
