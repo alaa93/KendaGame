@@ -10,28 +10,33 @@ public class GoogleSignInController : MonoBehaviour {
 
   public TextMeshProUGUI statusText;
 
-  public string webClientId = "208217938983-n7o03ormbicv6aiqiktb05e23qlqlmub.apps.googleusercontent.com";
+  private string webClientId = "208217938983-n7o03ormbicv6aiqiktb05e23qlqlmub.apps.googleusercontent.com";
 
   private GoogleSignInConfiguration configuration;
-  FirebaseApp auth;
+  FirebaseApp appInstance;
 
   // Defer the configuration creation until Awake so the web Client ID
   // Can be set via the property inspector in the Editor.
   void Awake() {
     configuration = new GoogleSignInConfiguration {
       WebClientId = webClientId,
-      RequestIdToken = true
+      RequestIdToken = true,
     };
+  }
+
+  private void Start() {
     CheckFirebaseDependencies();
   }
 
   private void CheckFirebaseDependencies() {
+    AddStatusText("Initializing Firebase");
     FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
       var dependencyStatus = task.Result;
       if (dependencyStatus == DependencyStatus.Available) {
         // Create and hold a reference to your FirebaseApp,
         // where app is a Firebase.FirebaseApp property of your application class.
-        auth = FirebaseApp.DefaultInstance;
+        appInstance = FirebaseApp.DefaultInstance;
+        
         AddStatusText("Firebase initialized successfully");
         // Set a flag here to indicate whether Firebase is ready to use by your app.
       } else {
@@ -80,7 +85,31 @@ public class GoogleSignInController : MonoBehaviour {
       AddStatusText("Canceled");
     } else {
       AddStatusText("Welcome: " + task.Result.DisplayName + "!");
+      SignInWithFirebase(task.Result.IdToken);
     }
+  }
+
+  private void SignInWithFirebase(string idToken) {
+    Firebase.Auth.Credential credential =
+    Firebase.Auth.GoogleAuthProvider.GetCredential(idToken, null);
+    Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+    auth.SignInWithCredentialAsync(credential).ContinueWith(task => {
+      if (task.IsCanceled) {
+        Debug.LogError("SignInAndRetrieveDataWithCredentialAsync was canceled.");
+        AddStatusText("SignInAndRetrieveDataWithCredentialAsync was canceled.");
+        return;
+      }
+      if (task.IsFaulted) {
+        Debug.LogError("SignInAndRetrieveDataWithCredentialAsync encountered an error: " + task.Exception);
+        AddStatusText("SignInAndRetrieveDataWithCredentialAsync encountered an error: " + task.Exception);
+        return;
+      }
+      //Firebase.Auth.AuthResult result = task.Result;
+      //Debug.LogFormat("User signed in successfully: {0} ({1})",
+      //    result.User.DisplayName, result.User.UserId);
+
+      AddStatusText("User signed in successfully: {0} ({1})");
+    });
   }
 
   public void OnSignInSilently() {
