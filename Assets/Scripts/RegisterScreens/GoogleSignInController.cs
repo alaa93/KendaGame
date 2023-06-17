@@ -24,7 +24,9 @@ public class GoogleSignInController : MonoBehaviour {
   }
 
   private void Start() {
+#if !UNITY_EDITOR
     CheckFirebaseDependencies();
+#endif
   }
 
   private void CheckFirebaseDependencies() {
