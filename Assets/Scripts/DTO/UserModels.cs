@@ -12,6 +12,7 @@ namespace KendaGame.Models {
       public string sign_in_token;
       public string phone_number;
       public string profile_photo;
+      public string gender;
     }
 
     [System.Serializable]

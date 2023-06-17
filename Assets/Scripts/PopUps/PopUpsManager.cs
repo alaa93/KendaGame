@@ -10,11 +10,13 @@ namespace KendaGame.Navigation {
     public GameObject RatingLevel;
     public GameObject TutorialObject;
     public LoadingBar ProgressBar;
+    public GameObject GenderPopUpObject;
 
     private TutorialController tutorialController;
     private LoadingBar loadingBar;
     private GameRatingPopUp gameRating;
     private LetterRatingPopUp letterRating;
+    private GenderPopUp genderPopUp;
 
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
@@ -50,6 +52,18 @@ namespace KendaGame.Navigation {
         }
       }
       return gameRating;
+    }
+
+    public GenderPopUp GetGenderPopUp() {
+      if (genderPopUp == null) {
+        GameObject genderObject = Instantiate(GenderPopUpObject, Parent, false);
+        genderPopUp = genderObject.GetComponent<GenderPopUp>();
+        if (genderPopUp != null) {
+          return genderPopUp;
+        }
+        return null;
+      }
+      return genderPopUp;
     }
 
     public bool IsLetterRatingActive() {
