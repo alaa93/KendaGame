@@ -25,8 +25,7 @@ namespace KendaGame.Navigation {
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
-    private bool openManually;
-
+    private bool openManually = true;
     public enum Scenes {
       SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame
     }

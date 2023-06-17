@@ -13,7 +13,8 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Kenda AI
-  productName: "\u062D\u0628\u0627\u0631"
+  productName: "\u062D\u0628\u0627\u0631 \u062A\u0639\u0644\u0645 \u0643\u062A\u0627\u0628\u0629
+    \u0627\u0644\u062D\u0631\u0648\u0641"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -157,17 +158,17 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.KendaAI.KendaGame
-    Standalone: "unity.RoyalCompany.\u062F\u0647\u06A9\u062F\u0647 \u06CC \u0634\u0627\u062F\u06CC"
+    Android: com.KendaAI.HabbarGame
+    Standalone: com.KendaAI.HabbarGame
     Tizen: biz.labhand.happyvillage
-    iPhone: com.digismile.happyvillage
+    iPhone: com.KendaAI.HabbarGame
     tvOS: biz.labhand.happyvillage
   buildNumber:
     Standalone: 0
     iPhone: 204
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -255,15 +256,15 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: '{inproject}: Assets/keystore/uploadKeystore.keystore'
+  AndroidKeyaliasName: habbar123
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 0
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
