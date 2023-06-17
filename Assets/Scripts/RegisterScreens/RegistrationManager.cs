@@ -1,3 +1,4 @@
+using I2.Loc;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using KendaGame.UI;
@@ -56,7 +57,7 @@ namespace KendaGame.RegistrationScreens {
         if (success) {
           AutoLogin();
         } else {
-          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("Login", status);
+          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.login_title", status);
         }
       });
     }
@@ -64,7 +65,7 @@ namespace KendaGame.RegistrationScreens {
     public void OnEmailSignUpBtnPressed() {
       emailSignInController.SignUpWithEmail(signUpEmailField.text, signUpPasswordField.text, signUpPasswordConfirmField.text, (success, status) => {
         Debug.Log("OnEmailLoginBtnPressed - Sign in with email completed");
-        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(status, "Sign Up", () => {
+        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.signup_title", status, () => {
           if (success) {
             Debug.Log("Is Success " + success);
             AutoLogin();

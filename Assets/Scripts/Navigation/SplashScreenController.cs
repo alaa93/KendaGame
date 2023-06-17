@@ -30,8 +30,6 @@ namespace KendaGame.UI {
     }
 
     private void CheckUserLoginSession() {
-      SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
-      return;
       FirebaseAuth auth = FirebaseAuth.DefaultInstance;
       FirebaseUser user = auth.CurrentUser;
       if (auth != null && user != null) {
