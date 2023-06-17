@@ -5,6 +5,7 @@ using Google;
 using TMPro;
 using Firebase;
 using System;
+using Firebase.Auth;
 
 public class GoogleSignInController : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class GoogleSignInController : MonoBehaviour {
 
   private GoogleSignInConfiguration configuration;
   FirebaseApp appInstance;
+  private FirebaseAuth auth;
 
   // Defer the configuration creation until Awake so the web Client ID
   // Can be set via the property inspector in the Editor.
@@ -22,6 +24,7 @@ public class GoogleSignInController : MonoBehaviour {
       WebClientId = webClientId,
       RequestIdToken = true,
     };
+    auth = FirebaseAuth.DefaultInstance;
   }
 
   private void Start() {
@@ -85,8 +88,30 @@ public class GoogleSignInController : MonoBehaviour {
       AddStatusText("Canceled");
     } else {
       AddStatusText("Welcome: " + task.Result.DisplayName + "!");
-      SignInWithFirebase(task.Result.IdToken);
+      // Get the Google sign-in result
+      GoogleSignInUser signInUser = task.Result;
+      string idToken = signInUser.IdToken;
+      // Authenticate with Firebase using the Google ID token
+      Firebase.Auth.Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(idToken, null);
+      auth.SignInWithCredentialAsync(credential).ContinueWith(HandleSignInResult);
+      //SignInWithFirebase(task.Result.IdToken);
     }
+  }
+
+  private void HandleSignInResult(Task<Firebase.Auth.FirebaseUser> task) {
+    if (task.IsCanceled) {
+      Debug.LogError("Firebase sign-in canceled.");
+      return;
+    }
+
+    if (task.IsFaulted) {
+      Debug.LogError("Firebase sign-in encountered an error: " + task.Exception);
+      return;
+    }
+
+    // Firebase sign-in successful
+    Firebase.Auth.FirebaseUser user = task.Result;
+    Debug.Log("Signed in as " + user.DisplayName + " (" + user.UserId + ")");
   }
 
   private void SignInWithFirebase(string idToken) {
