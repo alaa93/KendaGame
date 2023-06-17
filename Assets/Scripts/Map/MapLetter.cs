@@ -28,7 +28,6 @@ namespace KendaGame.Navigation {
       if (id >= 8) {
         return;
       }
-      Debug.Log("map letter index "+id);
       SceneManager.Instance.OnMapLetterClicked(id);
     }
 
@@ -36,6 +35,7 @@ namespace KendaGame.Navigation {
       int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + id), out int storedRating);
       if (storedRating != -1) {
         for (int x = 0; x < storedRating; x++) {
+          if(x <= rating.Length)
           rating[x].sprite = MapController.Instance.coloredStar;
         }
       }
