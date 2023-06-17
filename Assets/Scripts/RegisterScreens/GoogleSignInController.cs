@@ -8,7 +8,7 @@ using System;
 
 public class GoogleSignInController : MonoBehaviour {
 
-  public TextMeshProUGUI statusText;
+  //public TextMeshProUGUI statusText;
 
   private string webClientId = "208217938983-n7o03ormbicv6aiqiktb05e23qlqlmub.apps.googleusercontent.com";
 
@@ -71,7 +71,7 @@ public class GoogleSignInController : MonoBehaviour {
 
   internal void OnAuthenticationFinished(Task<GoogleSignInUser> task) {
     if (task.IsFaulted) {
-      using (IEnumerator<System.Exception> enumerator =
+      using (IEnumerator<Exception> enumerator =
               task.Exception.InnerExceptions.GetEnumerator()) {
         if (enumerator.MoveNext()) {
           GoogleSignIn.SignInException error =
@@ -134,16 +134,17 @@ public class GoogleSignInController : MonoBehaviour {
       OnAuthenticationFinished);
   }
 
-  private List<string> messages = new List<string>();
+  //private List<string> messages = new List<string>();
+
   void AddStatusText(string text) {
-    //if (messages.Count == 5) {
-    //  messages.RemoveAt(0);
+    ////if (messages.Count == 5) {
+    ////  messages.RemoveAt(0);
+    ////}
+    //messages.Add(text);
+    //string txt = "";
+    //foreach (string s in messages) {
+    //  txt += "\n" + s;
     //}
-    messages.Add(text);
-    string txt = "";
-    foreach (string s in messages) {
-      txt += "\n" + s;
-    }
-    statusText.text = txt;
+    //statusText.text = txt;
   }
 }
