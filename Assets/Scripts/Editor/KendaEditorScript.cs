@@ -47,6 +47,7 @@ namespace KendaGame.EditorScripts {
 
       if (GUILayout.Button("Submit")) {
         LettersHelper.SetActiveLetter(inputValue);
+        Debug.Log("Active letter changed to "+inputValue + " Through Editor Script");
       }
     }
 

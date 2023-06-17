@@ -21,11 +21,12 @@ namespace KendaGame.Navigation {
     UIController uiController;
     [SerializeField]
     Camera uiCamera;
+    [SerializeField]
+    private bool openManually = true;
 
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
-    private bool openManually = true;
     public enum Scenes {
       SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame
     }
