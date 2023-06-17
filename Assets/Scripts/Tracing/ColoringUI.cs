@@ -65,6 +65,7 @@ namespace KendaGame.UI {
       if (currentRating <= 0) {
         currentRating += 1;
       }
+      currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), $"{currentRating}");
     }
 

@@ -191,7 +191,7 @@ namespace KendaGame.UI {
 
       int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
       currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
-      currentRating = currentRating > 2 ? 2 : currentRating;// because current rating shouldn't be greater than 2 -> equivalent to 3 stars
+      currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
     }
 
@@ -217,7 +217,7 @@ namespace KendaGame.UI {
           letterRatingPopUp.PlayStarsAnimation(ratingData.StarRating);
           int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
           currentRating += Math.Clamp(ratingData.StarRating, 0, 1);
-          currentRating = currentRating > 2 ? 2 : currentRating;// because current rating shouldn't be greater than 2 -> equivalent to 3 stars
+          currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
           StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
         }
       } else {
