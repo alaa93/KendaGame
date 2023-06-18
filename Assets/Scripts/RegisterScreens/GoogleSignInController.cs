@@ -5,6 +5,7 @@ using Google;
 using Firebase;
 using System;
 using Firebase.Auth;
+using KendaGame.Navigation;
 
 public class GoogleSignInController : MonoBehaviour {
 
@@ -92,17 +93,20 @@ public class GoogleSignInController : MonoBehaviour {
   private void HandleSignInResult(Task<FirebaseUser> task) {
     if (task.IsCanceled) {
       Debug.LogError("Firebase sign-in canceled.");
+      PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.login_title", "registration_screens_status_login_canceled");
       return;
     }
 
     if (task.IsFaulted) {
-      Debug.LogError("Firebase sign-in encountered an error: " + task.Exception);
+      Debug.LogError("Firebase sign-in encountered an error: " + task.Exception.Message);
+      PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.login_title", "registration_screens_status_signup_unknown_error");
       return;
     }
 
     // Firebase sign-in successful
     FirebaseUser user = task.Result;
     Debug.Log("Signed in as " + user.DisplayName + " (" + user.UserId + ")" + " email: " + user.Email + " PhotoUrl " + user.PhotoUrl + " provider " + user.ProviderId);
+    SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
   }
 
   public void OnSignInSilently() {
