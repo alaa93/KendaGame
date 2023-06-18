@@ -11,7 +11,6 @@ namespace KendaGame.UI {
     private void Awake() {
       playBtn.AddClickListener(OnPlayBtnClicked);
       if (PlayerPrefs.GetInt("GenderSelected", 0) == 0) {
-        PlayerPrefs.SetInt("GenderSelected", 1);
         PopUpsManager.Instance.GetGenderPopUp().ShowPopUp();
       }
     }
