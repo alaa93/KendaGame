@@ -1047,7 +1047,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 724.03265, y: 1443.0653}
+  referenceSize: {x: 724.0327, y: 1443.0654}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -5778,8 +5778,8 @@ MonoBehaviour:
       - m_Target: {fileID: 1803064185}
         m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
           KendaScripts
-        m_MethodName: ShowScreen
-        m_Mode: 3
+        m_MethodName: OnEmailSignUpBtnPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8125,7 +8125,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1803064185}
         m_TargetAssemblyTypeName: KendaGame.RegistrationScreens.RegistrationManager,
           KendaScripts
-        m_MethodName: AutoLogin
+        m_MethodName: OnEmailLoginBtnPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8607,6 +8607,7 @@ GameObject:
   - component: {fileID: 1803064184}
   - component: {fileID: 1803064185}
   - component: {fileID: 1803064186}
+  - component: {fileID: 1803064187}
   m_Layer: 5
   m_Name: ContentHolder
   m_TagString: Untagged
@@ -8656,6 +8657,12 @@ MonoBehaviour:
   - {fileID: 682446514}
   - {fileID: 1738710181}
   skipBtn: {fileID: 750367708}
+  emailSignInController: {fileID: 1803064187}
+  loginEmailField: {fileID: 745577521}
+  loginPasswordField: {fileID: 293891448}
+  signUpEmailField: {fileID: 318902363}
+  signUpPasswordField: {fileID: 1716722941}
+  signUpPasswordConfirmField: {fileID: 1381785337}
 --- !u!114 &1803064186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8666,6 +8673,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32b517adbd73243e28581553dc226ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1803064187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803064183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76dd1f50fab0740d69b26e4034431c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1807226703

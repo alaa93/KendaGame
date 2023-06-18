@@ -26,6 +26,7 @@ namespace KendaGame.UI {
 
     private void OnGenderSelected(int selectedGender) {
       Debug.Log("geneder selected: " + (selectedGender == 0 ? "Male" : "Female"));
+      PlayerPrefs.SetInt("GenderSelected", 1);
       gameObject.SetActive(false);
     }
   }

@@ -1,3 +1,4 @@
+using System.Collections;
 using I2.Loc;
 using TMPro;
 using UnityEngine;
@@ -25,6 +26,17 @@ namespace KendaGame.UI {
 
     public void IncreaseLoadingBar(float amount) {
       fillImage.fillAmount += amount;
+    }
+
+    public void IncreaseloadingBarByAnim(float animDuration = 2f) {
+      StartCoroutine(IncreaseBarByAnimation(animDuration));
+    }
+
+    private IEnumerator IncreaseBarByAnimation(float duration) {
+      while (fillImage.fillAmount < 1) {
+        yield return new WaitForSeconds(0.2f);
+        fillImage.fillAmount += 0.1f;
+      }
     }
 
   }
