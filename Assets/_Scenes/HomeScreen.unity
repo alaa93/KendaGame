@@ -4996,7 +4996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &108144474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5147,7 +5147,7 @@ MonoBehaviour:
   timeScale: 3
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 8.199219, y: 144.09961}
+  referenceSize: {x: -119.91626, y: 212.02832}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -19906,7 +19906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &317463030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29959,7 +29959,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 8.199219, y: 144.09961}
+  referenceSize: {x: -119.91626, y: 212.02832}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -60167,7 +60167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1631062931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60315,7 +60315,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 8.199219, y: 144.09961}
+  referenceSize: {x: -119.91626, y: 212.02832}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
