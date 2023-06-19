@@ -170,6 +170,7 @@ namespace KendaGame.UI {
         playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
       }
     }
+
     private void OnRatingCompleted(bool success, RatingData ratingData) {
       if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
         ShowAdvancedTracingRating(success, ratingData);
@@ -184,19 +185,38 @@ namespace KendaGame.UI {
         tracingBoard[x].SetActive(false);
       }
       string animation = "1Stars_lose";
-      ShowLetterComparison();
+      ShowLetterComparison(ratingData.cropped_img_base64);
       bool successfullyRated = success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass() && ratingData.StarRating > 1;
       animation = successfullyRated ? $"{ratingData.StarRating}Stars" : animation;
       skeletonGraphic.AnimationState.SetAnimation(0, animation, false);
-
       int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
       currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
       currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
     }
 
-    private void ShowLetterComparison() {
-      //Player Letter
+    private void ShowLetterComparison(string processedImg) {
+      ////Player Letter
+      //if (!string.IsNullOrEmpty(processedImg)) {
+      //  // Decode the Base64 string into a byte array
+      //  byte[] imageBytes = Convert.FromBase64String(processedImg);
+
+      //  if (imageBytes != null) {
+      //    // Create a new Texture2D
+      //    Texture2D texture = new Texture2D(10, 10);
+
+      //    // Load the byte array data into the Texture2D
+      //    texture.LoadImage(imageBytes);
+
+      //    // Apply the changes and return the Texture2D
+      //    texture.Apply();
+      //    playerLetter.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero, 100);
+      //  } else {
+      //    playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+      //  }
+      //} else {
+      //playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+      //}
       playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
       playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
       //Correct Letter

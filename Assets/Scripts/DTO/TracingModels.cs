@@ -1,10 +1,13 @@
 namespace KendaGame.Models {
   public static class TracingModels {
+
     [System.Serializable]
     public class RatingData {
       public float PredictedScore;
       public string PredictedClass;
       public int StarRating;
+      public string cropped_img_base64;
+      public string PredictedPoints;
     }
 
     [System.Serializable]
