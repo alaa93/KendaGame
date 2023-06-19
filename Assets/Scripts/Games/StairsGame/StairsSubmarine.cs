@@ -25,13 +25,13 @@ namespace KendaGame.Games {
     private async void PlayEnterAnim() {
       StairsLevelManager.Instance.CameraStopFollowing();
       StairsLevelManager.Instance.GetActiveCharacterRef().PlaySwimmingAnim();
-      skeletonAnimation.AnimationState.SetAnimation(0, "Open", false);
+      skeletonAnimation.AnimationState.SetAnimation(3, "Open", false);
       await Task.Delay(1000);
       StairsLevelManager.Instance.GetActiveCharacter().transform.DOMove(doorPoint.position, 1.5f);
       await Task.Delay(1500);
       StairsLevelManager.Instance.GetActiveCharacter().transform.DOMoveY(doorPoint.position.y + 1.5f, 1f);
       await Task.Delay(1000);
-      skeletonAnimation.AnimationState.SetAnimation(0, "close", false);
+      skeletonAnimation.AnimationState.SetAnimation(3, "close", false);
       await Task.Delay(1000);
       StairsLevelManager.Instance.GetActiveCharacter().gameObject.SetActive(false);
       this.transform.DOMoveX(-30f, 6f);
