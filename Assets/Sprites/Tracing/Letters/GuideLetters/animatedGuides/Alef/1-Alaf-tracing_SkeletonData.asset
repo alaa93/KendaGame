@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1-Alaf-tracing_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 6ffdee04f051a488eac4e9d810a47be1, type: 2}
+  - {fileID: 11400000, guid: 50eaf419678104648838b89ec47cb8ed, type: 2}
   scale: 0.01
   skeletonJSON: {fileID: 4900000, guid: f1b0e1fe3638e43deb017b506878fe46, type: 3}
   isUpgradingBlendModeMaterials: 0

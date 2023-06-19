@@ -1,30 +1,81 @@
 tracing.png
-size:1024,1024
+size:2048,2048
 filter:Linear,Linear
 pma:true
 scale:0.75
+6a1
+bounds:1873,1037,181,107
+rotate:90
+6a2
+bounds:236,1137,300,104
+6a3
+bounds:236,1067,68,281
+rotate:90
 Asset 11
-bounds:611,175,200,197
-rotate:90
+bounds:697,1057,200,197
 Asset 13
-bounds:612,377,191,232
+bounds:2,1099,191,232
+rotate:90
 Asset 15
-bounds:2,175,406,288
+bounds:1382,1525,406,288
+rotate:90
+Asset 17
+bounds:1088,1525,455,292
+rotate:90
+Asset 22
+bounds:1672,1521,242,459
+Asset 27
+bounds:428,1502,309,478
+Asset 311
+bounds:899,1096,137,216
+offsets:14,7,176,233
+rotate:90
+Asset 312
+bounds:1588,1102,176,233
 Asset 8
-bounds:2,465,424,459
+bounds:2,1521,424,459
 arrow direct
-bounds:811,366,51,558
+bounds:1313,1050,51,558
+rotate:90
 arrow3
-bounds:428,611,313,312
-rotate:90
+bounds:739,1256,313,312
 baa2
-bounds:427,181,428,182
-rotate:90
+bounds:1349,1337,428,182
 dooot
-bounds:810,198,70,70
+bounds:277,995,70,70
 dot
-bounds:742,863,62,61
+bounds:349,1004,62,61
+faa1
+bounds:2,1292,425,208
+fq
+bounds:519,992,92,104
+rotate:90
+ha1
+bounds:1117,1081,152,194
+rotate:90
+ha2
+bounds:899,996,98,110
+rotate:90
+ha3
+bounds:538,1086,149,155
+haa4
+bounds:236,1248,43,42
+hamza
+bounds:2,999,98,170
+rotate:90
+kaf d
+bounds:739,1570,347,410
+meem1
+bounds:174,1001,101,64
+meem2
+bounds:1779,1220,199,299
+noon
+bounds:1349,1116,237,219
+qaf2
+bounds:429,1243,266,257
+ya22 d
+bounds:1054,1235,293,288
 ألف
-bounds:864,595,60,329
+bounds:1916,1521,60,329
 همزة
-bounds:810,270,87,94
+bounds:1011,1000,87,94

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: tracing_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 710e259e09b4741f79a2d50b9e6a8cf3, type: 3}
+  atlasFile: {fileID: 4900000, guid: d12527e20effc4b1d940b3ce655baab3, type: 3}
   materials:
-  - {fileID: 2100000, guid: aed7ec7e6d13a492ebdb5735a8d39b54, type: 2}
+  - {fileID: 2100000, guid: 5c9319ec3e2b44e6ea767e4fc16800be, type: 2}

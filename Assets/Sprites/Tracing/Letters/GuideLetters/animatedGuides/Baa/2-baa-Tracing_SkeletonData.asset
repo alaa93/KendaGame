@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2-baa-Tracing_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 6ffdee04f051a488eac4e9d810a47be1, type: 2}
+  - {fileID: 11400000, guid: 50eaf419678104648838b89ec47cb8ed, type: 2}
   scale: 0.01
   skeletonJSON: {fileID: 4900000, guid: e5bfa6524cd8b4074b1b956f30128c10, type: 3}
   isUpgradingBlendModeMaterials: 0
