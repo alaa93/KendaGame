@@ -20,10 +20,8 @@ namespace KendaGame.Games {
     AudioClip gameWin;
     [SerializeField]
     ShipSharkController shipSharkController;
-
     bool gameCompleted;
     private float positionOffet = 3.3f;
-
     List<string> selectedLetters = new List<string>();
     int correctCounter;
     ShipWheelBubble[] wheelBubbles;

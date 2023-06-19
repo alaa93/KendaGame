@@ -1133,7 +1133,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0817554, y: -2.3629029}
@@ -2034,7 +2034,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: close
+  _animationName: JumpCloseFade
   loop: 0
   timeScale: 1
 --- !u!114 &4214610693539489063

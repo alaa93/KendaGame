@@ -58,20 +58,22 @@ namespace KendaGame.Games {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-      ShipWheelBubble wheelBubble = collision.gameObject.GetComponent<ShipWheelBubble>();
-      if (wheelBubble != null && released) {
-        this.GetComponent<Collider2D>().enabled = false;
-        if (wheelBubble.IsCorrectLetter()) {
-          this.transform.DOScale(transform.localScale * (1 + (scalRate * scaleCount)), 0.4f);
-          scaleCount++;
-          scalRate -= 0.05f;
-        }
-        shipWheelController.OnBubbleHit(wheelBubble, (gameCompleted, correctAnswer) => {
-          if (!gameCompleted) {
-            skeletonAnimation.AnimationState.SetAnimation(0, correctAnswer ? "swim" : "hitWrong", true);
-            Invoke(nameof(ResetShark), 1f);
+      if (!shipWheelController.IsGameCompleted()) {
+        ShipWheelBubble wheelBubble = collision.gameObject.GetComponent<ShipWheelBubble>();
+        if (wheelBubble != null && released) {
+          this.GetComponent<Collider2D>().enabled = false;
+          if (wheelBubble.IsCorrectLetter()) {
+            this.transform.DOScale(transform.localScale * (1 + (scalRate * scaleCount)), 0.4f);
+            scaleCount++;
+            scalRate -= 0.05f;
           }
-        });
+          shipWheelController.OnBubbleHit(wheelBubble, (gameCompleted, correctAnswer) => {
+            if (!shipWheelController.IsGameCompleted()) {
+              skeletonAnimation.AnimationState.SetAnimation(0, correctAnswer ? "swim" : "hitWrong", true);
+              Invoke(nameof(ResetShark), 1f);
+            }
+          });
+        }
       }
     }
 
