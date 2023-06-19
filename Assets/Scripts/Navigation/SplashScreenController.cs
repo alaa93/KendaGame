@@ -30,6 +30,7 @@ namespace KendaGame.UI {
     }
 
     private void CheckUserLoginSession() {
+#if !UNITY_EDITOR
       FirebaseAuth auth = FirebaseAuth.DefaultInstance;
       FirebaseUser user = auth.CurrentUser;
       if (auth != null && user != null) {
@@ -45,6 +46,9 @@ namespace KendaGame.UI {
       } else {
         SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
       }
+#else
+      SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
+#endif
     }
   }
 }

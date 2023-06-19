@@ -1829,7 +1829,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: close
+  _animationName: JumpCloseFade
   loop: 0
   timeScale: 1
 --- !u!114 &8946691523729017458
@@ -2269,7 +2269,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: JumpCloseFade
+  _animationName: close
   loop: 0
   timeScale: 1
 --- !u!61 &812954276398800240

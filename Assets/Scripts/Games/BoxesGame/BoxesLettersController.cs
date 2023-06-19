@@ -124,14 +124,10 @@ namespace KendaGame.Games {
         endingAnim.AnimationState.SetAnimation(0, "idle", false);
         yield return new WaitForSeconds(1.5f);
         endingAnim.AnimationState.SetAnimation(0, "Letters", false);
-        yield return new WaitForSeconds(2f);
-        AudioClip sfx = AudioController.Instance.commonSfx.GetEndingSfx();
-        AudioController.Instance.PlaySfxAtPoint(sfx);
-        yield return new WaitForSeconds(sfx.length);
         endingAnim.AnimationState.SetAnimation(0, "swimming", false);
         yield return new WaitForSeconds(4f);
       } else {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(7f);
       }
       PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
     }
