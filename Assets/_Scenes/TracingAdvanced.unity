@@ -2470,7 +2470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &800681751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2489,7 +2489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -46, y: -10}
+  m_AnchoredPosition: {x: -46, y: -54}
   m_SizeDelta: {x: -324.525, y: 143.602}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800681752
@@ -3157,8 +3157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1178, y: -38.603}
-  m_SizeDelta: {x: 812.9426, y: 599.19}
+  m_AnchoredPosition: {x: 0, y: -24.18}
+  m_SizeDelta: {x: 473.3, y: 281.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958757129
 MonoBehaviour:
@@ -3494,6 +3494,7 @@ MonoBehaviour:
   partsToHide:
   - {fileID: 871719319}
   - {fileID: 1334946330}
+  - {fileID: 776545742}
   skeletonGraphic: {fileID: 1287928576}
   popUpAnimatedLetterAligments:
   - {x: 13.4442, y: -35.18}

@@ -197,27 +197,26 @@ namespace KendaGame.UI {
 
     private void ShowLetterComparison(string processedImg) {
       ////Player Letter
-      //if (!string.IsNullOrEmpty(processedImg)) {
-      //  // Decode the Base64 string into a byte array
-      //  byte[] imageBytes = Convert.FromBase64String(processedImg);
+      if (!string.IsNullOrEmpty(processedImg)) {
+        // Decode the Base64 string into a byte array
+        byte[] imageBytes = Convert.FromBase64String(processedImg);
 
-      //  if (imageBytes != null) {
-      //    // Create a new Texture2D
-      //    Texture2D texture = new Texture2D(10, 10);
+        if (imageBytes != null) {
+          // Create a new Texture2D
+          Texture2D texture = new Texture2D(1, 1);
 
-      //    // Load the byte array data into the Texture2D
-      //    texture.LoadImage(imageBytes);
+          // Load the byte array data into the Texture2D
+          texture.LoadImage(imageBytes);
 
-      //    // Apply the changes and return the Texture2D
-      //    texture.Apply();
-      //    playerLetter.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero, 100);
-      //  } else {
-      //    playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
-      //  }
-      //} else {
-      //playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
-      //}
-      playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+          // Apply the changes and return the Texture2D
+          texture.Apply();
+          playerLetter.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero, 100);
+        } else {
+          playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+        }
+      } else {
+        playerLetter.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), Vector2.zero, 100);
+      }
       playerLetter.color = new Color(255f, 255f, 255f, 0.6f);
       //Correct Letter
       animatedTracingGuideRating.skeletonDataAsset = animatedTracingGuides[LettersHelper.GetActiveLetterIndex()];
