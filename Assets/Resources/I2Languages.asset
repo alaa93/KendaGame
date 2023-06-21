@@ -334,6 +334,14 @@ MonoBehaviour:
         \u0645\u0633\u062C\u0644 \u0645\u0633\u0628\u0642\u0627"
       Flags: 0000
       Languages_Touch: []
+    - Term: privacy_policy_link
+      TermType: 0
+      Description: 
+      Languages:
+      - Privacy Policy
+      - "\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name

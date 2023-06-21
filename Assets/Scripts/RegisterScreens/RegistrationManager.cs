@@ -1,4 +1,3 @@
-using I2.Loc;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using KendaGame.UI;
@@ -25,10 +24,17 @@ namespace KendaGame.RegistrationScreens {
     TMP_InputField signUpPasswordField;
     [SerializeField]
     TMP_InputField signUpPasswordConfirmField;
+    [SerializeField]
+    UIButtonAnimator privacyPolicyBtn;
+
 
     private void Awake() {
       skipBtn.AddClickListener(() => {
         AutoLogin();
+      }, true);
+
+      privacyPolicyBtn.AddClickListener(() => {
+        Application.OpenURL("https://kenda-ai.com/#");
       }, true);
     }
 
