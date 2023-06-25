@@ -1,3 +1,4 @@
+using I2.Loc;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using KendaGame.UI;
@@ -34,7 +35,7 @@ namespace KendaGame.RegistrationScreens {
       }, true);
 
       privacyPolicyBtn.AddClickListener(() => {
-        Application.OpenURL("https://kenda-ai.com/#");
+        Application.OpenURL(LocalizationManager.GetTermTranslation("privacy_policy_link"));
       }, true);
     }
 
