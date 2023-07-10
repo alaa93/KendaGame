@@ -50,6 +50,17 @@ namespace KendaGame.UI {
     public RawImage screenshotRef;
     private Texture2D texture2D;
 
+    [Header("Camera Controller")]
+    [SerializeField]
+    GameObject[] partsToHideForCamera;
+    [SerializeField]
+    GameObject[] partsToShowForCamera;
+    [SerializeField]
+    UIButtonAnimator cameraBtn,cameraSubmitBtn;
+    [SerializeField]
+    NativeCameraController nativeCamera;
+    Texture2D cameraScreenshot;
+    bool isCameraTracing = false;
     private static TracingUI _instance;
     public static TracingUI Instance {
       get {
@@ -62,9 +73,35 @@ namespace KendaGame.UI {
 
     private void Awake() {
       SceneManager.Instance.OpenCloudsManually();
+      InitializeCameraBtns();
       InitFontSizeBtns();
       PrepareBoard();
       StartTracing();
+    }
+
+    private void InitializeCameraBtns() {
+      isCameraTracing = false;
+      cameraBtn.AddClickListener(() => {
+        isCameraTracing = true;
+        PrepareBoardForCamera();
+      }, true);
+
+      cameraSubmitBtn.AddClickListener(async () => {
+        cameraScreenshot = await nativeCamera.CaptureCameraScreen();
+        if (cameraScreenshot != null) {
+          StartCoroutine(PrepareLetterForUpload(OnRatingCompleted, true));
+        }
+      }, true);
+    }
+
+    private void PrepareBoardForCamera() {
+      for (int x = 0; x < partsToHideForCamera.Length; x++) {
+        partsToHideForCamera[x].SetActive(false);
+      }
+      for (int x = 0; x < partsToShowForCamera.Length; x++) {
+        partsToShowForCamera[x].SetActive(true);
+      }
+      nativeCamera.StartCamera();
     }
 
     private void SetTracingGuide(bool state) {
@@ -143,25 +180,30 @@ namespace KendaGame.UI {
       StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
     }
 
-    private IEnumerator PrepareLetterForUpload(Action<bool, RatingData> onComplete) {
+    private IEnumerator PrepareLetterForUpload(Action<bool, RatingData> onComplete, bool isCamera = false) {
       AudioController.Instance.PlaySfxAtPoint(cameraShutter);
       SetTracingGuide(false);
       SetPartsOnScreenShot(false);
       yield return new WaitForEndOfFrame();
       Debug.Log("uploading screenshot to server...");
-      Rect rect = ColoringBookManager.Instance.GUIRectWithObject(ColoringBookManager.Instance.gameObject);
-      Texture2D texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
-      texture.ReadPixels(rect, 0, 0);
-      texture.Apply();
+      Texture2D texture = null;
+      if (isCamera) {
+        texture = cameraScreenshot;
+        texture.Apply();
+      } else {
+        Rect rect = ColoringBookManager.Instance.GUIRectWithObject(ColoringBookManager.Instance.gameObject);
+        texture = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
+        texture.ReadPixels(rect, 0, 0);
+        texture.Apply();
+      }
       yield return 0;
       byte[] bytes = texture.EncodeToPNG();
       texture2D = texture;
-      if(screenshotRef != null) {
+      if (screenshotRef != null) {
         screenshotRef.texture = texture;
       }
-      //SetTracingGuide(true);
       SetPartsOnScreenShot(true);
-      HTTPRequestHandler.Instance.UploadTracingLetter(bytes, onComplete);
+      HTTPRequestHandler.Instance.UploadTracingLetter(bytes, isCamera, onComplete);
       SetPlayerTracingLetter(texture);
     }
 
@@ -172,6 +214,15 @@ namespace KendaGame.UI {
     }
 
     private void OnRatingCompleted(bool success, RatingData ratingData) {
+      if (isCameraTracing) {
+        for (int x = 0; x < partsToHideForCamera.Length; x++) {
+          partsToHideForCamera[x].SetActive(true);
+        }
+        for (int x = 0; x < partsToShowForCamera.Length; x++) {
+          partsToShowForCamera[x].SetActive(false);
+        }
+        InitializeCameraBtns();
+      }
       if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
         ShowAdvancedTracingRating(success, ratingData);
       } else {
