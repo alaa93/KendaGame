@@ -34,18 +34,19 @@ namespace KendaGame.Games {
       if (!follow) {
         return;
       }
-      // Get the target position in viewport coordinates
-      Vector3 targetViewportPos = cam.WorldToViewportPoint(target.position);
+      if (cam != null && target != null) {
+        Vector3 targetViewportPos = cam.WorldToViewportPoint(target.position);
 
-      // Check if the target is nearly out of the viewport view
-      if (targetViewportPos.x < 0.3f || targetViewportPos.x > 0.6f ||
-          targetViewportPos.y < 0.3f || targetViewportPos.y > 0.7f || endingOffset) {
-        // Calculate the desired camera position based on the target and offset
-        Vector3 desiredPos = target.position + offset;
+        // Check if the target is nearly out of the viewport view
+        if (targetViewportPos.x < 0.3f || targetViewportPos.x > 0.6f ||
+            targetViewportPos.y < 0.3f || targetViewportPos.y > 0.7f || endingOffset) {
+          // Calculate the desired camera position based on the target and offset
+          Vector3 desiredPos = target.position + offset;
 
-        // Smoothly move the camera towards the desired position
-        Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed * Time.deltaTime);
-        transform.position = smoothedPos;
+          //Move the camera towards the desired position
+          Vector3 smoothedPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed * Time.deltaTime);
+          transform.position = smoothedPos;
+        }
       }
     }
 
