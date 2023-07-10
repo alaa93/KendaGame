@@ -24,14 +24,15 @@ namespace KendaGame.Helpers {
     }
     LoadingBar loadingBar;
 
-    public void UploadTracingLetter(byte[] bytes, Action<bool, RatingData> statusCallback) {
-      StartCoroutine(UploadTracingLetterProcess(bytes, statusCallback));
+    public void UploadTracingLetter(byte[] bytes,bool cameraImage, Action<bool, RatingData> statusCallback) {
+      StartCoroutine(UploadTracingLetterProcess(bytes,cameraImage, statusCallback));
     }
 
-    private IEnumerator UploadTracingLetterProcess(byte[] bytes, Action<bool, RatingData> statusCallback) {
+    private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage, Action<bool, RatingData> statusCallback) {
       WWWForm formrequest = new WWWForm();
       formrequest.AddBinaryData("Imageurl", bytes, "letter.png", "image/png");
       formrequest.AddField("RequiredClass", LettersHelper.GetActiveLetterClass());
+      formrequest.AddField("ImageSource", cameraImage ? "Camera" : "Board");
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + TRACING_MODULE, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
       StartCoroutine(UploadProgressBar(www, "tracing.rating_in_progress"));
