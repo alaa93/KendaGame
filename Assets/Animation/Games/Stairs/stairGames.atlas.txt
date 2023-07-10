@@ -1,0 +1,12 @@
+stairGames.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+fish
+bounds:2,2,201,155
+weed1
+bounds:2,637,286,350
+weed2
+bounds:2,158,258,477
+offsets:0,0,300,477

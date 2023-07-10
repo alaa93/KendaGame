@@ -1,0 +1,29 @@
+boxes.png
+size:2002,1192
+filter:Linear,Linear
+pma:true
+scale:0.75
+2x/2/2x/BOX3D
+bounds:2,172,1232,1018
+BoxesShadow
+bounds:388,84,384,86
+offsets:0,149,384,384
+Lock
+bounds:1940,1116,74,50
+rotate:90
+MidBoxMoney
+bounds:2,2,384,168
+offsets:0,108,384,384
+OpenBox
+bounds:1608,420,770,330
+rotate:90
+box
+bounds:1236,420,770,370
+offsets:0,67,770,437
+rotate:90
+box up
+bounds:1236,52,764,182
+offsets:1,0,768,230
+box up2
+bounds:1236,236,764,182
+offsets:1,0,768,230

@@ -1,0 +1,13 @@
+TutorialHand.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.75
+hand
+bounds:1488,1440,374,326
+rotate:90
+rotate
+bounds:2,331,1484,1483
+woosh2
+bounds:1488,331,378,141
+rotate:90

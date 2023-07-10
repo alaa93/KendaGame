@@ -3,15 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TreasureBox
+  - Ground
+  - Tutorial
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - letterCharacters
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -40,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: LoadingCanvas
+    uniqueID: 42034245
     locked: 0

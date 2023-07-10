@@ -1,0 +1,43 @@
+This asset is governed by the Asset Store EULA; however, the following components are governed by the licenses indicated below:
+
+All Pattern License is Pixabay License : https://pixabay.com/service/terms/#license
+
+1- Name: Pattern0001.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/background-decorative-floral-1297022/
+
+2- Name: Pattern0002.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/bear-seamless-pattern-winter-6756272/
+
+3- Name: Pattern0003.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/owl-owls-cartoon-animal-nature-1814023/
+
+4- Name: Pattern0004.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/deer-pattern-design-animal-3894103/
+
+5- Name: Pattern0005.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/design-love-heart-seamless-pattern-3289984/
+
+6- Name: Pattern0006.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/flowers-stripes-floral-5708889/
+
+7- Name: Pattern0007.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/pattern-pink-cute-sweet-fur-cats-1477380/
+
+8- Name: Pattern0008.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/seamless-pattern-healthy-fruit-3289971/
+
+9- Name: Pattern0009.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/leaves-leaves-background-leaf-1406605/
+
+10- Name: Pattern0010.png
+license : Pixabay License : https://pixabay.com/service/terms/#license
+Link: https://pixabay.com/vectors/flowers-pink-floral-pattern-design-5970534/

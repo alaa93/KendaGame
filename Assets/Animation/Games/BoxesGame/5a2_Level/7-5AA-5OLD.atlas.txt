@@ -1,0 +1,32 @@
+7-5AA-5OLD.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.5
+1x/Asset 35
+bounds:1285,1223,96,58
+1x/Asset 36
+bounds:1285,1282,115,160
+1x/Asset 38
+bounds:1394,1328,34,52
+rotate:180
+1x/Asset 39
+bounds:1411,1262,27,30
+1x/Asset 40
+bounds:1304,1166,77,104
+rotate:90
+1x/Asset 41
+bounds:1399,1165,47,35
+rotate:90
+1x/Asset 42
+bounds:1404,1215,46,38
+rotate:90
+5a word
+bounds:2,1162,1281,280
+b-browser
+bounds:1418,1198,18,14
+eye close
+bounds:1391,1245,81,18
+rotate:90
+eyes
+bounds:1399,1411,29,31

@@ -1,0 +1,28 @@
+ta22.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/ta22MothClose
+bounds:475,550,224,152
+Alf-eyeBrow
+bounds:2,866,48,21
+Alf-leg1
+bounds:201,302,254,404
+rotate:90
+Alf-pupple
+bounds:2,889,74,74
+eye close
+bounds:2,454,123,26
+offsets:1,0,125,27
+ta2-dot
+bounds:278,508,195,186
+ta22 MouthDefult
+bounds:153,407,216,119
+rotate:180
+ta22 cheeck
+bounds:78,892,57,71
+ta22 smile
+bounds:606,406,216,183
+ta22Body
+bounds:2,477,961,486

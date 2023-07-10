@@ -16,23 +16,367 @@ MonoBehaviour:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
     GoogleLiveSyncIsUptoDate: 1
-    mTerms: []
+    mTerms:
+    - Term: App_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - Habbar
+      - "\u062D\u0628\u0627\u0631 \u062A\u0639\u0644\u0645 \u0643\u062A\u0627\u0628\u0629
+        \u0627\u0644\u062D\u0631\u0648\u0641"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LocalizeFonts
+      TermType: 9
+      Description: 
+      Languages:
+      - Lato-Regular
+      - DroidKufi-Regular
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LocalizeFonts_Bold
+      TermType: 9
+      Description: 
+      Languages:
+      - DANA-FAT SDF
+      - DroidKufi-Bold
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Signup
+      TermType: 0
+      Description: 
+      Languages:
+      - Sign Up
+      - "\u062A\u0633\u062C\u064A\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: change_email_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Change Email Address
+      - "\u062A\u063A\u064A\u064A\u0631 \u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0643\u062A\u0631\u0648\u0646\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: confirm_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm
+      - "\u062A\u0648\u062B\u064A\u0642"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: connect_via
+      TermType: 0
+      Description: 
+      Languages:
+      - 'or connect via '
+      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0645\u0646 \u062E\u0644\u0627\u0644: "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: email_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Email...
+      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0625\u0644\u0643\u062A\u0631\u0648\u0646\u064A..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: forget_password_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Forget Password?
+      - "\u0647\u0644 \u0646\u0633\u064A\u062A \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631\u061F"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: gender.boy
+      TermType: 0
+      Description: 
+      Languages:
+      - Boy
+      - "\u0630\u0643\u0631"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: gender.girl
+      TermType: 0
+      Description: 
+      Languages:
+      - Girl
+      - "\u0623\u0646\u062B\u0649"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: instruction_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Please enter the four-digit verification code that has been sent to your
+        email address.
+      - "\u0627\u0644\u0631\u062C\u0627\u0621 \u0625\u062F\u062E\u0627\u0644 \u0631\u0645\u0632
+        \u0627\u0644\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u0630\u064A \u062A\u0645
+        \u0625\u0631\u0633\u0627\u0644\u0647 \u0625\u0644\u0649 \u0628\u0631\u064A\u062F\u0643
+        \u0627\u0644\u0625\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: language_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Language
+      - "\u0627\u062E\u062A\u0631 \u0627\u0644\u0644\u063A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: login
+      TermType: 0
+      Description: 
+      Languages:
+      - Login
+      - "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: password_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Pasword...
+      - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: pasword_confirm_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Confirm pasword...
+      - "\u062A\u0623\u0643\u064A\u062F \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: player_profile_title
+      TermType: 0
+      Description: 
+      Languages:
+      - player Profile
+      - "\u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: popups.game_rating_title
+      TermType: 0
+      Description: 
+      Languages:
+      - Level Completed
+      - "\u0627\u0646\u062A\u0647\u062A \u0627\u0644\u0645\u0631\u062D\u0644\u0629
+        \u0628\u0646\u062C\u0627\u062D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration.app_languages.ar
+      TermType: 0
+      Description: 
+      Languages:
+      - Arabic
+      - "\u0627\u0644\u0639\u0631\u0628\u064A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration.app_languages.en
+      TermType: 0
+      Description: 
+      Languages:
+      - English
+      - "\u0627\u0646\u062C\u0644\u064A\u0632\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration.pick_language
+      TermType: 0
+      Description: 
+      Languages:
+      - Select Language
+      - "\u0627\u062E\u062A\u0631 \u0627\u0644\u0644\u063A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration.skip_registration
+      TermType: 0
+      Description: 
+      Languages:
+      - Skip
+      - "\u062A\u062E\u0637\u0649"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: tracing.rating_in_progress
+      TermType: 0
+      Description: 
+      Languages:
+      - Rating In Progress...
+      - "\u062C\u0627\u0631\u064D \u0627\u0644\u062A\u0642\u064A\u064A\u0645..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: verify_account_text
+      TermType: 0
+      Description: 
+      Languages:
+      - Verify Account
+      - "\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u062D\u0633\u0627\u0628"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens.validation_title
+      TermType: 0
+      Description: 
+      Languages:
+      - Validation
+      - "\u062A\u0635\u062D\u064A\u062D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens.validate_email_error
+      TermType: 0
+      Description: 
+      Languages:
+      - Email is not valid make sure to write a valid email address
+      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0645\u062F\u062E\u0644
+        \u063A\u064A\u0631 \u0635\u062D\u064A\u062D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens.validate_password_length_error
+      TermType: 0
+      Description: 
+      Languages:
+      - Password is too short. It should be greater than 5 characters
+      - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631 \u064A\u062C\u0628 \u0627\u0646
+        \u062A\u0643\u0648\u0646 \u0627\u0643\u062B\u0631 \u0645\u0646 \u0665 \u062E\u0627\u0646\u0627\u062A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens.validate_password_spaces_error
+      TermType: 0
+      Description: 
+      Languages:
+      - Password should not contain spaces
+      - "\u0644\u0627 \u064A\u0645\u0643\u0646 \u0627\u0646 \u062A\u062D\u062A\u0648\u064A
+        \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631 \u0639\u0644\u064A \u0641\u0631\u0627\u063A\u0627\u062A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens.validate_passwords_match_error
+      TermType: 0
+      Description: 
+      Languages:
+      - Password does not match
+      - "\u0643\u0644\u0645\u0627\u062A \u0627\u0644\u0633\u0631 \u063A\u064A\u0631
+        \u0645\u062A\u0637\u0627\u0628\u0642\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens.login_title
+      TermType: 0
+      Description: 
+      Languages:
+      - Login
+      - "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens.signup_title
+      TermType: 0
+      Description: 
+      Languages:
+      - Sign Up
+      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_login_canceled
+      TermType: 0
+      Description: 
+      Languages:
+      - Login Canceled!
+      - "\u062A\u0645 \u0627\u0644\u063A\u0627\u0621 \u0627\u0644\u062F\u062E\u0648\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_invalid_password
+      TermType: 0
+      Description: 
+      Languages:
+      - Invlid Password, Try again!
+      - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631 \u063A\u064A\u0631 \u0635\u062D\u064A\u062D\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_signin_success
+      TermType: 0
+      Description: 
+      Languages:
+      - Signed in successfully
+      - "\u062A\u0645 \u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644
+        \u0628\u0646\u062C\u0627\u062D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_signup_canceled
+      TermType: 0
+      Description: 
+      Languages:
+      - Signup Canceled!
+      - "\u062A\u0645 \u0627\u0644\u063A\u0627\u0621 \u0627\u0644\u062A\u0633\u062C\u064A\u0644"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_signup_unknown_error
+      TermType: 0
+      Description: 
+      Languages:
+      - Unknown Error Occured, Try again
+      - "\u062D\u062F\u062B \u062E\u0637\u0622 \u0645\u0627\u060C \u0627\u0644\u0631\u062C\u0627\u0621
+        \u0627\u0644\u0645\u062D\u0627\u0648\u0644\u0629 \u0645\u0631\u0629 \u0627\u062E\u0631\u0649"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_signup_success
+      TermType: 0
+      Description: 
+      Languages:
+      - User Created Successfully
+      - "\u062A\u0645 \u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0628\u0646\u062C\u0627\u062D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_email_already_used
+      TermType: 0
+      Description: 
+      Languages:
+      - The email address is already in use
+      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A
+        \u0645\u0633\u062C\u0644 \u0645\u0633\u0628\u0642\u0627"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: privacy_policy_btn
+      TermType: 0
+      Description: 
+      Languages:
+      - Privacy Policy
+      - "\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: privacy_policy_link
+      TermType: 0
+      Description: 
+      Languages:
+      - https://kenda-ai.com/
+      - https://kenda-ai.com/
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
-    mTerm_AppName: 
-    mLanguages: []
-    IgnoreDeviceLanguage: 0
+    mTerm_AppName: App_Name
+    mLanguages:
+    - Name: English
+      Code: en
+      Flags: 0
+    - Name: Arabic
+      Code: ar
+      Flags: 0
+    IgnoreDeviceLanguage: 1
     _AllowUnloadingLanguages: 0
-    Google_WebServiceURL: 
-    Google_SpreadsheetKey: 
-    Google_SpreadsheetName: 
-    Google_LastUpdatedVersion: 
-    Google_Password: change_this
-    GoogleUpdateFrequency: 3
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbzoSTi2vA0nI7pRgaxefwvDuKxL--hIb3s5vpHNti1ygofoEoLy8S2EZWUxlOXOT95B2w/exec
+    Google_SpreadsheetKey: 1M4yfRXvWjbfKooNAq--nWtBaxLHg-Gp1C8Prsc-A2wM
+    Google_SpreadsheetName: I2Loc KendaGame Localization
+    Google_LastUpdatedVersion: 1686695090861
+    Google_Password: bn98FXoh
+    GoogleUpdateFrequency: 2
     GoogleInEditorCheckFrequency: 2
-    GoogleUpdateSynchronization: 1
+    GoogleUpdateSynchronization: 2
     GoogleUpdateDelay: 0
-    Assets: []
+    Assets:
+    - {fileID: 11400000, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
+    - {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
+    - {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+    - {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
+    - {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
     Spreadsheet_LocalFileName: 
     Spreadsheet_LocalCSVSeparator: ','
     Spreadsheet_LocalCSVEncoding: utf-8

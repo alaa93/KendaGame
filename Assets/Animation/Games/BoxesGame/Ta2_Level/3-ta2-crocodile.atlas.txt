@@ -1,0 +1,27 @@
+3-ta2-crocodile.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.5
+1x/Asset 13
+bounds:1366,1261,204,309
+1x/Asset 14
+bounds:1476,1014,35,103
+1x/Asset 15
+bounds:1452,1105,113,61
+1x/Asset 16
+bounds:1414,1018,62,104
+1x/Asset 17
+bounds:1508,1018,49,80
+1x/Asset 18
+bounds:1366,1065,55,195
+1x/Asset 19
+bounds:1526,1151,32,97
+3-t-word
+bounds:2,1009,1362,561
+b-browser
+bounds:1366,1016,18,14
+eye close
+bounds:1457,1250,81,18
+eyes
+bounds:1366,1032,29,31
