@@ -350,6 +350,16 @@ MonoBehaviour:
       - https://kenda-ai.com/
       Flags: 0000
       Languages_Touch: []
+    - Term: registration_screens.validate_email_404
+      TermType: 0
+      Description: 
+      Languages:
+      - Incorrect email or password
+      - "\u0628\u0631\u064A\u062F \u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A
+        \u0623\u0648 \u0643\u0644\u0645\u0629 \u0645\u0631\u0648\u0631\u063A\u064A\u0631
+        \u0635\u062D\u064A\u062D\u0629"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name

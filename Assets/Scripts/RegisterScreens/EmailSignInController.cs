@@ -1,6 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
 using Firebase.Auth;
+using KendaGame.Helpers;
 using KendaGame.Navigation;
 using KendaGame.UI;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace KendaGame.RegistrationScreens {
     private FirebaseAuth auth;
     LoadingBar loadingBar;
 
-    public async void SignUpWithEmail(string email, string password, string confirmPassword, Action<bool, string> onComplete = null) {
+
+    public async void SignUpWithEmailFirebase(string email, string password, string confirmPassword, Action<bool, string> onComplete = null) {
       if (ValidateEmail(email) && ValidatePassword(password) && PasswordMatch(password, confirmPassword)) {
         GetLoadingBar().ShowLoadingBar("");
         GetLoadingBar().IncreaseloadingBarByAnim(0.1f);
@@ -22,13 +24,13 @@ namespace KendaGame.RegistrationScreens {
         try {
           await auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
             if (task.IsCanceled) {
-              status = "registration_screens_status_signup_canceled";
+              status = AuthErrorCode.Canceled;
               Debug.LogError(status);
             }
             if (task.IsFaulted) {
               status = task.Exception.Message;
               Debug.LogError(status);
-              status = "registration_screens_status_signup_unknown_error";
+              status = AuthErrorCode.UnknownError;
             }
             // Firebase user has been created.
             AuthResult result = task.Result;
@@ -36,9 +38,9 @@ namespace KendaGame.RegistrationScreens {
             if (task.Result.User == null) {
               status = "Fail to create user in database";
               Debug.LogError(status);
-              status = "registration_screens_status_signup_unknown_error";
+              status = AuthErrorCode.UnknownError;
             } else {
-              status = "registration_screens_status_signup_success";
+              status = AuthErrorCode.SignUp_Success;
               success = true;
               Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                 result.User.DisplayName, result.User.UserId);
@@ -48,7 +50,7 @@ namespace KendaGame.RegistrationScreens {
           string error = e.Message;
           Debug.Log("Exception caught " + error);
           if (error.Contains("The email address is already in use by another account")) {
-            error = "registration_screens_status_email_already_used";
+            error = AuthErrorCode.Email_already_exist;
           }
           GetLoadingBar().HideLoadingBar();
           onComplete?.Invoke(false, error);
@@ -58,7 +60,7 @@ namespace KendaGame.RegistrationScreens {
       }
     }
 
-    public async void SignInWithEmail(string email, string password, Action<bool, string> onComplete = null) {
+    public async void SignInWithEmailFirebase(string email, string password, Action<bool, string> onComplete = null) {
       if (ValidateEmail(email) && ValidatePassword(password)) {
         GetLoadingBar().ShowLoadingBar("");
         GetLoadingBar().IncreaseloadingBarByAnim(0.1f);
@@ -95,6 +97,39 @@ namespace KendaGame.RegistrationScreens {
       }
     }
 
+    public void SignUpWithEmail(string email, string password, string confirmPassword, Action<bool, string> onComplete = null) {
+      if (ValidateEmail(email) && ValidatePassword(password) && PasswordMatch(password, confirmPassword)) {
+        GetLoadingBar().ShowLoadingBar("");
+        GetLoadingBar().IncreaseloadingBarByAnim(0.1f);
+        HTTPRequestHandler.Instance.SignUpWithEmail(email, password, (success, user, errorCode) => {
+          if (success) {
+            if (user != null) {
+              onComplete?.Invoke(success, AuthErrorCode.SignUp_Success);
+            }
+          } else {
+            onComplete?.Invoke(success, errorCode);
+          }
+        });
+      }
+    }
+
+    public void SignInWithEmail(string email, string password, Action<bool, string> onComplete = null) {
+      if (ValidateEmail(email) && ValidatePassword(password)) {
+        Debug.Log("both email and password valid");
+        GetLoadingBar().ShowLoadingBar("");
+        GetLoadingBar().IncreaseloadingBarByAnim(0.1f);
+        HTTPRequestHandler.Instance.SignInWithEmail(email, password, (success, user, errorCode) => {
+          if (success) {
+            if (user != null) {
+              onComplete?.Invoke(success, AuthErrorCode.Login_Success);
+            }
+          } else {
+            onComplete?.Invoke(success, errorCode);
+          }
+        });
+      }
+    }
+
     private LoadingBar GetLoadingBar() {
       if (loadingBar == null) {
         loadingBar = PopUpsManager.Instance.LoadLoadingBar();
@@ -112,7 +147,8 @@ namespace KendaGame.RegistrationScreens {
       // Use the Match method to check if the email matches the pattern
       Match match = regex.Match(text);
       if (!match.Success) {//"Validation"
-        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", "registration_screens.validate_email_error");
+        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", AuthErrorCode.Email_Invalid);
+        return false;
       }
       // Return true if the email is valid, false otherwise
       return match.Success;
@@ -123,7 +159,7 @@ namespace KendaGame.RegistrationScreens {
       if (text.Length < 6) {
         // Password is too short
         Debug.LogWarning("Password is too short. It should be equal or greater than 6 characters.");
-        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", "registration_screens.validate_password_length_error");
+        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", AuthErrorCode.Password_Length_Invalid);
         return false;
       }
 
@@ -131,7 +167,7 @@ namespace KendaGame.RegistrationScreens {
       if (text.Contains(" ")) {
         // Password contains spaces
         Debug.LogWarning("Password should not contain spaces.");
-        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", "registration_screens.validate_password_spaces_error");
+        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", AuthErrorCode.Password_Invalid);
         return false;
       }
       // Additional checks for password strength can be added here
@@ -142,11 +178,24 @@ namespace KendaGame.RegistrationScreens {
 
     private bool PasswordMatch(string text, string text2) {
       if (text != text2) {
-        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", "registration_screens.validate_passwords_match_error");
+        PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.validation_title", AuthErrorCode.Password_No_Match);
         return false;
       }
       return true;
     }
 
   }
+}
+
+public static class AuthErrorCode {
+  public static string Canceled = "registration_screens_status_signup_canceled";
+  public static string UnknownError = "registration_screens_status_signup_unknown_error";
+  public static string SignUp_Success = "registration_screens_status_signup_success";
+  public static string Login_Success = "registration_screens_status_signin_success";
+  public static string Email_already_exist = "registration_screens_status_email_already_used";
+  public static string Email_Invalid = "registration_screens.validate_email_error";
+  public static string Password_No_Match = "registration_screens.validate_passwords_match_error";
+  public static string Password_Invalid = "registration_screens.validate_password_spaces_error";
+  public static string Password_Length_Invalid = "registration_screens.validate_password_length_error";
+  public static string Email_Password_404 = "registration_screens.validate_email_404";
 }

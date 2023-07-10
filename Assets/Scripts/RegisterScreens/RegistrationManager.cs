@@ -54,13 +54,24 @@ namespace KendaGame.RegistrationScreens {
 
     }
 
-    public void OnEmailLoginBtnPressed() {
+    public void OnFirebaseEmailLoginBtnPressed() {
       LoadingBar loadingBar = PopUpsManager.Instance.LoadLoadingBar();
       loadingBar.ShowLoadingBar("");
       loadingBar.IncreaseloadingBarByAnim(0.1f);
-      emailSignInController.SignInWithEmail(loginEmailField.text, loginPasswordField.text, (success, status) => {
+      emailSignInController.SignInWithEmailFirebase(loginEmailField.text, loginPasswordField.text, (success, status) => {
         Debug.Log("OnEmailLoginBtnPressed - Sign in with email completed");
         loadingBar.HideLoadingBar();
+        if (success) {
+          AutoLogin();
+        } else {
+          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.login_title", status);
+        }
+      });
+    }
+
+    public void OnEmailLoginBtnPressed() {
+      emailSignInController.SignInWithEmail(loginEmailField.text, loginPasswordField.text, (success, status) => {
+        Debug.Log("OnEmailLoginBtnPressed - Sign in with email completed");
         if (success) {
           AutoLogin();
         } else {
@@ -74,7 +85,6 @@ namespace KendaGame.RegistrationScreens {
         Debug.Log("OnEmailLoginBtnPressed - Sign in with email completed");
         PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.signup_title", status, () => {
           if (success) {
-            Debug.Log("Is Success " + success);
             AutoLogin();
           }
         });

@@ -5,14 +5,30 @@ namespace KendaGame.Models {
 
     [System.Serializable]
     public class User {
-      public string user_id;
-      public string name;
+      public string id;
+      public string username;
+      public string first_name;
+      public string last_name;
       public string email;
       public string password;
       public string sign_in_token;
       public string phone_number;
       public string profile_photo;
       public string gender;
+    }
+
+    [System.Serializable]
+    public class Profile {
+      public string gender;
+      public string phone;
+      public string profile_photo;
+    }
+
+    [System.Serializable]
+    public class UserSession {
+      public User user;
+      public Profile profile;
+      public string token;
     }
 
     [System.Serializable]
