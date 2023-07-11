@@ -62,7 +62,7 @@ namespace KendaGame.RegistrationScreens {
 
     public async void SignInWithEmailFirebase(string email, string password, Action<bool, string> onComplete = null) {
       if (ValidateEmail(email) && ValidatePassword(password)) {
-        GetLoadingBar().ShowLoadingBar("");
+        GetLoadingBar().ShowLoadingBar();
         GetLoadingBar().IncreaseloadingBarByAnim(0.1f);
 
         if (auth == null) {
@@ -99,7 +99,7 @@ namespace KendaGame.RegistrationScreens {
 
     public void SignUpWithEmail(string email, string password, string confirmPassword, Action<bool, string> onComplete = null) {
       if (ValidateEmail(email) && ValidatePassword(password) && PasswordMatch(password, confirmPassword)) {
-        GetLoadingBar().ShowLoadingBar("");
+        GetLoadingBar().ShowLoadingBar();
         GetLoadingBar().IncreaseloadingBarByAnim(0.1f);
         HTTPRequestHandler.Instance.SignUpWithEmail(email, password, (success, user, errorCode) => {
           if (success) {
@@ -116,7 +116,7 @@ namespace KendaGame.RegistrationScreens {
     public void SignInWithEmail(string email, string password, Action<bool, string> onComplete = null) {
       if (ValidateEmail(email) && ValidatePassword(password)) {
         Debug.Log("both email and password valid");
-        GetLoadingBar().ShowLoadingBar("");
+        GetLoadingBar().ShowLoadingBar();
         GetLoadingBar().IncreaseloadingBarByAnim(0.1f);
         HTTPRequestHandler.Instance.SignInWithEmail(email, password, (success, user, errorCode) => {
           if (success) {

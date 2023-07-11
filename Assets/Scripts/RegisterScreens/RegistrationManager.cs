@@ -52,11 +52,12 @@ namespace KendaGame.RegistrationScreens {
 
     public void ShowForgetPassword() {
 
+
     }
 
     public void OnFirebaseEmailLoginBtnPressed() {
       LoadingBar loadingBar = PopUpsManager.Instance.LoadLoadingBar();
-      loadingBar.ShowLoadingBar("");
+      loadingBar.ShowLoadingBar();
       loadingBar.IncreaseloadingBarByAnim(0.1f);
       emailSignInController.SignInWithEmailFirebase(loginEmailField.text, loginPasswordField.text, (success, status) => {
         Debug.Log("OnEmailLoginBtnPressed - Sign in with email completed");

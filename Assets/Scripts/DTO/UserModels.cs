@@ -6,7 +6,6 @@ namespace KendaGame.Models {
     [System.Serializable]
     public class User {
       public string id;
-      public string username;
       public string first_name;
       public string last_name;
       public string email;

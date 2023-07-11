@@ -3,6 +3,7 @@ using KendaGame.Navigation;
 using System.Threading.Tasks;
 using Spine.Unity;
 using Firebase.Auth;
+using KendaGame.Helpers;
 
 namespace KendaGame.UI {
   public class SplashScreenController : MonoBehaviour {
@@ -44,11 +45,28 @@ namespace KendaGame.UI {
         Debug.Log("Logged in user " + uid + " name " + name + "email " + email);
         SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
       } else {
+        if (CheckEmailSession()) {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
+        } else {
+          SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
+        }
+      }
+      #else
+      if (CheckEmailSession()) {
+        SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
+      } else {
         SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
       }
-#else
-      SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
-#endif
+      #endif
     }
+
+    private bool CheckEmailSession() {
+      if (string.IsNullOrEmpty(StorageHelper.ReadStorage(StorageHelper.UserSession))) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
   }
 }

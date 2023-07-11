@@ -47,7 +47,7 @@ namespace KendaGame.Helpers {
       formrequest.AddField("ImageSource", cameraImage ? "Camera" : "Board");
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + TRACING_MODULE, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
-      StartCoroutine(UploadProgressBar(www, "tracing.rating_in_progress"));
+      StartCoroutine(UploadProgressBar(www));
       yield return www.SendWebRequest();
       if(loadingBar != null) {
         loadingBar.HideLoadingBar();
@@ -71,17 +71,16 @@ namespace KendaGame.Helpers {
     }
 
     private IEnumerator SignUpRequest(string email, string password, Action<bool, UserSession, string> statusCallback = null) {
-      WWWForm formrequest = new WWWForm();
-      formrequest.AddField("username", email); //$"user_{Time.time}_{UnityEngine.Random.Range(0, 1000)}"
-      formrequest.AddField("first_name", "first_name");
-      formrequest.AddField("last_name", "last_name");
+      WWWForm formrequest = new();
+
       formrequest.AddField("email", email);
       formrequest.AddField("password", password);
-      formrequest.AddField("password2", password);
+      formrequest.AddField("first_name", "first_name");
+      formrequest.AddField("last_name", "last_name");
 
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_REGISTER_MODULE, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
-      StartCoroutine(UploadProgressBar(www, ""));
+      StartCoroutine(UploadProgressBar(www));
       yield return www.SendWebRequest();
       if (loadingBar != null) {
         loadingBar.HideLoadingBar();
@@ -100,6 +99,7 @@ namespace KendaGame.Helpers {
         } else {
           UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
           statusCallback?.Invoke(true, user, AuthErrorCode.SignUp_Success);
+          StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
         }
       } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
@@ -114,7 +114,7 @@ namespace KendaGame.Helpers {
       formrequest.AddField("password", password);
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_LOGIN_MODULE, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
-      StartCoroutine(UploadProgressBar(www, ""));
+      StartCoroutine(UploadProgressBar(www));
 
       yield return www.SendWebRequest();
       if (loadingBar != null) {
@@ -137,6 +137,7 @@ namespace KendaGame.Helpers {
           } else {
             UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
             statusCallback?.Invoke(true, user, AuthErrorCode.Login_Success);
+            StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
           }
         }
       } else {
@@ -153,7 +154,7 @@ namespace KendaGame.Helpers {
       var tcs = new TaskCompletionSource<(bool, string)>();
 
       //Show loading bar
-      StartCoroutine(UploadProgressBar(request, ""));
+      StartCoroutine(UploadProgressBar(request));
 
       // Start the web request asynchronously
       request.SendWebRequest().completed += operation => {
@@ -174,9 +175,9 @@ namespace KendaGame.Helpers {
       return await tcs.Task;
     }
 
-    private IEnumerator UploadProgressBar(UnityWebRequest request, string loadingTitle) {
+    private IEnumerator UploadProgressBar(UnityWebRequest request) {
       loadingBar = PopUpsManager.Instance.LoadLoadingBar();
-      loadingBar.ShowLoadingBar(loadingTitle);
+      loadingBar.ShowLoadingBar();
       while (!request.isDone) {
         loadingBar.IncreaseLoadingBar(0.1f);
         yield return new WaitForSeconds(1f);
@@ -191,7 +192,7 @@ namespace KendaGame.Helpers {
     }
   }
 }
-
+ 
 // Custom exception class for UnityWebRequest errors
 class UnityWebRequestException : Exception {
   public UnityWebRequestException(string message) : base(message) { }
