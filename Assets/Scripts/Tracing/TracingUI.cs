@@ -10,9 +10,6 @@ using static KendaGame.Models.TracingModels;
 
 namespace KendaGame.UI {
   public class TracingUI : MonoBehaviour {
-
-    [SerializeField]
-    AudioSource musicLoop;
     [SerializeField]
     UIButtonAnimator[] fontSizeBtns;
     [SerializeField]
@@ -147,7 +144,6 @@ namespace KendaGame.UI {
     }
 
     private void StartTracing() {
-      musicLoop.Play();
       penBtns = FindObjectsOfType<ColoringPen>();
     }
 
@@ -176,7 +172,7 @@ namespace KendaGame.UI {
     }
 
     public void OnTracingLetterCompleted() {
-      AudioUtils.FadeOutAudio(musicLoop, 0.4f);
+      AudioController.Instance.FadeOutAudio(0.4f);
       StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
     }
 

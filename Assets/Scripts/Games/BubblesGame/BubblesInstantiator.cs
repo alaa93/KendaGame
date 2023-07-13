@@ -106,7 +106,7 @@ namespace KendaGame.Games {
       }
       if (correctAnswers >= 5) {
         canInstantiate = false;
-        gameMusic.Stop();
+        AudioController.Instance.StopMusic();
         gameCompleted = true;
         AudioController.Instance.PlayAudioAtPoint(endingSfx);
         StartCoroutine(OnGameCompleted(endingSfx.length + 0.5f));
