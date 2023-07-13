@@ -350,6 +350,30 @@ MonoBehaviour:
       - https://kenda-ai.com/
       Flags: 0000
       Languages_Touch: []
+    - Term: Habbar
+      TermType: 0
+      Description: 
+      Languages:
+      - 
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: popups.settings_title
+      TermType: 0
+      Description: 
+      Languages:
+      - Settings
+      - "\u0627\u0644\u0625\u0639\u062F\u0627\u062F\u0627\u062A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: "\u0627\u0644\u0639\u0631\u0628\u064A\u0629"
+      TermType: 0
+      Description: 
+      Languages:
+      - Arabic
+      - "\u0627\u0644\u0639\u0631\u0628\u064A\u0629"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name

@@ -696,6 +696,12 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6363001988624921136, guid: 8bf8ca8030c9a4ee3ab72858cb722b8f,
+        type: 3}
+      propertyPath: SettingsPopUpObject
+      value: 
+      objectReference: {fileID: 8781441430046391429, guid: 574f500109528d942beb8d7680aa2899,
+        type: 3}
     - target: {fileID: 7569176982032194185, guid: 8bf8ca8030c9a4ee3ab72858cb722b8f,
         type: 3}
       propertyPath: m_AnchorMax.y

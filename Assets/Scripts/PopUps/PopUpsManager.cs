@@ -12,6 +12,7 @@ namespace KendaGame.Navigation {
     public LoadingBar ProgressBar;
     public GameObject GenderPopUpObject;
     public GameObject FeedbackPopUpObject;
+    public GameObject SettingsPopUpObject;
 
     private TutorialController tutorialController;
     private LoadingBar loadingBar;
@@ -19,7 +20,7 @@ namespace KendaGame.Navigation {
     private LetterRatingPopUp letterRating;
     private GenderPopUp genderPopUp;
     private FeedbackPopUp feedbackPopUp;
-
+    private SettingsPopUp settingsPopUp;
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
       get {
@@ -78,6 +79,18 @@ namespace KendaGame.Navigation {
         return null;
       }
       return feedbackPopUp;
+    }
+
+    public SettingsPopUp GetSettingsPopUp(){
+      if (settingsPopUp == null){
+        GameObject settingsObject = Instantiate(SettingsPopUpObject, Parent, false);
+        settingsPopUp = settingsObject.GetComponent<SettingsPopUp>();
+        if(settingsPopUp != null){
+          return settingsPopUp;
+        }
+        return null;
+      }
+      return settingsPopUp;
     }
 
     public bool IsLetterRatingActive() {
