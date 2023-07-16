@@ -30,7 +30,7 @@ namespace KendaGame.Navigation {
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
     public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame
+      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame, StoreScreen
     }
     public Scenes ActiveScene { get => activeScene; set => activeScene = value; }
     private Scenes activeScene;
