@@ -1,11 +1,13 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using KendaGame.Helpers;
 
 namespace KendaGame.UI {
   public class MapController : MonoBehaviour {
 
     private static MapController _instance;
+    private AudioSource audioSource;
     public static MapController Instance {
       get {
         if (_instance == null) {
@@ -14,7 +16,7 @@ namespace KendaGame.UI {
         return _instance;
       }
     }
-
+    
     public Sprite coloredStar, emptyStar;
 
     [SerializeField]
@@ -22,12 +24,14 @@ namespace KendaGame.UI {
     [SerializeField]
     Image[] overlay;
 
+    private void Awake() {
+      audioSource = gameObject.GetComponent<AudioSource>();
+    }
     private void Start() {
       //PlayOverlayAnimation(overlay[0]);
       //PlayOverlayAnimation(overlay[1]);
       //PlayOverlayAnimation(overlay[2]);
     }
-
     private void PlayOverlayAnimation(Image image) {
       image.DOFade(0.5f, fadeDuration).OnComplete(() => {
         image.DOFade(1f, fadeDuration).OnComplete(() => {

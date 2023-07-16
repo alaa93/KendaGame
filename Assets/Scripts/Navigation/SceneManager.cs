@@ -24,11 +24,11 @@ namespace KendaGame.Navigation {
     [SerializeField]
     private bool openManually = true;
     [SerializeField]
-    private Dictionary<Scenes, AudioSource> ScreenAudio;
-
+    private AudioClip[] backgroundClips;
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
+    public  Dictionary<Scenes, AudioClip>SceneClip;
     public enum Scenes {
       SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame, StoreScreen
     }
@@ -37,6 +37,21 @@ namespace KendaGame.Navigation {
 
     private void Awake() {
       DontDestroyOnLoad(gameObject);
+      SceneClip = new Dictionary<Scenes, AudioClip>{
+      {Scenes.SplashScreen, null},
+      {Scenes.LoginScene, null},
+      {Scenes.HomeScreen, backgroundClips[0]},
+      {Scenes.Map, backgroundClips[1]},
+      {Scenes.BubblesGame, backgroundClips[2]},
+      {Scenes.ColoringEngine, backgroundClips[4]},
+      {Scenes.TracingBasic, backgroundClips[4]},
+      {Scenes.SharkGame, backgroundClips[2]},
+      {Scenes.TracingAdvanced, backgroundClips[4]},
+      {Scenes.BoxesGame, null},
+      {Scenes.VideoPlayer, null},
+      {Scenes.PuzzleGame, null},
+      {Scenes.StairsGame, backgroundClips[3]},
+      };
     }
 
     private void OnEnable() {

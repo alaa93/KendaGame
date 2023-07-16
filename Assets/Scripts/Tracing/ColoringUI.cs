@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 namespace KendaGame.UI {
   public class ColoringUI : MonoBehaviour {
-
-    [SerializeField]
-    AudioSource musicLoop;
     [SerializeField]
     Material coloringMaterial;
     [SerializeField]
@@ -70,7 +67,6 @@ namespace KendaGame.UI {
     }
 
     private void StartColoring() {
-      musicLoop.Play();
       penBtns = FindObjectsOfType<ColoringPen>();
     }
 
