@@ -23,14 +23,15 @@ namespace KendaGame.Navigation {
     Camera uiCamera;
     [SerializeField]
     private bool openManually = true;
-
+    [SerializeField]
+    private AudioClip[] backgroundClips;
     private bool initialized;
     private static SceneManager _instance;
     private List<string> navigationStack = new List<string>();
-    public enum Scenes {
-      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame
-    }
 
+    public enum Scenes {
+      SplashScreen, LoginScene, HomeScreen, Map, BubblesGame, ColoringEngine, TracingBasic, SharkGame, TracingAdvanced, BoxesGame, VideoPlayer, PuzzleGame, StairsGame, StoreScreen
+    }
     public Scenes ActiveScene { get => activeScene; set => activeScene = value; }
     private Scenes activeScene;
 
@@ -104,6 +105,7 @@ namespace KendaGame.Navigation {
       if (PopUpsManager.Instance.IsLetterRatingActive()) {
         PopUpsManager.Instance.GetLetterRatingPopUp().gameObject.SetActive(false);
       }
+
       if (navigationStack != null && navigationStack.Count > 1) {
         MoveTo(navigationStack[navigationStack.Count - 2]);
         navigationStack.RemoveAt(navigationStack.Count - 1);
