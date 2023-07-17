@@ -5222,7 +5222,7 @@ MonoBehaviour:
   timeScale: 3
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -120.63623, y: 212.43323}
+  referenceSize: {x: -119.98096, y: 212.0647}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -30015,7 +30015,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -120.666504, y: 212.45044}
+  referenceSize: {x: -119.98096, y: 212.0647}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -60446,7 +60446,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -120.666504, y: 212.45044}
+  referenceSize: {x: -119.98096, y: 212.0647}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
