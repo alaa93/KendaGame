@@ -34,7 +34,7 @@ namespace KendaGame.UI {
     }
 
     private void OnMenuButtonClicked(){
-      PopUpsManager.Instance.GetMenuPopUp().ShowPopUp();
+      PopUpsManager.Instance.GetDashBoardPopUp().ShowPopUp();
     }
     private void OnStoreButtonClicked(){
       SceneManager.Instance.MoveTo(SceneManager.Scenes.StoreScreen.ToString());

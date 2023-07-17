@@ -350,6 +350,22 @@ MonoBehaviour:
       - https://kenda-ai.com/
       Flags: 0000
       Languages_Touch: []
+    - Term: message_generic.no_enough_coins_message
+      TermType: 0
+      Description: 
+      Languages:
+      - Not enough Coins
+      - "\u0644\u0627 \u064A\u0648\u062C\u062F \u0639\u0645\u0644\u0627\u062A \u0643\u0627\u0641\u064A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: message_generic.no_enough_coins_title
+      TermType: 0
+      Description: 
+      Languages:
+      - Error
+      - "\u062E\u0637\u0623"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name
@@ -377,6 +393,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
     - {fileID: 11400000, guid: db4c0bdf5f409934ab001cfd97bd1f3d, type: 2}
     - {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
+    - {fileID: 12800000, guid: fd09299f0faad1840aa7f6ae731115a0, type: 3}
+    - {fileID: 12800000, guid: b6e6e86d2199aba42a2c0aa86cdacfe7, type: 3}
+    - {fileID: 12800000, guid: 5e30ae6f6f2f81243b12f9b8d2a9b01b, type: 3}
     Spreadsheet_LocalFileName: 
     Spreadsheet_LocalCSVSeparator: ','
     Spreadsheet_LocalCSVEncoding: utf-8

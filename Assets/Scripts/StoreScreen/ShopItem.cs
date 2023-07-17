@@ -27,7 +27,7 @@ public class ShopItem : MonoBehaviour
 
     private void Awake() {
         buyBtn.AddClickListener(OnBuyBtnClicked);
-        itemPrice.GetComponent<TextMeshProUGUI>().text = price.ToString();
+        itemPrice.GetComponent<TextMeshProUGUI>().text = $"{price}";
         //initialize playerprefs value
         if(PlayerPrefs.GetInt(gameObject.name, -1) == -1){
             PlayerPrefs.SetInt(gameObject.name, 0);
@@ -51,8 +51,7 @@ public class ShopItem : MonoBehaviour
             //decrement coins in the database
         }
         else{
-            //error not enough coins
-            Debug.Log("not enough coins.");
+            PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("message_generic.no_enough_coins_title", "message_generic.no_enough_coins_message");
         }
     }
     private void OnApplyBtnClicked(){

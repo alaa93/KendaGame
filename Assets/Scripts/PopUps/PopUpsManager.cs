@@ -22,7 +22,8 @@ namespace KendaGame.Navigation {
     private GenderPopUp genderPopUp;
     private FeedbackPopUp feedbackPopUp;
     private SettingsPopUp settingsPopUp;
-    private MenuPopUp menuPopUp;
+    private DashboardPopUp dashboardPopUp;
+    
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
       get {
@@ -94,16 +95,16 @@ namespace KendaGame.Navigation {
       }
       return settingsPopUp;
     }
-    public MenuPopUp GetMenuPopUp(){
-      if (menuPopUp == null){
+    public DashboardPopUp GetDashBoardPopUp(){
+      if (dashboardPopUp == null){
         GameObject menuObject = Instantiate(MenuPopUpObject, Parent, false);
-        menuPopUp = menuObject.GetComponent<MenuPopUp>();
-        if(menuPopUp != null){
-          return menuPopUp;
+        dashboardPopUp = menuObject.GetComponent<DashboardPopUp>();
+        if(dashboardPopUp != null){
+          return dashboardPopUp;
         }
         return null;
       }
-      return menuPopUp;  
+      return dashboardPopUp;  
     }
 
     public bool IsLetterRatingActive() {

@@ -2,7 +2,7 @@ using UnityEngine;
 using KendaGame.Helpers;
 using UnityEngine.Events;
 using TMPro;
-public class MenuPopUp : MonoBehaviour
+public class DashboardPopUp : MonoBehaviour
 {
     [SerializeField]
     UIButtonAnimator exitButton;
