@@ -33,9 +33,7 @@ namespace KendaGame.UI {
 #if !UNITY_EDITOR
       FirebaseAuth auth = FirebaseAuth.DefaultInstance;
       FirebaseUser user = auth.CurrentUser;
-
       if (auth != null && user != null) {
-        //this is for debugging 
         string name = user.DisplayName;
         string email = user.Email;
         System.Uri photo_url = user.PhotoUrl;

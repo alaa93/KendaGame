@@ -24,19 +24,6 @@ namespace KendaGame.Helpers {
     }
     LoadingBar loadingBar;
 
-    private string generate_token(){
-      System.Random randomizer = new System.Random();
-      string allowed_characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-
-      int token_len = 40;
-      string token = "";
-      for(int i = 0; i <token_len; i++){
-        int random_index = randomizer.Next(allowed_characters.Length);
-        token+=allowed_characters[random_index];
-      }
-      return token;
-    }
-
     public void UploadTracingLetter(byte[] bytes,bool cameraImage, Action<bool, RatingData> statusCallback) {
       StartCoroutine(UploadTracingLetterProcess(bytes,cameraImage, statusCallback));
     }
