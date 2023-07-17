@@ -12,6 +12,10 @@ namespace KendaGame.UI {
     [SerializeField]
     Localize localize;
 
+    public void ShowLoadingBar() {
+      gameObject.SetActive(true);
+    }
+
     public void ShowLoadingBar(string term) {
       if (localize != null) {
         localize.Term = !string.IsNullOrEmpty(term) ? term : "tracing.rating_in_progress";
