@@ -3,9 +3,10 @@ using UnityEngine.Events;
 
 namespace KendaGame.Helpers {
   public class AudioController : MonoBehaviour {
+
     public CommonSfx commonSfx;
     private bool sfxState = true;
-    private bool musicState = true;
+    private bool musicMuteState = true;
 
     private static AudioController _instance;
     public static AudioController Instance {
@@ -16,19 +17,31 @@ namespace KendaGame.Helpers {
         return _instance;
       }
     }
+
+    private void Awake() {
+      int.TryParse(StorageHelper.ReadStorage(StorageHelper.MusicMuteState), out int storedMusicMuteState);
+      musicMuteState = storedMusicMuteState > 0;
+    }
+
     public void SetSfxState(bool state) {
       sfxState = state;
       SfxStateChanged?.Invoke(sfxState);
     }
-    public void SetMusicState(bool state) {
-      musicState = state;
-      MusicStateChanged?.Invoke(sfxState);
+
+    public void SetMusicMuteState(bool state) {
+      musicMuteState = state;
+      StorageHelper.WriteStorage(StorageHelper.MusicMuteState, musicMuteState ? "1" : "0");
+      MusicStateChanged?.Invoke(musicMuteState);
     }
+
     public bool GetSfxState() {
       return sfxState;
     }
+
     public bool GetMusicState() {
-      return musicState;
+      //int.TryParse(StorageHelper.ReadStorage(StorageHelper.MusicMuteState), out int storedMusicMuteState);
+      //musicMuteState = storedMusicMuteState > 0;
+      return !musicMuteState;
     }
 
     public void PlaySfxAtPoint(AudioClip audioClip) {

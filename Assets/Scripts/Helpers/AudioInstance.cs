@@ -15,7 +15,8 @@ namespace KendaGame.Helpers {
 
     private void AudioController_MusicStateChanged(bool state) {
       if (audioSource != null) {
-        audioSource.mute = !state;
+        Debug.Log("music state changed "+state);
+        audioSource.mute = state;
       }
     }
   }

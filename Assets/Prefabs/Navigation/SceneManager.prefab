@@ -1175,8 +1175,10 @@ MonoBehaviour:
     type: 3}
   FeedbackPopUpObject: {fileID: 8962936491546838304, guid: 4c9cd633097124011b103ec1821e7258,
     type: 3}
-  SettingsPopUpObject: {fileID: 0}
-  MenuPopUpObject: {fileID: 0}
+  SettingsPopUpObject: {fileID: 8781441430046391429, guid: 574f500109528d942beb8d7680aa2899,
+    type: 3}
+  MenuPopUpObject: {fileID: 6930128784429703204, guid: e3eeadce4b567a04f9fd9d9a6aca4806,
+    type: 3}
 --- !u!1 &4759960178631716387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,7 +1543,12 @@ MonoBehaviour:
   uiController: {fileID: 1073988580634864741}
   uiCamera: {fileID: 4113046901913872485}
   openManually: 1
-  backgroundClips: []
+  backgroundClips:
+  - {fileID: 8300000, guid: 409fd25b99a8bd74e9084f5e81768c0c, type: 3}
+  - {fileID: 8300000, guid: c43e2242dcd1ba745a7b9a7b91fbd4eb, type: 3}
+  - {fileID: 8300000, guid: 85d864a7b64ef054196b0093e5bf5b15, type: 3}
+  - {fileID: 8300000, guid: 340b7949b5d6546e2850bc070c78fdcf, type: 3}
+  - {fileID: 8300000, guid: 7d97e8e8718dd4e44b62438bc6699401, type: 3}
 --- !u!114 &4615262080338712953
 MonoBehaviour:
   m_ObjectHideFlags: 0
