@@ -51,7 +51,7 @@ public class ShopItem : MonoBehaviour
             //decrement coins in the database
         }
         else{
-            PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("message_generic.no_enough_coins_title", "message_generic.no_enough_coins_message");
+            PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("message_generic.error", "message_generic.no_enough_coins_message");
         }
     }
     private void OnApplyBtnClicked(){
