@@ -14,9 +14,19 @@ public class SettingsPopUp : MonoBehaviour {
   UIButtonAnimator sfxMute;
   [SerializeField]
   UIButtonAnimator exitButton;
+  [SerializeField]
+  UIButtonAnimator dropDownButton;
 
   [SerializeField]
-  TMP_Dropdown languageDropDown;
+  GameObject viewPort;
+  [SerializeField]
+  UIButtonAnimator arabicSelectButton;
+  [SerializeField]
+  UIButtonAnimator englishSelectButton;
+  [SerializeField]
+  GameObject dropDownArabicLabel;
+  [SerializeField]
+  GameObject dropDownEnglishLabel;
   private bool isMutedMusic;
   private bool isMutedSfx;
   private void Start() {
@@ -29,9 +39,19 @@ public class SettingsPopUp : MonoBehaviour {
       sfxMute.gameObject.SetActive(true);
     }
     InitializeButtons();
+    if(LocalizationManager.CurrentLanguageCode == "ar"){
+      dropDownArabicLabel.SetActive(true);
+      dropDownEnglishLabel.SetActive(false);
+    }
+    else{
+      dropDownArabicLabel.SetActive(false);
+      dropDownEnglishLabel.SetActive(true);
+    }
   }
   private void InitializeButtons() {
-    languageDropDown.onValueChanged.AddListener(OnLanguageDropdown);
+    dropDownButton.AddClickListener(ShowAndHideViewPort);
+    englishSelectButton.AddClickListener(() => {SelectLanguage("en");});
+    arabicSelectButton.AddClickListener(() => {SelectLanguage("ar");});
     musicButton.AddClickListener(OnMusicButtonPressed);
     musicMute.AddClickListener(OnMusicButtonPressed);
     sfxButton.AddClickListener(OnSfxButtonPressed);
@@ -74,11 +94,27 @@ public class SettingsPopUp : MonoBehaviour {
     AudioController.Instance.SetSfxOnState(!isMutedSfx);
     sfxMute.gameObject.SetActive(isMutedSfx);
   }
-  private void OnLanguageDropdown(int langIndex) {
-    string languageCode = (langIndex == 0 ? "ar" : "en");
+  private void ShowAndHideViewPort(){
+    if(viewPort.activeSelf){
+      viewPort.SetActive(false);
+    }
+    else{
+      viewPort.SetActive(true);
+    }
+  }
+  private void SelectLanguage(string languageCode) {
+    
     if (LocalizationManager.CurrentLanguageCode != languageCode) {
       LocalizationManager.CurrentLanguageCode = languageCode;
       LocalizationManager.UpdateSources();
+    }
+    if(languageCode == "ar"){
+      dropDownArabicLabel.SetActive(true);
+      dropDownEnglishLabel.SetActive(false);
+    }
+    else{
+      dropDownArabicLabel.SetActive(false);
+      dropDownEnglishLabel.SetActive(true);
     }
   }
   private void OnLogoutButtonPressed() {
