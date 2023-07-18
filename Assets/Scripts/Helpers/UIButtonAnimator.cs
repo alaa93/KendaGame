@@ -110,7 +110,7 @@ namespace KendaGame.Helpers {
     }
 
     public void PlaySfx(AudioClip audioClip, float delay = 0f) {
-      if (AudioController.Instance && AudioController.Instance.GetSfxState()) {
+      if (AudioController.Instance && AudioController.Instance.GetSfxOnState()) {
         if (audioClip) {
           if (playSfxCoroutine != null)
             StopCoroutine(playSfxCoroutine);

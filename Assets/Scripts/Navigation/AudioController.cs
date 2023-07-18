@@ -5,8 +5,8 @@ namespace KendaGame.Helpers {
   public class AudioController : MonoBehaviour {
 
     public CommonSfx commonSfx;
-    private bool sfxState = true;
-    private bool musicMuteState = true;
+    private bool sfxOnState = false;  
+    private bool musicOnState = false;
 
     private static AudioController _instance;
     public static AudioController Instance {
@@ -19,51 +19,52 @@ namespace KendaGame.Helpers {
     }
 
     private void Awake() {
-      int.TryParse(StorageHelper.ReadStorage(StorageHelper.MusicMuteState), out int storedMusicMuteState);
-      musicMuteState = storedMusicMuteState > 0;
+      sfxOnState = (StorageHelper.ReadStorage(StorageHelper.SfxOnState, "1") == "0"?false:true);
+      musicOnState = (StorageHelper.ReadStorage(StorageHelper.MusicOnState, "1") == "0"? false:true);
+      SetSfxOnState(sfxOnState);
+      SetMusicOnState(musicOnState);
     }
 
-    public void SetSfxState(bool state) {
-      sfxState = state;
-      SfxStateChanged?.Invoke(sfxState);
+    public void SetSfxOnState(bool state) {
+      sfxOnState = state;
+      StorageHelper.WriteStorage(StorageHelper.SfxOnState, (sfxOnState?"1":"0"));
+      SfxStateChanged?.Invoke(sfxOnState);
     }
 
-    public void SetMusicMuteState(bool state) {
-      musicMuteState = state;
-      StorageHelper.WriteStorage(StorageHelper.MusicMuteState, musicMuteState ? "1" : "0");
-      MusicStateChanged?.Invoke(musicMuteState);
+    public void SetMusicOnState(bool state) {
+      musicOnState = state;
+      StorageHelper.WriteStorage(StorageHelper.MusicOnState, (musicOnState?"1":"0"));
+      MusicStateChanged?.Invoke(musicOnState);
     }
 
-    public bool GetSfxState() {
-      return sfxState;
+    public bool GetSfxOnState() {
+      return sfxOnState;
     }
 
-    public bool GetMusicState() {
-      //int.TryParse(StorageHelper.ReadStorage(StorageHelper.MusicMuteState), out int storedMusicMuteState);
-      //musicMuteState = storedMusicMuteState > 0;
-      return !musicMuteState;
+    public bool GetMusicOnState() {
+      return musicOnState;
     }
 
     public void PlaySfxAtPoint(AudioClip audioClip) {
-      if (GetSfxState()) {
+      if (GetSfxOnState()) {
         AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position);
       }
     }
 
     public void PlaySfxAtPoint(AudioClip audioClip, float volume = 1f) {
-      if (GetSfxState()) {
+      if (GetSfxOnState()) {
         AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, volume);
       }
     }
 
     public void PlayAudioAtPoint(AudioClip audioClip) {
-      if (GetMusicState()) {
+      if (GetMusicOnState()) {
         AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position);
       }
     }
 
     public void PlayAudioAtPoint(AudioClip audioClip, float volume = 1f) {
-      if (GetMusicState()) {
+      if (GetMusicOnState()) {
         AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, volume);
       }
     }

@@ -7,8 +7,9 @@ namespace KendaGame.Helpers {
     public static string MapLetterProgress = "MapLetterProgress";
     public static string CoinsAmount = "CoinsAmount";
     public static string UserSession = "UserSession";
-    public static string MusicMuteState = "MusicMuteState";
-
+    public static string MusicOnState = "MusicMuteState";
+    public static string SfxOnState = "SfxMuteState";
+ 
     public static void WriteStorage(string key, string value) {
       PlayerPrefs.SetString(key, value);
       PlayerPrefs.Save();

@@ -20,8 +20,14 @@ public class SettingsPopUp : MonoBehaviour {
   private bool isMutedMusic;
   private bool isMutedSfx;
   private void Start() {
-    isMutedMusic = !AudioController.Instance.GetMusicState();
-    isMutedSfx = !AudioController.Instance.GetSfxState();
+    isMutedMusic = !AudioController.Instance.GetMusicOnState();
+    isMutedSfx = !AudioController.Instance.GetSfxOnState();
+    if(isMutedMusic){
+      musicMute.gameObject.SetActive(true);
+    }
+    if(isMutedSfx){
+      sfxMute.gameObject.SetActive(true);
+    }
     InitializeButtons();
   }
   private void InitializeButtons() {
@@ -33,20 +39,40 @@ public class SettingsPopUp : MonoBehaviour {
     exitButton.AddClickListener(OnExitButtonPressed);
   }
   private void OnMusicButtonPressed() {
-    isMutedMusic = !isMutedMusic;
-    AudioController.Instance.SetMusicMuteState(isMutedMusic);
-    musicMute.gameObject.SetActive(isMutedMusic);
+    if(!isMutedMusic){
+      MuteMusic();
+    }
+    else{
+      UnMuteMusic();
+    }
   }
   private void OnSfxButtonPressed() {
-    if (!isMutedSfx) {
-      AudioController.Instance.SetSfxState(false);
-      sfxMute.gameObject.SetActive(true);
-      isMutedSfx = true;
-    } else {
-      AudioController.Instance.SetSfxState(true);
-      sfxMute.gameObject.SetActive(false);
-      isMutedSfx = false;
+    if(!isMutedSfx){
+      MuteSfx();
     }
+    else{
+      UnMuteSfx();
+    }
+  }
+  private void MuteMusic(){
+    isMutedMusic = true;
+    AudioController.Instance.SetMusicOnState(!isMutedMusic);
+    musicMute.gameObject.SetActive(isMutedMusic);
+  }
+  private void UnMuteMusic(){
+    isMutedMusic = false;
+    AudioController.Instance.SetMusicOnState(!isMutedMusic);
+    musicMute.gameObject.SetActive(isMutedMusic);
+  }
+  private void MuteSfx(){
+    isMutedSfx = true;
+    AudioController.Instance.SetSfxOnState(!isMutedSfx);
+    sfxMute.gameObject.SetActive(isMutedSfx);
+  }
+  private void UnMuteSfx(){
+    isMutedSfx = false;
+    AudioController.Instance.SetSfxOnState(!isMutedSfx);
+    sfxMute.gameObject.SetActive(isMutedSfx);
   }
   private void OnLanguageDropdown(int langIndex) {
     string languageCode = (langIndex == 0 ? "ar" : "en");

@@ -12,11 +12,16 @@ namespace KendaGame.Helpers {
     private void OnDisable() {
       AudioController.MusicStateChanged -= AudioController_MusicStateChanged;
     }
-
+    private void Awake() {
+      if(AudioController.Instance.GetMusicOnState())
+        audioSource.mute = false;
+      else
+        audioSource.mute = true;
+    }
     private void AudioController_MusicStateChanged(bool state) {
       if (audioSource != null) {
         Debug.Log("music state changed "+state);
-        audioSource.mute = state;
+        audioSource.mute = !state;
       }
     }
   }
