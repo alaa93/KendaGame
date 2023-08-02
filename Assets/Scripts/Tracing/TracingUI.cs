@@ -244,9 +244,12 @@ namespace KendaGame.UI {
       currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
       currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
+            Debug.Log(LettersHelper.GetActiveLetterIndex() + 1);
+            StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted, (LettersHelper.GetActiveLetterIndex() + 1).ToString());
+
     }
 
-    private void ShowLetterComparison(string processedImg) {
+        private void ShowLetterComparison(string processedImg) {
       ////Player Letter
       if (!string.IsNullOrEmpty(processedImg)) {
         // Decode the Base64 string into a byte array
@@ -289,8 +292,14 @@ namespace KendaGame.UI {
           currentRating += Math.Clamp(ratingData.StarRating, 0, 1);
           currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
           StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
-        }
-      } else {
+
+          StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted,(LettersHelper.GetActiveLetterIndex()+1).ToString());
+                    Debug.Log(LettersHelper.GetActiveLetterIndex() + 1);
+
+
+
+                }
+            } else {
         letterRatingPopUp.PlayStarsAnimation(1);
       }
     }

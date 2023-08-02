@@ -67,9 +67,13 @@ namespace KendaGame.UI {
       }
       currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), $"{currentRating}");
-    }
+      StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted,(LettersHelper.GetActiveLetterIndex()+1).ToString());
+            Debug.Log(LettersHelper.GetActiveLetterIndex() + 1);
 
-    private void StartColoring() {
+
+        }
+
+        private void StartColoring() {
       musicLoop.Play();
       penBtns = FindObjectsOfType<ColoringPen>();
     }
