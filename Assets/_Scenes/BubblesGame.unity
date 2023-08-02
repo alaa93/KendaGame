@@ -15686,7 +15686,7 @@ MonoBehaviour:
     type: 3}
   bubbleParent: {fileID: 499209035}
   endingSfx: {fileID: 8300000, guid: a1bde31195bf7014daf1021c99bcc9fa, type: 3}
-  gameMusic: {fileID: 0}
+  gameMusic: {fileID: 1898716292}
   coins: {fileID: 1489760560}
   coinsEffect: {fileID: 1586697435}
 --- !u!1 &1672053310

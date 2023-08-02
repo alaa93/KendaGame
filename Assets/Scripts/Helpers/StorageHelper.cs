@@ -8,10 +8,13 @@ namespace KendaGame.Helpers {
     public static string CoinsAmount = "CoinsAmount";
     public static string UserSession = "UserSession";
     public static string LastLetterCompleted = "LastLetterCompleted";
+    public static string CanWatchIntro = "CanWatchIntro";
+    public static string CanWatchOutro = "CanWatchOutro";
 
 
 
-    public static void WriteStorage(string key, string value) {
+
+        public static void WriteStorage(string key, string value) {
       PlayerPrefs.SetString(key, value);
       PlayerPrefs.Save();
     }
