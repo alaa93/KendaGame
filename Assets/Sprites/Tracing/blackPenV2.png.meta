@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1c9f2d5163c0241e18bcff55a5333ee5
+guid: 41c688c77ab296343af76afbe4e99196
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,29 +113,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PenOrange_0
+      name: blackPenV2_0
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 126
-        height: 512
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6ae4aa9e6fd54111854af4d58a0c44a
-      internalID: 879426112
+      spriteID: fdbdf2871cd4dea42b0b847abe39db72
+      internalID: 1124550547
       vertices: []
       indices: 
       edges: []
@@ -160,7 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PenOrange_0: 879426112
+      blackPenV2_0: 1124550547
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

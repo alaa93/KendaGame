@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a8e36a3444ee4b0abe5923dde58446e
+guid: 46b4630791ccc6040b175c72dc0c1291
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,38 +113,47 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PenMagenta_0
+      name: greenPenV2_0
       rect:
         serializedVersion: 2
         x: 192
-        y: 1
-        width: 132
-        height: 510
+        y: 0
+        width: 126
+        height: 511
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed358b8639e4e4f2893adc2def834f34
-      internalID: -311991477
+      spriteID: 93efe061d965758409a9e8b5f04800fa
+      internalID: 870756967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenPenV2_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 126
+        height: 511
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1731e2a2bb9f1b24b9cad91bd89611ab
+      internalID: -961195940
       vertices: []
       indices: 
       edges: []
@@ -160,7 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PenMagenta_0: -311991477
+      greenPenV2_0: 870756967
+      greenPenV2_1: -961195940
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

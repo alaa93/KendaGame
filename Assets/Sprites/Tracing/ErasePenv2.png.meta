@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c6757d02e6e8f4090905e95ca87b7b16
+guid: f3abb84d669fcd54890b96b963a85e03
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,29 +113,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PenGreen_0
+      name: ErasePenv2_0
       rect:
         serializedVersion: 2
         x: 192
-        y: 1
+        y: 0
         width: 126
-        height: 510
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d49ef00d47a3346e9af6cc03894c1daa
-      internalID: -1409533560
+      spriteID: 86c1c6904de873446b95791af0fa19cf
+      internalID: -803407971
       vertices: []
       indices: 
       edges: []
@@ -160,7 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PenGreen_0: -1409533560
+      ErasePenv2_0: -803407971
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

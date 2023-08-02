@@ -90,13 +90,14 @@ namespace KendaGame.UI {
     private void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
         fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
-        fontSizeBtnsOutline[x].gameObject.SetActive(false);
+      /*  fontSizeBtnsOutline[x].gameObject.SetActive(false);
         if (fontSizeBtns[x] == fontBtn) {
           fontSizeBtnsOutline[x].gameObject.SetActive(true);
         }
       }
+      */
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
     }
-
+      }
   }
 }
