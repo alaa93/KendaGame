@@ -1,3 +1,4 @@
+using DG.Tweening;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using UnityEngine;
@@ -15,9 +16,11 @@ namespace KendaGame.UI {
     [SerializeField]
     UIButtonAnimator[] fontSizeBtns;
     [SerializeField]
-    UIButtonAnimator[] fontSizeColors;
-    [SerializeField]
     UIButtonAnimator[] fontSizeBtnsOutline;
+
+    [SerializeField] private Transform fontHoldar;
+    [SerializeField] private Sprite[] fontSizeImage;
+    [SerializeField] private UIButtonAnimator fontSizeMainButton;
 
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
@@ -82,22 +85,35 @@ namespace KendaGame.UI {
         }
       }
       pen.SelectionChanged();
-      for (int x = 0; x < fontSizeColors.Length; x++) {
-        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      for (int x = 0; x < fontSizeBtnsOutline.Length; x++) {
+        fontSizeBtnsOutline[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
       }
+      fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
     }
 
     private void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
-        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
-      /*  fontSizeBtnsOutline[x].gameObject.SetActive(false);
+        fontSizeBtnsOutline[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
         if (fontSizeBtns[x] == fontBtn) {
-          fontSizeBtnsOutline[x].gameObject.SetActive(true);
+          fontSizeMainButton.GetComponent<Image>().sprite = fontSizeImage[x];
         }
       }
-      */
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
+      fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      OnChangeFontSizeSelected();
     }
+
+    public void OnChangeFontSizeSelected() {
+      if (fontHoldar.gameObject.activeInHierarchy) {
+        fontHoldar.DOLocalMoveX(-760, 0.5f).SetEase(Ease.InOutBack).OnComplete(() => {
+
+          fontHoldar.gameObject.SetActive(false);
+        });
+
+      } else {
+        fontHoldar.gameObject.SetActive(true);
+        fontHoldar.DOLocalMoveX(-993, 0.5f).SetEase(Ease.InOutBack);
       }
+    }
   }
 }

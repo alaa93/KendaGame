@@ -11,15 +11,11 @@ using static KendaGame.Models.TracingModels;
 
 namespace KendaGame.UI {
   public class TracingUI : MonoBehaviour {
-    [SerializeField] private Sprite[] fontSizeImage;
-    [SerializeField] private UIButtonAnimator fontSizeMainButton;
 
     [SerializeField]
     AudioSource musicLoop;
     [SerializeField]
     UIButtonAnimator[] fontSizeBtns;
-    [SerializeField]
-    UIButtonAnimator[] fontSizeColors;
     [SerializeField]
     UIButtonAnimator[] fontSizeBtnsOutline;
     [SerializeField]
@@ -32,6 +28,8 @@ namespace KendaGame.UI {
     AudioClip cameraShutter;
     [SerializeField]
     Transform fontHoldar;
+    [SerializeField] private Sprite[] fontSizeImage;
+    [SerializeField] private UIButtonAnimator fontSizeMainButton;
 
     [Header("Advanced Tracing")]
     [SerializeField]
@@ -164,8 +162,8 @@ namespace KendaGame.UI {
         }
       }
       pen.SelectionChanged();
-      for (int x = 0; x < fontSizeColors.Length; x++) {
-        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      for (int x = 0; x < fontSizeBtnsOutline.Length; x++) {
+        fontSizeBtnsOutline[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
       }
       fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
 
@@ -174,7 +172,7 @@ namespace KendaGame.UI {
     public void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
 
-        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+        fontSizeBtnsOutline[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
         if (fontSizeBtns[x] == fontBtn) {
           fontSizeMainButton.GetComponent<Image>().sprite = fontSizeImage[x];
         }
@@ -182,6 +180,7 @@ namespace KendaGame.UI {
       }
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
       fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      OnChangeFontSizeSelected();
 
     }
 

@@ -3879,11 +3879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d90d2babc4274469bf0aa3c4ba4d85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontSizeImage:
-  - {fileID: 21300000, guid: a5e33850ff3e51d409868af8f52440ac, type: 3}
-  - {fileID: 21300000, guid: f9b112b912e1f8244b90b5e4b21d3c70, type: 3}
-  - {fileID: 21300000, guid: 1ba262730d6151e4399d213a9584164e, type: 3}
-  fontSizeMainButton: {fileID: 2089966032}
   musicLoop: {fileID: 439238594}
   fontSizeBtns:
   - {fileID: 904297570}
@@ -3958,6 +3953,11 @@ MonoBehaviour:
   - {x: -20, y: -98.39999}
   cameraShutter: {fileID: 8300000, guid: d949e54efe301514ab129ecdad39f875, type: 3}
   fontHoldar: {fileID: 911630411}
+  fontSizeImage:
+  - {fileID: 21300000, guid: a5e33850ff3e51d409868af8f52440ac, type: 3}
+  - {fileID: 21300000, guid: f9b112b912e1f8244b90b5e4b21d3c70, type: 3}
+  - {fileID: 21300000, guid: 1ba262730d6151e4399d213a9584164e, type: 3}
+  fontSizeMainButton: {fileID: 2089966032}
   ratingPopUp: {fileID: 426840747}
   tracingBoard:
   - {fileID: 1659199107}

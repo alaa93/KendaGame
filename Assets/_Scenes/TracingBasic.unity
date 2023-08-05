@@ -2536,24 +2536,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d90d2babc4274469bf0aa3c4ba4d85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fontSizeImage:
-  - {fileID: 21300000, guid: a5e33850ff3e51d409868af8f52440ac, type: 3}
-  - {fileID: 21300000, guid: f9b112b912e1f8244b90b5e4b21d3c70, type: 3}
-  - {fileID: 21300000, guid: 1ba262730d6151e4399d213a9584164e, type: 3}
-  fontSizeMainButton: {fileID: 788714254}
   musicLoop: {fileID: 598075475}
   fontSizeBtns:
-  - {fileID: 1380901178}
-  - {fileID: 1797185068}
-  - {fileID: 1864207553}
+  - {fileID: 157533569}
+  - {fileID: 1579052038}
+  - {fileID: 1674441255}
   fontSizeColors:
   - {fileID: 1380901178}
   - {fileID: 1797185068}
   - {fileID: 1864207553}
   fontSizeBtnsOutline:
-  - {fileID: 157533569}
-  - {fileID: 1579052038}
-  - {fileID: 1674441255}
+  - {fileID: 1380901178}
+  - {fileID: 1797185068}
+  - {fileID: 1864207553}
   animatedTracingGuide: {fileID: 1105540828}
   animatedTracingGuides:
   - {fileID: 11400000, guid: e23a93743d6f444b9bebb9120e62748e, type: 2}
@@ -2595,6 +2590,11 @@ MonoBehaviour:
   - {x: -20, y: -98.39999}
   cameraShutter: {fileID: 8300000, guid: d949e54efe301514ab129ecdad39f875, type: 3}
   fontHoldar: {fileID: 615577116}
+  fontSizeImage:
+  - {fileID: 21300000, guid: a5e33850ff3e51d409868af8f52440ac, type: 3}
+  - {fileID: 21300000, guid: f9b112b912e1f8244b90b5e4b21d3c70, type: 3}
+  - {fileID: 21300000, guid: 1ba262730d6151e4399d213a9584164e, type: 3}
+  fontSizeMainButton: {fileID: 788714254}
   ratingPopUp: {fileID: 0}
   tracingBoard: []
   letterGuide: {fileID: 0}
