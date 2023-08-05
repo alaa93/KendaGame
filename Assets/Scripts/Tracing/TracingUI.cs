@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using ScorpionSteps.Utils;
@@ -10,6 +11,8 @@ using static KendaGame.Models.TracingModels;
 
 namespace KendaGame.UI {
   public class TracingUI : MonoBehaviour {
+    [SerializeField] private Sprite[] fontSizeImage;
+    [SerializeField] private UIButtonAnimator fontSizeMainButton;
 
     [SerializeField]
     AudioSource musicLoop;
@@ -24,15 +27,17 @@ namespace KendaGame.UI {
     [SerializeField]
     SkeletonDataAsset[] animatedTracingGuides;
     [SerializeField]
-    Vector2 [] animatedGuidesAligments;
+    Vector2[] animatedGuidesAligments;
     [SerializeField]
     AudioClip cameraShutter;
+    [SerializeField]
+    Transform fontHoldar;
 
     [Header("Advanced Tracing")]
     [SerializeField]
     GameObject ratingPopUp;
     [SerializeField]
-    GameObject [] tracingBoard;
+    GameObject[] tracingBoard;
     [SerializeField]
     Image letterGuide, playerLetter;
     [SerializeField]
@@ -56,7 +61,7 @@ namespace KendaGame.UI {
     [SerializeField]
     GameObject[] partsToShowForCamera;
     [SerializeField]
-    UIButtonAnimator cameraBtn,cameraSubmitBtn;
+    UIButtonAnimator cameraBtn, cameraSubmitBtn;
     [SerializeField]
     NativeCameraController nativeCamera;
     Texture2D cameraScreenshot;
@@ -162,17 +167,22 @@ namespace KendaGame.UI {
       for (int x = 0; x < fontSizeColors.Length; x++) {
         fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
       }
+      fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+
     }
 
     public void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
+
         fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
-        fontSizeBtnsOutline[x].gameObject.SetActive(false);
         if (fontSizeBtns[x] == fontBtn) {
-          fontSizeBtnsOutline[x].gameObject.SetActive(true);
+          fontSizeMainButton.GetComponent<Image>().sprite = fontSizeImage[x];
         }
+
       }
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
+      fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+
     }
 
     public void OnTracingLetterCompleted() {
@@ -302,6 +312,17 @@ namespace KendaGame.UI {
     public void OnRestartClicked() {
       SceneManager.Instance.ReloadScene();
     }
+    public void OnChangeFontSizeSelected() {
+      if (fontHoldar.gameObject.activeInHierarchy) {
+        fontHoldar.DOLocalMoveX(-760, 0.5f).SetEase(Ease.InOutBack).OnComplete(() => {
 
+          fontHoldar.gameObject.SetActive(false);
+        });
+
+      } else {
+        fontHoldar.gameObject.SetActive(true);
+        fontHoldar.DOLocalMoveX(-993, 0.5f).SetEase(Ease.InOutBack);
+      }
+    }
   }
 }
