@@ -64,6 +64,7 @@ MonoBehaviour:
   - {fileID: 2098103227809405867}
   - {fileID: 2098103226494336897}
   id: 0
+  _lock: {fileID: 0}
 --- !u!114 &7351839526195687726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,7 +983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: 80}
+  m_AnchoredPosition: {x: -60.7, y: 26}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3386443376038767711
