@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 85e45e2fc1aef44db90eebb2019e47ae
+guid: 376129799ae01da488b91cd05b4ef458
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,27 +113,15 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PenPurpple_0
+      name: OrangePenV2_0
       rect:
         serializedVersion: 2
         x: 192
-        y: 1
+        y: 0
         width: 126
         height: 511
       alignment: 0
@@ -143,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dea67e4c33e734064a9227959c02e195
-      internalID: 1744293143
+      spriteID: 9f9a6abf995dd1a438b33bc3946e0aaa
+      internalID: -310885622
       vertices: []
       indices: 
       edges: []
@@ -160,7 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PenPurpple_0: 1744293143
+      OrangePenV2_0: -310885622
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

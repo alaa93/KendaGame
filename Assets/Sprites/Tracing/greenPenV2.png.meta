@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 35aa9d89c90194e7bac10df364bb6464
+guid: 46b4630791ccc6040b175c72dc0c1291
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,38 +113,47 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eraser_0
+      name: greenPenV2_0
       rect:
         serializedVersion: 2
-        x: 161
+        x: 192
         y: 0
-        width: 188
-        height: 512
+        width: 126
+        height: 511
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d1d06be6d9e94a9b911472ab21bbb6a
-      internalID: 36155066
+      spriteID: 93efe061d965758409a9e8b5f04800fa
+      internalID: 870756967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: greenPenV2_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 126
+        height: 511
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1731e2a2bb9f1b24b9cad91bd89611ab
+      internalID: -961195940
       vertices: []
       indices: 
       edges: []
@@ -160,11 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eraser_0: 36155066
-      Eraser_1: -1837852142
-      Eraser_2: 932878933
-      Eraser_3: -287480006
-      Eraser_4: 1316497636
+      greenPenV2_0: 870756967
+      greenPenV2_1: -961195940
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

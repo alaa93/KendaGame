@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using ScorpionSteps.Utils;
@@ -16,8 +17,6 @@ namespace KendaGame.UI {
     [SerializeField]
     UIButtonAnimator[] fontSizeBtns;
     [SerializeField]
-    UIButtonAnimator[] fontSizeColors;
-    [SerializeField]
     UIButtonAnimator[] fontSizeBtnsOutline;
     [SerializeField]
     SkeletonGraphic animatedTracingGuide;
@@ -27,6 +26,17 @@ namespace KendaGame.UI {
     Vector2[] animatedGuidesAligments;
     [SerializeField]
     AudioClip cameraShutter;
+    [SerializeField]
+    Transform fontHoldar;
+    [SerializeField]
+    private Sprite[] fontSizeImage;
+    [SerializeField]
+    private UIButtonAnimator fontSizeMainButton;
+
+    [SerializeField] private SkeletonGraphic letterSkeleton;
+    [SerializeField]
+    private SkeletonDataAsset [] letterSkeletonDataAssets;
+
 
     [Header("Advanced Tracing")]
     [SerializeField]
@@ -77,6 +87,7 @@ namespace KendaGame.UI {
       InitFontSizeBtns();
       PrepareBoard();
       StartTracing();
+      IntiLettetSkeleton();
     }
 
     private void InitializeCameraBtns() {
@@ -159,20 +170,26 @@ namespace KendaGame.UI {
         }
       }
       pen.SelectionChanged();
-      for (int x = 0; x < fontSizeColors.Length; x++) {
-        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      for (int x = 0; x < fontSizeBtnsOutline.Length; x++) {
+        fontSizeBtnsOutline[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
       }
+      fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+
     }
 
     public void OnFontSizeSelected(UIButtonAnimator fontBtn, int fontSize) {
       for (int x = 0; x < fontSizeBtns.Length; x++) {
-        fontSizeColors[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
-        fontSizeBtnsOutline[x].gameObject.SetActive(false);
+
+        fontSizeBtnsOutline[x].GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
         if (fontSizeBtns[x] == fontBtn) {
-          fontSizeBtnsOutline[x].gameObject.SetActive(true);
+          fontSizeMainButton.GetComponent<Image>().sprite = fontSizeImage[x];
         }
+
       }
       ColoringBookManager.Instance.OnChangeBrushSizeButtonClicked(fontSize);
+      fontSizeMainButton.GetComponent<Image>().color = ColoringBookManager.Instance.paintColor;
+      OnChangeFontSizeSelected();
+
     }
 
     public void OnTracingLetterCompleted() {
@@ -185,7 +202,7 @@ namespace KendaGame.UI {
       SetTracingGuide(false);
       SetPartsOnScreenShot(false);
       yield return new WaitForEndOfFrame();
-      //Debug.Log("uploading screenshot to server...");
+      Debug.Log("uploading screenshot to server...");
       Texture2D texture = null;
       if (isCamera) {
         texture = cameraScreenshot;
@@ -244,9 +261,6 @@ namespace KendaGame.UI {
       currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
       currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
-      //Debug.Log(LettersHelper.GetActiveLetterIndex() + 1);
-      StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted, (LettersHelper.GetActiveLetterIndex() + 1).ToString());
-
     }
 
     private void ShowLetterComparison(string processedImg) {
@@ -292,8 +306,6 @@ namespace KendaGame.UI {
           currentRating += Math.Clamp(ratingData.StarRating, 0, 1);
           currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
           StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
-          StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted, (LettersHelper.GetActiveLetterIndex() + 1).ToString());
-          //Debug.Log(LettersHelper.GetActiveLetterIndex() + 1);
         }
       } else {
         letterRatingPopUp.PlayStarsAnimation(1);
@@ -307,6 +319,26 @@ namespace KendaGame.UI {
     public void OnRestartClicked() {
       SceneManager.Instance.ReloadScene();
     }
+    public void OnChangeFontSizeSelected() {
+      if (fontHoldar.gameObject.activeInHierarchy) {
+        fontHoldar.DOLocalMoveX(-760, 0.5f).SetEase(Ease.InOutBack).OnComplete(() => {
 
+          fontHoldar.gameObject.SetActive(false);
+        });
+
+      } else {
+        fontHoldar.gameObject.SetActive(true);
+        fontHoldar.DOLocalMoveX(-993, 0.5f).SetEase(Ease.InOutBack);
+      }
+    }
+
+    public void IntiLettetSkeleton(){
+      if (LettersHelper.GetActiveLetterIndex() <= 8) {
+       letterSkeleton.skeletonDataAsset = letterSkeletonDataAssets[LettersHelper.GetActiveLetterIndex()];
+        letterSkeleton.Initialize(true);
+        letterSkeleton.gameObject.GetComponent<SpineTracksUI1>().enabled = true;
+
+      }
+    }
   }
 }
