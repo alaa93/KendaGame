@@ -37,7 +37,6 @@ namespace KendaGame.Games {
     [SerializeField]
     ParticleSystem coinsEffect;
     bool shouldShowTutorial;
-    int counter = 0;
     int correctCounter = 0;
     int correctAnswers;
     string[] incorrectLetters = null;
@@ -46,6 +45,8 @@ namespace KendaGame.Games {
     private string tutorialKey = "BubblesGameTut";
     List<BubbleMovement> bubbles = new List<BubbleMovement>();
     TutorialController tutorialController;
+
+    private int wrongAnswersNumber=0;
 
     private void Start() {
       letterGuide.text = LettersHelper.GetActiveLetter();
@@ -64,8 +65,7 @@ namespace KendaGame.Games {
     }
 
     private IEnumerator InstantiateBubbles() {
-      while (canInstantiate && counter < 1000 && !shouldShowTutorial) {
-        counter++;
+      while (canInstantiate  && !shouldShowTutorial) {
         correctCounter++;
         yield return new WaitForSeconds(Random.Range(1f, 1.5f));
         if (canInstantiate) {
@@ -109,8 +109,13 @@ namespace KendaGame.Games {
         gameMusic.Stop();
         gameCompleted = true;
         AudioController.Instance.PlayAudioAtPoint(endingSfx);
-        StartCoroutine(OnGameCompleted(endingSfx.length + 0.5f));
+        StartCoroutine(OnGameCompleted(endingSfx.length + 0.5f,wrongAnswersNumber));
       }
+    }
+
+    public void InCorrect()
+    {
+        wrongAnswersNumber++;
     }
 
     public bool IsGameCompleted() {
@@ -127,15 +132,22 @@ namespace KendaGame.Games {
       SceneManager.Instance.IncrementCoins(10);
       OnCorrect();
     }
+    public void RemoveObjectFromList(BubbleMovement objectToRemove)
+    {
+        if (objectToRemove == null || bubbles == null)
+            return;
 
-    private IEnumerator OnGameCompleted(float waitSeconds) {
+        bubbles.Remove(objectToRemove);
+        Destroy(objectToRemove);
+    }
+    private IEnumerator OnGameCompleted(float waitSeconds,int wrongAnswersNumber) {
       yield return new WaitForSeconds(waitSeconds);
       for (int x = 0; x < bubbles.Count; x++) {
         if (bubbles[x].targetLetter != 0) {
           bubbles[x].gameObject.SetActive(false);
         }
       }
-      PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
+      PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp(wrongAnswersNumber);
     }
   }
 }
