@@ -58,6 +58,12 @@ namespace KendaGame.Games {
         this.transform.DOScale(0f, 1f);
         BubblesInstantiator.Instance.PlayFillEffect();
       }
+      else if (collision.name== "TheDestructive")
+      {
+        BubblesInstantiator.Instance.RemoveObjectFromList(this);
+        Destroy(gameObject);
+      }
+            
     }
 
     private void OnMouseDown() {
@@ -81,6 +87,7 @@ namespace KendaGame.Games {
         GetComponent<Collider2D>().isTrigger = true;
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
         StartCoroutine(FlashEffect());
+        BubblesInstantiator.Instance.InCorrect();
       }
     }
 

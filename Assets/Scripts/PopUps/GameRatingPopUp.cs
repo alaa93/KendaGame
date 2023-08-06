@@ -24,6 +24,12 @@ namespace KendaGame.UI {
       });
     }
 
+    public void ShowPopUp(int rating) {
+        
+      gameObject.SetActive(true);
+      if (rating < 4) PlayStarsAnimation(3);
+      else PlayStarsAnimation(2);
+    }
     public void ShowPopUp() {
       gameObject.SetActive(true);
       PlayStarsAnimation(3);
