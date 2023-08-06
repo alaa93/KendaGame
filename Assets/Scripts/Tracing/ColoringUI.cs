@@ -1,6 +1,7 @@
 using DG.Tweening;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
+using Spine.Unity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,10 @@ namespace KendaGame.UI {
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
 
+    [SerializeField] private SkeletonGraphic letterSkeleton;
+    [SerializeField]
+    private SkeletonDataAsset[] letterSkeletonDataAssets;
+
     private static ColoringUI _instance;
     public static ColoringUI Instance {
       get {
@@ -41,6 +46,7 @@ namespace KendaGame.UI {
       InitFontSizeBtns();
       PrepareBoard();
       StartColoring();
+      IntiLettetSkeleton();
     }
 
     private void InitFontSizeBtns() {
@@ -113,6 +119,15 @@ namespace KendaGame.UI {
       } else {
         fontHoldar.gameObject.SetActive(true);
         fontHoldar.DOLocalMoveX(-993, 0.5f).SetEase(Ease.InOutBack);
+      }
+    }
+
+    public void IntiLettetSkeleton() {
+      if (LettersHelper.GetActiveLetterIndex() <= 8) {
+        letterSkeleton.skeletonDataAsset = letterSkeletonDataAssets[LettersHelper.GetActiveLetterIndex()];
+        letterSkeleton.Initialize(true);
+        letterSkeleton.AnimationState.SetAnimation(0, "Dancing2", true);
+
       }
     }
   }

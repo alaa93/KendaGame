@@ -28,8 +28,15 @@ namespace KendaGame.UI {
     AudioClip cameraShutter;
     [SerializeField]
     Transform fontHoldar;
-    [SerializeField] private Sprite[] fontSizeImage;
-    [SerializeField] private UIButtonAnimator fontSizeMainButton;
+    [SerializeField]
+    private Sprite[] fontSizeImage;
+    [SerializeField]
+    private UIButtonAnimator fontSizeMainButton;
+
+    [SerializeField] private SkeletonGraphic letterSkeleton;
+    [SerializeField]
+    private SkeletonDataAsset [] letterSkeletonDataAssets;
+
 
     [Header("Advanced Tracing")]
     [SerializeField]
@@ -80,6 +87,7 @@ namespace KendaGame.UI {
       InitFontSizeBtns();
       PrepareBoard();
       StartTracing();
+      IntiLettetSkeleton();
     }
 
     private void InitializeCameraBtns() {
@@ -321,6 +329,15 @@ namespace KendaGame.UI {
       } else {
         fontHoldar.gameObject.SetActive(true);
         fontHoldar.DOLocalMoveX(-993, 0.5f).SetEase(Ease.InOutBack);
+      }
+    }
+
+    public void IntiLettetSkeleton(){
+      if (LettersHelper.GetActiveLetterIndex() <= 8) {
+       letterSkeleton.skeletonDataAsset = letterSkeletonDataAssets[LettersHelper.GetActiveLetterIndex()];
+        letterSkeleton.Initialize(true);
+        letterSkeleton.gameObject.GetComponent<SpineTracksUI1>().enabled = true;
+
       }
     }
   }
