@@ -3,6 +3,8 @@ using TMPro;
 using KendaGame.Helpers;
 using UnityEngine.UI;
 using KendaGame.UI;
+using Spine.Unity;
+using DG.Tweening;
 
 namespace KendaGame.Navigation {
   [RequireComponent(typeof(UIButtonAnimator))]
@@ -17,15 +19,21 @@ namespace KendaGame.Navigation {
     [SerializeField]
     [Range(0, 28)]
     int id;
+    [SerializeField]
+    private SkeletonGraphic _lock;
+    private int LastLetterCompleted;
 
     private void Awake() {
+    
       letterText.text = LettersHelper.GetLetterByIndex(id);
+      CheckLevel();
       LoadLetterRating();
       btn.AddClickListener(OnLetterClicked);
+      LastLetterCompleted = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted,"0"));
     }
 
-    private void OnLetterClicked() {
-      if (id >= 8) {
+      private void OnLetterClicked() {
+      if (id > LastLetterCompleted) {
         return;
       }
       Debug.Log("map letter index "+id);
@@ -40,6 +48,16 @@ namespace KendaGame.Navigation {
         }
       }
     }
+        private void CheckLevel()
+        {
 
-  }
+            LastLetterCompleted = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted, "0"));
+
+            if (id <= LastLetterCompleted)
+            {
+                _lock.AnimationState.SetAnimation(0, "unlocked", false);
+            }
+
+        }
+    }
 }
