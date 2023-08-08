@@ -22,6 +22,7 @@ namespace KendaGame.UI {
 
     private void VideoPlayer_prepareCompleted(VideoPlayer source) {
       SceneManager.Instance.SetBackBtnState(false);
+      SceneManager.Instance.SetSettingsBtnState(false);
       SceneManager.Instance.SetCoinsObjectState(false);
       SceneManager.Instance.OpenCloudsManually(animated: true);
       videoPlayer.Play();

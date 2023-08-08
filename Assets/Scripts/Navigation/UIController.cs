@@ -9,6 +9,8 @@ namespace KendaGame.Navigation {
     [SerializeField]
     UIButtonAnimator backBtn;
     [SerializeField]
+    UIButtonAnimator settingsBtn;
+    [SerializeField]
     GameObject coinsObject;
     [SerializeField]
     TextMeshProUGUI coinsText;
@@ -19,16 +21,20 @@ namespace KendaGame.Navigation {
     }
 
     private void InitUI() {
-      InitBackBtn();
+      InitBtn();
       coinsObject.SetActive(false);
       int.TryParse(StorageHelper.ReadStorage(StorageHelper.CoinsAmount), out int coins);
       coinsAmount = coins;
       coinsText.text = $"{coinsAmount}";
     }
 
-    private void InitBackBtn() {
+    private void InitBtn() {
       backBtn.gameObject.SetActive(false);
+      settingsBtn.gameObject.SetActive(false);
       backBtn.AddClickListener(() => {
+        SceneManager.Instance.OnSettingsBtnClicked();
+      });
+      settingsBtn.AddClickListener(() => {
         SceneManager.Instance.OnBackClicked();
       });
     }
@@ -37,9 +43,14 @@ namespace KendaGame.Navigation {
       backBtn.gameObject.SetActive(state);
     }
 
+    public void SetSettingsBtnState(bool state) {
+      settingsBtn.gameObject.SetActive(state);
+    }
+
     public void SetCoinsObjectState(bool state) {
       coinsObject.gameObject.SetActive(state);
     }
+    
 
     public void IncrementCoins(int addedAmount) {
       coinsAmount += addedAmount;

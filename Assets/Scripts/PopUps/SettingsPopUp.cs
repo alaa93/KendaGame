@@ -3,6 +3,7 @@ using KendaGame.Helpers;
 using TMPro;
 using I2.Loc;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SettingsPopUp : MonoBehaviour {
     [SerializeField]
