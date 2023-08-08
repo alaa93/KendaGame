@@ -40,7 +40,7 @@ public class SettingsPopUp : MonoBehaviour {
       //  languageDropDown.onValueChanged.AddListener(OnLanguageDropdown); // Listen for dropdown value changes.
         musicButton.AddClickListener(OnMusicButtonPressed); // Listen for music button click.
         sfxButton.AddClickListener(OnSfxButtonPressed); // Listen for sound effects button click.
-        exitButton.AddClickListener(OnExitButtonPressed); // Listen for exit button click.
+        exitButton.AddClickListener(ShowPopUp); // Listen for exit button click.
     }
 
     private void OnMusicButtonPressed() {
@@ -77,13 +77,17 @@ public class SettingsPopUp : MonoBehaviour {
         // This function will be implemented after setting up the database and authentication.
     }
 
-    private void OnExitButtonPressed() {
-        // Hide the settings popup by deactivating the game object.
-        gameObject.SetActive(false);
-    }
+  public void ShowPopUp() {
+    // Show the settings popup by activating the game object.
+    if (!gameObject.activeInHierarchy) {
+      gameObject.SetActive(true);
+      transform.DOScale(1, 1);
+    } 
+    else {
+      transform.DOScale(0, 1).SetEase(Ease.Flash).OnComplete(() => {
 
-    public void ShowPopUp() {
-        // Show the settings popup by activating the game object.
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
+      });
     }
+  }
 }
