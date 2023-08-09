@@ -5,89 +5,65 @@ using I2.Loc;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class SettingsPopUp : MonoBehaviour {
+
+namespace KendaGame.UI {
+  public class SettingsPopUp : MonoBehaviour {
     [SerializeField]
-    private UIButtonAnimator musicButton; // Button to control music state (on/off).
-
+    private UIButtonAnimator musicButton;
     [SerializeField]
-    private Image musicMute; // Icon to indicate whether music is muted or not.
-
+    private Image musicMute;
     [SerializeField]
-    private UIButtonAnimator sfxButton; // Button to control sound effects state (on/off).
-
+    private UIButtonAnimator sfxButton;
     [SerializeField]
-    private Image sfxMute; // Icon to indicate whether sound effects are muted or not.
-
+    private Image sfxMute;
     [SerializeField]
-    private UIButtonAnimator exitButton; // Button to close the settings popup.
-
-    //[SerializeField]
-    //TMP_Dropdown languageDropDown; // Dropdown UI element for language selection.
-
-    private bool isMusicMuted; // Indicates whether music is currently muted.
-    private bool isSfxMuted; // Indicates whether sound effects are currently muted.
+    private UIButtonAnimator exitButton;
+    private bool isMusicMuted;
+    private bool isSfxMuted;
 
     private void Start() {
-        // Initialize the music and sound effects mute states based on AudioController.
-        isMusicMuted = !AudioController.Instance.GetMusicState();
-        isSfxMuted = !AudioController.Instance.GetSfxState();
+      isMusicMuted = !AudioController.Instance.GetMusicState();
+      isSfxMuted = !AudioController.Instance.GetSfxState();
 
-        InitializeButtons(); // Set up click listeners for buttons and dropdown.
-        UpdateButtonIcon(); // Update button icons (mute icons) based on the current states.
+      InitializeButtons();
+      UpdateButtonIcon();
     }
 
     private void InitializeButtons() {
-      //  languageDropDown.onValueChanged.AddListener(OnLanguageDropdown); // Listen for dropdown value changes.
-        musicButton.AddClickListener(OnMusicButtonPressed); // Listen for music button click.
-        sfxButton.AddClickListener(OnSfxButtonPressed); // Listen for sound effects button click.
-        exitButton.AddClickListener(ShowPopUp); // Listen for exit button click.
+      musicButton.AddClickListener(OnMusicButtonPressed);
+      sfxButton.AddClickListener(OnSfxButtonPressed);
+      exitButton.AddClickListener(ShowPopUp);
     }
 
     private void OnMusicButtonPressed() {
-        // Toggle the music state, update the 'isMusicMuted' variable, and update the button icon.
-        AudioController.Instance.SetMusicState(isMusicMuted);
-        isMusicMuted = !isMusicMuted;
-        UpdateButtonIcon();
+      AudioController.Instance.SetMusicState(isMusicMuted);
+      isMusicMuted = !isMusicMuted;
+      UpdateButtonIcon();
     }
 
     private void OnSfxButtonPressed() {
-        // Toggle the sound effects state, update the 'isSfxMuted' variable, and update the button icon.
-        AudioController.Instance.SetSfxState(isSfxMuted);
-        isSfxMuted = !isSfxMuted;
-        UpdateButtonIcon();
+      AudioController.Instance.SetSfxState(isSfxMuted);
+      isSfxMuted = !isSfxMuted;
+      UpdateButtonIcon();
     }
 
     public void UpdateButtonIcon() {
-        // Update button icons (mute icons) based on the current 'isSfxMuted' and 'isMusicMuted' states.
-        sfxMute.enabled = isSfxMuted;
-        musicMute.enabled = isMusicMuted;
+      sfxMute.enabled = isSfxMuted;
+      musicMute.enabled = isMusicMuted;
     }
-    /*
-    private void OnLanguageDropdown(int langIndex) {
-        // Update the game's language based on the selected dropdown value.
-        // The language code 'ar' represents Arabic, and 'en' represents English.
-        string languageCode = (langIndex == 0 ? "ar" : "en");
-        if (LocalizationManager.CurrentLanguageCode != languageCode) {
-            LocalizationManager.CurrentLanguageCode = languageCode;
-            LocalizationManager.UpdateSources();
-        }
-    }
-    */
     private void OnLogoutButtonPressed() {
-        // This function will be implemented after setting up the database and authentication.
     }
 
-  public void ShowPopUp() {
-    // Show the settings popup by activating the game object.
-    if (!gameObject.activeInHierarchy) {
-      gameObject.SetActive(true);
-      transform.DOScale(1, 1);
-    } 
-    else {
-      transform.DOScale(0, 1).SetEase(Ease.Flash).OnComplete(() => {
+    public void ShowPopUp() {
+      if (!gameObject.activeInHierarchy) {
+        gameObject.SetActive(true);
+        transform.DOScale(1, 1);
+      } else {
+        transform.DOScale(0, 1).SetEase(Ease.Flash).OnComplete(() => {
 
-        gameObject.SetActive(false);
-      });
+          gameObject.SetActive(false);
+        });
+      }
     }
   }
 }
