@@ -1177,6 +1177,8 @@ MonoBehaviour:
     type: 3}
   SettingsPopUpObject: {fileID: 0}
   MenuPopUpObject: {fileID: 0}
+  storePopUpObject: {fileID: 7043397387098900672, guid: 1a7b81f529d4b1c4486900d4a8e33819,
+    type: 3}
 --- !u!1 &4759960178631716387
 GameObject:
   m_ObjectHideFlags: 0
