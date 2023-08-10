@@ -32,10 +32,10 @@ namespace KendaGame.Navigation {
       backBtn.gameObject.SetActive(false);
       settingsBtn.gameObject.SetActive(false);
       backBtn.AddClickListener(() => {
-        SceneManager.Instance.OnSettingsBtnClicked();
+        SceneManager.Instance.OnBackClicked();
       });
       settingsBtn.AddClickListener(() => {
-        SceneManager.Instance.OnBackClicked();
+        SceneManager.Instance.OnSettingsBtnClicked();
       });
     }
 

@@ -9,15 +9,15 @@ using DG.Tweening;
 namespace KendaGame.UI {
   public class SettingsPopUp : MonoBehaviour {
     [SerializeField]
-    private UIButtonAnimator musicButton;
+    UIButtonAnimator musicButton;
     [SerializeField]
-    private Image musicMute;
+    Image musicMute;
     [SerializeField]
-    private UIButtonAnimator sfxButton;
+    UIButtonAnimator sfxButton;
     [SerializeField]
-    private Image sfxMute;
+    Image sfxMute;
     [SerializeField]
-    private UIButtonAnimator exitButton;
+    UIButtonAnimator exitButton;
     private bool isMusicMuted;
     private bool isSfxMuted;
 
@@ -57,7 +57,7 @@ namespace KendaGame.UI {
     public void ShowPopUp() {
       if (!gameObject.activeInHierarchy) {
         gameObject.SetActive(true);
-        transform.DOScale(1, 1);
+        transform.DOScale(1, 1).SetEase(Ease.Flash);
       } else {
         transform.DOScale(0, 1).SetEase(Ease.Flash).OnComplete(() => {
 
