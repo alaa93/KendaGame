@@ -10,6 +10,8 @@ namespace KendaGame.Helpers {
     public static string LastLetterCompleted = "LastLetterCompleted";
     public static string CanWatchIntro = "CanWatchIntro";
     public static string CanWatchOutro = "CanWatchOutro";
+    public static string ISMUSICMUTED = "ISMUSICMUTE";
+    public static string ISSFXMUTED = "ISSFXMUTE";
 
 
 
