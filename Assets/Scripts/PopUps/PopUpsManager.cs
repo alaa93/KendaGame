@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KendaGame.Navigation {
   public class PopUpsManager : MonoBehaviour {
-
+  
     public Transform Parent;
     public GameObject RatingLetter;
     public GameObject RatingLevel;
@@ -154,6 +154,5 @@ namespace KendaGame.Navigation {
       }
       return loadingBar;
     }
-
   }
 }

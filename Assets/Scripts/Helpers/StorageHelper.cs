@@ -16,6 +16,8 @@ namespace KendaGame.Helpers {
     public static string UsedHat = "UsedHat";
     public static string UsedGlasses = "UsedGlasses";
     public static string UsedMustache = "UsedMustache";
+    public static string ISMUSICMUTED = "ISMUSICMUTE";
+    public static string ISSFXMUTED = "ISSFXMUTE";
 
 
 

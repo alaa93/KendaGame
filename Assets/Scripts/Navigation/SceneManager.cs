@@ -122,6 +122,10 @@ namespace KendaGame.Navigation {
       uiController.SetCoinsObjectState(state);
     }
 
+    public void SetSettingsBtnState(bool state) {
+      uiController.SetSettingsBtnState(state);
+    }
+
     public void IncrementCoins(int addedAmount) {
       uiController.IncrementCoins(addedAmount);
     }
@@ -129,8 +133,12 @@ namespace KendaGame.Navigation {
     private void UpdateUIBtnsState(Scene scene) {
       if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.HomeScreen.ToString()) {
         uiController.SetBackBtnState(false);
+        uiController.SetSettingsBtnState(false);
+
       } else {
         uiController.SetBackBtnState(true);
+        uiController.SetSettingsBtnState(true);
+
       }
 
       if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.Map.ToString() || scene.name != Scenes.HomeScreen.ToString() || !scene.name.Contains("Game")) {
@@ -216,5 +224,9 @@ namespace KendaGame.Navigation {
       //sizeSelectionCallback.Invoke(gameViewWindow, new object[] { islandscape ? 32 : 31, null });
     }
 #endif
+    //TODO : Check with Alaa if it is correct to put the function here or use the one in HOME
+    public void OnSettingsBtnClicked() {
+      PopUpsManager.Instance.GetSettingsPopUp().ShowPopUp();
+    }
   }
 }
