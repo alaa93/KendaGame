@@ -10,13 +10,19 @@ namespace KendaGame.Helpers {
     public static string LastLetterCompleted = "LastLetterCompleted";
     public static string CanWatchIntro = "CanWatchIntro";
     public static string CanWatchOutro = "CanWatchOutro";
+    public static string Hat = "Hat";
+    public static string Glasses = "Glasses";
+    public static string Mustache = "Mustache";
+    public static string UsedHat = "UsedHat";
+    public static string UsedGlasses = "UsedGlasses";
+    public static string UsedMustache = "UsedMustache";
     public static string ISMUSICMUTED = "ISMUSICMUTE";
     public static string ISSFXMUTED = "ISSFXMUTE";
 
 
 
 
-        public static void WriteStorage(string key, string value) {
+    public static void WriteStorage(string key, string value) {
       PlayerPrefs.SetString(key, value);
       PlayerPrefs.Save();
     }
