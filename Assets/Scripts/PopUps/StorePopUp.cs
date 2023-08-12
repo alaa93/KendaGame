@@ -19,23 +19,9 @@ namespace KendaGame.UI {
     private void Start() {
 
       // Restore purchased items for the player character
-      for (int i = 0; i < hats.Length; i++) {
-        if (StorageHelper.ReadStorage(StorageHelper.Hat + "_" + i, "0") == "1") {
-          hats[i].enabled = false;
-        }
-      }
-
-      for (int i = 0; i < glasses.Length; i++) {
-        if (StorageHelper.ReadStorage(StorageHelper.Glasses + "_" + i, "0") == "1") {
-          glasses[i].enabled = false;
-        }
-      }
-
-      for (int i = 0; i < mustache.Length; i++) {
-        if (StorageHelper.ReadStorage(StorageHelper.Mustache + "_" + i, "0") == "1") {
-          mustache[i].enabled = false;
-        }
-      }
+      RestorePurchasedItems(hats, StorageHelper.Hat);
+      RestorePurchasedItems(glasses, StorageHelper.Glasses);
+      RestorePurchasedItems(mustache, StorageHelper.Mustache);
     }
 
     private void SaveCoins(int itemPrice) {
@@ -43,14 +29,13 @@ namespace KendaGame.UI {
     }
 
     public void BuyHat(int hatIndex) {
-      int hatCost = 100;
       if (StorageHelper.ReadStorage(StorageHelper.Hat + "_" + hatIndex, "0") == "0") {//Check if he already owned it
-        if (coins >= hatCost) {
-          coins -= hatCost;
+        if (coins >= StoreItemPrices.Hat) {
+          coins -= StoreItemPrices.Hat;
           hats[hatIndex].enabled = false;
           StorageHelper.WriteStorage(StorageHelper.Hat + "_" + hatIndex, "1");
           SpineAttachmentUI.instance.changeHats(hatIndex);
-          SaveCoins(-100);
+          SaveCoins(-StoreItemPrices.Hat);
         }
       } else {
         SpineAttachmentUI.instance.changeHats(hatIndex);
@@ -59,14 +44,13 @@ namespace KendaGame.UI {
     }
 
     public void BuyGlasses(int glassesIndex) {
-      int glassesCost = 100;
       if (StorageHelper.ReadStorage(StorageHelper.Glasses + "_" + glassesIndex, "0") == "0") {
-        if (coins >= glassesCost) {
-          coins -= glassesCost;
+        if (coins >= StoreItemPrices.Glasses) {
+          coins -= StoreItemPrices.Glasses;
           glasses[glassesIndex].enabled = false;
           StorageHelper.WriteStorage(StorageHelper.Glasses + "_" + glassesIndex, "1");
           SpineAttachmentUI.instance.changeGlasses(glassesIndex);
-          SaveCoins(-100);
+          SaveCoins(-StoreItemPrices.Glasses);
         }
       } else {
         SpineAttachmentUI.instance.changeGlasses(glassesIndex);
@@ -75,14 +59,13 @@ namespace KendaGame.UI {
     }
 
     public void BuyMustache(int mustacheIndex) {
-      int mustacheCost = 100;
       if (StorageHelper.ReadStorage(StorageHelper.Mustache + "_" + mustacheIndex, "0") == "0") {
-        if (coins >= mustacheCost) {
-          coins -= mustacheCost;
+        if (coins >= StoreItemPrices.Mustache) {
+          coins -= StoreItemPrices.Mustache;
           mustache[mustacheIndex].enabled = false;
           StorageHelper.WriteStorage(StorageHelper.Mustache + "_" + mustacheIndex, "1");
           SpineAttachmentUI.instance.changeMustache(mustacheIndex);
-          SaveCoins(-100);
+          SaveCoins(-StoreItemPrices.Mustache);
         }
       } else {
         SpineAttachmentUI.instance.changeMustache(mustacheIndex);
@@ -98,6 +81,14 @@ namespace KendaGame.UI {
       } else {
         gameObject.SetActive(true);
         transform.DOScale(1, 0.5f);
+      }
+    }
+
+    private void RestorePurchasedItems(Image[] items, string itemType) {
+      for (int i = 0; i < items.Length; i++) {
+        if (StorageHelper.ReadStorage(itemType + "_" + i, "0") == "1") {
+          items[i].enabled = false;
+        }
       }
     }
   }
