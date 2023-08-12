@@ -974,6 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backBtn: {fileID: 5550581815954986256}
+  settingsBtn: {fileID: 0}
   coinsObject: {fileID: 5442922545709322926}
   coinsText: {fileID: 1178826032593973608}
 --- !u!1 &3743301397296068001
@@ -1072,7 +1073,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.15
+  m_fontSize: 72
   m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1330,6 +1331,8 @@ MonoBehaviour:
   SettingsPopUpObject: {fileID: 8781441430046391429, guid: 574f500109528d942beb8d7680aa2899,
     type: 3}
   MenuPopUpObject: {fileID: 6930128784429703204, guid: e3eeadce4b567a04f9fd9d9a6aca4806,
+    type: 3}
+  storePopUpObject: {fileID: 7043397387098900672, guid: 1a7b81f529d4b1c4486900d4a8e33819,
     type: 3}
 --- !u!1 &4759960178631716387
 GameObject:
