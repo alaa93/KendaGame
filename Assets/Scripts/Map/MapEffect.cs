@@ -14,34 +14,38 @@ namespace KendaGame.UI {
     public AudioClip[] MapMusics;
     public GameObject[] MapParticles;
 
-    private void Start() {
-      BackGround.sprite = MapBackGrounds[0];
-      MapMusic.clip = MapMusics[0];
-      MapMusic.Play();
+    private float map1Offset = 0.75f;
+    private float map2Offset = 0.25f;
+    private float moveDuration = 0.5f;
+    private Coroutine moveCoroutine;
+    private float[] targetMapPositions = { 1f, 0.5f, 0f };
 
-      MapParticles[0].SetActive(true);
+    private void Start() {
+      SetMapProperties(0);
     }
 
     public void OnEndDrag(PointerEventData data) {
       float startPosition = map.horizontalNormalizedPosition;
-      if (startPosition > 0.75f) {
-        StartCoroutine(Move(startPosition, 1, 0.5f, 0));
-      } else if (0.25f <= map.horizontalNormalizedPosition && map.horizontalNormalizedPosition < 0.75f) {
-        StartCoroutine(Move(startPosition, 0.5f, 0.5f, 1));
-      } else if (map.horizontalNormalizedPosition < 0.25f) {
-        StartCoroutine(Move(startPosition, 0, 0.5f, 2));
+      int targetMap = 0;
+
+      if (startPosition > map1Offset) {
+        targetMap = 0;
+      } else if (map2Offset <= startPosition && startPosition < map1Offset) {
+        targetMap = 1;
+      } else if (startPosition < map2Offset) {
+        targetMap = 2;
       }
+
+      if (moveCoroutine != null) {
+        StopCoroutine(moveCoroutine);
+      }
+
+      moveCoroutine = StartCoroutine(Move(startPosition, targetMapPositions[targetMap], moveDuration, targetMap));
     }
+
     IEnumerator Move(float startPosition, float EndPosition, float duration, int mapNumber) {
 
-      BackGround.sprite = MapBackGrounds[mapNumber];
-      MapMusic.clip = MapMusics[mapNumber];
-      MapMusic.Play();
-
-      for (int i = 0; i < MapParticles.Length; i++) {
-        MapParticles[i].SetActive(false);
-      }
-      MapParticles[mapNumber].SetActive(true);
+      SetMapProperties(mapNumber);
 
       float elapsedTime = 0;
       while (elapsedTime < duration) {
@@ -54,5 +58,17 @@ namespace KendaGame.UI {
 
       map.horizontalNormalizedPosition = EndPosition; // Ensure final value is accurate
     }
+
+    private void SetMapProperties(int mapNumber) {
+      BackGround.sprite = MapBackGrounds[mapNumber];
+      MapMusic.clip = MapMusics[mapNumber];
+      MapMusic.Play();
+
+      for (int i = 0; i < MapParticles.Length; i++) {
+        MapParticles[i].SetActive(false);
+      }
+      MapParticles[mapNumber].SetActive(true);
+    }
+
   }
 }
