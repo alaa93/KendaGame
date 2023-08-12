@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KendaGame.Navigation {
   public class PopUpsManager : MonoBehaviour {
-
+  
     public Transform Parent;
     public GameObject RatingLetter;
     public GameObject RatingLevel;
@@ -14,6 +14,7 @@ namespace KendaGame.Navigation {
     public GameObject FeedbackPopUpObject;
     public GameObject SettingsPopUpObject;
     public GameObject MenuPopUpObject;
+    public GameObject storePopUpObject;
 
     private TutorialController tutorialController;
     private LoadingBar loadingBar;
@@ -23,7 +24,8 @@ namespace KendaGame.Navigation {
     private FeedbackPopUp feedbackPopUp;
     private SettingsPopUp settingsPopUp;
     private DashboardPopUp dashboardPopUp;
-    
+    private StorePopUp storePopUp;
+
     private static PopUpsManager _instance;
     public static PopUpsManager Instance {
       get {
@@ -107,6 +109,18 @@ namespace KendaGame.Navigation {
       return dashboardPopUp;  
     }
 
+    public StorePopUp GetStorePopUp() {
+      if (storePopUp == null) {
+        GameObject  storeObject = Instantiate(storePopUpObject, Parent, false);
+        storePopUp = storeObject.GetComponent<StorePopUp>();
+        if (storePopUp != null) {
+          return storePopUp;
+        }
+        return null;
+      }
+      return storePopUp;
+    }
+
     public bool IsLetterRatingActive() {
       return letterRating != null && letterRating.gameObject.activeInHierarchy;
     }
@@ -140,6 +154,5 @@ namespace KendaGame.Navigation {
       }
       return loadingBar;
     }
-
   }
 }

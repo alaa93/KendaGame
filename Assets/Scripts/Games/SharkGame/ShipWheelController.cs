@@ -31,6 +31,7 @@ namespace KendaGame.Games {
       AssignLetters();
       SetScreenPosition();
       SceneManager.Instance.SetCoinsObjectState(true);
+      SceneManager.Instance.SetSettingsBtnState(true);
       wheelLetter.text = LettersHelper.GetActiveLetter();
     }
 

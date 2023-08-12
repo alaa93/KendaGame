@@ -2,75 +2,68 @@ using UnityEngine;
 using KendaGame.Helpers;
 using TMPro;
 using I2.Loc;
+using UnityEngine.UI;
+using DG.Tweening;
 
-public class SettingsPopUp : MonoBehaviour
-{
-    [SerializeField] 
+
+namespace KendaGame.UI {
+  public class SettingsPopUp : MonoBehaviour {
+    [SerializeField]
     UIButtonAnimator musicButton;
     [SerializeField]
-    UIButtonAnimator musicMute;
+    Image musicMute;
     [SerializeField]
     UIButtonAnimator sfxButton;
-    [SerializeField] 
-    UIButtonAnimator sfxMute;
+    [SerializeField]
+    Image sfxMute;
     [SerializeField]
     UIButtonAnimator exitButton;
+    private bool isMusicMuted;
+    private bool isSfxMuted;
 
-    [SerializeField]
-    TMP_Dropdown languageDropDown;
-    private bool isMutedMusic;
-    private bool isMutedSfx;
-    private void Start(){
-        isMutedMusic = !AudioController.Instance.GetMusicState();
-        isMutedSfx = !AudioController.Instance.GetSfxState();
-        InitializeButtons();
+    private void Start() {
+      isMusicMuted = !AudioController.Instance.GetMusicState();
+      isSfxMuted = !AudioController.Instance.GetSfxState();
+
+      InitializeButtons();
+      UpdateButtonIcon();
     }
-    private void InitializeButtons(){
-        languageDropDown.onValueChanged.AddListener(OnLanguageDropdown);
-        musicButton.AddClickListener(OnMusicButtonPressed);
-        musicMute.AddClickListener(OnMusicButtonPressed);
-        sfxButton.AddClickListener(OnSfxButtonPressed);
-        sfxMute.AddClickListener(OnSfxButtonPressed);
-        exitButton.AddClickListener(OnExitButtonPressed);
+
+    private void InitializeButtons() {
+      musicButton.AddClickListener(OnMusicButtonPressed);
+      sfxButton.AddClickListener(OnSfxButtonPressed);
+      exitButton.AddClickListener(ShowPopUp);
     }
-    private void OnMusicButtonPressed(){
-        if(!isMutedMusic){
-            AudioController.Instance.SetMusicState(false);
-            musicMute.gameObject.SetActive(true);
-            isMutedMusic = true;
-        }
-        else{
-            AudioController.Instance.SetMusicState(true);
-            musicMute.gameObject.SetActive(false);
-            isMutedMusic = false;
-        }
+
+    private void OnMusicButtonPressed() {
+      AudioController.Instance.SetMusicState(isMusicMuted);
+      isMusicMuted = !isMusicMuted;
+      UpdateButtonIcon();
     }
-    private void OnSfxButtonPressed(){
-        if(!isMutedSfx){
-            AudioController.Instance.SetSfxState(false);
-            sfxMute.gameObject.SetActive(true);
-            isMutedSfx = true;
-        }
-        else{
-            AudioController.Instance.SetSfxState(true);
-            sfxMute.gameObject.SetActive(false);
-            isMutedSfx = false;
-        }
+
+    private void OnSfxButtonPressed() {
+      AudioController.Instance.SetSfxState(isSfxMuted);
+      isSfxMuted = !isSfxMuted;
+      UpdateButtonIcon();
     }
-    private void OnLanguageDropdown(int langIndex){
-        string languageCode = (langIndex==0?"ar":"en");
-        if (LocalizationManager.CurrentLanguageCode != languageCode) {
-            LocalizationManager.CurrentLanguageCode = languageCode;
-            LocalizationManager.UpdateSources();
-        }
+
+    public void UpdateButtonIcon() {
+      sfxMute.enabled = isSfxMuted;
+      musicMute.enabled = isMusicMuted;
     }
-    private void OnLogoutButtonPressed(){
-        //Will do that after everything is figured out with the database and authentication
+    private void OnLogoutButtonPressed() {
     }
-    private void OnExitButtonPressed(){
-        gameObject.SetActive(false);
-    }
-    public void ShowPopUp(){
+
+    public void ShowPopUp() {
+      if (!gameObject.activeInHierarchy) {
         gameObject.SetActive(true);
+        transform.DOScale(1, 1).SetEase(Ease.Flash);
+      } else {
+        transform.DOScale(0, 1).SetEase(Ease.Flash).OnComplete(() => {
+
+          gameObject.SetActive(false);
+        });
+      }
     }
+  }
 }
