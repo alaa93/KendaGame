@@ -3957,7 +3957,7 @@ MonoBehaviour:
   fontSizeMainButton: {fileID: 2089966032}
   letterSkeleton: {fileID: 1821375936}
   letterSkeletonDataAssets:
-  - {fileID: 11400000, guid: ae0f6cae13d3e4fc0bf2e2a357f504ff, type: 2}
+  - {fileID: 11400000, guid: dd0df627dd5d4470f949fe90ac623b2c, type: 2}
   - {fileID: 11400000, guid: 3dafb7a9b94864689975574091ba232c, type: 2}
   - {fileID: 11400000, guid: 429c066588b024cc1aa1dbd46daa3358, type: 2}
   - {fileID: 11400000, guid: 9083c8b82a59e439ca712a7b81dbc92d, type: 2}
@@ -4930,7 +4930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -47, y: 195.436}
+  m_AnchoredPosition: {x: -47, y: 150}
   m_SizeDelta: {x: -462.132, y: 327.471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334946332
@@ -6020,8 +6020,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -100}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: -100, y: -100}
+  m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641435504
 MonoBehaviour:
@@ -6643,16 +6643,16 @@ RectTransform:
   m_GameObject: {fileID: 1821375934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 646544041}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 175}
-  m_SizeDelta: {x: 118.35605, y: 308.14005}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -578.7, y: 221.5}
+  m_SizeDelta: {x: 118.35596, y: 308.14005}
   m_Pivot: {x: 0.49181977, y: 0.41268453}
 --- !u!114 &1821375936
 MonoBehaviour:
@@ -6686,7 +6686,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 118.35605, y: 308.14005}
+  referenceSize: {x: 118.35596, y: 308.14005}
   referenceScale: 1
   rectTransformSize: {x: 118.35605, y: 308.14005}
   editReferenceRect: 0
@@ -6725,7 +6725,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821375934}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94856bcc4dcf89942b865f0d2b5f5406, type: 3}
   m_Name: 

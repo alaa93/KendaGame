@@ -315,8 +315,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73845492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0622, y: 0.1104, z: 104}
-  m_LocalScale: {x: 13.512785, y: 8.871181, z: 10.956256}
+  m_LocalPosition: {x: 0.1755, y: -0.2164, z: 104}
+  m_LocalScale: {x: 11.610254, y: 8.336405, z: 10.956256}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602378348}
@@ -2939,9 +2939,6 @@ MonoBehaviour:
   - animationProperty: animation
     is_loop: 0
     track: 0
-  - animationProperty: animation
-    is_loop: 0
-    track: 0
   - animationProperty: animation2
     is_loop: 0
     track: 0
@@ -3395,7 +3392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -47, y: 195.436}
+  m_AnchoredPosition: {x: -47, y: 150}
   m_SizeDelta: {x: -462.132, y: 327.471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334946332
@@ -4447,8 +4444,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -100}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: -100, y: -100}
+  m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641435504
 MonoBehaviour:
@@ -5270,16 +5267,16 @@ RectTransform:
   m_GameObject: {fileID: 1799126024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 646544041}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 175}
-  m_SizeDelta: {x: 118.35605, y: 308.14005}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -575, y: 241}
+  m_SizeDelta: {x: 118.35596, y: 308.14005}
   m_Pivot: {x: 0.49181977, y: 0.41268453}
 --- !u!114 &1799126026
 MonoBehaviour:
@@ -5313,7 +5310,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 118.35605, y: 308.14005}
+  referenceSize: {x: 118.35596, y: 308.14005}
   referenceScale: 1
   rectTransformSize: {x: 118.35605, y: 308.14005}
   editReferenceRect: 0
