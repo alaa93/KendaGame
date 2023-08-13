@@ -101,7 +101,7 @@ namespace KendaGame.Games {
       }
       if (tutorialController != null && tutorialController.IsTutorialPlaying()) {
         tutorialController.HideTutorial(() => {
-          PlayerPrefs.SetInt(tutorialPrefsKey, 1);
+          //PlayerPrefs.SetInt(tutorialPrefsKey, 1);
           OnTutorialCompleted();
         });
       }
@@ -121,11 +121,13 @@ namespace KendaGame.Games {
       AudioController.Instance.PlaySfxAtPoint(endingSfx);
 
       if (LettersHelper.GetActiveLetterIndex() == 0) {
-        endingAnim.AnimationState.SetAnimation(0, "idle", false);
-        yield return new WaitForSeconds(1.5f);
-        endingAnim.AnimationState.SetAnimation(0, "Letters", false);
+        endingAnim.AnimationState.AddAnimation(0, "idle", false,0);
+       // yield return new WaitForSeconds(0.5f);
+        endingAnim.AnimationState.AddAnimation(0, "Letters", false, 0);
         endingAnim.AnimationState.SetAnimation(0, "swimming", false);
-        yield return new WaitForSeconds(4f);
+                endingAnim.AnimationState.AddAnimation(0, "idle", false, 0);
+
+                yield return new WaitForSeconds(6f);
       } else {
         yield return new WaitForSeconds(7f);
       }

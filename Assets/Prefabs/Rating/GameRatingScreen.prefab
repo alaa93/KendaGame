@@ -219,7 +219,7 @@ MonoBehaviour:
   timeScale: 0.99
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -466.80005, y: 100}
+  referenceSize: {x: -655.60004, y: 100}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0

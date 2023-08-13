@@ -25,7 +25,7 @@ namespace KendaGame.UI {
     }
 
     private void SaveCoins(int itemPrice) {
-      SceneManager.Instance.IncrementCoins(coins);
+      SceneManager.Instance.IncrementCoins(itemPrice);
     }
 
     public void BuyHat(int hatIndex) {
@@ -36,11 +36,12 @@ namespace KendaGame.UI {
           StorageHelper.WriteStorage(StorageHelper.Hat + "_" + hatIndex, "1");
           SpineAttachmentUI.instance.changeHats(hatIndex);
           SaveCoins(-StoreItemPrices.Hat);
+          StorageHelper.WriteStorage(StorageHelper.UsedHat, $"{hatIndex}");
         }
       } else {
         SpineAttachmentUI.instance.changeHats(hatIndex);
+        StorageHelper.WriteStorage(StorageHelper.UsedHat, $"{hatIndex}");
       }
-      StorageHelper.WriteStorage(StorageHelper.UsedHat, $"{hatIndex}");
     }
 
     public void BuyGlasses(int glassesIndex) {
@@ -51,11 +52,12 @@ namespace KendaGame.UI {
           StorageHelper.WriteStorage(StorageHelper.Glasses + "_" + glassesIndex, "1");
           SpineAttachmentUI.instance.changeGlasses(glassesIndex);
           SaveCoins(-StoreItemPrices.Glasses);
+          StorageHelper.WriteStorage(StorageHelper.UsedGlasses, $"{glassesIndex}");
         }
       } else {
         SpineAttachmentUI.instance.changeGlasses(glassesIndex);
+        StorageHelper.WriteStorage(StorageHelper.UsedGlasses, $"{glassesIndex}");
       }
-      StorageHelper.WriteStorage(StorageHelper.UsedGlasses, $"{glassesIndex}");
     }
 
     public void BuyMustache(int mustacheIndex) {
@@ -66,11 +68,12 @@ namespace KendaGame.UI {
           StorageHelper.WriteStorage(StorageHelper.Mustache + "_" + mustacheIndex, "1");
           SpineAttachmentUI.instance.changeMustache(mustacheIndex);
           SaveCoins(-StoreItemPrices.Mustache);
+          StorageHelper.WriteStorage(StorageHelper.UsedMustache, $"{mustacheIndex}");
         }
       } else {
         SpineAttachmentUI.instance.changeMustache(mustacheIndex);
+        StorageHelper.WriteStorage(StorageHelper.UsedMustache, $"{mustacheIndex}");
       }
-      StorageHelper.WriteStorage(StorageHelper.UsedMustache, $"{mustacheIndex}");
     }
 
     public void ShowPopUp() {

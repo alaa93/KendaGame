@@ -43,6 +43,7 @@ public class SpineAttachmentUI : MonoBehaviour {
   private void Start() {
 
     skeleton = GetComponent<SkeletonGraphic>();
+
     int UsedHat = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedHat, "100"));
     int UsedMustache = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedMustache, "100"));
     int UsedGlasses = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedGlasses, "100"));

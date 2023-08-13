@@ -194,6 +194,7 @@ namespace KendaGame.UI {
 
     public void OnTracingLetterCompleted() {
       AudioUtils.FadeOutAudio(musicLoop, 0.4f);
+      letterSkeleton.gameObject.SetActive(false);
       StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
     }
 

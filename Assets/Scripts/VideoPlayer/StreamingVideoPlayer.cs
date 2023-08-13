@@ -1,5 +1,6 @@
 using KendaGame.Helpers;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 namespace KendaGame.UI {
@@ -8,21 +9,23 @@ namespace KendaGame.UI {
     [SerializeField]
     private AudioSource backGroundMusic;
     private string videoName;
+    [SerializeField]
+    ScrollRect map;
 
     void Start() {
       int lastLetterCompletted = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted, "0"));
       if (lastLetterCompletted == 0 && StorageHelper.ReadStorage(StorageHelper.CanWatchIntro, "true") == "true") {
         videoName = IslandVideos.FirstLandIntro;
         StartVideo(videoName);
-        backGroundMusic.Pause();
       } else if (lastLetterCompletted == 8 && StorageHelper.ReadStorage(StorageHelper.CanWatchOutro, "true") == "true") {
-        videoName = IslandVideos.FirstLandIntro;
+        videoName = IslandVideos.FirstLandOutro;
         StartVideo(videoName);
-        backGroundMusic.Pause();
       }
     }
 
     void StartVideo(string videoName) {
+      backGroundMusic.Pause();
+      map.enabled=false;
       GameObject camera = GameObject.Find("Main Camera");
       var videoPlayer = camera.AddComponent<VideoPlayer>();
       videoPlayer.playOnAwake = false;
@@ -41,6 +44,7 @@ namespace KendaGame.UI {
       }
       Destroy(vp);
       backGroundMusic.Play();
+      map.enabled=true;
     }
   }
 }

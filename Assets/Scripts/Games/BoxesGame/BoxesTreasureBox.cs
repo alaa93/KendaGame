@@ -9,22 +9,25 @@ namespace KendaGame.Games {
     SkeletonAnimation skeletonAnimation;
     GameObject draggedLetter;
     bool solved;
+
+        [SerializeField]
+        GameObject letterOnBox;
     private void Awake() {
       skeletonAnimation = GetComponent<SkeletonAnimation>();
-      float rand = Random.Range(2f, 3f);
+      float rand = Random.Range(3f, 4f);
       Invoke(nameof(PlayShakeAnim), rand);
       StartCoroutine(PlayAnim(rand));
     }
 
     public void PlayOpenAnim() {
-      skeletonAnimation.AnimationState.SetAnimation(0, "Open", false);
+      skeletonAnimation.AnimationState.AddAnimation(0, "Open", false, 0);
     }
 
     public void PlayCloseAnim() {
       if (draggedLetter != null) {
         draggedLetter.gameObject.SetActive(false);
       }
-      skeletonAnimation.AnimationState.SetAnimation(0, "close", false);
+      skeletonAnimation.AnimationState.AddAnimation(0, "close", false, 0);
     }
 
     public void OnTriggered(GameObject letter) {
@@ -48,14 +51,15 @@ namespace KendaGame.Games {
       letter.transform.DOScale(0f, 0.2f);
       letter.transform.DOMove(new Vector2(transform.position.x, transform.position.y + 0.5f), 0.2f);
       await Task.Delay(300);
-      skeletonAnimation.AnimationState.SetAnimation(0, "JumpCloseFade", false);
+            letterOnBox.SetActive(false);
+      skeletonAnimation.AnimationState.AddAnimation(0, "JumpCloseFade2", false, 0);
     }
 
     private void PlayShakeAnim() {
       if (!solved) {
-        skeletonAnimation.AnimationState.SetAnimation(0, "shake", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "shake", false, 0 );
       } else {
-        skeletonAnimation.AnimationState.SetAnimation(0, "close", false);
+        skeletonAnimation.AnimationState.AddAnimation(0, "close", false, 0);
       }
     }
 
@@ -79,7 +83,7 @@ namespace KendaGame.Games {
         PlayShakeAnim();
         yield return new WaitForSeconds(Random.Range(3f, 5f));
       }
-      skeletonAnimation.AnimationState.SetAnimation(0, "close", false);
+      skeletonAnimation.AnimationState.AddAnimation(0, "close", false, 0);
     }
 
   }
