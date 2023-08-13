@@ -1,25 +1,22 @@
 using UnityEngine;
 
 namespace KendaGame.Helpers {
-    public class AudioInstance : MonoBehaviour {
-        [SerializeField]
-        AudioSource audioSource;
+  public class AudioInstance : MonoBehaviour {
+    [SerializeField]
+    AudioSource audioSource;
 
-        private void Awake() {
-            AudioController_MusicStateChanged(AudioController.Instance.GetMusicState());
-        }
-        private void OnEnable() {
-            AudioController.MusicStateChanged += AudioController_MusicStateChanged;
-        }
-
-        private void OnDisable() {
-            AudioController.MusicStateChanged -= AudioController_MusicStateChanged;
-        }
-
-        private void AudioController_MusicStateChanged(bool state) {
-            if (audioSource != null) {
-                audioSource.mute = !state;
-            }
-        }
+    private void OnEnable() {
+      AudioController.MusicStateChanged += AudioController_MusicStateChanged;
     }
+
+    private void OnDisable() {
+      AudioController.MusicStateChanged -= AudioController_MusicStateChanged;
+    }
+
+    private void AudioController_MusicStateChanged(bool state) {
+      if (audioSource != null) {
+        audioSource.mute = !state;
+      }
+    }
+  }
 }

@@ -9,10 +9,10 @@ namespace KendaGame.Games {
     private void OnCollisionEnter2D(Collision2D collision) {
       LetterCharacterController letter = collision.gameObject.GetComponent<LetterCharacterController>();
       if (letter != null) {
-        if (bottomReseter) {
+       // if (bottomReseter) {
           letter.ResetPosition();
-        }
-        letter.ReverseDirection(direction);
+      //  }
+     //   letter.ReverseDirection(direction);
       }
     }
 

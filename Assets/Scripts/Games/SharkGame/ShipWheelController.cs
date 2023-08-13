@@ -25,6 +25,7 @@ namespace KendaGame.Games {
     List<string> selectedLetters = new List<string>();
     int correctCounter;
     ShipWheelBubble[] wheelBubbles;
+    private int wrongAnswersNumber = 0;
 
     private void Start() {
       wheelBubbles = GameObject.FindObjectsOfType<ShipWheelBubble>();
@@ -111,13 +112,14 @@ namespace KendaGame.Games {
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
         wheelBubble.PlayHitEffect(false);
         onComplete?.Invoke(false, false);
+        wrongAnswersNumber++;
       }
     }
 
     private IEnumerator OnGameCompleted(float delay) {
       yield return new WaitForSeconds(delay);
       if (PopUpsManager.Instance != null) {
-        PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
+        PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp(wrongAnswersNumber);
       }
     }
 

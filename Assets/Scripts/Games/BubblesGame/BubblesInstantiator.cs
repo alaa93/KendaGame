@@ -42,7 +42,6 @@ namespace KendaGame.Games {
     string[] incorrectLetters = null;
     private bool gameCompleted;
     private bool canClickBubble = true;
-    private string tutorialKey = "BubblesGameTut";
     List<BubbleMovement> bubbles = new List<BubbleMovement>();
     TutorialController tutorialController;
 
@@ -51,7 +50,7 @@ namespace KendaGame.Games {
     private void Start() {
       letterGuide.text = LettersHelper.GetActiveLetter();
       incorrectLetters = LettersHelper.GetInCorrectLetters();
-      shouldShowTutorial = PlayerPrefs.GetInt(tutorialKey, 0) == 0;
+      shouldShowTutorial = true;
       if (shouldShowTutorial) {
         canClickBubble = false;
         BubbleMovement bubble = Instantiate(bubbleInstance, this.transform).GetComponent<BubbleMovement>();
@@ -96,7 +95,6 @@ namespace KendaGame.Games {
 
     public void OnCorrect() {
       if (shouldShowTutorial) {
-        PlayerPrefs.SetInt(tutorialKey, 1);
         shouldShowTutorial = false;
         if (tutorialController != null) {
           tutorialController.HideTutorial(() => {

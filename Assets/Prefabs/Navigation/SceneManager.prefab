@@ -518,7 +518,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cdd41be58184bb541bba64e044476f43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 159f778f85f4d10419b1853c39f507f4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -974,7 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backBtn: {fileID: 5550581815954986256}
-  settingsBtn: {fileID: 0}
+  settingsBtn: {fileID: 3295532437465475731}
   coinsObject: {fileID: 5442922545709322926}
   coinsText: {fileID: 1178826032593973608}
 --- !u!1 &3743301397296068001
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 159f778f85f4d10419b1853c39f507f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cdd41be58184bb541bba64e044476f43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
