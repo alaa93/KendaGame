@@ -3122,6 +3122,8 @@ MonoBehaviour:
   showPartsSfx: {fileID: 8300000, guid: 06f8b2ef0f57c46e5a237c3ffc19ddc3, type: 3}
   totalPartsToSolve: 5
   gameCompleted: 0
+  firstNarration: {fileID: 8300000, guid: b3cf4a446045a7843b161f9e498156c8, type: 3}
+  partSolvedSfx: {fileID: 8300000, guid: 84ded39a28115244aaf0112e256a18d8, type: 3}
 --- !u!1 &6400515822605131103
 GameObject:
   m_ObjectHideFlags: 0

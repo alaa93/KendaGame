@@ -43,10 +43,14 @@ namespace KendaGame.Games {
     private int unlockedParts;
     private int unlockChunk = 1;
 
+    public AudioClip firstNarration;
+    public AudioClip partSolvedSfx;
+
 
     private void Start() {
       InitializeLetters();
       InitGameParts();
+      AudioController.Instance.AddToQueueAndPlay(firstNarration);
     }
 
     private void InitGameParts() {
@@ -118,8 +122,8 @@ namespace KendaGame.Games {
       allPartsObject.SetActive(false);
 
       AudioClip endingSfx = AudioController.Instance.commonSfx.GetEndingSfx();
-      AudioController.Instance.PlaySfxAtPoint(endingSfx);
-
+      AudioController.Instance.PlaySfxAtPoint(endingSfx,0.1f);
+      AudioController.Instance.AddToQueueAndPlay(partSolvedSfx);
       if (LettersHelper.GetActiveLetterIndex() == 0) {
         endingAnim.AnimationState.AddAnimation(0, "idle", false,0);
        // yield return new WaitForSeconds(0.5f);

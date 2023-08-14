@@ -1,11 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.SearchService;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace KendaGame.Helpers {
   public class AudioController : MonoBehaviour {
     public CommonSfx commonSfx;
     private bool canPlaySfx = true;
     private bool canPlayMusic = true;
+
+    private Queue<AudioClip> audioQueue = new Queue<AudioClip>();
+    private bool isPlaying = false;
+
 
     private static AudioController _instance;
     public static AudioController Instance {
@@ -21,7 +29,11 @@ namespace KendaGame.Helpers {
 
       canPlaySfx = bool.Parse(StorageHelper.ReadStorage(StorageHelper.ISSFXMUTED, "true"));
       canPlayMusic = bool.Parse(StorageHelper.ReadStorage(StorageHelper.ISMUSICMUTED, "true"));
+      SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+    }
 
+    private void SceneManager_activeSceneChanged(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.Scene arg1) {
+      //TODO stop narration and empty the queue
     }
 
     public void SetSfxState(bool state) {
@@ -66,6 +78,33 @@ namespace KendaGame.Helpers {
       if (GetMusicState()) {
         AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position, volume);
       }
+    }
+
+    public void PlayNarrationAtPoint (AudioClip audioClip) {
+      if (audioClip!=null) {
+        AudioSource.PlayClipAtPoint(audioClip, Camera.main.transform.position);
+      }
+    }
+
+    public void AddToQueueAndPlay(AudioClip clip) {
+      if (clip == null) return;
+      audioQueue.Enqueue(clip);
+      if (!isPlaying && audioQueue.Count == 1) {
+        StartCoroutine(PlayAudioQueue());
+      }
+    }
+    private IEnumerator PlayAudioQueue() {
+      isPlaying = true;
+
+      while (audioQueue.Count > 0) {
+        AudioClip clip = audioQueue.Peek();
+        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+        //TODO replace play clip at point with actual audio source to be able to stop it at any state of the app
+        yield return new WaitForSeconds(clip.length);
+
+        audioQueue.Dequeue();
+      }
+      isPlaying = false;
     }
 
     public static event UnityAction<bool> SfxStateChanged;

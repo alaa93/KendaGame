@@ -30,6 +30,12 @@ namespace KendaGame.UI {
     [SerializeField]
     private SkeletonDataAsset[] letterSkeletonDataAssets;
 
+    [SerializeField] AudioClip startAudio;
+    [SerializeField] AudioClip[] characterVoice;
+    [SerializeField] AudioClip[] characterName;
+    [SerializeField] AudioClip[] animalName;
+
+
     private static ColoringUI _instance;
     public static ColoringUI Instance {
       get {
@@ -47,6 +53,12 @@ namespace KendaGame.UI {
       PrepareBoard();
       StartColoring();
       IntiLettetSkeleton();
+      AudioController.Instance.AddToQueueAndPlay(startAudio);
+      AudioController.Instance.AddToQueueAndPlay(characterVoice[0]);
+      AudioController.Instance.AddToQueueAndPlay(characterName[0]);
+      AudioController.Instance.AddToQueueAndPlay(animalName[0]);
+
+
     }
 
     private void InitFontSizeBtns() {
