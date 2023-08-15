@@ -1738,7 +1738,7 @@ MonoBehaviour:
     EndingSfx:
     - {fileID: 8300000, guid: ead3651a5f565e34db2c826831f89511, type: 3}
     - {fileID: 8300000, guid: a1bde31195bf7014daf1021c99bcc9fa, type: 3}
-  activeAudioSource: {fileID: 6523788066358059843}
+  audioSource: {fileID: 6523788066358059843}
 --- !u!82 &6523788066358059843
 AudioSource:
   m_ObjectHideFlags: 0
