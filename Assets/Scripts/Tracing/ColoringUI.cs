@@ -2,6 +2,7 @@ using DG.Tweening;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using Spine.Unity;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,12 +54,11 @@ namespace KendaGame.UI {
       PrepareBoard();
       StartColoring();
       IntiLettetSkeleton();
-      AudioController.Instance.AddToQueueAndPlay(startAudio);
-      AudioController.Instance.AddToQueueAndPlay(characterVoice[0]);
-      AudioController.Instance.AddToQueueAndPlay(characterName[0]);
-      AudioController.Instance.AddToQueueAndPlay(animalName[0]);
 
-
+      int ActiveLetterIndex = LettersHelper.GetActiveLetterIndex();
+      AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { startAudio, characterVoice[ActiveLetterIndex],
+      characterName[ActiveLetterIndex], animalName[ActiveLetterIndex] });
+      AudioController.Instance.PlayAudioFromQueue();
     }
 
     private void InitFontSizeBtns() {

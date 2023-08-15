@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
@@ -71,6 +72,11 @@ namespace KendaGame.UI {
     NativeCameraController nativeCamera;
     Texture2D cameraScreenshot;
     bool isCameraTracing = false;
+
+    [SerializeField] AudioClip startAudio;
+    [SerializeField] AudioClip[] characterVoice;
+    [SerializeField] AudioClip[] characterName;
+
     private static TracingUI _instance;
     public static TracingUI Instance {
       get {
@@ -88,6 +94,12 @@ namespace KendaGame.UI {
       PrepareBoard();
       StartTracing();
       IntiLettetSkeleton();
+    }
+    private void Start() {
+      int ActiveLetterIndex = LettersHelper.GetActiveLetterIndex();
+      AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { startAudio, characterVoice[ActiveLetterIndex],
+      characterName[ActiveLetterIndex]});
+      AudioController.Instance.PlayAudioFromQueue();
     }
 
     private void InitializeCameraBtns() {

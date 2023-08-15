@@ -11,8 +11,10 @@ namespace KendaGame.Helpers {
     private bool canPlaySfx = true;
     private bool canPlayMusic = true;
 
-    private Queue<AudioClip> audioQueue = new Queue<AudioClip>();
-    private bool isPlaying = false;
+    Queue<AudioClip> audioQueue = new Queue<AudioClip>();
+    bool isPlaying = false;
+    [SerializeField] AudioSource audioSource;
+    Coroutine playCoroutine;
 
 
     private static AudioController _instance;
@@ -33,7 +35,13 @@ namespace KendaGame.Helpers {
     }
 
     private void SceneManager_activeSceneChanged(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.Scene arg1) {
-      //TODO stop narration and empty the queue
+      //stop narration and empty the queue
+      if (audioSource != null && audioSource.isPlaying) {
+        audioSource.Stop();
+      }
+      if(playCoroutine!=null) StopCoroutine(playCoroutine);
+      audioQueue.Clear();
+      isPlaying = false;
     }
 
     public void SetSfxState(bool state) {
@@ -86,20 +94,41 @@ namespace KendaGame.Helpers {
       }
     }
 
-    public void AddToQueueAndPlay(AudioClip clip) {
-      if (clip == null) return;
-      audioQueue.Enqueue(clip);
-      if (!isPlaying && audioQueue.Count == 1) {
-        StartCoroutine(PlayAudioQueue());
+    public void AddAudioToQueue(AudioClip audioClip) {
+        if (audioClip != null) {
+          audioQueue.Enqueue(audioClip);
+        }
+      }
+    
+    public void AddAudiosToQueue(List<AudioClip> audioClips) {
+      foreach (var clip in audioClips) {
+        if (clip != null) {
+          audioQueue.Enqueue(clip);
+        }
       }
     }
+
+    public void PlayAudioFromQueue() {
+      if (!isPlaying && audioQueue.Count > 0) {
+        playCoroutine = StartCoroutine(PlayAudioQueue());
+      }
+    }
+
     private IEnumerator PlayAudioQueue() {
+    //TODO: check What is Better
+    /*
+    if (audioSource!=null) //DOCode
+    if(audioSource==null)
+    gameObject.AddComponent<AudioSource>();
+    audioSource= gameObject.GetComponent<AudioSource>();
+    */
       isPlaying = true;
 
       while (audioQueue.Count > 0) {
         AudioClip clip = audioQueue.Peek();
-        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
-        //TODO replace play clip at point with actual audio source to be able to stop it at any state of the app
+        audioSource.clip = clip;
+        audioSource.Play();
+
         yield return new WaitForSeconds(clip.length);
 
         audioQueue.Dequeue();
