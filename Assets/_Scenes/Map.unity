@@ -209720,6 +209720,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backGroundMusic: {fileID: 550851811}
   map: {fileID: 219430057}
+  narrationSounds:
+    afterIntroClip: {fileID: 8300000, guid: 5e518196899e74d48b5b1003ff8d8f40, type: 3}
+    mapLoadedClip: {fileID: 8300000, guid: 0827baa3a8969ed439418a8ea6cb1b28, type: 3}
 --- !u!4 &1703042932
 Transform:
   m_ObjectHideFlags: 0
