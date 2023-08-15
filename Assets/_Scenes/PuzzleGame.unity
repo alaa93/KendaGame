@@ -177,6 +177,9 @@ MonoBehaviour:
   - {fileID: 5160381812912936680, guid: 9c97dafe45b0243818b3115d791eb9a7, type: 3}
   - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
   - {fileID: 5160381812912936680, guid: 9a66be4100f1c4ed3a4f7aadb9dbc463, type: 3}
+  narrationSounds:
+    RotateImageStartClip: {fileID: 8300000, guid: 1cf61113bd9386c408a12e8ee050c5b1,
+      type: 3}
 --- !u!1 &1044085927
 GameObject:
   m_ObjectHideFlags: 0
