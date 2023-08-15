@@ -5222,7 +5222,7 @@ MonoBehaviour:
   timeScale: 3
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -120.49805, y: 212.35571}
+  referenceSize: {x: 777.4414, y: -142.46912}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -14999,6 +14999,8 @@ MonoBehaviour:
   settingsBtn: {fileID: 108144477}
   menuBtn: {fileID: 1631062934}
   storeBtn: {fileID: 317463033}
+  narrationSounds:
+    PlayBtnClip: {fileID: 8300000, guid: 9bf4c7595e4cfdf419c175b0831562a3, type: 3}
 --- !u!4 &291782286
 Transform:
   m_ObjectHideFlags: 0
@@ -30016,7 +30018,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -120.49805, y: 212.35571}
+  referenceSize: {x: 777.4414, y: -142.46912}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -60627,7 +60629,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -120.49805, y: 212.35571}
+  referenceSize: {x: 777.4414, y: -142.46912}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0

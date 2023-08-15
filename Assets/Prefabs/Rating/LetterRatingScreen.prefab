@@ -1267,6 +1267,18 @@ MonoBehaviour:
   starsAnimation: {fileID: 8962936491076769269}
   nextBtn: {fileID: 504903028181099497}
   restartBtn: {fileID: 5770193529041298993}
+  narrationSounds:
+    threeStarClips:
+    - {fileID: 8300000, guid: 7500605e97e178b4ea71dfc73d42091f, type: 3}
+    - {fileID: 8300000, guid: 1dc478059da2ea24085314cef2edded5, type: 3}
+    twoStarClips:
+    - {fileID: 8300000, guid: 6dd4e9978f13a834997d9e3e0a194ee6, type: 3}
+    - {fileID: 8300000, guid: b1a11b4db58864244b125cec08df14a3, type: 3}
+    goNextLevelClips:
+    - {fileID: 8300000, guid: cda91e46434c9464a9f43c5ab77a6040, type: 3}
+    retryLevelClips:
+    - {fileID: 8300000, guid: 8ade984087078f14a8020e4cab333b6f, type: 3}
+    - {fileID: 8300000, guid: 4d3857862f205c94e860a22ed9488ebc, type: 3}
 --- !u!1 &8962936491694686271
 GameObject:
   m_ObjectHideFlags: 0
