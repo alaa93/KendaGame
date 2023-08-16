@@ -114,7 +114,14 @@ namespace KendaGame.Navigation {
       }
     }
 
-    public void SetBackBtnState(bool state) {
+
+        public void OnHomeClicked()
+        {
+            navigationStack.Clear();
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(Scenes.HomeScreen.ToString());
+        }
+
+        public void SetBackBtnState(bool state) {
       uiController.SetBackBtnState(state);
     }
 
@@ -134,12 +141,21 @@ namespace KendaGame.Navigation {
       if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.HomeScreen.ToString()) {
         uiController.SetBackBtnState(false);
         uiController.SetSettingsBtnState(false);
+                uiController.SetHomeBtnState(false);
 
-      } else {
+
+            }
+            else {
         uiController.SetBackBtnState(true);
         uiController.SetSettingsBtnState(true);
+                if (scene.name == Scenes.Map.ToString())
+                
 
-      }
+                    uiController.SetHomeBtnState(false);
+                else
+                    uiController.SetHomeBtnState(true);
+
+            }
             //|| scene.name == Scenes.Map.ToString() removed by hamzeh based on Mumen notes
             if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString()  || scene.name != Scenes.HomeScreen.ToString() || !scene.name.Contains("Game")) {
         uiController.SetCoinsObjectState(false);
@@ -228,5 +244,7 @@ namespace KendaGame.Navigation {
     public void OnSettingsBtnClicked() {
       PopUpsManager.Instance.GetSettingsPopUp().ShowPopUp();
     }
+
+
   }
 }
