@@ -219,7 +219,7 @@ MonoBehaviour:
   timeScale: 0.99
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: -655.60004, y: 100}
+  referenceSize: {x: 100.19995, y: 100}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7778e10a6b1a0fe499ef9150f52ff9d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a7c8292842834293836aecd0ab01088, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

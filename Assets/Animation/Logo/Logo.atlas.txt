@@ -1,27 +1,28 @@
 Logo.png
-size:2048,2048
+size:1024,1024
 filter:Linear,Linear
 pma:true
+scale:0.8
 20x/Motion1_1
-bounds:765,206,180,180
+bounds:769,853,144,144
 Asset 1
-bounds:293,2,196,107
+bounds:677,47,157,86
 Asset 2
-bounds:2,101,289,285
+bounds:769,135,231,228
+rotate:90
 Asset 4
-bounds:880,538,1067,77
+bounds:705,135,854,62
 rotate:90
 Asset 5
-bounds:293,111,593,54
-Asset 7
-bounds:2,388,840,148
-offsets:162,12,1164,173
-Asset 8
-bounds:2,538,876,1078
-at
-bounds:293,167,219,312
-offsets:1,0,220,312
+bounds:947,523,474,43
 rotate:90
+Asset 7
+bounds:2,14,673,119
+offsets:129,9,931,138
+Asset 8
+bounds:2,135,701,862
+at
+bounds:769,368,176,250
 at2
-bounds:607,168,156,218
-offsets:0,0,158,218
+bounds:769,620,125,174
+offsets:0,0,126,174

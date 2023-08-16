@@ -11,6 +11,8 @@ namespace KendaGame.Navigation {
     [SerializeField]
     UIButtonAnimator settingsBtn;
     [SerializeField]
+    UIButtonAnimator homeBtn;
+    [SerializeField]
     GameObject coinsObject;
     [SerializeField]
     TextMeshProUGUI coinsText;
@@ -31,13 +33,18 @@ namespace KendaGame.Navigation {
     private void InitBtn() {
       backBtn.gameObject.SetActive(false);
       settingsBtn.gameObject.SetActive(false);
-      backBtn.AddClickListener(() => {
+      homeBtn.gameObject.SetActive(false);
+            backBtn.AddClickListener(() => {
         SceneManager.Instance.OnBackClicked();
       });
       settingsBtn.AddClickListener(() => {
         SceneManager.Instance.OnSettingsBtnClicked();
       });
-    }
+
+            homeBtn.AddClickListener(() => {
+                SceneManager.Instance.OnHomeClicked();
+            });
+        }
 
     public void SetBackBtnState(bool state) {
       backBtn.gameObject.SetActive(state);
@@ -45,6 +52,10 @@ namespace KendaGame.Navigation {
 
     public void SetSettingsBtnState(bool state) {
       settingsBtn.gameObject.SetActive(state);
+    }
+        
+        public void SetHomeBtnState(bool state) {
+      homeBtn.gameObject.SetActive(state);
     }
 
     public void SetCoinsObjectState(bool state) {

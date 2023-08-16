@@ -5014,10 +5014,10 @@ RectTransform:
   m_Father: {fileID: 2147171709}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -160, y: 153}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 150, y: 150}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108144475
 MonoBehaviour:
@@ -5222,7 +5222,7 @@ MonoBehaviour:
   timeScale: 3
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 777.4414, y: -142.46912}
+  referenceSize: {x: 100, y: 100}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -19886,7 +19886,7 @@ GameObject:
   - component: {fileID: 317463034}
   - component: {fileID: 317463033}
   m_Layer: 5
-  m_Name: DailyGiftButton
+  m_Name: storeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19907,9 +19907,9 @@ RectTransform:
   m_Father: {fileID: 2147171709}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 136, y: 128}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -150, y: 150}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &317463031
@@ -19932,7 +19932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0a1cd253a5ba41a4990b7b0711c40ce2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a5a14612131138a449e81ca5b4c2deb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30018,7 +30018,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 777.4414, y: -142.46912}
+  referenceSize: {x: 100, y: 100}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -40095,7 +40095,7 @@ GameObject:
   - component: {fileID: 1206999279}
   - component: {fileID: 1206999278}
   m_Layer: 0
-  m_Name: Bubbles Particles (3)
+  m_Name: Bubble brust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40142,7 +40142,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsTrail: 0
-  m_Scale3D: {x: 10, y: 10, z: 10}
+  m_Scale3D: {x: 30, y: 30, z: 30}
   m_AnimatableProperties: []
   m_Particles:
   - {fileID: 1206999281}
@@ -60403,7 +60403,7 @@ GameObject:
   - component: {fileID: 1631062935}
   - component: {fileID: 1631062934}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: profileButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60424,10 +60424,10 @@ RectTransform:
   m_Father: {fileID: 2147171709}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -160, y: -153}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -150}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1631062932
 MonoBehaviour:
@@ -60449,7 +60449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a192434c1f7d4284fbc464b291832334, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3eb5535147217ee48bce00f38ab41ec7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -60629,7 +60629,7 @@ MonoBehaviour:
   timeScale: 0.5
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 777.4414, y: -142.46912}
+  referenceSize: {x: 100, y: 100}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -65767,7 +65767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
