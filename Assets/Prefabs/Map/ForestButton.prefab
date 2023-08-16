@@ -559,8 +559,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0623"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 704770b42e12e4746a6cf286098f49cd, type: 2}
-  m_sharedMaterial: {fileID: -3112090451843218875, guid: 704770b42e12e4746a6cf286098f49cd,
+  m_fontAsset: {fileID: 11400000, guid: 4477f1f43092fd7418ed6be9e626c495, type: 2}
+  m_sharedMaterial: {fileID: -359311779175192815, guid: 4477f1f43092fd7418ed6be9e626c495,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

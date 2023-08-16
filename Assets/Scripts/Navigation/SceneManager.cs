@@ -140,14 +140,14 @@ namespace KendaGame.Navigation {
         uiController.SetSettingsBtnState(true);
 
       }
-
-      if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.Map.ToString() || scene.name != Scenes.HomeScreen.ToString() || !scene.name.Contains("Game")) {
+            //|| scene.name == Scenes.Map.ToString() removed by hamzeh based on Mumen notes
+            if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString()  || scene.name != Scenes.HomeScreen.ToString() || !scene.name.Contains("Game")) {
         uiController.SetCoinsObjectState(false);
       } else {
         uiController.SetCoinsObjectState(true);
       }
-
-      if(scene.name == Scenes.HomeScreen.ToString()) {
+            //|| scene.name == Scenes.Map.ToString() added here by hamzeh based on Mumen notes
+            if (scene.name == Scenes.HomeScreen.ToString() || scene.name == Scenes.Map.ToString()) {
         uiController.SetCoinsObjectState(true);
       }
 

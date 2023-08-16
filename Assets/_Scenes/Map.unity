@@ -10355,7 +10355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &78411078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25765,7 +25765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &191316377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30966,7 +30966,7 @@ MonoBehaviour:
   MapMusics:
   - {fileID: 8300000, guid: a30dcae98514e4e4f9dbdc9a56c72d6c, type: 3}
   - {fileID: 8300000, guid: 904cebd39cac2764ca1a8a32296a4c2a, type: 3}
-  - {fileID: 8300000, guid: 6d11de6372f586747b3a8d3f98d726f4, type: 3}
+  - {fileID: 8300000, guid: 2a84ac983e1d8284f98baa377647d3ec, type: 3}
   MapParticles:
   - {fileID: 1631172920}
   - {fileID: 683888230}
@@ -62788,9 +62788,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -63272,7 +63272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -797.2461, y: -941}
+  m_AnchoredPosition: {x: -753, y: -951}
   m_SizeDelta: {x: 2120, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &598364202
@@ -204358,7 +204358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1593053818
 RectTransform:
   m_ObjectHideFlags: 0
@@ -221393,7 +221393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9647059}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
