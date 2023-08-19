@@ -80,9 +80,11 @@ public class ColoringBookManager : MonoBehaviour {
     m_EventSystem = FindObjectOfType<EventSystem>();
     if (SceneManager.Instance && Camera.main) {
       mainCamera = Camera.main;
-    }
+        
 
-    GetComponent<Renderer>().sortingOrder = -99;
+        }
+
+        GetComponent<Renderer>().sortingOrder = -99;
     if (maskTexIndex < 0) {
       maskTex = null;
     } else {
