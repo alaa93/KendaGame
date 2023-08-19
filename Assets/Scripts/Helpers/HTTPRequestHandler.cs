@@ -161,12 +161,8 @@ namespace KendaGame.Helpers {
       WWWForm formrequest = new WWWForm();
       formrequest.AddField("gender", gender);
       formrequest.AddField("phone", phone);
-
-      Texture2D uncompressedTexture = new Texture2D(profilePhoto.width, profilePhoto.height, TextureFormat.RGBA32, false);
-      uncompressedTexture.SetPixels(profilePhoto.GetPixels());
-      byte[] photoBytes = uncompressedTexture.EncodeToJPG();
-      Destroy(uncompressedTexture);
-      // formrequest.AddField("profile_photo", profile_photo);
+      profilePhoto = GetReadableTexture(profilePhoto);
+      byte[] photoBytes = profilePhoto.EncodeToJPG();
       formrequest.AddBinaryData("profile_photo", photoBytes, "profile.png", "image/png");
 
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_UPDATE_PROFILE_BY_TOKEN, formrequest);
@@ -177,6 +173,7 @@ namespace KendaGame.Helpers {
       if (loadingBar != null) {
         loadingBar.HideLoadingBar();
       }
+      Destroy(profilePhoto);
       if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
         Debug.Log("Response error " + www.downloadHandler.error);
         string error = AuthErrorCode.UnknownError;
@@ -203,7 +200,24 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
       }
     }
+    private Texture2D GetReadableTexture(Texture2D source) {
+      RenderTexture renderTex = RenderTexture.GetTemporary(
+                            source.width,
+                            source.height,
+                            0,
+                            RenderTextureFormat.Default,
+                            RenderTextureReadWrite.Linear);
 
+      Graphics.Blit(source, renderTex);
+      RenderTexture previous = RenderTexture.active;
+      RenderTexture.active = renderTex;
+      Texture2D readableText = new Texture2D(source.width, source.height);
+      readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+      readableText.Apply();
+      RenderTexture.active = previous;
+      RenderTexture.ReleaseTemporary(renderTex);
+      return readableText;
+    }
 
     public async Task<(bool, string)> MakeWebRequest(string url, WWWForm formRequest) {
       Debug.Log("url "+url);
