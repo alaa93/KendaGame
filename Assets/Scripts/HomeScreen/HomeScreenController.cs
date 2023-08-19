@@ -21,8 +21,11 @@ namespace KendaGame.UI
 		[SerializeField]
 		NarrationSounds narrationSounds;
 
+		private bool canPlayPlayBtnNarration;
+
 		private void Awake()
 		{
+			canPlayPlayBtnNarration = true;
 			playBtn.AddClickListener(OnPlayBtnClicked);
 			settingsBtn.AddClickListener(OnSettingsBtnClicked);
 			menuBtn.AddClickListener(OnMenuButtonClicked);
@@ -39,9 +42,13 @@ namespace KendaGame.UI
 		}
 		private IEnumerator PlayBtnCoroutine()
 		{
-			AudioController.Instance.PlayNarrationAtPoint(narrationSounds.PlayBtnClip);
-			yield return new WaitForSeconds(narrationSounds.PlayBtnClip.length + 0.8f);
-			SceneManager.Instance.MoveTo(SceneManager.Scenes.Map.ToString());
+			if (canPlayPlayBtnNarration) {
+				canPlayPlayBtnNarration = false;
+				AudioController.Instance.PlayNarrationAtPoint(narrationSounds.PlayBtnClip);
+				yield return new WaitForSeconds(narrationSounds.PlayBtnClip.length + 0.8f);
+				canPlayPlayBtnNarration = true;
+				SceneManager.Instance.MoveTo(SceneManager.Scenes.Map.ToString());
+			}
 		}
 		private void OnSettingsBtnClicked()
 		{
