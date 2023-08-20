@@ -54,10 +54,6 @@ namespace KendaGame.Helpers
 		{
 			StartCoroutine(UpdatePlayerConfigRequest(statusCallback));
 		}
-		private void Start()
-		{
-			UpdatePlayerConfig();
-		}
 
 		private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage, Action<bool, RatingData> statusCallback)
 		{
@@ -241,7 +237,7 @@ namespace KendaGame.Helpers
 				else
 				{
 
-					ConfigInstance playerConfigAfterRequest = JsonUtility.FromJson<ConfigInstance>(www.downloadHandler.text);
+					PlayerConfigs playerConfigAfterRequest = JsonUtility.FromJson<PlayerConfigs>(www.downloadHandler.text);
 					if(playerConfigAfterRequest.appconfig == playerConfigBeforeRequest)
 					{
 						Debug.Log(playerConfigAfterRequest.appconfig.mute_music);
@@ -318,22 +314,6 @@ namespace KendaGame.Helpers
 				loadingBar.HideLoadingBar();
 			}
 		}
-	}
-	[System.Serializable]
-	public class ConfigInstance
-	{
-		public PlayerConfig appconfig;
-	}
-	[System.Serializable]
-	public class PlayerConfig
-	{
-		public string app_version;
-		public bool freeze_app;
-		public bool force_update;
-		public bool mute_music;
-		public bool mute_sfx;
-		public string local_lang;
-
 	}
 }
 
