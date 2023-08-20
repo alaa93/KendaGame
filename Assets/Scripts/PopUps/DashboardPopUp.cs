@@ -99,7 +99,6 @@ public class DashboardPopUp : MonoBehaviour {
         } else {
           PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(AuthErrorCode.UpdateProfile_Photo_Title_Msg, AuthErrorCode.UpdateProfile_Failed);
         }
-
       });
     } else {
       Debug.Log(success);
