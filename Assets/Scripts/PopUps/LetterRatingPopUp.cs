@@ -61,6 +61,7 @@ namespace KendaGame.UI
 					break;
 			}
 			starsAnimation.gameObject.SetActive(true);
+			StartCoroutine(RatingNarration(rating));
 		}
 		private IEnumerator RatingNarration(int rating)
 		{

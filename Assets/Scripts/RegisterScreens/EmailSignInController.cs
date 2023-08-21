@@ -198,4 +198,6 @@ public static class AuthErrorCode {
   public static string Password_Invalid = "registration_screens.validate_password_spaces_error";
   public static string Password_Length_Invalid = "registration_screens.validate_password_length_error";
   public static string Email_Password_404 = "registration_screens.validate_email_404";
+  public static string UpdateProfile_Success = "home_screens_status_update_profile_success";
+
 }

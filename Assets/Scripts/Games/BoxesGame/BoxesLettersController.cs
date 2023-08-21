@@ -124,7 +124,7 @@ namespace KendaGame.Games {
       allPartsObject.SetActive(false);
 
       AudioClip endingSfx = AudioController.Instance.commonSfx.GetEndingSfx();
-      AudioController.Instance.PlaySfxAtPoint(endingSfx,0.1f);
+      AudioController.Instance.PlaySfxAtPoint(endingSfx);
       AudioController.Instance.AddAudioToQueue(partSolvedSfx);
       AudioController.Instance.PlayAudioFromQueue();
       if (LettersHelper.GetActiveLetterIndex() == 0) {

@@ -3,6 +3,8 @@ using DG.Tweening;
 using KendaGame.Helpers;
 using Spine.Unity;
 using ScorpionSteps.Utils;
+using KendaGame.Navigation;
+using KendaGame.Tutorial;
 
 namespace KendaGame.Games
 {
@@ -30,14 +32,18 @@ namespace KendaGame.Games
 		float positionOffet = 1.6f;
 		private bool released;
 		private Vector3 initialPosition;
+		[SerializeField] GameObject tutorialHand;
+	    TutorialController tutorialController;
 
-		private void Awake()
+
+    private void Awake()
 		{
 			this.transform.position = new Vector3(CameraUtils.GetRightScreenEdge().x - positionOffet, this.transform.position.y, 0f);
 			initialPosition = this.transform.position;
 		}
 		private void OnMouseDown()
 		{
+			if(tutorialHand.activeInHierarchy) tutorialHand.SetActive(false);
 			if (!released)
 			{
 				ReleaseShark();
