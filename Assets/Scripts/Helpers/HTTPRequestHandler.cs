@@ -23,6 +23,7 @@ namespace KendaGame.Helpers
 		private static readonly string USER_LOGIN_MODULE = "/user-login";
 		private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/user-update-profile-by-token";
 		private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
+		private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
 
 
 		private static HTTPRequestHandler _instance;
@@ -60,6 +61,49 @@ namespace KendaGame.Helpers
 		}
 		public void RegisterBySocialMedia(string firstname,  string lastname, string registerBy, Action<bool, UserSession, string> statusCallback = null) {
 			StartCoroutine(RegisterBySocialMediaRequest(firstname, lastname, registerBy, statusCallback));	
+		}
+		public void GetUserDetailsBySocialMediaToken(string token, Action<bool, UserSession, string> statusCallback = null) 
+		{
+			StartCoroutine(GetUserDetailsBySocialMediaTokenRequest(token, statusCallback));
+		}
+		private IEnumerator GetUserDetailsBySocialMediaTokenRequest(string socialMediaToken, Action<bool, UserSession, string> statusCallback = null)
+		{
+			WWWForm formrequest = new WWWForm();
+			formrequest.AddField("token_SocialMedia", socialMediaToken);
+			UnityWebRequest www = UnityWebRequest.Post(WEB_URL + GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN, formrequest);
+			www.SetRequestHeader("Authorization", REQUEST_HEADER);
+			StartCoroutine(UploadProgressBar(www));
+			yield return www.SendWebRequest();
+			if (loadingBar != null)
+			{
+				loadingBar.HideLoadingBar();
+			}
+
+			if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error))
+			{
+				Debug.Log("Response error " + www.downloadHandler.error);
+				statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+			}
+			else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text))
+			{
+				Debug.Log("Response success " + www.downloadHandler.text);
+				if (www.downloadHandler.text.Contains("<!DOCTYPE html>"))
+				{
+					statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+				}
+				else
+				{
+					UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
+					statusCallback?.Invoke(true, user, "success!");
+					StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
+				}
+			}
+			else
+			{
+				Debug.Log("Unknown Response " + www.downloadHandler.text);
+				Debug.Log("Unknown Response error " + www.downloadHandler.error);
+				statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+			}
 		}
 
 		private IEnumerator RegisterBySocialMediaRequest(string firstname, string lastname, string registerBy, Action<bool, UserSession, string> statusCallback = null)
