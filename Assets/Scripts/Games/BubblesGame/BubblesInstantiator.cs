@@ -75,6 +75,7 @@ namespace KendaGame.Games
 
 		private IEnumerator InstantiateBubbles()
 		{
+			int wrongmax = Random.Range(1, 5);
 			while (canInstantiate && !shouldShowTutorial)
 			{
 				correctCounter++;
@@ -85,9 +86,10 @@ namespace KendaGame.Games
 					bubble.gameObject.SetActive(true);
 					bubble.transform.position = new Vector2(bubbleParent.transform.position.x, bubble.transform.position.y);
 					bubbles.Add(bubble);
-					if (correctCounter >= 3)
+					if (correctCounter >= wrongmax)
 					{
 						correctCounter = 0;
+						wrongmax = Random.Range(1, 5);
 						bubble.targetLetter = LettersHelper.GetActiveLetterIndex();
 						bubble.letterText.text = LettersHelper.GetActiveLetter();
 					}
