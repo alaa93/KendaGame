@@ -91,6 +91,7 @@ namespace KendaGame.Games {
       endingAnim.gameObject.SetActive(true);
       await Task.Delay(endingAnimDuration * 1000);
       PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
+      StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "Game1" + LettersHelper.GetActiveLetterIndex(), 3.ToString());
     }
 
     public bool IsTutorialPlayed() {

@@ -37,6 +37,7 @@ namespace KendaGame.Games {
       this.transform.DOMoveX(-30f, 6f);
       AudioController.Instance.PlaySfxAtPoint(winSfx);
       await Task.Delay(2500);
+      StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_Game2_" + LettersHelper.GetActiveLetterIndex(), 3.ToString());
       PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp();
     }
 
