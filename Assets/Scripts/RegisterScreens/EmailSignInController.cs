@@ -201,4 +201,8 @@ public static class AuthErrorCode {
   public static string UpdateProfile_Success = "update_profile_photo_success";
   public static string UpdateProfile_Failed = "update_profile_photo_fail";
   public static string UpdateProfile_Photo_Title_Msg = "update_profile_photo";
+  public static string InsufficientFunds = "InsufficientFunds";
+  public static string LetsPlayToPurchaseMore = "LetsPlayToPurchaseMore";
+
+
 }

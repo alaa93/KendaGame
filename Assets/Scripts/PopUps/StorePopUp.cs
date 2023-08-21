@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace KendaGame.UI {
   public class StorePopUp : MonoBehaviour {
-    public Image[] hats;
-    public Image[] glasses;
-    public Image[] mustache;
-
+    public GameObject[] hats;
+    public GameObject[] glasses;
+    public GameObject[] mustache;
+    [SerializeField] Sprite purchaseBackgroundImage;
     private int coins;
 
     private void OnEnable() {
@@ -32,11 +32,15 @@ namespace KendaGame.UI {
       if (StorageHelper.ReadStorage(StorageHelper.Hat + "_" + hatIndex, "0") == "0") {//Check if he already owned it
         if (coins >= StoreItemPrices.Hat) {
           coins -= StoreItemPrices.Hat;
-          hats[hatIndex].enabled = false;
+          hats[hatIndex].SetActive(false);
           StorageHelper.WriteStorage(StorageHelper.Hat + "_" + hatIndex, "1");
           SpineAttachmentUI.instance.changeHats(hatIndex);
           SaveCoins(-StoreItemPrices.Hat);
           StorageHelper.WriteStorage(StorageHelper.UsedHat, $"{hatIndex}");
+          hats[hatIndex].gameObject.GetComponentInParent<Image>().sprite = purchaseBackgroundImage;
+        }
+        else{
+          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(AuthErrorCode.InsufficientFunds, AuthErrorCode.LetsPlayToPurchaseMore);
         }
       } else {
         SpineAttachmentUI.instance.changeHats(hatIndex);
@@ -48,11 +52,15 @@ namespace KendaGame.UI {
       if (StorageHelper.ReadStorage(StorageHelper.Glasses + "_" + glassesIndex, "0") == "0") {
         if (coins >= StoreItemPrices.Glasses) {
           coins -= StoreItemPrices.Glasses;
-          glasses[glassesIndex].enabled = false;
+          glasses[glassesIndex].SetActive(false);
           StorageHelper.WriteStorage(StorageHelper.Glasses + "_" + glassesIndex, "1");
           SpineAttachmentUI.instance.changeGlasses(glassesIndex);
           SaveCoins(-StoreItemPrices.Glasses);
           StorageHelper.WriteStorage(StorageHelper.UsedGlasses, $"{glassesIndex}");
+          glasses[glassesIndex].gameObject.GetComponentInParent<Image>().sprite = purchaseBackgroundImage;
+
+        } else {
+          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(AuthErrorCode.InsufficientFunds, AuthErrorCode.LetsPlayToPurchaseMore);
         }
       } else {
         SpineAttachmentUI.instance.changeGlasses(glassesIndex);
@@ -64,15 +72,21 @@ namespace KendaGame.UI {
       if (StorageHelper.ReadStorage(StorageHelper.Mustache + "_" + mustacheIndex, "0") == "0") {
         if (coins >= StoreItemPrices.Mustache) {
           coins -= StoreItemPrices.Mustache;
-          mustache[mustacheIndex].enabled = false;
+          mustache[mustacheIndex].SetActive(false);
+
           StorageHelper.WriteStorage(StorageHelper.Mustache + "_" + mustacheIndex, "1");
           SpineAttachmentUI.instance.changeMustache(mustacheIndex);
           SaveCoins(-StoreItemPrices.Mustache);
           StorageHelper.WriteStorage(StorageHelper.UsedMustache, $"{mustacheIndex}");
+          mustache[mustacheIndex].GetComponentInParent<Image>().sprite = purchaseBackgroundImage;
+        }
+        else {
+          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(AuthErrorCode.InsufficientFunds, AuthErrorCode.LetsPlayToPurchaseMore);
         }
       } else {
         SpineAttachmentUI.instance.changeMustache(mustacheIndex);
         StorageHelper.WriteStorage(StorageHelper.UsedMustache, $"{mustacheIndex}");
+
       }
     }
 
@@ -87,10 +101,11 @@ namespace KendaGame.UI {
       }
     }
 
-    private void RestorePurchasedItems(Image[] items, string itemType) {
+    private void RestorePurchasedItems(GameObject[] items, string itemType) {
       for (int i = 0; i < items.Length; i++) {
         if (StorageHelper.ReadStorage(itemType + "_" + i, "0") == "1") {
-          items[i].enabled = false;
+          items[i].SetActive(false);
+          items[i].GetComponentInParent<Image>().sprite = purchaseBackgroundImage;  
         }
       }
     }
