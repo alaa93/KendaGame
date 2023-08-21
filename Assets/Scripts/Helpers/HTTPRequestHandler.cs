@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using I2.Loc;
 using KendaGame.Navigation;
 using KendaGame.UI;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace KendaGame.Helpers {
     private static readonly string USER_REGISTER_MODULE = "/user-register";
     private static readonly string USER_LOGIN_MODULE = "/user-login";
     private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/user-update-profile-by-token";
+    private static readonly string UPDATE_PLAYER_CONFIG = "/user-update-appconfig-by-token";
 
 
     private static HTTPRequestHandler _instance;
@@ -44,6 +46,11 @@ namespace KendaGame.Helpers {
     }
     public void UpdateUserProfile(string gender, string phone, Texture2D profilePhoto, Action<bool, UserSession, string> statusCallback = null) {
       StartCoroutine(UpdateUserProfileRequest(gender, phone, profilePhoto,statusCallback));
+    }
+    
+    public void UpdatePlayerConfig(Action<bool, PlayerConfig, string> statusCallback = null)
+    {
+      StartCoroutine(UpdatePlayerConfigRequest(statusCallback));
     }
     
     private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage, Action<bool, RatingData> statusCallback) {
@@ -200,6 +207,71 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
       }
     }
+private IEnumerator UpdatePlayerConfigRequest(Action<bool, PlayerConfig, string> statusCallback)
+{
+	PlayerConfig playerConfigBeforeRequest = new PlayerConfig();
+	playerConfigBeforeRequest.app_version = "0.1";
+	playerConfigBeforeRequest.freeze_app = false;
+	playerConfigBeforeRequest.force_update = false;
+	playerConfigBeforeRequest.mute_music = (StorageHelper.ReadStorage(StorageHelper.ISMUSICMUTED)=="false"?false:true);
+	playerConfigBeforeRequest.mute_sfx = (StorageHelper.ReadStorage(StorageHelper.ISSFXMUTED) == "false" ? false : true);
+	playerConfigBeforeRequest.local_lang = LocalizationManager.CurrentLanguageCode;
+
+	WWWForm formrequest = new WWWForm();
+	formrequest.AddField("app_version", "0.1");
+	formrequest.AddField("freeze_app", "false");
+	formrequest.AddField("force_update", "false");
+	formrequest.AddField("mute_music", StorageHelper.ReadStorage(StorageHelper.ISMUSICMUTED));
+	formrequest.AddField("mute_sfx" , StorageHelper.ReadStorage(StorageHelper.ISSFXMUTED));
+	formrequest.AddField("local_lang", LocalizationManager.CurrentLanguageCode);
+
+	UnityWebRequest www = UnityWebRequest.Post(WEB_URL + UPDATE_PLAYER_CONFIG, formrequest);
+	www.SetRequestHeader("Authorization", REQUEST_HEADER);
+	StartCoroutine(UploadProgressBar(www));
+	yield return www.SendWebRequest();
+	if (loadingBar != null)
+	{
+		loadingBar.HideLoadingBar();
+	}
+	if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error))
+	{
+		Debug.Log("Response error " + www.downloadHandler.error);
+		statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+	}
+	else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text))
+	{
+		Debug.Log("Response success " + www.downloadHandler.text);
+		if (www.downloadHandler.text.Contains("<!DOCTYPE html>"))
+		{
+			statusCallback?.Invoke(true, null, AuthErrorCode.UnknownError);
+		}
+		else
+		{
+
+			PlayerConfigs playerConfigAfterRequest = JsonUtility.FromJson<PlayerConfigs>(www.downloadHandler.text);
+			if(playerConfigAfterRequest.appconfig == playerConfigBeforeRequest)
+			{
+				Debug.Log(playerConfigAfterRequest.appconfig.mute_music);
+				Debug.Log(playerConfigAfterRequest.appconfig.mute_sfx);
+				Debug.Log(playerConfigAfterRequest.appconfig.freeze_app);
+				Debug.Log(playerConfigAfterRequest.appconfig.force_update);
+				Debug.Log(playerConfigAfterRequest.appconfig.app_version);
+				Debug.Log(playerConfigAfterRequest.appconfig.local_lang);
+				statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "Success!");
+			}
+			else
+			{
+				statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "didn't send to server!");
+			}
+		}
+	}
+	else
+	{
+		Debug.Log("Unknown Response " + www.downloadHandler.text);
+		Debug.Log("Unknown Response error " + www.downloadHandler.error);
+		statusCallback?.Invoke(false, null, "null response/unknown response.");
+	}
+}
 
 
     public async Task<(bool, string)> MakeWebRequest(string url, WWWForm formRequest) {
