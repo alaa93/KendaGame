@@ -9,11 +9,8 @@ using static KendaGame.Models.TracingModels;
 using static KendaGame.Models.UserModels;
 
 namespace KendaGame.Helpers {
-
   public class HTTPRequestHandler : MonoBehaviour {
-
-
-
+    
     private static readonly string REQUEST_HEADER = "Token 8b38c163cdd104d13ca887f5c17fd4c3324c4a13";
     private static readonly string WEB_URL = "http://137.184.184.223:8000";
     private static readonly string TRACING_MODULE = "/ClientPredict/";
