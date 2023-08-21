@@ -19,6 +19,7 @@ namespace KendaGame.Helpers {
     private static readonly string USER_LOGIN_MODULE = "/user-login";
     private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/user-update-profile-by-token";
     private static readonly string UPDATE_PLAYER_CONFIG = "/user-update-appconfig-by-token";
+    private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
 
     private static HTTPRequestHandler _instance;
 
@@ -53,11 +54,16 @@ namespace KendaGame.Helpers {
       StartCoroutine(UpdateUserProfileRequest(gender, phone, profilePhoto, statusCallback));
     }
 
-    public void UpdatePlayerConfig(Action<bool, PlayerConfig, string> statusCallback = null)
-    {
+    public void UpdatePlayerConfig(Action<bool, PlayerConfig, string> statusCallback = null) {
       StartCoroutine(UpdatePlayerConfigRequest(statusCallback));
     }
-    
+
+    public void RegisterBySocialMedia(string firstname, string lastname, string registerBy,
+      Action<bool, UserSession, string> statusCallback = null) {
+      StartCoroutine(RegisterBySocialMediaRequest(firstname, lastname, registerBy, statusCallback));
+    }
+
+
     private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage,
       Action<bool, RatingData> statusCallback) {
       WWWForm formrequest = new WWWForm();
@@ -233,71 +239,112 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
       }
     }
-private IEnumerator UpdatePlayerConfigRequest(Action<bool, PlayerConfig, string> statusCallback)
-{
-	PlayerConfig playerConfigBeforeRequest = new PlayerConfig();
-	playerConfigBeforeRequest.app_version = "0.1";
-	playerConfigBeforeRequest.freeze_app = false;
-	playerConfigBeforeRequest.force_update = false;
-	playerConfigBeforeRequest.mute_music = (StorageHelper.ReadStorage(StorageHelper.ISMUSICMUTED)=="false"?false:true);
-	playerConfigBeforeRequest.mute_sfx = (StorageHelper.ReadStorage(StorageHelper.ISSFXMUTED) == "false" ? false : true);
-	playerConfigBeforeRequest.local_lang = LocalizationManager.CurrentLanguageCode;
 
-	WWWForm formrequest = new WWWForm();
-	formrequest.AddField("app_version", "0.1");
-	formrequest.AddField("freeze_app", "false");
-	formrequest.AddField("force_update", "false");
-	formrequest.AddField("mute_music", StorageHelper.ReadStorage(StorageHelper.ISMUSICMUTED));
-	formrequest.AddField("mute_sfx" , StorageHelper.ReadStorage(StorageHelper.ISSFXMUTED));
-	formrequest.AddField("local_lang", LocalizationManager.CurrentLanguageCode);
+    private IEnumerator UpdatePlayerConfigRequest(Action<bool, PlayerConfig, string> statusCallback) {
+      PlayerConfig playerConfigBeforeRequest = new PlayerConfig();
+      playerConfigBeforeRequest.app_version = "0.1";
+      playerConfigBeforeRequest.freeze_app = false;
+      playerConfigBeforeRequest.force_update = false;
+      playerConfigBeforeRequest.mute_music =
+        (StorageHelper.ReadStorage(StorageHelper.ISMUSICMUTED) == "false" ? false : true);
+      playerConfigBeforeRequest.mute_sfx =
+        (StorageHelper.ReadStorage(StorageHelper.ISSFXMUTED) == "false" ? false : true);
+      playerConfigBeforeRequest.local_lang = LocalizationManager.CurrentLanguageCode;
 
-	UnityWebRequest www = UnityWebRequest.Post(WEB_URL + UPDATE_PLAYER_CONFIG, formrequest);
-	www.SetRequestHeader("Authorization", REQUEST_HEADER);
-	StartCoroutine(UploadProgressBar(www));
-	yield return www.SendWebRequest();
-	if (loadingBar != null)
-	{
-		loadingBar.HideLoadingBar();
-	}
-	if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error))
-	{
-		Debug.Log("Response error " + www.downloadHandler.error);
-		statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-	}
-	else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text))
-	{
-		Debug.Log("Response success " + www.downloadHandler.text);
-		if (www.downloadHandler.text.Contains("<!DOCTYPE html>"))
-		{
-			statusCallback?.Invoke(true, null, AuthErrorCode.UnknownError);
-		}
-		else
-		{
+      WWWForm formrequest = new WWWForm();
+      formrequest.AddField("app_version", "0.1");
+      formrequest.AddField("freeze_app", "false");
+      formrequest.AddField("force_update", "false");
+      formrequest.AddField("mute_music", StorageHelper.ReadStorage(StorageHelper.ISMUSICMUTED));
+      formrequest.AddField("mute_sfx", StorageHelper.ReadStorage(StorageHelper.ISSFXMUTED));
+      formrequest.AddField("local_lang", LocalizationManager.CurrentLanguageCode);
 
-			PlayerConfigs playerConfigAfterRequest = JsonUtility.FromJson<PlayerConfigs>(www.downloadHandler.text);
-			if(playerConfigAfterRequest.appconfig == playerConfigBeforeRequest)
-			{
-				Debug.Log(playerConfigAfterRequest.appconfig.mute_music);
-				Debug.Log(playerConfigAfterRequest.appconfig.mute_sfx);
-				Debug.Log(playerConfigAfterRequest.appconfig.freeze_app);
-				Debug.Log(playerConfigAfterRequest.appconfig.force_update);
-				Debug.Log(playerConfigAfterRequest.appconfig.app_version);
-				Debug.Log(playerConfigAfterRequest.appconfig.local_lang);
-				statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "Success!");
-			}
-			else
-			{
-				statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "didn't send to server!");
-			}
-		}
-	}
-	else
-	{
-		Debug.Log("Unknown Response " + www.downloadHandler.text);
-		Debug.Log("Unknown Response error " + www.downloadHandler.error);
-		statusCallback?.Invoke(false, null, "null response/unknown response.");
-	}
-}
+      UnityWebRequest www = UnityWebRequest.Post(WEB_URL + UPDATE_PLAYER_CONFIG, formrequest);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      StartCoroutine(UploadProgressBar(www));
+      yield return www.SendWebRequest();
+      if (loadingBar != null) {
+        loadingBar.HideLoadingBar();
+      }
+
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+      }
+      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(true, null, AuthErrorCode.UnknownError);
+        }
+        else {
+
+          PlayerConfigs playerConfigAfterRequest = JsonUtility.FromJson<PlayerConfigs>(www.downloadHandler.text);
+          if (playerConfigAfterRequest.appconfig == playerConfigBeforeRequest) {
+            Debug.Log(playerConfigAfterRequest.appconfig.mute_music);
+            Debug.Log(playerConfigAfterRequest.appconfig.mute_sfx);
+            Debug.Log(playerConfigAfterRequest.appconfig.freeze_app);
+            Debug.Log(playerConfigAfterRequest.appconfig.force_update);
+            Debug.Log(playerConfigAfterRequest.appconfig.app_version);
+            Debug.Log(playerConfigAfterRequest.appconfig.local_lang);
+            statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "Success!");
+          }
+          else {
+            statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "didn't send to server!");
+          }
+        }
+      }
+      else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null, "null response/unknown response.");
+      }
+    }
+
+    private IEnumerator RegisterBySocialMediaRequest(string firstname, string lastname, string registerBy,
+      Action<bool, UserSession, string> statusCallback = null) {
+      WWWForm formrequest = new();
+
+      formrequest.AddField("first_name", firstname);
+      formrequest.AddField("last_name", lastname);
+      formrequest.AddField("RegisterBy", registerBy);
+      formrequest.AddField("token_SocialMedia", SocialMediaTokenGenerator(30));
+
+      UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_REGISTER_BY_SOCIALMEDIA, formrequest);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      StartCoroutine(UploadProgressBar(www));
+      yield return www.SendWebRequest();
+      if (loadingBar != null) {
+        loadingBar.HideLoadingBar();
+      }
+
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        string error = AuthErrorCode.UnknownError;
+        if (www.downloadHandler.error.Contains("username already exists") ||
+            www.downloadHandler.error.Contains("This field must be unique")) {
+          error = "account already exists for this platform.";
+        }
+
+        statusCallback?.Invoke(false, null, error);
+      }
+      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+        }
+        else {
+          UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
+          statusCallback?.Invoke(true, user, AuthErrorCode.SignUp_Success);
+          StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
+        }
+      }
+      else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+      }
+
+    }
 
     public async Task<(bool, string)> MakeWebRequest(string url, WWWForm formRequest) {
       Debug.Log("url " + url);
@@ -343,6 +390,15 @@ private IEnumerator UpdatePlayerConfigRequest(Action<bool, PlayerConfig, string>
       if (loadingBar != null) {
         loadingBar.HideLoadingBar();
       }
+    }
+
+    private string SocialMediaTokenGenerator(int len) {
+      string token = "";
+      string domain = "abcdefghijklmnopqrstuvwxyz0123456789";
+      for (int i = 0; i < len; i++) {
+        token += domain[UnityEngine.Random.Range(0, domain.Length)];
+      }
+      return token;
     }
   }
 }
