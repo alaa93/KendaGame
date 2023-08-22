@@ -58,9 +58,9 @@ namespace KendaGame.Helpers {
       StartCoroutine(UpdatePlayerConfigRequest(statusCallback));
     }
 
-    public void RegisterBySocialMedia(string firstname, string lastname, string registerBy,
+    public void RegisterBySocialMedia(string firstname, string lastname, string registerBy, string token_SocialMedia,
       Action<bool, UserSession, string> statusCallback = null) {
-      StartCoroutine(RegisterBySocialMediaRequest(firstname, lastname, registerBy, statusCallback));
+      StartCoroutine(RegisterBySocialMediaRequest(firstname, lastname, registerBy, token_SocialMedia, statusCallback));
     }
 
 
@@ -300,14 +300,14 @@ namespace KendaGame.Helpers {
       }
     }
 
-    private IEnumerator RegisterBySocialMediaRequest(string firstname, string lastname, string registerBy,
+    private IEnumerator RegisterBySocialMediaRequest(string firstname, string lastname, string registerBy,string token_SocialMedia,
       Action<bool, UserSession, string> statusCallback = null) {
       WWWForm formrequest = new();
 
       formrequest.AddField("first_name", firstname);
       formrequest.AddField("last_name", lastname);
       formrequest.AddField("RegisterBy", registerBy);
-      formrequest.AddField("token_SocialMedia", SocialMediaTokenGenerator(30));
+      formrequest.AddField("token_SocialMedia", token_SocialMedia);
 
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_REGISTER_BY_SOCIALMEDIA, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
