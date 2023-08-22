@@ -11,24 +11,26 @@ namespace KendaGame.UI
 
 		[SerializeField]
 		private AudioSource backGroundMusic;
-		private string videoName;
 		[SerializeField]
 		ScrollRect map;
 		[SerializeField]
 		NarrationSounds narrationSounds;
 
+		private VideoPlayer videoPlayer;
+
+		public static StreamingVideoPlayer instance;
+		private void Awake()
+		{
+			videoPlayer = GameObject.Find("Main Camera").GetComponent<VideoPlayer>();
+			videoPlayer.loopPointReached += (videoplayer)=>{ EndReached(videoPlayer); };
+		}
 		void Start()
 		{
 			int lastLetterCompletted = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted, "0"));
-			if (lastLetterCompletted == 0 && StorageHelper.ReadStorage(StorageHelper.CanWatchIntro, "true") == "true")
+			if ((lastLetterCompletted == 0 && StorageHelper.ReadStorage(StorageHelper.CanWatchIntro, "true") == "true") 
+				|| (lastLetterCompletted == 8 && StorageHelper.ReadStorage(StorageHelper.CanWatchOutro, "true") == "true"))
 			{
-				videoName = IslandVideos.FirstLandIntro;
-				StartVideo(videoName);
-			}
-			else if (lastLetterCompletted == 8 && StorageHelper.ReadStorage(StorageHelper.CanWatchOutro, "true") == "true")
-			{
-				videoName = IslandVideos.FirstLandOutro;
-				StartVideo(videoName);
+				StartVideo();
 			}
 			else
 			{
@@ -36,23 +38,16 @@ namespace KendaGame.UI
 			}
 		}
 
-		void StartVideo(string videoName)
+		void StartVideo()
 		{
 			backGroundMusic.Pause();
 			map.enabled = false;
-			GameObject camera = GameObject.Find("Main Camera");
-			var videoPlayer = camera.AddComponent<VideoPlayer>();
-			videoPlayer.playOnAwake = false;
-			videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
-			videoPlayer.url = videoName;
-			videoPlayer.isLooping = true;
-			videoPlayer.loopPointReached += EndReached;
 			videoPlayer.Play();
 		}
 
-		void EndReached(VideoPlayer vp)
+		public void EndReached(VideoPlayer vp)
 		{
-			if (videoName == IslandVideos.FirstLandIntro)
+			if (HomeScreenController.Instance.videoName == IslandVideos.FirstLandIntro)
 			{
 				StorageHelper.WriteStorage(StorageHelper.CanWatchIntro, "false");
 			}
