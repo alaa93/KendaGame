@@ -409,7 +409,15 @@ MonoBehaviour:
       - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
       Flags: 0000
       Languages_Touch: []
-    - Term: LetsPlayToPurchaseMore
+    - Term: insufficient_funds
+      TermType: 0
+      Description: 
+      Languages:
+      - insufficient funds
+      - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lets_play_to_purchase_more
       TermType: 0
       Description: 
       Languages:
