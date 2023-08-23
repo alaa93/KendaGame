@@ -76,5 +76,13 @@ namespace KendaGame.Helpers {
       }
       return otherLetters.ToArray();
     }
+
+    public static int GetIslandId(int activeLetter) {
+      if (activeLetter < 8) {
+        return 0;
+      } else {
+        return 1;
+      }
+    }
   }
 }

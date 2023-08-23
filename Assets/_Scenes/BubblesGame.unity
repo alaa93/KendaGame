@@ -167,6 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47210231b90f9ba47babf1b9c4509083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjects:
+  islandPrefabs:
   - {fileID: 7443130678245500622, guid: bedf35727196bff4ab064c2411f93a5e, type: 3}
   - {fileID: 3331127408854984680, guid: 404d53b1efa9df5479635cfe220833f0, type: 3}
