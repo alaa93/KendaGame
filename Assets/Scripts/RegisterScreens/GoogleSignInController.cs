@@ -6,6 +6,8 @@ using Firebase;
 using System;
 using Firebase.Auth;
 using KendaGame.Navigation;
+using static KendaGame.Models.UserModels;
+using KendaGame.Helpers;
 
 public class GoogleSignInController : MonoBehaviour {
 
@@ -84,8 +86,12 @@ public class GoogleSignInController : MonoBehaviour {
       // Get the Google sign-in result
       GoogleSignInUser signInUser = task.Result;
       string idToken = signInUser.IdToken;
-      // Authenticate with Firebase using the Google ID token
-      Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
+            string userJson = StorageHelper.ReadStorage(StorageHelper.UserSession);
+			UserSession user = JsonUtility.FromJson<UserSession>(userJson);
+            user.token_SocialMedia = idToken;
+            StorageHelper.WriteStorage(StorageHelper.UserSession, user.ToString());
+			// Authenticate with Firebase using the Google ID token
+			Credential credential = GoogleAuthProvider.GetCredential(idToken, null);
       auth.SignInWithCredentialAsync(credential).ContinueWith(HandleSignInResult);
     }
   }
@@ -105,6 +111,8 @@ public class GoogleSignInController : MonoBehaviour {
 
     // Firebase sign-in successful
     FirebaseUser user = task.Result;
+        UserSession userObj = JsonUtility.FromJson<UserSession>(StorageHelper.ReadStorage(StorageHelper.UserSession));
+        HTTPRequestHandler.Instance.RegisterBySocialMedia(user.DisplayName, "", "gmail", userObj.token_SocialMedia);
     Debug.Log("Signed in as " + user.DisplayName + " (" + user.UserId + ")" + " email: " + user.Email + " PhotoUrl " + user.PhotoUrl + " provider " + user.ProviderId);
     SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
   }
