@@ -17,11 +17,14 @@ namespace KendaGame.UI
 		UIButtonAnimator nextBtn, restartBtn;
 		[SerializeField]
 		NarrationSounds narrationSounds;
+
+		bool canPlayNarration;
 		public static float FullStarsRating = 0.8f;
 		public static float OneStarRating = 0.5f;
 
 		private void Awake()
 		{
+			canPlayNarration = true;
 			nextBtn.AddClickListener(animate: true, callBackFn: () =>
 			{
 				SceneManager.Instance.OnNextScreenBtnClicked();
@@ -61,7 +64,11 @@ namespace KendaGame.UI
 					break;
 			}
 			starsAnimation.gameObject.SetActive(true);
-			StartCoroutine(RatingNarration(rating));
+			if (canPlayNarration)
+			{
+				canPlayNarration = false;
+				StartCoroutine(RatingNarration(rating));
+			}
 		}
 		private IEnumerator RatingNarration(int rating)
 		{
@@ -87,11 +94,14 @@ namespace KendaGame.UI
 			if (rating < 2)
 			{
 				AudioController.Instance.PlayNarrationAtPoint(narrationSounds.GetRetryLevelClip());
+				yield return new WaitForSeconds(narrationSounds.GetRetryLevelClip().length);
 			}
 			else
 			{
 				AudioController.Instance.PlayNarrationAtPoint(narrationSounds.GetNextLevelClip());
+				yield return new WaitForSeconds(narrationSounds.GetNextLevelClip().length);
 			}
+			canPlayNarration = true;
 		}
 		[System.Serializable]
 		public class NarrationSounds
