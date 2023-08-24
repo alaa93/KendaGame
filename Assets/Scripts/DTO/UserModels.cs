@@ -33,6 +33,7 @@ namespace KendaGame.Models
 			public User user;
 			public Profile profile;
 			public string token;
+			public string token_SocialMedia;
 		}
 
 		[System.Serializable]
