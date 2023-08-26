@@ -55,11 +55,7 @@ namespace KendaGame.UI {
     }
 
     public void ChangeLanguage(int langIndex){
-      Debug.Log(langIndex);
       string languageCode = (langIndex == 0 ? "ar" : "en");
-      Debug.Log(languageCode);
-      Debug.Log(LocalizationManager.CurrentLanguageCode);
-
       if (LocalizationManager.CurrentLanguageCode != languageCode) {
         LocalizationManager.CurrentLanguageCode = languageCode;
         LocalizationManager.UpdateSources();
