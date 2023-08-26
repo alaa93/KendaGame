@@ -19,6 +19,7 @@ namespace KendaGame.Helpers {
     private static readonly string USER_LOGIN_MODULE = "/user-login";
     private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/user-update-profile-by-token";
     private static readonly string UPDATE_PLAYER_CONFIG = "/user-update-appconfig-by-token";
+    private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "user-get-details-by-token-socialmedia";
     private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
 
@@ -57,6 +58,11 @@ namespace KendaGame.Helpers {
 
     public void UpdatePlayerConfig(Action<bool, PlayerConfig, string> statusCallback = null) {
       StartCoroutine(UpdatePlayerConfigRequest(statusCallback));
+    }
+
+    public void UserUpdateLetterProgress(LetterProgress progress,
+      Action<bool, UserSession, string> statusCallback = null) {
+      StartCoroutine(UserUpdateLetterProgressRequest(progress, statusCallback));
     }
 
     public void RegisterBySocialMedia(string firstname, string lastname, string registerBy, string token_SocialMedia,
@@ -351,6 +357,62 @@ namespace KendaGame.Helpers {
 
     }
 
+
+    private IEnumerator UserUpdateLetterProgressRequest(LetterProgress progress,
+      Action<bool, UserSession, string> statusCallback = null) {
+
+      WWWForm formrequest = new WWWForm();
+
+      formrequest.AddField("letter_id", progress.letter_id);
+      formrequest.AddField("letter_rating", progress.letter_rating);
+      formrequest.AddField("game_1_completed", progress.game_1_completed.ToString());
+      formrequest.AddField("game_2_completed", progress.game_2_completed.ToString());
+      formrequest.AddField("game_3_completed", progress.game_3_completed.ToString());
+      formrequest.AddField("coloring_completed", progress.coloring_completed.ToString());
+      formrequest.AddField("tracing_basic_completed", progress.tracing_basic_completed.ToString());
+      formrequest.AddField("tracing_advanced_completed", progress.tracing_advanced_completed.ToString());
+
+      UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA, formrequest);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      StartCoroutine(UploadProgressBar(www));
+
+      yield return www.SendWebRequest();
+      if (loadingBar != null) {
+        loadingBar.HideLoadingBar();
+      }
+
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        string error = AuthErrorCode.UnknownError;
+        if (www.downloadHandler.error.Contains("invalid user")) {
+          error = AuthErrorCode.Email_Password_404;
+        }
+
+        statusCallback?.Invoke(false, null, error);
+      }
+      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+        }
+        else {
+          if (www.downloadHandler.text.Contains("invalid user")) {
+            statusCallback?.Invoke(false, null, AuthErrorCode.Email_Password_404);
+          }
+          else {
+            UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
+            statusCallback?.Invoke(true, user, AuthErrorCode.Login_Success);
+            StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
+          }
+        }
+      }
+      else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+      }
+    }
+
     public async Task<(bool, string)> MakeWebRequest(string url, WWWForm formRequest) {
       Debug.Log("url " + url);
       UnityWebRequest request = UnityWebRequest.Post(url, formRequest);
@@ -437,6 +499,7 @@ namespace KendaGame.Helpers {
       for (int i = 0; i < len; i++) {
         token += domain[UnityEngine.Random.Range(0, domain.Length)];
       }
+
       return token;
     }
   }

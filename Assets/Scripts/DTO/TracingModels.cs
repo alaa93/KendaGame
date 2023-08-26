@@ -14,12 +14,12 @@ namespace KendaGame.Models {
     public class LetterProgress {
       public string letter_id;
       public int letter_rating;
-      public bool game_1_completed;
-      public bool game_2_completed;
-      public bool game_3_completed;
-      public bool coloring_completed;
-      public bool tracing_basic_completed;
-      public bool tracing_advanced_completed;
+      public int game_1_completed;
+      public int game_2_completed;
+      public int game_3_completed;
+      public int coloring_completed;
+      public int tracing_basic_completed;
+      public int tracing_advanced_completed;
     }
   }
 }
