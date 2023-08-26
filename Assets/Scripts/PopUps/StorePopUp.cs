@@ -14,7 +14,12 @@ namespace KendaGame.UI {
     private int coins;
 
     private void OnEnable() {
+      SceneManager.Instance.SetCoinsObjectState(true);
       coins = int.Parse(StorageHelper.ReadStorage(StorageHelper.CoinsAmount, "0"));
+    }
+
+    private void OnDisable() {
+      SceneManager.Instance.SetCoinsObjectState(false);
     }
 
     private void Start() {
