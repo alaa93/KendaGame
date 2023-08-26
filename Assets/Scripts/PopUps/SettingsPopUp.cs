@@ -57,9 +57,9 @@ namespace KendaGame.UI {
     public void ShowPopUp() {
       if (!gameObject.activeInHierarchy) {
         gameObject.SetActive(true);
-        transform.DOScale(1, 0.5f).SetEase(Ease.Flash);
+        transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
       } else {
-        transform.DOScale(0, 0.5f).SetEase(Ease.Flash).OnComplete(() => {
+        transform.DOScale(0, 0.5f).SetEase(Ease.InBack).OnComplete(() => {
 
           gameObject.SetActive(false);
         });
