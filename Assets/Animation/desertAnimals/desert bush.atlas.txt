@@ -1,0 +1,8 @@
+desert bush.png
+size:512,512
+filter:Linear,Linear
+pma:true
+scale:0.8
+New folder/dessert-bubblesGame-letterContainer
+bounds:2,52,410,360
+offsets:0,11,410,371
