@@ -54,6 +54,18 @@ namespace KendaGame.UI {
     private void OnLogoutButtonPressed() {
     }
 
+    public void ChangeLanguage(int langIndex){
+      Debug.Log(langIndex);
+      string languageCode = (langIndex == 0 ? "ar" : "en");
+      Debug.Log(languageCode);
+      Debug.Log(LocalizationManager.CurrentLanguageCode);
+
+      if (LocalizationManager.CurrentLanguageCode != languageCode) {
+        LocalizationManager.CurrentLanguageCode = languageCode;
+        LocalizationManager.UpdateSources();
+      }
+    }
+
     public void ShowPopUp() {
       if (!gameObject.activeInHierarchy) {
         gameObject.SetActive(true);
