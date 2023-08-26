@@ -22,6 +22,12 @@ namespace KendaGame.EditorScripts {
       window.minSize = new Vector2(200f, 100f);
     }
 
+    [MenuItem("KendaGame/Debug/Buy 10000 Coins")]
+    public static void BuyCoins_10000() {
+      StorageHelper.WriteStorage(StorageHelper.CoinsAmount, "110");
+      Debug.Log("10,000 Coins Added");
+    }
+
     [MenuItem("Window/Set Game View Resolution")]
     public static void ShowWindow() {
       EditorWindow.GetWindow<KendaEditorScript>("Set Game View Resolution");

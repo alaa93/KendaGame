@@ -27,6 +27,7 @@ namespace KendaGame.Navigation {
       coinsObject.SetActive(false);
       int.TryParse(StorageHelper.ReadStorage(StorageHelper.CoinsAmount), out int coins);
       coinsAmount = coins;
+      Debug.Log("stored coins " + coinsAmount);
       coinsText.text = $"{coinsAmount}";
     }
 
