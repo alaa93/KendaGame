@@ -119,12 +119,22 @@ namespace KendaGame.Games {
     private IEnumerator OnGameCompleted(float delay) {
       yield return new WaitForSeconds(delay);
       if (PopUpsManager.Instance != null) {
+        StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_Game2_" + LettersHelper.GetActiveLetterIndex(), CalculateGameRating(wrongAnswersNumber).ToString());
+
         PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp(wrongAnswersNumber);
       }
     }
 
     public bool IsGameCompleted() {
       return gameCompleted;
+    }
+
+    public int CalculateGameRating(int errorCount) {
+      if (errorCount > 4) {
+        return 2;
+      } else {
+        return 3;
+      }
     }
   }
 }

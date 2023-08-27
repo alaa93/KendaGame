@@ -1,0 +1,10 @@
+birds.png
+size:256,256
+filter:Linear,Linear
+pma:true
+scale:0.8
+1x/bird 1
+bounds:2,47,119,118
+1x/bird 2
+bounds:83,2,152,58
+rotate:270

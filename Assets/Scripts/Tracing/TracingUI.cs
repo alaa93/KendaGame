@@ -274,7 +274,9 @@ namespace KendaGame.UI {
       int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
       currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
       currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
-      StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
+      StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_Advance_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
+      ProgressHelper.FetchProgress();
+      
     }
 
     private void ShowLetterComparison(string processedImg) {
@@ -312,18 +314,20 @@ namespace KendaGame.UI {
     }
 
     private void ShowNormalRating(bool success, RatingData ratingData) {
+      int currentRating = 0;
       LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.GetLetterRatingPopUp();
       if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
         if (ratingData != null) {
           letterRatingPopUp.PlayStarsAnimation(ratingData.StarRating);
-          int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
-          currentRating += Math.Clamp(ratingData.StarRating, 0, 1);
-          currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
-          StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
+          int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int storedRating);
+            currentRating = storedRating + Math.Clamp(ratingData.StarRating, 0, 1);
+            currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
         }
       } else {
         letterRatingPopUp.PlayStarsAnimation(1);
+        currentRating++;//to avoid sending the number 0
       }
+      StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_Basic_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
     }
 
     public void OnNextBtnClicked() {

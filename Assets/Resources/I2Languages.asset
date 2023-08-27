@@ -39,7 +39,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - DANA-FAT SDF
-      - DroidKufi-Bold
+      - DANA-FAT SDF
       Flags: 0000
       Languages_Touch: []
     - Term: Signup
@@ -401,6 +401,63 @@ MonoBehaviour:
       - "\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A"
       Flags: 0000
       Languages_Touch: []
+    - Term: InsufficientFunds
+      TermType: 0
+      Description: 
+      Languages:
+      - Insufficient funds
+      - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: insufficient_funds
+      TermType: 0
+      Description: 
+      Languages:
+      - insufficient funds
+      - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lets_play_to_purchase_more
+      TermType: 0
+      Description: 
+      Languages:
+      - Let's play to be able to purchase more
+      - "\u0647\u064A\u0627 \u0644\u0646\u0644\u0639\u0628 \u0644\u0646\u062A\u0645\u0643\u0646
+        \u0645\u0646 \u0634\u0631\u0627\u0621 \u0627\u0644\u0645\u0632\u064A\u062F"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lang_en
+      TermType: 0
+      Description: 
+      Languages:
+      - English
+      - "\u0625\u0646\u062C\u0644\u064A\u0632\u064A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lang_ar
+      TermType: 0
+      Description: 
+      Languages:
+      - Arabic
+      - "\u0627\u0644\u0639\u0631\u0628\u064A\u0629"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: settings.sounds_label
+      TermType: 0
+      Description: 
+      Languages:
+      - Sounds
+      - "\u0627\u0644\u0623\u0635\u0648\u0627\u062A"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: settings.music_label
+      TermType: 0
+      Description: 
+      Languages:
+      - Music
+      - "\u0627\u0644\u0645\u0648\u0633\u064A\u0642\u0649"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name
@@ -416,7 +473,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbzoSTi2vA0nI7pRgaxefwvDuKxL--hIb3s5vpHNti1ygofoEoLy8S2EZWUxlOXOT95B2w/exec
     Google_SpreadsheetKey: 1M4yfRXvWjbfKooNAq--nWtBaxLHg-Gp1C8Prsc-A2wM
     Google_SpreadsheetName: I2Loc KendaGame Localization
-    Google_LastUpdatedVersion: 1686695090861
+    Google_LastUpdatedVersion: 1689626908964
     Google_Password: bn98FXoh
     GoogleUpdateFrequency: 2
     GoogleInEditorCheckFrequency: 2

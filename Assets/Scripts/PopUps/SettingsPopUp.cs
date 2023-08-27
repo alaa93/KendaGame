@@ -54,12 +54,20 @@ namespace KendaGame.UI {
     private void OnLogoutButtonPressed() {
     }
 
+    public void ChangeLanguage(int langIndex){
+      string languageCode = (langIndex == 0 ? "ar" : "en");
+      if (LocalizationManager.CurrentLanguageCode != languageCode) {
+        LocalizationManager.CurrentLanguageCode = languageCode;
+        LocalizationManager.UpdateSources();
+      }
+    }
+
     public void ShowPopUp() {
       if (!gameObject.activeInHierarchy) {
         gameObject.SetActive(true);
-        transform.DOScale(1, 0.5f).SetEase(Ease.Flash);
+        transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
       } else {
-        transform.DOScale(0, 0.5f).SetEase(Ease.Flash).OnComplete(() => {
+        transform.DOScale(0, 0.5f).SetEase(Ease.InBack).OnComplete(() => {
 
           gameObject.SetActive(false);
         });
