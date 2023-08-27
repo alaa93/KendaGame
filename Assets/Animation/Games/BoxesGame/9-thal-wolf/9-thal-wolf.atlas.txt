@@ -1,0 +1,27 @@
+9-thal-wolf.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.7
+9-arm
+bounds:515,164,66,112
+9-body
+bounds:215,167,109,181
+9-face
+bounds:2,162,214,186
+9-hand
+bounds:578,186,46,53
+9-leg
+bounds:488,217,72,123
+9-mouth
+bounds:2,342,17,6
+9-tail
+bounds:326,177,170,168
+b-browser
+bounds:197,328,25,20
+eye close
+bounds:360,195,113,25
+eyes
+bounds:321,305,41,43
+z2b
+bounds:2,350,867,519
