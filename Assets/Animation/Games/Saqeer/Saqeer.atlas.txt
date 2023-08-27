@@ -1,0 +1,21 @@
+Saqeer.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.8
+Sager res@2x
+bounds:2,889,120,133
+Saqer@2x
+bounds:2,460,900,562
+SaqerHit@2x
+bounds:85,355,937,464
+rotate:180
+eye@2x
+bounds:124,983,40,39
+eyebrow@2x
+bounds:2,869,43,18
+sagerLeg@2x
+bounds:2,108,289,254
+wingSaqer1@2x
+bounds:356,84,453,666
+rotate:90
