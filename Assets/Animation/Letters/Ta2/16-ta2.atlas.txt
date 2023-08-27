@@ -1,0 +1,28 @@
+16-ta2.png
+size:256,256
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/New folder/17-6a2Base
+bounds:2,67,187,187
+2x/New folder/17-6a2Face
+bounds:156,32,63,66
+2x/New folder/17-6a2Hair
+bounds:83,113,63,38
+rotate:180
+2x/New folder/17-6a2Mouth
+bounds:169,240,11,14
+2x/New folder/17-6a2Nick
+bounds:186,218,36,63
+rotate:90
+2x/New folder/17-6a2Wing
+bounds:141,100,113,94
+rotate:180
+Alf-eyeBrow
+bounds:206,197,48,21
+Alf-pupple
+bounds:80,31,74,74
+eye close
+bounds:2,94,123,26
+offsets:1,0,125,27
+rotate:90

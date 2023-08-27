@@ -1,0 +1,17 @@
+9-DHAL.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/9-base
+bounds:2,81,391,479
+2x/9-tail
+bounds:2,2,243,239
+rotate:270
+Alf-eyeBrow
+bounds:2,539,48,21
+Alf-pupple
+bounds:2,261,74,74
+eye close
+bounds:74,337,123,26
+offsets:1,0,125,27

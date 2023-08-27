@@ -1,0 +1,21 @@
+14-sad.png
+size:512,512
+filter:Linear,Linear
+pma:true
+scale:0.5
+14-sad-mouth
+bounds:78,210,46,29
+2x/15-base@2x
+bounds:2,239,477,271
+2x/sosWing@2x
+bounds:2,444,59,66
+Alf-eyeBrow
+bounds:78,187,48,21
+Alf-leg1
+bounds:77,2,254,404
+rotate:270
+Alf-pupple
+bounds:2,163,74,74
+eye close
+bounds:237,484,123,26
+offsets:1,0,125,27

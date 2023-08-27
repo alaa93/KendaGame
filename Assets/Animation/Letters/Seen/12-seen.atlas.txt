@@ -1,0 +1,25 @@
+12-seen.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/12-base
+bounds:2,769,504,253
+2x/12-ears
+bounds:779,764,78,95
+2x/12-hair
+bounds:702,762,72,52
+2x/12-mouth
+bounds:2,984,75,38
+Alf-ba22Arm
+bounds:499,772,374,239
+Alf-eyeBrow
+bounds:2,961,48,21
+Alf-leg1
+bounds:618,756,254,404
+rotate:90
+Alf-pupple
+bounds:183,796,74,74
+eye close
+bounds:129,757,123,26
+offsets:1,0,125,27

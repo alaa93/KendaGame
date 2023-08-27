@@ -1,0 +1,18 @@
+11-ZED.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/11-base
+bounds:2,2,357,546
+2x/11-face
+bounds:2,160,176,278
+2x/11-tail
+bounds:154,58,85,312
+Alf-eyeBrow
+bounds:180,374,48,21
+Alf-pupple
+bounds:2,84,74,74
+eye close
+bounds:2,56,123,26
+offsets:1,0,125,27
