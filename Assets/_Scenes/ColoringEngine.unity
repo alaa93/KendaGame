@@ -3081,6 +3081,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3de2283971b59bb49bac7f520d5059a2, type: 2}
   - {fileID: 11400000, guid: 793d1c64fc2f9224a89563f80d34bea8, type: 2}
   - {fileID: 11400000, guid: d4b480cd91bd1eb41bdb56f4871da32c, type: 2}
+  - {fileID: 11400000, guid: ccde5e5662958134bb308bec82fc7965, type: 2}
   startAudio: {fileID: 8300000, guid: f7f02354d1be59e40ace1fb15520868a, type: 3}
   characterVoice:
   - {fileID: 8300000, guid: caa893d6f7f5afa43a8399065c136bd8, type: 3}
@@ -3100,6 +3101,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c64c86f589fbf0340b97a63538cba15d, type: 3}
   - {fileID: 8300000, guid: 16ab0e84d433c6649a69994f3337c470, type: 3}
   - {fileID: 8300000, guid: eb556755a41dfea4484b6ccff2552a0d, type: 3}
+  - {fileID: 8300000, guid: 698aea42f6f257a439fe23939cb540a2, type: 3}
   characterName:
   - {fileID: 8300000, guid: c75604b3e5ad3b64bab27feafe82012e, type: 3}
   - {fileID: 8300000, guid: 7a0863ec676acc54e8343e674b06a0ee, type: 3}
@@ -3118,6 +3120,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3a0fbe0926abc1843b3e37961b2f3468, type: 3}
   - {fileID: 8300000, guid: 7fc8dbd0e5b97494fbccc0754063d264, type: 3}
   - {fileID: 8300000, guid: 78939a2f3d9b15649a1921d218941cdf, type: 3}
+  - {fileID: 8300000, guid: 83e8fbad96f01b142b14ca12edb8822f, type: 3}
   animalName:
   - {fileID: 8300000, guid: 7cd9d0ff7caed5443b09e3ff296c5c89, type: 3}
   - {fileID: 8300000, guid: eecb8eca9d22b0449b44b059342e25a3, type: 3}
@@ -3136,6 +3139,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e0e7f76928ccb3742b97197a5be32ea1, type: 3}
   - {fileID: 8300000, guid: fabc0d49da97a4a499c6a7c65df43780, type: 3}
   - {fileID: 8300000, guid: d50deacdfedb9b147af92bcd9a2b7f10, type: 3}
+  - {fileID: 8300000, guid: 8362cb983c9057f40889f4066d650555, type: 3}
 --- !u!1 &1100903759
 GameObject:
   m_ObjectHideFlags: 0
