@@ -26,16 +26,18 @@ namespace KendaGame.UI {
 
     private ColoringPen[] penBtns;
     public RawImage screenshotRef;
-
+    
+    [Header("LettetSkeleton")]
     [SerializeField] private SkeletonGraphic letterSkeleton;
     [SerializeField]
     private SkeletonDataAsset[] letterSkeletonDataAssets;
+    public List<Vector3> letterSkeletonScales = new List<Vector3>();
+    public List<Vector3> letterSkeletonPositions = new List<Vector3>();
 
     [SerializeField] AudioClip startAudio;
     [SerializeField] AudioClip[] characterVoice;
     [SerializeField] AudioClip[] characterName;
     [SerializeField] AudioClip[] animalName;
-
 
     private static ColoringUI _instance;
     public static ColoringUI Instance {
@@ -54,7 +56,6 @@ namespace KendaGame.UI {
       PrepareBoard();
       StartColoring();
       IntiLettetSkeleton();
-
       int ActiveLetterIndex = LettersHelper.GetActiveLetterIndex();
       AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { startAudio, characterVoice[ActiveLetterIndex],
       characterName[ActiveLetterIndex], animalName[ActiveLetterIndex] });
@@ -141,6 +142,8 @@ namespace KendaGame.UI {
         letterSkeleton.skeletonDataAsset = letterSkeletonDataAssets[LettersHelper.GetActiveLetterIndex()];
         letterSkeleton.Initialize(true);
         letterSkeleton.AnimationState.SetAnimation(0, "Dancing2", true);
+        letterSkeleton.transform.localPosition = letterSkeletonPositions[LettersHelper.GetActiveLetterIndex()];
+        letterSkeleton.transform.localScale = letterSkeletonScales[LettersHelper.GetActiveLetterIndex()];
 
       }
     }
