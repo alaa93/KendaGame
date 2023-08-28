@@ -2622,6 +2622,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 03f39b7d8f3e3c6419813d9c70e4d3ad, type: 2}
   - {fileID: 11400000, guid: e55c3b93a45613b488b2d78a0c13e426, type: 2}
   - {fileID: 11400000, guid: 772d43d3fc9129c45bc40bda49d14ede, type: 2}
+  - {fileID: 11400000, guid: 4619ad837028069459e7f0aeb1d542d8, type: 2}
   letterSkeletonScales:
   - {x: 0.5, y: 0.5, z: 0.5}
   - {x: 1, y: 1, z: 1}
@@ -2633,6 +2634,7 @@ MonoBehaviour:
   - {x: 1, y: 1, z: 1}
   - {x: 0.1, y: 0.1, z: 1}
   - {x: 0.1, y: 0.1, z: 1}
+  - {x: 0.07, y: 0.07, z: 1}
   - {x: 0.07, y: 0.07, z: 1}
   - {x: 0.07, y: 0.07, z: 1}
   - {x: 0.07, y: 0.07, z: 1}
@@ -2658,6 +2660,7 @@ MonoBehaviour:
   - {x: 593, y: -350, z: 0}
   - {x: 575, y: -400, z: 0}
   - {x: 575, y: -400, z: 0}
+  - {x: 600, y: -400, z: 0}
   ratingPopUp: {fileID: 0}
   tracingBoard: []
   letterGuide: {fileID: 0}
