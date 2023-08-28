@@ -37,7 +37,7 @@ namespace KendaGame.Games {
     }
 
     private void SetScreenPosition() {
-      this.transform.parent.position = new Vector3(CameraUtils.GetLeftScreenEdge().x + positionOffet, this.transform.parent.position.y, 0f);
+      //this.transform.parent.position = new Vector3(CameraUtils.GetLeftScreenEdge().x + positionOffet, this.transform.parent.position.y, 0f);
     }
 
     private void Update() {
