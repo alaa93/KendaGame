@@ -1,0 +1,16 @@
+18-Ain.png
+size:512,512
+filter:Linear,Linear
+pma:true
+scale:0.5
+Ain/base@2x
+bounds:2,2,326,504
+Ain/leg-right@2x
+bounds:195,182,126,207
+Ain/mouth@2x
+bounds:2,481,41,25
+Alf-pupple
+bounds:112,283,74,74
+eye close
+bounds:135,359,123,26
+offsets:1,0,125,27

@@ -34,10 +34,12 @@ namespace KendaGame.UI {
     [SerializeField]
     private UIButtonAnimator fontSizeMainButton;
 
+    [Header("LettetSkeleton")]
     [SerializeField] private SkeletonGraphic letterSkeleton;
     [SerializeField]
-    private SkeletonDataAsset [] letterSkeletonDataAssets;
-
+    private SkeletonDataAsset[] letterSkeletonDataAssets;
+    public List<Vector3> letterSkeletonScales = new List<Vector3>();
+    public List<Vector3> letterSkeletonPositions = new List<Vector3>();
 
     [Header("Advanced Tracing")]
     [SerializeField]
@@ -76,7 +78,6 @@ namespace KendaGame.UI {
     [SerializeField] AudioClip startAudio;
     [SerializeField] AudioClip[] characterVoice;
     [SerializeField] AudioClip[] characterName;
-
     private static TracingUI _instance;
     public static TracingUI Instance {
       get {
@@ -349,11 +350,13 @@ namespace KendaGame.UI {
       }
     }
 
-    public void IntiLettetSkeleton(){
-      if (LettersHelper.GetActiveLetterIndex() <= 8) {
-       letterSkeleton.skeletonDataAsset = letterSkeletonDataAssets[LettersHelper.GetActiveLetterIndex()];
+    public void IntiLettetSkeleton() {
+      if (LettersHelper.GetActiveLetterIndex() <= letterSkeletonDataAssets.Length) {
+        letterSkeleton.skeletonDataAsset = letterSkeletonDataAssets[LettersHelper.GetActiveLetterIndex()];
         letterSkeleton.Initialize(true);
         letterSkeleton.gameObject.GetComponent<SpineTracksUI1>().enabled = true;
+        letterSkeleton.transform.localPosition = letterSkeletonPositions[LettersHelper.GetActiveLetterIndex()];
+        letterSkeleton.transform.localScale = letterSkeletonScales[LettersHelper.GetActiveLetterIndex()];
 
       }
     }

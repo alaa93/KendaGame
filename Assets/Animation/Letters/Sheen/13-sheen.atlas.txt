@@ -1,0 +1,20 @@
+13-sheen.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/13-base
+bounds:2,294,475,362
+Alf-ba22Arm - white
+bounds:200,133,374,239
+rotate:90
+Alf-eyeBrow
+bounds:2,635,48,21
+Alf-leg1 - white
+bounds:174,2,254,404
+rotate:180
+Alf-pupple
+bounds:2,308,74,74
+eye close
+bounds:2,280,123,26
+offsets:1,0,125,27

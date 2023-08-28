@@ -1,0 +1,20 @@
+15-dad.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/16-base@2x
+bounds:2,171,502,358
+Alf-ba22Arm
+bounds:2,12,374,239
+rotate:180
+Alf-eyeBrow
+bounds:2,508,48,21
+Alf-leg1
+bounds:125,18,254,404
+rotate:90
+Alf-pupple
+bounds:264,25,74,74
+eye close
+bounds:340,101,123,26
+offsets:1,0,125,27
