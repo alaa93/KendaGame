@@ -67,8 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sounds
-  m_isRightToLeft: 0
+  m_text: "\u0627\uFEF7\uFEBB\uFEEE\u0627\u062A"
+  m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
   m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b,
     type: 2}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -6
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -571,8 +571,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Arabic
-  m_isRightToLeft: 0
+  m_text: "\u0627\uFEDF\uFECC\uFEAE\uFE91\uFEF4\uFE94"
+  m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
   m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b,
     type: 2}
@@ -1075,8 +1075,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music
-  m_isRightToLeft: 0
+  m_text: "\u0627\uFEDF\uFEE4\uFEEE\uFEB3\uFEF4\uFED8\uFBFD"
+  m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
   m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b,
     type: 2}
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -6
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1715,8 +1715,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: English
-  m_isRightToLeft: 0
+  m_text: "\u0625\uFEE7\uFEA0\uFEE0\uFEF4\uFEB0\u064A"
+  m_isRightToLeft: 1
   m_fontAsset: {fileID: 11400000, guid: 5bf02026d43134bed80271330bb8990b, type: 2}
   m_sharedMaterial: {fileID: -6456524614128700252, guid: 5bf02026d43134bed80271330bb8990b,
     type: 2}
@@ -1753,7 +1753,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -6
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2145,7 +2145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3663349793615178606
 RectTransform:
   m_ObjectHideFlags: 0
