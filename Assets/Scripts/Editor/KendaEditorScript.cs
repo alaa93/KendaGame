@@ -22,6 +22,12 @@ namespace KendaGame.EditorScripts {
       window.minSize = new Vector2(200f, 100f);
     }
 
+    [MenuItem("KendaGame/Debug/Open Island2")]
+    public static void OpenIsland2() {
+      StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted, "9");
+      Debug.Log("Island 2 Opend");
+    }
+
     [MenuItem("KendaGame/Debug/Buy 10000 Coins")]
     public static void BuyCoins_10000() {
       StorageHelper.WriteStorage(StorageHelper.CoinsAmount, "110");
