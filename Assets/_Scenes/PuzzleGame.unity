@@ -177,9 +177,20 @@ MonoBehaviour:
   - {fileID: 5160381812912936680, guid: 9c97dafe45b0243818b3115d791eb9a7, type: 3}
   - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
   - {fileID: 5160381812912936680, guid: 9a66be4100f1c4ed3a4f7aadb9dbc463, type: 3}
+  - {fileID: 7127412847886463719, guid: c9edf7bf0c8b535448e85a01384b495e, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 1348355818555605103, guid: 5a2d67913036d2b4fbc7c60d1f87f41d, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 6109152690512911704, guid: 85b5e87b98c698647ab802949e362582, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 8176697381686392397, guid: 17befb3e41ed83e43bb1202c82709bb5, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 2746955961066414115, guid: c5e63968e9b56344b809f69ff70008f0, type: 3}
   narrationSounds:
     RotateImageStartClip: {fileID: 8300000, guid: 1cf61113bd9386c408a12e8ee050c5b1,
       type: 3}
+  levelBackGrounds: []
+  GameBackGround: {fileID: 0}
 --- !u!1 &1044085927
 GameObject:
   m_ObjectHideFlags: 0
