@@ -64,7 +64,7 @@ MonoBehaviour:
   - {fileID: 2098103227809405867}
   - {fileID: 2098103226494336897}
   id: 0
-  _lock: {fileID: 0}
+  _lock: {fileID: 1145890399769596065}
 --- !u!114 &7351839526195687726
 MonoBehaviour:
   m_ObjectHideFlags: 0
