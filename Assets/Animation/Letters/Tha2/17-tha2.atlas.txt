@@ -1,0 +1,14 @@
+17-tha2.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/18-base@2x
+bounds:2,2,372,521
+Alf-eyeBrow
+bounds:2,349,48,21
+Alf-pupple
+bounds:2,372,74,74
+eye close
+bounds:231,3,123,26
+offsets:1,0,125,27

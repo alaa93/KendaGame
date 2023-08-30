@@ -1,0 +1,20 @@
+10-ra2.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+2x/10-base
+bounds:2,2,412,513
+2x/10-hair
+bounds:42,215,51,37
+2x/10-mouth
+bounds:2,164,87,21
+2x/10-tail
+bounds:2,215,183,197
+Alf-eyeBrow
+bounds:2,325,48,21
+Alf-pupple
+bounds:2,348,74,74
+eye close
+bounds:2,187,123,26
+offsets:1,0,125,27
