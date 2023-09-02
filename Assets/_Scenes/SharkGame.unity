@@ -171,6 +171,6 @@ MonoBehaviour:
   - {fileID: 9188468004387256305, guid: 3dd67900224369f4794355cda161e334, type: 3}
   - {fileID: 763456243065028418, guid: 986ddf14cef52fe4d8f897b22bd07b53, type: 3}
   narrationSounds:
-    sharkGameStartClip:
+    GameStartClip:
     - {fileID: 8300000, guid: e10808bad04eb87439cbb941d0c13f5b, type: 3}
     - {fileID: 8300000, guid: 3a66ab8e6590ff74c96def05fa0213b0, type: 3}
