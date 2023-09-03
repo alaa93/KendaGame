@@ -30,7 +30,7 @@ namespace KendaGame.EditorScripts {
 
     [MenuItem("KendaGame/Debug/Buy 10000 Coins")]
     public static void BuyCoins_10000() {
-      StorageHelper.WriteStorage(StorageHelper.CoinsAmount, "110");
+      StorageHelper.WriteStorage(StorageHelper.CoinsAmount, "10000");
       Debug.Log("10,000 Coins Added");
     }
 

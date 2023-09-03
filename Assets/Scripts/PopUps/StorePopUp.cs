@@ -12,6 +12,9 @@ namespace KendaGame.UI {
     public GameObject[] mustache;
     [SerializeField] Sprite purchaseBackgroundImage;
     private int coins;
+    private int currentHatIndex = -1;
+    private int currentGlassesIndex = -1;
+    private int currentMustacheIndex = -1;
 
     private void OnEnable() {
       SceneManager.Instance.SetCoinsObjectState(true);
@@ -26,10 +29,27 @@ namespace KendaGame.UI {
       RestorePurchasedItems(hats, StorageHelper.Hat);
       RestorePurchasedItems(glasses, StorageHelper.Glasses);
       RestorePurchasedItems(mustache, StorageHelper.Mustache);
+      currentHatIndex = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedHat, "-1"));
+      currentGlassesIndex = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedGlasses, "-1"));
+      currentMustacheIndex = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedMustache, "-1"));
+      EquipItem(hats, currentHatIndex);
+      EquipItem(glasses, currentGlassesIndex);
+      EquipItem(mustache, currentMustacheIndex);
     }
 
     private void SaveCoins(int itemPrice) {
       SceneManager.Instance.IncrementCoins(itemPrice);
+    }
+
+    private void EquipItem(GameObject[] items, int itemIndex) {
+      if (itemIndex >= 0 && itemIndex < items.Length) {
+        items[itemIndex].GetComponentInParent<Image>().sprite = purchaseBackgroundImage;
+        for (int i = 0; i < items.Length; i++) {
+          if (i != itemIndex) {
+            items[i].GetComponentInParent<Image>().sprite = null;
+          }
+        }
+      }
     }
 
     private void BuyItem(GameObject[] items, string itemType, int itemIndex, int itemPrice, System.Action<int> changeFunction, string usedItemType) {
@@ -41,13 +61,14 @@ namespace KendaGame.UI {
           changeFunction(itemIndex);
           SaveCoins(-itemPrice);
           StorageHelper.WriteStorage(usedItemType, $"{itemIndex}");
-          items[itemIndex].GetComponentInParent<Image>().sprite = purchaseBackgroundImage;
+          EquipItem(items, itemIndex);
         } else {
           PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(ErrorMessages.InsufficientFunds, ErrorMessages.LetsPlayToPurchaseMore);
         }
       } else {
         changeFunction(itemIndex);
         StorageHelper.WriteStorage(usedItemType, $"{itemIndex}");
+        EquipItem(items, itemIndex);
       }
     }
 
@@ -75,7 +96,7 @@ namespace KendaGame.UI {
       for (int i = 0; i < items.Length; i++) {
         if (StorageHelper.ReadStorage(itemType + "_" + i, "0") == "1") {
           items[i].SetActive(false);
-          items[i].GetComponentInParent<Image>().sprite = purchaseBackgroundImage;
+          EquipItem(items, i);
         }
       }
     }
