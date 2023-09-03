@@ -173,4 +173,4 @@ MonoBehaviour:
   narrationSounds:
     GameStartClip:
     - {fileID: 8300000, guid: bd0e5b5966251d24e9a48cbc1ad78a07, type: 3}
-    - {fileID: 8300000, guid: ee142afbdb17b79478e233a4bce569cb, type: 3}
+    - {fileID: 8300000, guid: 5d79aff3fb9fb844fa3df3b79009e752, type: 3}

@@ -177,6 +177,7 @@ MonoBehaviour:
   - {fileID: 5160381812912936680, guid: 9c97dafe45b0243818b3115d791eb9a7, type: 3}
   - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
   - {fileID: 5160381812912936680, guid: 9a66be4100f1c4ed3a4f7aadb9dbc463, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
   - {fileID: 7127412847886463719, guid: c9edf7bf0c8b535448e85a01384b495e, type: 3}
   - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
   - {fileID: 1348355818555605103, guid: 5a2d67913036d2b4fbc7c60d1f87f41d, type: 3}
@@ -189,8 +190,6 @@ MonoBehaviour:
   narrationSounds:
     RotateImageStartClip: {fileID: 8300000, guid: 1cf61113bd9386c408a12e8ee050c5b1,
       type: 3}
-  levelBackGrounds: []
-  GameBackGround: {fileID: 0}
 --- !u!1 &1044085927
 GameObject:
   m_ObjectHideFlags: 0
