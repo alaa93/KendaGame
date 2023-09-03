@@ -33,5 +33,13 @@ namespace KendaGame.Games {
         StairsLevelManager.Instance.OnRockTouched(this);
       }
     }
+
+    public void HideTitle(){
+      title.enabled = false;
+    }
+
+    public void ShowTitle() {
+      title.enabled = true;
+    }
   }
 }

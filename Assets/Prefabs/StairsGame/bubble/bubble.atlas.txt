@@ -1,0 +1,13 @@
+bubble.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+3x/Asset 27@3x
+bounds:515,494,418,356
+rotate:90
+3x/Asset 28@3x
+bounds:458,244,252,248
+3x/Asset 29@3x
+bounds:712,282,200,210
+bubble
+bounds:2,400,512,512

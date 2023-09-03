@@ -8,6 +8,7 @@ namespace KendaGame.Games {
     BoxesGameLevels[] gameLevels;
 
     private void Start() {
+      LettersHelper.SetActiveLetter(12);
       for (int x = 0; x < gameLevels.Length; x++) {
         if (gameLevels[x].levelLetter == LettersHelper.GetActiveLetter()) {
           Instantiate(gameLevels[x].level, null, false);
