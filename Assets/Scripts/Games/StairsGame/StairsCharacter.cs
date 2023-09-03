@@ -55,7 +55,8 @@ namespace KendaGame.Games {
       skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
       AnimatedJump(rollBackRock,true);
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
-      inCorrectRock.GetComponent<Rigidbody2D>().isKinematic = false;
+      //inCorrectRock.GetComponent<Rigidbody2D>().isKinematic = false;
+      inCorrectRock.GetComponent<SkeletonAnimation>().state.SetAnimation(0, "brust", false);
     }
 
 

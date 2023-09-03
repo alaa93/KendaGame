@@ -16,7 +16,6 @@ namespace KendaGame.Games {
     [SerializeField]
     Sprite[] islandFrontGrounds;
     private void Start() {
-      LettersHelper.SetActiveLetter(17);
       levelBackGround.sprite=islandBackGrounds[LettersHelper.GetIslandId(LettersHelper.GetActiveLetterIndex())];
       levelFrontGround.sprite = islandFrontGrounds[LettersHelper.GetIslandId(LettersHelper.GetActiveLetterIndex())];
       for (int x = 0; x < gameLevels.Length; x++) {

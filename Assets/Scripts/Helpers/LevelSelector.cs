@@ -4,6 +4,7 @@ namespace KendaGame.Helpers {
     [SerializeField] GameObject[] islandPrefabs;
     [SerializeField] NarrationSounds narrationSounds;
     private void Start() {
+      LettersHelper.SetActiveLetter(17);
       int activeLetter = LettersHelper.GetActiveLetterIndex();
       int islandId = LettersHelper.GetIslandId(activeLetter);
       	  AudioController.Instance.PlayNarrationAtPoint(narrationSounds.GameStartClip[islandId]);

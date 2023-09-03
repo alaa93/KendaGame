@@ -1,0 +1,37 @@
+weed.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+3x/Asset 27@3x
+bounds:516,443,418,356
+rotate:90
+Layer 1
+bounds:2,62,148,200
+offsets:1,1,150,202
+rotate:90
+Layer 2
+bounds:754,88,162,153
+offsets:1,1,164,155
+rotate:90
+Layer 3
+bounds:259,66,205,160
+offsets:1,1,207,162
+Layer 4
+bounds:2,212,229,256
+offsets:1,1,231,258
+rotate:90
+Layer 5
+bounds:496,119,131,256
+offsets:1,1,133,258
+rotate:90
+Layer 6
+bounds:714,252,182,189
+offsets:1,1,184,191
+Layer 7
+bounds:260,228,234,213
+offsets:1,1,236,215
+Layer 8
+bounds:496,253,216,188
+offsets:1,2,218,191
+dessert-bubblesGame-letterContainer
+bounds:2,443,512,464

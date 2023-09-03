@@ -1,6 +1,7 @@
 using KendaGame.Helpers;
 using KendaGame.Navigation;
 using ScorpionSteps.Utils;
+using Spine.Unity;
 using TMPro;
 using UnityEngine;
 
@@ -92,8 +93,18 @@ namespace KendaGame.Games {
         if (targetRock.GetId() > 0 && (lastTouchedRock == null || targetRock.GetId() > lastTouchedRock.GetId())) {
           AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
           SceneManager.Instance.IncrementCoins(20);
+          int targetRockId = targetRock.GetId();
+          if (targetRockId != levelRocks.Length - 1) {
+            for (int i = 0; i <= targetRockId + 2; i++) {
+              if (i < targetRockId) {
+                levelRocks[i].GetComponent<SkeletonAnimation>().state.SetAnimation(0, "brust", false);
+              } else if (i != targetRockId) {
+                levelRocks[i].SetActive(true);
+                levelRocks[i].GetComponent<SkeletonAnimation>().state.SetAnimation(0, "in", false);
+              }
+            }
+          }
         }
-
         lastTouchedRock = targetRock;
         if (targetRock.GetId() == levelRocks.Length - 1) {
           stairsCharacter.PlayDanceAnim();
