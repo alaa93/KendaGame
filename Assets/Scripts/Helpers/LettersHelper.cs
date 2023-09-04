@@ -80,8 +80,12 @@ namespace KendaGame.Helpers {
     public static int GetIslandId(int activeLetter) {
       if (activeLetter < 8) {
         return 0;
-      } else {
+      } 
+      else if(activeLetter<18) {
         return 1;
+      }
+      else{
+        return 2;
       }
     }
   }

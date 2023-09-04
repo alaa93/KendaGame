@@ -28,7 +28,6 @@ namespace KendaGame.Games {
     [SerializeField] AudioSource gameMusic;
     [SerializeField] GameObject coins;
     [SerializeField] ParticleSystem coinsEffect;
-    [SerializeField] NarrationSounds narrationSounds;
     bool shouldShowTutorial;
     int correctCounter = 0;
     int correctAnswers;
@@ -42,7 +41,6 @@ namespace KendaGame.Games {
     int wrongmax ;
 
     private void Start() {
-      AudioController.Instance.PlayNarrationAtPoint(narrationSounds.bubbleGameStartClip);
       letterGuide.text = LettersHelper.GetActiveLetter();
       incorrectLetters = LettersHelper.GetInCorrectLetters();
       shouldShowTutorial = true;
@@ -144,11 +142,6 @@ namespace KendaGame.Games {
       }
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_Game1_" + LettersHelper.GetActiveLetterIndex(), CalculateGameRating(wrongAnswersNumber).ToString());
       PopUpsManager.Instance.GetGameRatingPopUp().ShowPopUp(wrongAnswersNumber);
-    }
-
-    [System.Serializable]
-    public class NarrationSounds {
-      public AudioClip bubbleGameStartClip;
     }
 
     public int CalculateGameRating(int errorCount) {
