@@ -79,6 +79,7 @@ namespace KendaGame.Games {
         Vector2 direction = (currentTarget - rb.position).normalized;
         rb.AddForce(direction * speed, ForceMode2D.Impulse);
         this.GetComponent<SpriteRenderer>().color = Color.green;
+        StartCoroutine(CorrectFlashEffect());
         GetComponent<Collider2D>().isTrigger = true;
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       } else {
@@ -101,6 +102,20 @@ namespace KendaGame.Games {
       this.GetComponent<SpriteRenderer>().color = Color.white;
       yield return new WaitForSeconds(0.1f);
       this.GetComponent<SpriteRenderer>().color = Color.red;
+      yield return new WaitForSeconds(0.1f);
+      this.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private IEnumerator CorrectFlashEffect() {
+      this.GetComponent<SpriteRenderer>().color = Color.green;
+      yield return new WaitForSeconds(0.1f);
+      this.GetComponent<SpriteRenderer>().color = Color.white;
+      yield return new WaitForSeconds(0.1f);
+      this.GetComponent<SpriteRenderer>().color = Color.green;
+      yield return new WaitForSeconds(0.1f);
+      this.GetComponent<SpriteRenderer>().color = Color.white;
+      yield return new WaitForSeconds(0.1f);
+      this.GetComponent<SpriteRenderer>().color = Color.green;
       yield return new WaitForSeconds(0.1f);
       this.GetComponent<SpriteRenderer>().color = Color.white;
     }
