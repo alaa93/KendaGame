@@ -10,7 +10,9 @@ namespace KendaGame.UI {
     public GameObject[] hats;
     public GameObject[] glasses;
     public GameObject[] mustache;
-    [SerializeField] Sprite purchaseBackgroundImage;
+    [SerializeField] Sprite activeItemBackground;
+    [SerializeField] Sprite inactiveItemBackground;
+
     private int coins;
     private int currentHatIndex = -1;
     private int currentGlassesIndex = -1;
@@ -43,10 +45,10 @@ namespace KendaGame.UI {
 
     private void EquipItem(GameObject[] items, int itemIndex) {
       if (itemIndex >= 0 && itemIndex < items.Length) {
-        items[itemIndex].GetComponentInParent<Image>().sprite = purchaseBackgroundImage;
+        items[itemIndex].GetComponentInParent<Image>().sprite = activeItemBackground;
         for (int i = 0; i < items.Length; i++) {
           if (i != itemIndex) {
-            items[i].GetComponentInParent<Image>().sprite = null;
+            items[i].GetComponentInParent<Image>().sprite = inactiveItemBackground;
           }
         }
       }

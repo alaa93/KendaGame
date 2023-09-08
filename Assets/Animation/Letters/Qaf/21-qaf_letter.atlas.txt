@@ -1,0 +1,23 @@
+21-qaf_letter.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.55
+Alf-eyeBrow
+bounds:85,963,53,23
+Alf-pupple
+bounds:2,905,81,81
+eye close
+bounds:126,543,136,29
+offsets:1,0,138,30
+monkeyLetter/2x/q-base
+bounds:2,11,777,975
+monkeyLetter/2x/q-earL
+bounds:704,5,156,299
+monkeyLetter/2x/q-earR
+bounds:2,119,239,328
+monkeyLetter/2x/q-mouth
+bounds:125,449,130,92
+monkeyLetter/2x/q-tail
+bounds:138,2,347,178
+rotate:90

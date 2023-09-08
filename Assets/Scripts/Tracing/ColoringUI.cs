@@ -49,7 +49,6 @@ namespace KendaGame.UI {
       }
     }
 
-
     private void Start() {
       SceneManager.Instance.OpenCloudsManually();
       InitFontSizeBtns();
@@ -138,7 +137,7 @@ namespace KendaGame.UI {
     }
 
     public void IntiLettetSkeleton() {
-      if (LettersHelper.GetActiveLetterIndex() <= 8) {
+      if (LettersHelper.GetActiveLetterIndex() <= letterSkeletonDataAssets.Length) {
         letterSkeleton.skeletonDataAsset = letterSkeletonDataAssets[LettersHelper.GetActiveLetterIndex()];
         letterSkeleton.Initialize(true);
         letterSkeleton.AnimationState.SetAnimation(0, "Dancing2", true);

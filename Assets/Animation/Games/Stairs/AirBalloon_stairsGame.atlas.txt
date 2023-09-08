@@ -1,0 +1,13 @@
+AirBalloon_stairsGame.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.75
+2x/ballon
+bounds:2,733,35,50
+2x/basket
+bounds:2,785,132,119
+2x/bigBallon
+bounds:2,2,688,902
+2x/fire
+bounds:2,697,26,34

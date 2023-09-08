@@ -21,26 +21,40 @@ namespace KendaGame.Games {
 
     public void AnimatedJump(StairsRock targetRock, bool automatedJump = false) {
       float difference = Mathf.Abs(targetRock.GetId() - StairsLevelManager.Instance.GetActiveRock().GetId());
-      if (difference > 2) { /// invalid Jump ignore
-        OnInvalidJump();
-      } else {
-        if (!isJumping && (canControl || automatedJump)) {
-          isJumping = true;
-          rigidbody2DRef.isKinematic = true;
-          skeletonAnimation.AnimationState.SetAnimation(0, "Jump", true);
-          AudioController.Instance.PlaySfxAtPoint(jumpSfx);
-          rigidbody2DRef.constraints = RigidbodyConstraints2D.FreezeAll;
-          this.transform.DOMove(new Vector3(targetRock.transform.position.x + offsetX, targetRock.transform.position.y + (difference > 1 ? offsetY + 0.3f : offsetY), 0f), difference).OnComplete(() => {
-            isJumping = false;
-            canControl = true;
-            rigidbody2DRef.isKinematic = false;
-            rigidbody2DRef.constraints = RigidbodyConstraints2D.None;
-            skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
-          });
+      if (!isJumping && (canControl || automatedJump)) {
+        isJumping = true;
+        rigidbody2DRef.isKinematic = true;
+        skeletonAnimation.AnimationState.SetAnimation(0, "Jump", true);
+        AudioController.Instance.PlaySfxAtPoint(jumpSfx);
+        rigidbody2DRef.constraints = RigidbodyConstraints2D.FreezeAll;
+        this.transform.DOMove(new Vector3(targetRock.transform.position.x + offsetX, targetRock.transform.position.y + (difference > 1 ? offsetY + 0.3f : offsetY), 0f), difference).OnComplete(() => {
+          isJumping = false;
+          canControl = true;
+          rigidbody2DRef.isKinematic = false;
+          rigidbody2DRef.constraints = RigidbodyConstraints2D.None;
+          skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+        });
         }
-      }
     }
-
+          /* if (difference > 2) { /// invalid Jump ignore
+             OnInvalidJump();
+           } else {
+             if (!isJumping && (canControl || automatedJump)) {
+               isJumping = true;
+               rigidbody2DRef.isKinematic = true;
+               skeletonAnimation.AnimationState.SetAnimation(0, "Jump", true);
+               AudioController.Instance.PlaySfxAtPoint(jumpSfx);
+               rigidbody2DRef.constraints = RigidbodyConstraints2D.FreezeAll;
+               this.transform.DOMove(new Vector3(targetRock.transform.position.x + offsetX, targetRock.transform.position.y + (difference > 1 ? offsetY + 0.3f : offsetY), 0f), difference).OnComplete(() => {
+                 isJumping = false;
+                 canControl = true;
+                 rigidbody2DRef.isKinematic = false;
+                 rigidbody2DRef.constraints = RigidbodyConstraints2D.None;
+                 skeletonAnimation.AnimationState.SetAnimation(0, "Idle", true);
+               });
+             }
+           }
+           */
     private async void OnInvalidJump() {
       AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetInCorrectSfx());
       skeletonAnimation.AnimationState.SetAnimation(0, "Fighting", true);
