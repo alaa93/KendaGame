@@ -1,0 +1,9 @@
+leaf_3rdisland_bubbleGame.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.9
+1x/leaf
+bounds:2,2,267,255
+1x/leavesBubble2
+bounds:2,259,780,750

@@ -79,7 +79,7 @@ namespace KendaGame.Games {
         Vector2 direction = (currentTarget - rb.position).normalized;
         rb.AddForce(direction * speed, ForceMode2D.Impulse);
         this.GetComponent<SpriteRenderer>().color = Color.green;
-        StartCoroutine(CorrectFlashEffect());
+        StartCoroutine(CorrectFlashEffect()) ;
         GetComponent<Collider2D>().isTrigger = true;
         AudioController.Instance.PlaySfxAtPoint(AudioController.Instance.commonSfx.GetCorrectSfx());
       } else {

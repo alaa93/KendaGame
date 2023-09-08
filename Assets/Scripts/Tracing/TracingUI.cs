@@ -98,6 +98,7 @@ namespace KendaGame.UI {
     }
     private void Start() {
       int ActiveLetterIndex = LettersHelper.GetActiveLetterIndex();
+      Debug.Log(ActiveLetterIndex);
       AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { startAudio, characterVoice[ActiveLetterIndex],
       characterName[ActiveLetterIndex]});
       AudioController.Instance.PlayAudioFromQueue();

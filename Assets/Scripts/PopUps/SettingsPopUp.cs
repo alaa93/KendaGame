@@ -20,6 +20,8 @@ namespace KendaGame.UI {
     UIButtonAnimator exitButton;
     private bool isMusicMuted;
     private bool isSfxMuted;
+    [SerializeField] Image arabicLanguageIcon;
+    [SerializeField] Image englishLanguageIcon;
 
     private void Start() {
       isMusicMuted = !AudioController.Instance.GetMusicState();
@@ -27,6 +29,7 @@ namespace KendaGame.UI {
 
       InitializeButtons();
       UpdateButtonIcon();
+      UpdateLanguageButtonIcon();
     }
 
     private void InitializeButtons() {
@@ -51,6 +54,15 @@ namespace KendaGame.UI {
       sfxMute.enabled = isSfxMuted;
       musicMute.enabled = isMusicMuted;
     }
+
+    public void UpdateLanguageButtonIcon() {
+      int langIndex = (LocalizationManager.CurrentLanguageCode == "ar") ? 1 : 0;
+
+      arabicLanguageIcon.enabled=(langIndex == 0);
+      englishLanguageIcon.enabled=(langIndex == 1);
+    }
+
+
     private void OnLogoutButtonPressed() {
     }
 
@@ -59,6 +71,7 @@ namespace KendaGame.UI {
       if (LocalizationManager.CurrentLanguageCode != languageCode) {
         LocalizationManager.CurrentLanguageCode = languageCode;
         LocalizationManager.UpdateSources();
+        UpdateLanguageButtonIcon();
       }
     }
 

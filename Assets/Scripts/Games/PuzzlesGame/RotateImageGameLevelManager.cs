@@ -12,6 +12,7 @@ namespace KendaGame.Games {
     NarrationSounds narrationSounds;
 
     private void Awake() {
+
       Instantiate(levels[LettersHelper.GetActiveLetterIndex()], parent, false);
       AudioController.Instance.PlayNarrationAtPoint(narrationSounds.RotateImageStartClip);
     }

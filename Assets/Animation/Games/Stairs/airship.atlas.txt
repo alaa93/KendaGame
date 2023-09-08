@@ -1,0 +1,8 @@
+airship.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+3x/airship
+bounds:2,421,578,218
+3x/hatch
+bounds:582,571,57,68

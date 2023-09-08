@@ -187,6 +187,16 @@ MonoBehaviour:
   - {fileID: 8176697381686392397, guid: 17befb3e41ed83e43bb1202c82709bb5, type: 3}
   - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
   - {fileID: 2746955961066414115, guid: c5e63968e9b56344b809f69ff70008f0, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 2746955961066414115, guid: ade082a7e6a5aab42a361c1b376eac1d, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 2746955961066414115, guid: 2de6a7b515f1161448982c3f4081a119, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 8176697381686392397, guid: 7b653521dea42de498d69ca64fcbd8c9, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 2746955961066414115, guid: 1be0b1ea2a1daf74a880bfa14206a589, type: 3}
+  - {fileID: 3768681785404986390, guid: bc55974dab3c24b9da45accf6d525983, type: 3}
+  - {fileID: 2746955961066414115, guid: 28c70e9f95374694d86c66279a7af137, type: 3}
   narrationSounds:
     RotateImageStartClip: {fileID: 8300000, guid: 1cf61113bd9386c408a12e8ee050c5b1,
       type: 3}

@@ -1,0 +1,23 @@
+20-Feh_letter.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.5
+Alf-eyeBrow
+bounds:2,897,48,21
+Alf-pupple
+bounds:2,920,74,74
+elephantLetter/2x/dot_1
+bounds:189,281,152,152
+elephantLetter/2x/f-base
+bounds:2,396,992,598
+elephantLetter/2x/f-earL
+bounds:343,303,203,285
+rotate:90
+elephantLetter/2x/f-earR
+bounds:220,446,212,355
+elephantLetter/2x/f-leg
+bounds:415,529,133,230
+eye close
+bounds:78,968,123,26
+offsets:1,0,125,27

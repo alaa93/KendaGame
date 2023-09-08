@@ -64,21 +64,22 @@ namespace KendaGame.Games {
     public void CameraStopFollowing() {
       gameCamera.StopFollowing();
     }
-
     public void AssignLetters() {
       levelGuide.text = LettersHelper.GetActiveLetter();
       string[] inCorrectLetters = LettersHelper.GetInCorrectLetters();
       inCorrectLetters = CollectionsUtils.ShuffleArray(inCorrectLetters);
-      levelRocks[0].GetComponent<StairsRock>().InitRock(0, LettersHelper.GetActiveLetter());
-
-      for (int x = 1; x < levelRocks.Length; x++) {
-        if (x < inCorrectLetters.Length) {
-          if (x % 2 != 0) {
-            levelRocks[x].GetComponent<StairsRock>().InitRock(x, inCorrectLetters[x]);
-          } else {
-            levelRocks[x].GetComponent<StairsRock>().InitRock(x, LettersHelper.GetActiveLetter());
-          }
-        }
+      // Define the pattern for letters on rocks
+      int[][] pattern = new int[][] {
+    new int[] { 0, 1, 0, 1, 0, 1, 0, 1, 0 }, // Pattern 0
+    new int[] { 0, 1, 0, 0, 1, 1, 0, 1, 0 }, // Pattern 1
+    new int[] { 0, 1, 0, 0, 1, 0, 1, 1, 0 }  // Pattern 2
+};
+      int y = Random.Range(0, pattern.Length);
+      Debug.Log(y);
+      for (int x = 0; x < levelRocks.Length; x++) {
+        int letterIndex = pattern[y][x];
+        string letterToAssign = (letterIndex == 0) ? LettersHelper.GetActiveLetter() : inCorrectLetters[x];
+        levelRocks[x].GetComponent<StairsRock>().InitRock(x, letterToAssign);
       }
     }
 
@@ -95,10 +96,13 @@ namespace KendaGame.Games {
           SceneManager.Instance.IncrementCoins(20);
           int targetRockId = targetRock.GetId();
           if (targetRockId != levelRocks.Length - 1) {
-            for (int i = 0; i <= targetRockId + 2; i++) {
-              if (i < targetRockId) {
+            int endIndex = (targetRockId % 2 == 0) ? targetRockId + 2 : targetRockId + 3;
+
+            for (int i = 0; i <= endIndex; i++) {
+              if (i < targetRockId || (i == targetRockId + 1 && targetRockId % 2 != 0)) {
                 levelRocks[i].GetComponent<SkeletonAnimation>().state.SetAnimation(0, "brust", false);
-              } else if (i != targetRockId) {
+              } else if (i == targetRockId) continue;
+              else {
                 levelRocks[i].SetActive(true);
                 levelRocks[i].GetComponent<SkeletonAnimation>().state.SetAnimation(0, "in", false);
               }
