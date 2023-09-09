@@ -6974,6 +6974,7 @@ MonoBehaviour:
   - {fileID: 6557356644983887489, guid: 97ff893ce9aee4f83bd4a528f27ec152, type: 3}
   - {fileID: 2228340166970030131, guid: eb7859935d457be4ea2ad6712ba4fa3d, type: 3}
   - {fileID: 6557356644983887489, guid: 97ff893ce9aee4f83bd4a528f27ec152, type: 3}
+  - {fileID: 6557356644983887489, guid: edeec85a0a020b24abdfefa7199a8971, type: 3}
   levelGuide: {fileID: 3110944601524339997}
   levelRocks:
   - {fileID: 3110944601287775656}

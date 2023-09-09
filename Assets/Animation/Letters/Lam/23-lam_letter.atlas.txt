@@ -1,0 +1,20 @@
+23-lam_letter.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+scale:0.5
+Alf-pupple
+bounds:2,61,74,74
+eye close
+bounds:134,18,123,26
+offsets:1,0,125,27
+lama/3x/base@3x
+bounds:2,2,551,1031
+lama/3x/earl@3x
+bounds:98,23,85,144
+lama/3x/earr@3x
+bounds:2,109,105,149
+lama/3x/hair@3x
+bounds:2,416,255,189
+lama/3x/tail@3x
+bounds:2,256,129,163
