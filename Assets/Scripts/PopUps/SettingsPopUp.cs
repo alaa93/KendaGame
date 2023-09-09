@@ -86,5 +86,9 @@ namespace KendaGame.UI {
         });
       }
     }
+
+    public void ClosePopUp() {
+      gameObject.SetActive(false);
+    }
   }
 }

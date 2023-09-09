@@ -48,7 +48,7 @@ namespace KendaGame.UI {
         items[itemIndex].GetComponentInParent<Image>().sprite = activeItemBackground;
         for (int i = 0; i < items.Length; i++) {
           if (i != itemIndex) {
-            items[i].GetComponentInParent<Image>().sprite = inactiveItemBackground;
+            items[i].GetComponentsInParent<Image>()[1].sprite = inactiveItemBackground;
           }
         }
       }
@@ -101,6 +101,10 @@ namespace KendaGame.UI {
           EquipItem(items, i);
         }
       }
+    }
+
+    public void ClosePopUp() {
+      gameObject.SetActive(false);
     }
   }
 }

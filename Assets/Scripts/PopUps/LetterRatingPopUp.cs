@@ -4,6 +4,7 @@ using Spine.Unity;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KendaGame.UI
 {
@@ -17,21 +18,20 @@ namespace KendaGame.UI
 		UIButtonAnimator nextBtn, restartBtn;
 		[SerializeField]
 		NarrationSounds narrationSounds;
-
+		bool canMoveNext = true;
 		bool canPlayNarration;
 		public static float FullStarsRating = 0.8f;
 		public static float OneStarRating = 0.5f;
 
-		private void Awake()
-		{
+		private void Awake() {
 			canPlayNarration = true;
-			nextBtn.AddClickListener(animate: true, callBackFn: () =>
-			{
-				SceneManager.Instance.OnNextScreenBtnClicked();
-				gameObject.SetActive(false);
+			nextBtn.AddClickListener(animate: true, callBackFn: () => {
+				if (canMoveNext) {
+					SceneManager.Instance.OnNextScreenBtnClicked();
+					gameObject.SetActive(false);
+				}
 			});
-			restartBtn.AddClickListener(animate: true, callBackFn: () =>
-			{
+			restartBtn.AddClickListener(animate: true, callBackFn: () => {
 				SceneManager.Instance.ReloadScene();
 				gameObject.SetActive(false);
 			});
@@ -49,11 +49,15 @@ namespace KendaGame.UI
 		{
 			gameObject.SetActive(true);
 			starsAnimation.gameObject.SetActive(false);
+			canMoveNext = true;
+			nextBtn.GetComponent<Button>().interactable = true;
 			switch (rating)
 			{
 				case 0:
 				case -1:
 				case 1:
+					canMoveNext = false;
+					nextBtn.GetComponent<Button>().interactable = false;
 					starsAnimation.AnimationState.SetAnimation(0, "1Stars_lose", false);
 					break;
 				case 2:
@@ -78,7 +82,6 @@ namespace KendaGame.UI
 				case 0:
 				case -1:
 				case 1:
-					nextBtn.SetClickState(false);
 					break;
 				case 2:
 					AudioClip twoStarClip = narrationSounds.GetTwoStarClip();
@@ -103,6 +106,10 @@ namespace KendaGame.UI
 			}
 			canPlayNarration = true;
 		}
+
+		public void ClosePopUp() {
+			gameObject.SetActive(false);
+    }
 		[System.Serializable]
 		public class NarrationSounds
 		{
