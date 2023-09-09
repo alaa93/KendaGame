@@ -6,36 +6,41 @@ using UnityEngine.UI;
 using static KendaGame.Models.UserModels;
 using KendaGame.Navigation;
 using System;
+using ScorpionSteps.ArabicTextFixer;
 
 public class DashboardPopUp : MonoBehaviour {
   [SerializeField]
   UIButtonAnimator exitButton;
   [SerializeField]
-  TextMeshProUGUI starsEarned;
+  TextMeshProUGUI starsEarned,renderedTextInput;
 
   [SerializeField]
-  TMP_InputField player_name;
+  TMP_InputField playerName;
 
   [SerializeField]
-  UIButtonAnimator changePhoto;
+  UIButtonAnimator changePhoto, saveBtn;
 
   [SerializeField]
-  Image profileImage;
+  Image profileImage,penIcon;
 
-  private static event UnityAction OnSaveBtnPressed;
-  private void OnEnable() {
-    OnSaveBtnPressed += ChangeName;
-  }
+  private string cachedPlayerName;
 
-  private void OnDisable() {
-    OnSaveBtnPressed -= ChangeName;
-  }
   private void Start() {
     InitializeButtons();
-    SetProgressBar();
-    SetStarsEarned();
     LoadCachedImage();
+    LoadStarsCounter();
+    LoadPlayerName();
   }
+
+  private void LoadStarsCounter() {
+    int starsCounter = 0;
+    for (int x = 0; x < LettersHelper.GetLettersCount(); x++) {
+      int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + x), out int currentRating);
+      starsCounter += currentRating;
+    }
+    starsEarned.text = $"{starsCounter}";
+  }
+
   private void LoadCachedImage() {
     string storedUser = StorageHelper.ReadStorage(StorageHelper.UserSession);
     if (!string.IsNullOrEmpty(storedUser)) {
@@ -63,28 +68,28 @@ public class DashboardPopUp : MonoBehaviour {
   private void InitializeButtons() {
     exitButton.AddClickListener(OnExitButtonPressed);
     changePhoto.AddClickListener(OnChangePhotoClick);
+    playerName.onValueChanged.AddListener(OnPlayerNameChanged);
+    playerName.onSelect.AddListener((value) => {
+      penIcon.gameObject.SetActive(false);
+    });
+    playerName.onEndEdit.AddListener((value)=> {
+      penIcon.gameObject.SetActive(true);
+    });
+    saveBtn.AddClickListener(OnSaveBtnClicked);
   }
-  public void ChangeName() {
-    //is gonna be implemented after database is all set and done
-    //name in the database = player_name.text
-  }
-  private void SetStarsEarned() {
-    //retrieve stars earned from the database
-    int query = 0;
-    starsEarned.text = query.ToString();
-  }
-  private void SetProgressBar() {
-    //is gonna be implemented after database implementation
-  }
+
   private void OnExitButtonPressed() {
     gameObject.SetActive(false);
   }
+
   public void ShowPopUp() {
     gameObject.SetActive(true);
   }
+
   public void OnChangePhotoClick() {
     GalleryHelper.PickImage(PhotoChangeCompleted);
   }
+
   private void PhotoChangeCompleted(bool success, Texture2D image) {
     if (success) {
       profileImage.sprite = Sprite.Create(image, new Rect(0.0f, 0.0f, image.width, image.height), new Vector2(0.5f, 0.5f), 100.0f);
@@ -103,5 +108,23 @@ public class DashboardPopUp : MonoBehaviour {
     } else {
       Debug.Log(success);
     }
+  }
+
+  private void LoadPlayerName() {
+    SmartTextFixer.Fix(renderedTextInput,StorageHelper.ReadStorage(StorageHelper.PLAYERNAME, string.Empty),true);
+    playerName.text = StorageHelper.ReadStorage(StorageHelper.PLAYERNAME, string.Empty);
+  }
+
+  private void OnPlayerNameChanged(string value) {
+    cachedPlayerName = playerName.text;
+    SmartTextFixer.Fix(renderedTextInput, value, true);
+  }
+
+  private void OnSaveBtnClicked() {
+    StorageHelper.WriteStorage(StorageHelper.PLAYERNAME, cachedPlayerName);
+  }
+
+  public void ClosePopUp() {
+    gameObject.SetActive(false);
   }
 }

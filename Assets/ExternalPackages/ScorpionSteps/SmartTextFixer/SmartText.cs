@@ -8,7 +8,7 @@ namespace ScorpionSteps.ArabicTextFixer
     public class SmartText : MonoBehaviour
     {
         public enum TypeOfText { TextMeshPro, Text };
-        TypeOfText typeOfText;
+        public TypeOfText typeOfText;
         public enum TypeOfFix { Fix, FixWithLanguageDir };
         public TypeOfFix typeOfFix;
 
