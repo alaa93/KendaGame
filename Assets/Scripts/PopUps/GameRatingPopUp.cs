@@ -122,6 +122,11 @@ namespace KendaGame.UI
 			}
 			starsAnimation.gameObject.SetActive(true);
 		}
+
+		public void ClosePopUp() {
+			gameObject.SetActive(false);
+    }
+
 		[System.Serializable]
 		public class NarrationSounds
 		{

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KendaGame.Navigation {
   public class PopUpsManager : MonoBehaviour {
-  
+
     public Transform Parent;
     public GameObject RatingLetter;
     public GameObject RatingLevel;
@@ -86,32 +86,32 @@ namespace KendaGame.Navigation {
       return feedbackPopUp;
     }
 
-    public SettingsPopUp GetSettingsPopUp(){
-      if (settingsPopUp == null){
+    public SettingsPopUp GetSettingsPopUp() {
+      if (settingsPopUp == null) {
         GameObject settingsObject = Instantiate(SettingsPopUpObject, Parent, false);
         settingsPopUp = settingsObject.GetComponent<SettingsPopUp>();
-        if(settingsPopUp != null){
+        if (settingsPopUp != null) {
           return settingsPopUp;
         }
         return null;
       }
       return settingsPopUp;
     }
-    public DashboardPopUp GetDashBoardPopUp(){
-      if (dashboardPopUp == null){
+    public DashboardPopUp GetDashBoardPopUp() {
+      if (dashboardPopUp == null) {
         GameObject menuObject = Instantiate(MenuPopUpObject, Parent, false);
         dashboardPopUp = menuObject.GetComponent<DashboardPopUp>();
-        if(dashboardPopUp != null){
+        if (dashboardPopUp != null) {
           return dashboardPopUp;
         }
         return null;
       }
-      return dashboardPopUp;  
+      return dashboardPopUp;
     }
 
     public StorePopUp GetStorePopUp() {
       if (storePopUp == null) {
-        GameObject  storeObject = Instantiate(storePopUpObject, Parent, false);
+        GameObject storeObject = Instantiate(storePopUpObject, Parent, false);
         storePopUp = storeObject.GetComponent<StorePopUp>();
         if (storePopUp != null) {
           return storePopUp;
@@ -153,6 +153,36 @@ namespace KendaGame.Navigation {
         }
       }
       return loadingBar;
+    }
+
+    public void DismissAll() {
+      if (loadingBar != null) {
+        loadingBar.HideLoadingBar();
+      }
+      if (tutorialController != null) {
+        tutorialController.HideTutorial(null);
+      }
+      if (storePopUp != null) {
+        storePopUp.ClosePopUp();
+      }
+      if (gameRating != null) {
+        gameRating.ClosePopUp();
+      }
+      if (letterRating != null) {
+        letterRating.ClosePopUp();
+      }
+      if (genderPopUp != null) {
+        genderPopUp.ClosePopUp();
+      }
+      if (feedbackPopUp != null) {
+        feedbackPopUp.ClosePopUp();
+      }
+      if (settingsPopUp != null) {
+        settingsPopUp.ClosePopUp();
+      }
+      if (dashboardPopUp != null) {
+        dashboardPopUp.ClosePopUp();
+      }
     }
   }
 }

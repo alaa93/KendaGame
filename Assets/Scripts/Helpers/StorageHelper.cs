@@ -21,7 +21,7 @@ namespace KendaGame.Helpers
 		public static string ISMUSICMUTED = "ISMUSICMUTE";
 		public static string ISSFXMUTED = "ISSFXMUTE";
 		public static string ISNARRATIONMUTED = "IsNarrationMuted";
-
+		public static string PLAYERNAME = "StoredPlayerName";
 
 
 
