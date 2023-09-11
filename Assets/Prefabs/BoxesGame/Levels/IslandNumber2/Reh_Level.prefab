@@ -309,7 +309,7 @@ MonoBehaviour:
   - {fileID: 2874795789144390965, guid: 42283c94d64353146a93e29b524ac8cf, type: 3}
   - {fileID: 5952934041818372302, guid: 96668fc4dd2cf0b449695c7ecceb5ab2, type: 3}
   - {fileID: 547568945980327126, guid: 8c57298bdd0f0f046a02f65537b4b4ca, type: 3}
-  - {fileID: 547568945980327126, guid: f5e89c6bcf323f64ea4d63ae61270ed8, type: 3}
+  - {fileID: 547568945980327126, guid: 2d45473158d9d5f45b0dde1618fc14a3, type: 3}
   - {fileID: 2874795789144390965, guid: 42283c94d64353146a93e29b524ac8cf, type: 3}
   - {fileID: 7566722015846812119, guid: 34ee8ac40ec98324e8f9899f5b211b7a, type: 3}
   - {fileID: 2874795789144390965, guid: 42283c94d64353146a93e29b524ac8cf, type: 3}
@@ -1280,9 +1280,6 @@ MonoBehaviour:
   - animationProperty: dance
     is_loop: 1
     track: 0
-  - animationProperty: breath
-    is_loop: 1
-    track: 2
 --- !u!1 &1129625205275642218
 GameObject:
   m_ObjectHideFlags: 0

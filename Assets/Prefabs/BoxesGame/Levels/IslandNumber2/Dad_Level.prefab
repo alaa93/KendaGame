@@ -1107,7 +1107,7 @@ MonoBehaviour:
   - {fileID: 547568945980327126, guid: 8c57298bdd0f0f046a02f65537b4b4ca, type: 3}
   - {fileID: 547568945980327126, guid: 4bdac5c38409260499e97cff0cf4abba, type: 3}
   - {fileID: 547568945980327126, guid: 1cb01844dfbeaaf4a8fa9d8e98ddc648, type: 3}
-  - {fileID: 547568945980327126, guid: 78a5c2d0ca879c1428ca9161281e3792, type: 3}
+  - {fileID: 547568945980327126, guid: 2d45473158d9d5f45b0dde1618fc14a3, type: 3}
   - {fileID: 547568945980327126, guid: 1cb01844dfbeaaf4a8fa9d8e98ddc648, type: 3}
   LettersInitalPos: {fileID: 4247294414966069855}
   musicLoop: {fileID: 4247294413394926581}
@@ -1908,9 +1908,6 @@ MonoBehaviour:
   - animationProperty: dance
     is_loop: 1
     track: 0
-  - animationProperty: breath
-    is_loop: 1
-    track: 2
 --- !u!1 &5205727046761646151
 GameObject:
   m_ObjectHideFlags: 0

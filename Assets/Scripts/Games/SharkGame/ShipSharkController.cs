@@ -90,7 +90,7 @@ namespace KendaGame.Games {
 	}
 
 	public void PlayWinAnim() {
-	  skeletonAnimation.AnimationState.SetAnimation(0, "win", false);
+	  skeletonAnimation.AnimationState.SetAnimation(0, "win", true);
 	}
   }
 }

@@ -566,9 +566,6 @@ MonoBehaviour:
   - animationProperty: dance
     is_loop: 1
     track: 0
-  - animationProperty: breath
-    is_loop: 1
-    track: 2
 --- !u!1 &3304736414840565867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,14 +1121,14 @@ MonoBehaviour:
   - {fileID: 8526744004434508029}
   letterPrefabs:
   - {fileID: 503044758352628199, guid: eb771948efc13b341b0312128719fb9f, type: 3}
-  - {fileID: 2874795789144390965, guid: 42283c94d64353146a93e29b524ac8cf, type: 3}
-  - {fileID: 547568945980327126, guid: 5f168297957505b4ca77a85f0991cfd4, type: 3}
+  - {fileID: 547568945980327126, guid: 74c94c901d99e1f469b6cb8ddaa835d4, type: 3}
   - {fileID: 503044758352628199, guid: eb771948efc13b341b0312128719fb9f, type: 3}
-  - {fileID: 547568945980327126, guid: 8c57298bdd0f0f046a02f65537b4b4ca, type: 3}
-  - {fileID: 547568945980327126, guid: 4bdac5c38409260499e97cff0cf4abba, type: 3}
+  - {fileID: 547568945980327126, guid: ecaee5ebfe29f3846a1dc2f0304b9535, type: 3}
+  - {fileID: 547568945980327126, guid: 351e55e021628c349b73dac9432c6d4c, type: 3}
   - {fileID: 503044758352628199, guid: eb771948efc13b341b0312128719fb9f, type: 3}
-  - {fileID: 547568945980327126, guid: 78a5c2d0ca879c1428ca9161281e3792, type: 3}
   - {fileID: 503044758352628199, guid: eb771948efc13b341b0312128719fb9f, type: 3}
+  - {fileID: 547568945980327126, guid: 74c94c901d99e1f469b6cb8ddaa835d4, type: 3}
+  - {fileID: 547568945980327126, guid: 529f695bcdc741241b2a210ef7528203, type: 3}
   LettersInitalPos: {fileID: 3304736414914029363}
   musicLoop: {fileID: 3304736416492545689}
   showPartsSfx: {fileID: 8300000, guid: 06f8b2ef0f57c46e5a237c3ffc19ddc3, type: 3}

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class AnimateMovement : MonoBehaviour
@@ -9,6 +10,14 @@ public class AnimateMovement : MonoBehaviour
     public float duration = 10;
     void Start()
     {
-        transform.DOMoveX(speed,duration,false);
+
+        loop();
     }
+
+    public void loop()
+    {
+        gameObject.transform.localPosition = new Vector3(16, 3.5f, 0);
+        gameObject.transform.DOMoveX(speed, duration, false).OnComplete(() => loop());
+    }
+
 }
