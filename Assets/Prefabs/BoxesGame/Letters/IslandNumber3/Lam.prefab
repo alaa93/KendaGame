@@ -166,7 +166,7 @@ MonoBehaviour:
   jumpForce: 8
   skeletonAnimation: {fileID: 547568945980327125}
   isGrounded: 0
-  letterId: "\u0643"
+  letterId: "\u0644"
 --- !u!70 &1246106376721237659
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -276,8 +276,10 @@ namespace KendaGame.UI {
       currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
       currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_Advance_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
+      if (LettersHelper.GetActiveLetterIndex() >= int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted, "0"))) {
+        StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted, (LettersHelper.GetActiveLetterIndex() + 1).ToString());
+      }
       ProgressHelper.FetchProgress();
-
     }
 
     private void ShowLetterComparison(string processedImg) {

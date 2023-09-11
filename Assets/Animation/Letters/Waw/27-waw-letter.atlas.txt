@@ -1,0 +1,14 @@
+27-waw-letter.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.85
+Alf-eyeBrow
+bounds:2,966,82,36
+Alf-pupple
+bounds:2,683,125,125
+eye close
+bounds:129,770,211,45
+offsets:1,0,213,46
+last5letters/8x/Wawbase
+bounds:2,2,727,1000

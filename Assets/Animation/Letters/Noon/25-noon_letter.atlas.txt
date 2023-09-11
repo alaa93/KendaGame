@@ -1,0 +1,22 @@
+25-noon_letter.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.85
+Alf-eyeBrow
+bounds:2,866,82,36
+Alf-pupple
+bounds:169,446,125,125
+eye close
+bounds:187,573,211,45
+offsets:1,0,213,46
+last5letters/8x/noonBase
+bounds:2,360,673,542
+last5letters/8x/noonFace
+bounds:655,185,250,247
+rotate:90
+last5letters/8x/noonHair
+bounds:351,499,73,175
+last5letters/8x/noonWing
+bounds:96,88,580,351
+rotate:180

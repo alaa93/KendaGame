@@ -759,7 +759,7 @@ RectTransform:
   m_GameObject: {fileID: 8176697381481775904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.06, z: 1}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8176697381512429665}
@@ -767,8 +767,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 415, y: 22}
-  m_SizeDelta: {x: 1002.48, y: 1422.01}
+  m_AnchoredPosition: {x: -596, y: -109}
+  m_SizeDelta: {x: 908.8367, y: 2028.8125}
   m_Pivot: {x: 0.50001407, y: 0.061640516}
 --- !u!222 &8176697381481775907
 CanvasRenderer:
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  skeletonDataAsset: {fileID: 11400000, guid: e55c3b93a45613b488b2d78a0c13e426, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: d015f10115dfd614aa11ab6913007198, type: 2}
   additiveMaterial: {fileID: 2100000, guid: 2e8245019faeb8c43b75f9ca3ac8ee34, type: 2}
   multiplyMaterial: {fileID: 2100000, guid: e74a1f8978a7da348a721508d0d58834, type: 2}
   screenMaterial: {fileID: 2100000, guid: bab24c479f34eec45be6ea8595891569, type: 2}
@@ -946,7 +946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -227, y: -225}
+  m_AnchoredPosition: {x: 414, y: -164}
   m_SizeDelta: {x: 570.04, y: 519.76}
   m_Pivot: {x: 0.4262629, y: 0.4013985}
 --- !u!222 &8176697381512429667
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  skeletonDataAsset: {fileID: 11400000, guid: 793d1c64fc2f9224a89563f80d34bea8, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: d06fbd64d0c64dd4f9bd77b3220b81ec, type: 2}
   additiveMaterial: {fileID: 2100000, guid: 2e8245019faeb8c43b75f9ca3ac8ee34, type: 2}
   multiplyMaterial: {fileID: 2100000, guid: e74a1f8978a7da348a721508d0d58834, type: 2}
   screenMaterial: {fileID: 2100000, guid: bab24c479f34eec45be6ea8595891569, type: 2}

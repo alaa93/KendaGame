@@ -1,0 +1,16 @@
+24-meem_letter.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.85
+Alf-pupple
+bounds:2,343,125,125
+ba2-eyebrow
+bounds:355,910,99,76
+eye close
+bounds:2,729,211,45
+offsets:1,0,213,46
+last5letters/8x/meemBase
+bounds:2,309,984,677
+last5letters/8x/meemHorn
+bounds:2,470,309,253

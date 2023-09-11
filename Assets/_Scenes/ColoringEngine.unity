@@ -3087,6 +3087,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 97fdf14998e89414aa786b65446c545d, type: 2}
   - {fileID: 11400000, guid: 717b4c0d28613ae419d52fc7ba533fb8, type: 2}
   - {fileID: 11400000, guid: e10e20f82cd29d4439b75e17640b1f73, type: 2}
+  - {fileID: 11400000, guid: d06fbd64d0c64dd4f9bd77b3220b81ec, type: 2}
+  - {fileID: 11400000, guid: f9e4ed1e7217d7043a3a5199e4ea86ec, type: 2}
+  - {fileID: 11400000, guid: 0d61ba048dd276e45bad228feb3ddf89, type: 2}
+  - {fileID: 11400000, guid: c3b54f201ae501942b7d9900621a55dd, type: 2}
+  - {fileID: 11400000, guid: 8867d7e956311194fb74728c9cb89d3c, type: 2}
   letterSkeletonScales:
   - {x: 0.4, y: 0.4, z: 0.4}
   - {x: 0.4, y: 0.4, z: 0.4}
@@ -3111,6 +3116,11 @@ MonoBehaviour:
   - {x: 0.4, y: 0.4, z: 0.4}
   - {x: 0.3, y: 0.3, z: 0.4}
   - {x: 0.3, y: 0.3, z: 0.4}
+  - {x: 0.3, y: 0.3, z: 0.4}
+  - {x: 0.4, y: 0.4, z: 0.4}
+  - {x: 0.4, y: 0.4, z: 0.4}
+  - {x: 0.3, y: 0.3, z: 0.4}
+  - {x: 0.5, y: 0.5, z: 0.4}
   letterSkeletonPositions:
   - {x: 600, y: -325, z: 0}
   - {x: 600, y: -375, z: 0}
@@ -3135,6 +3145,11 @@ MonoBehaviour:
   - {x: 600, y: -450, z: 0}
   - {x: 600, y: -450, z: 0}
   - {x: 600, y: -450, z: 0}
+  - {x: 600, y: -380, z: 0}
+  - {x: 600, y: -380, z: 0}
+  - {x: 600, y: -400, z: 0}
+  - {x: 600, y: -400, z: 0}
+  - {x: 550, y: -350, z: 0}
   startAudio: {fileID: 8300000, guid: f7f02354d1be59e40ace1fb15520868a, type: 3}
   characterVoice:
   - {fileID: 8300000, guid: caa893d6f7f5afa43a8399065c136bd8, type: 3}
@@ -3160,6 +3175,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fcb4336f7324fe5409e172f380458e2a, type: 3}
   - {fileID: 8300000, guid: 569bc1251d9134543beb86dce4ad75d6, type: 3}
   - {fileID: 8300000, guid: c912fa7e432e6844caa6ef5b935f08e7, type: 3}
+  - {fileID: 8300000, guid: 8c714b87deeb73a4992f21c4831d5744, type: 3}
+  - {fileID: 8300000, guid: 2607f34f84b2fe74f8c677ec8c0c3d48, type: 3}
+  - {fileID: 8300000, guid: 406c9cac9396a3b4a803d7d2808ae6a1, type: 3}
+  - {fileID: 8300000, guid: dc8ab569f8070654eaf1252160fc0d49, type: 3}
+  - {fileID: 8300000, guid: 430f2d3c559315845803e90383794976, type: 3}
   characterName:
   - {fileID: 8300000, guid: c75604b3e5ad3b64bab27feafe82012e, type: 3}
   - {fileID: 8300000, guid: 7a0863ec676acc54e8343e674b06a0ee, type: 3}
@@ -3184,6 +3204,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 64a1b8b6823f38a4bb18f23a72f60ac0, type: 3}
   - {fileID: 8300000, guid: 4c6be9430b1140942bcb268dd422a5cc, type: 3}
   - {fileID: 8300000, guid: d9f2cfb268043554c80613c8ae940bf2, type: 3}
+  - {fileID: 8300000, guid: b19f03599c493894eb10cff06efc4416, type: 3}
+  - {fileID: 8300000, guid: e34c652ee6e65ac49b8651b6017949b7, type: 3}
+  - {fileID: 8300000, guid: c9ab68e91f06ec94885b40d25080e95d, type: 3}
+  - {fileID: 8300000, guid: fe79df5cad64d2949ba280dd678d2844, type: 3}
+  - {fileID: 8300000, guid: f49cb2baa32b7b749abb68bb3d690a1e, type: 3}
   animalName:
   - {fileID: 8300000, guid: 7cd9d0ff7caed5443b09e3ff296c5c89, type: 3}
   - {fileID: 8300000, guid: eecb8eca9d22b0449b44b059342e25a3, type: 3}
@@ -3208,6 +3233,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6cbb19db5c9446d499227f8c1a708cb1, type: 3}
   - {fileID: 8300000, guid: 573437fc86388a24c890c008e64f4de4, type: 3}
   - {fileID: 8300000, guid: fdb436275dc35444d90fc34c033d5b56, type: 3}
+  - {fileID: 8300000, guid: 8ee18770473844a4b84feb67639107c5, type: 3}
+  - {fileID: 8300000, guid: 8af66785686c3be46809dbc05db1ba27, type: 3}
+  - {fileID: 8300000, guid: 7a67e02344ef05744a0290a161f88aa3, type: 3}
+  - {fileID: 8300000, guid: 6b9d746c541b72f4b9b5838684eef226, type: 3}
+  - {fileID: 8300000, guid: 02da9007b8376294cbbe92f00fca72f3, type: 3}
 --- !u!1 &1100903759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5219,7 +5249,7 @@ RectTransform:
   m_GameObject: {fileID: 1899563186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 78754795}
@@ -5227,7 +5257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: -450}
+  m_AnchoredPosition: {x: 550, y: -350}
   m_SizeDelta: {x: 118.35596, y: 308.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899563189
@@ -5250,7 +5280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  skeletonDataAsset: {fileID: 11400000, guid: e10e20f82cd29d4439b75e17640b1f73, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 8867d7e956311194fb74728c9cb89d3c, type: 2}
   additiveMaterial: {fileID: 2100000, guid: 2e8245019faeb8c43b75f9ca3ac8ee34, type: 2}
   multiplyMaterial: {fileID: 2100000, guid: e74a1f8978a7da348a721508d0d58834, type: 2}
   screenMaterial: {fileID: 2100000, guid: bab24c479f34eec45be6ea8595891569, type: 2}

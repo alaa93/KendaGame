@@ -1,0 +1,21 @@
+26-heh-letter.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.85
+Alf-eyeBrow
+bounds:2,873,82,36
+Alf-pupple
+bounds:2,151,125,125
+eye close
+bounds:129,65,211,45
+offsets:1,0,213,46
+rotate:90
+last5letters/8x/hehBase
+bounds:2,207,907,702
+last5letters/8x/hehFeather
+bounds:158,76,457,439
+offsets:0,0,460,439
+last5letters/8x/hehmnqar
+bounds:2,278,449,154
+rotate:90
