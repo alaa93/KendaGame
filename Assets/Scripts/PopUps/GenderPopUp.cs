@@ -29,5 +29,9 @@ namespace KendaGame.UI {
       PlayerPrefs.SetInt("GenderSelected", 1);
       gameObject.SetActive(false);
     }
+
+    public void ClosePopUp() {
+      gameObject.SetActive(false);
+    }
   }
 }

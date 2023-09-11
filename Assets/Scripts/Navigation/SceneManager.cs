@@ -64,6 +64,7 @@ namespace KendaGame.Navigation {
     public void MoveTo(string targetSceneName, bool openManually = false) {
       this.openManually = openManually;
       Debug.Log("MoveTo " + targetSceneName);
+      PopUpsManager.Instance.DismissAll();
       Scenes targetScene = (Scenes)Enum.Parse(typeof(Scenes), targetSceneName);
       if (GetActiveScene().ToString() != targetSceneName) {
         loadingController.CloseClouds((animated) => {
