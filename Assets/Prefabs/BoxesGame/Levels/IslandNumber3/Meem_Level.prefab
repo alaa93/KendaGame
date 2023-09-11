@@ -610,7 +610,8 @@ MonoBehaviour:
   totalPartsToSolve: 4
   gameCompleted: 0
   firstNarration: {fileID: 8300000, guid: b3cf4a446045a7843b161f9e498156c8, type: 3}
-  partSolvedSfx: {fileID: 8300000, guid: f18d36c2c3b393246a37e2b3e9bd5ec9, type: 3}
+  animalName: {fileID: 8300000, guid: 8ee18770473844a4b84feb67639107c5, type: 3}
+  animalSound: {fileID: 8300000, guid: f5096ca62aee5c24092ce07a1161cde1, type: 3}
 --- !u!1 &1901914240205546999
 GameObject:
   m_ObjectHideFlags: 0
