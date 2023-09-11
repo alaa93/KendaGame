@@ -2,16 +2,18 @@
 size:1024,1024
 filter:Linear,Linear
 pma:true
-scale:0.5
+scale:0.9
 2x/9-base
-bounds:2,81,391,479
+bounds:2,135,703,862
+2x/9-dot
+bounds:74,429,167,168
 2x/9-tail
-bounds:2,2,243,239
+bounds:2,2,437,430
 rotate:270
 Alf-eyeBrow
-bounds:2,539,48,21
+bounds:2,959,86,38
 Alf-pupple
-bounds:2,261,74,74
+bounds:177,599,132,132
 eye close
-bounds:74,337,123,26
-offsets:1,0,125,27
+bounds:317,85,223,48
+offsets:1,0,225,49

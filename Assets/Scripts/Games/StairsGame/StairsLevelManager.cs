@@ -75,7 +75,6 @@ namespace KendaGame.Games {
     new int[] { 0, 1, 0, 0, 1, 0, 1, 1, 0 }  // Pattern 2
 };
       int y = Random.Range(0, pattern.Length);
-      Debug.Log(y);
       for (int x = 0; x < levelRocks.Length; x++) {
         int letterIndex = pattern[y][x];
         string letterToAssign = (letterIndex == 0) ? LettersHelper.GetActiveLetter() : inCorrectLetters[x];

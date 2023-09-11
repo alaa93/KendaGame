@@ -1,0 +1,19 @@
+28-yeh-letter.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+scale:0.75
+Alf-eyeBrow
+bounds:114,971,72,32
+Alf-pupple
+bounds:2,893,110,110
+eye close
+bounds:2,851,186,40
+offsets:1,0,188,41
+last5letters/8x/yehBack
+bounds:2,183,198,205
+last5letters/8x/yehBase
+bounds:2,2,713,1001
+last5letters/8x/yehWing
+bounds:635,380,623,231
+rotate:270

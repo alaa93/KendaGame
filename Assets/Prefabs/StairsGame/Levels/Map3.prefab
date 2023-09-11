@@ -6974,6 +6974,13 @@ MonoBehaviour:
   - {fileID: 6557356644983887489, guid: 97ff893ce9aee4f83bd4a528f27ec152, type: 3}
   - {fileID: 2228340166970030131, guid: eb7859935d457be4ea2ad6712ba4fa3d, type: 3}
   - {fileID: 6557356644983887489, guid: 97ff893ce9aee4f83bd4a528f27ec152, type: 3}
+  - {fileID: 6557356644983887489, guid: edeec85a0a020b24abdfefa7199a8971, type: 3}
+  - {fileID: 6557356644983887489, guid: 97ff893ce9aee4f83bd4a528f27ec152, type: 3}
+  - {fileID: 6557356644983887489, guid: da69a0f8d1dbcac40a6ea34df34e92b1, type: 3}
+  - {fileID: 6557356644983887489, guid: 97ff893ce9aee4f83bd4a528f27ec152, type: 3}
+  - {fileID: 6557356644983887489, guid: 22c080c43fd9fd74eb68fbf5b934dbe7, type: 3}
+  - {fileID: 6557356644983887489, guid: 97ff893ce9aee4f83bd4a528f27ec152, type: 3}
+  - {fileID: 6557356644983887489, guid: 3b52022ed49614a43ae8fa75129de460, type: 3}
   levelGuide: {fileID: 3110944601524339997}
   levelRocks:
   - {fileID: 3110944601287775656}
@@ -14909,13 +14916,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 26db0f065c9867f43aca86cf8087f726, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

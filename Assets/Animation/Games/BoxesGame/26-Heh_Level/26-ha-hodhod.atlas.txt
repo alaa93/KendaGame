@@ -1,0 +1,54 @@
+26-ha-hodhod.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+26-heh_hodhod_word
+bounds:2,754,1009,258
+offsets:0,1,1009,259
+Asset 23@2x
+bounds:547,535,173,72
+rotate:180
+Asset 24@2x
+bounds:199,552,192,65
+rotate:180
+Asset 25@2x
+bounds:663,573,184,89
+Asset 26@2x
+bounds:823,570,166,112
+Asset 27@2x
+bounds:2,548,135,129
+Asset 28@2x
+bounds:299,489,113,138
+rotate:270
+Asset 29@2x
+bounds:56,492,87,138
+rotate:270
+body@2x
+bounds:2,568,184,195
+rotate:90
+closedMouth@2x
+bounds:439,576,127,70
+face@2x
+bounds:320,599,117,120
+left@2x
+bounds:171,706,18,18
+leftEyeBrowe@2x
+bounds:2,744,15,8
+offsets:1,0,16,8
+leftLeg@2x
+bounds:891,473,120,121
+rotate:90
+leftWing@2x
+bounds:568,632,165,96
+mouthOpen@2x
+bounds:830,520,147,78
+rightEye@2x
+bounds:153,726,25,26
+rightEyeBrowe@2x
+bounds:180,736,18,16
+offsets:1,0,19,16
+rightLeg@2x
+bounds:610,470,108,134
+rotate:90
+rightWing@2x
+bounds:199,610,174,142
