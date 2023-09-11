@@ -137,6 +137,9 @@ namespace KendaGame.Navigation {
     public void IncrementCoins(int addedAmount) {
       uiController.IncrementCoins(addedAmount);
     }
+    public void CoinsAnimation() {
+      uiController.CoinsAnimation();
+    }
 
     private void UpdateUIBtnsState(Scene scene) {
       if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.HomeScreen.ToString()) {

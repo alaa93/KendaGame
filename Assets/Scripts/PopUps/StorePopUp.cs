@@ -12,6 +12,11 @@ namespace KendaGame.UI {
     public GameObject[] mustache;
     [SerializeField] Sprite activeItemBackground;
     [SerializeField] Sprite inactiveItemBackground;
+    [SerializeField] NarrationSounds narrationSounds;
+
+    [SerializeField]
+    GameObject StoreMenu;
+
 
     private int coins;
     private int currentHatIndex = -1;
@@ -65,7 +70,13 @@ namespace KendaGame.UI {
           StorageHelper.WriteStorage(usedItemType, $"{itemIndex}");
           EquipItem(items, itemIndex);
         } else {
-          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(ErrorMessages.InsufficientFunds, ErrorMessages.LetsPlayToPurchaseMore);
+          StoreMenu.transform.DOShakePosition(0.5f, strength: new Vector3(50, 50, 0), vibrato: 20, randomness: 180).OnComplete(() => {
+            PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(ErrorMessages.InsufficientFunds, ErrorMessages.LetsPlayToPurchaseMore);
+          });
+
+
+          AudioController.Instance.PlayNarrationAtPoint(narrationSounds.failPurchasingSound);
+          SceneManager.Instance.CoinsAnimation();
         }
       } else {
         changeFunction(itemIndex);
@@ -106,5 +117,17 @@ namespace KendaGame.UI {
     public void ClosePopUp() {
       gameObject.SetActive(false);
     }
+
+    private void HandlePurchaseAction(AudioClip purchaseSounds) {
+      StoreMenu.transform.DOShakePosition(1.0f, strength: new Vector3(50, 50, 0), vibrato: 20, randomness: 180);
+      AudioController.Instance.PlayNarrationAtPoint(purchaseSounds);
+      SceneManager.Instance.CoinsAnimation();
+    }
+  }
+
+  [System.Serializable]
+  public class NarrationSounds {
+    public AudioClip successfulPurchasingSound;
+    public AudioClip failPurchasingSound;
   }
 }
