@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System;
 using KendaGame.Helpers;
 using TMPro;
+using DG.Tweening;
+
 
 namespace KendaGame.Navigation {
   public class UIController : MonoBehaviour {
@@ -68,6 +70,22 @@ namespace KendaGame.Navigation {
       coinsAmount += addedAmount;
       coinsText.text = $"{coinsAmount}";
       StorageHelper.WriteStorage(StorageHelper.CoinsAmount, $"{coinsAmount}");
+    }
+
+    public void CoinsAnimation() {
+      coinsText.DOColor(Color.red, 0.2f)
+                .OnComplete(() => {
+                  coinsText.DOColor(Color.white, 0.2f);
+                  coinsText.text = coinsAmount.ToString();
+                  coinsText.DOFade(1f, 0.5f)
+                      .SetEase(Ease.OutQuad);
+                });
+      coinsText.transform.DOScale(Vector3.one * 2f, 0.2f)
+          .SetEase(Ease.InCirc)
+          .OnComplete(() => {
+            coinsText.transform.DOScale(Vector3.one, 0.2f);
+            coinsText.text = coinsAmount.ToString();
+          });
     }
   }
 }

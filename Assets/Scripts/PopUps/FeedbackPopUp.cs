@@ -3,6 +3,8 @@ using I2.Loc;
 using KendaGame.Helpers;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
+
 
 namespace KendaGame.UI {
   public class FeedbackPopUp : MonoBehaviour {
@@ -19,15 +21,21 @@ namespace KendaGame.UI {
     }
 
     public void ShowPopUp(string title = null, string message = null, Action onCloseCallback = null) {
+      if (!gameObject.activeInHierarchy) {
+        gameObject.SetActive(true);
+        transform.DOScale(1, 0.5f).SetEase(Ease.OutBack);
+      } 
+
       this.closeCallback = onCloseCallback;
       titleHolder.SetActive(!string.IsNullOrEmpty(title));
       this.title.Term = !string.IsNullOrEmpty(title) ? title : "";
       this.message.Term = !string.IsNullOrEmpty(message) ? message : "";
-      gameObject.SetActive(true);
     }
 
     public void ClosePopUp() {
-      gameObject.SetActive(false);
+      transform.DOScale(0, 0.5f).SetEase(Ease.InBack).OnComplete(() => {
+        gameObject.SetActive(false);
+      });
       closeCallback?.Invoke();
     }
   }
