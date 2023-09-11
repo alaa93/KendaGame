@@ -2,20 +2,20 @@
 size:2048,2048
 filter:Linear,Linear
 pma:true
-scale:0.5
+scale:0.7
 1x/Asset 10
-bounds:1234,1059,38,49
+bounds:1725,1483,53,68
 1x/Asset 11
-bounds:1324,1036,22,26
+bounds:1849,1450,31,36
 1x/Asset 12
-bounds:1287,1055,35,29
+bounds:1798,1477,49,40
 1x/Asset 9
-bounds:1234,1130,133,237
+bounds:1725,1579,186,332
 b-browser
-bounds:1234,1044,18,14
+bounds:1725,1461,25,20
 eye close
-bounds:1234,1110,81,18
+bounds:1725,1553,113,25
 eyes
-bounds:1256,1034,29,31
+bounds:1755,1447,41,43
 tha2 word
-bounds:2,1033,1230,334
+bounds:2,1444,1721,467

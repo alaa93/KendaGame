@@ -33,9 +33,9 @@ namespace KendaGame.Navigation {
     }
 
       private void OnLetterClicked() {
-      if (id > LastLetterCompleted) {
+   /*   if (id > LastLetterCompleted) {
         return;
-      }
+      }*/
       Debug.Log("map letter index "+id);
       SceneManager.Instance.OnMapLetterClicked(id);
     }

@@ -1304,7 +1304,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.87, y: 6.52}
+    oldSize: {x: 4.88, y: 6.52}
     newSize: {x: 2.92, y: 2.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3126,7 +3126,8 @@ MonoBehaviour:
   totalPartsToSolve: 5
   gameCompleted: 0
   firstNarration: {fileID: 8300000, guid: b3cf4a446045a7843b161f9e498156c8, type: 3}
-  partSolvedSfx: {fileID: 8300000, guid: 07cd728611dcb4f4088c7be7ec4a1f30, type: 3}
+  animalName: {fileID: 8300000, guid: 2ba6e7ef0864fcb46bbd0f9f2587ac63, type: 3}
+  animalSound: {fileID: 8300000, guid: afbf3e3026accf14fa71bfc099ab2c62, type: 3}
 --- !u!1 &5852468328909377518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,7 +3580,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.87, y: 6.52}
+    oldSize: {x: 4.88, y: 6.52}
     newSize: {x: 11.870742, y: 15.679999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

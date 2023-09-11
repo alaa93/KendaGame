@@ -436,9 +436,6 @@ MonoBehaviour:
   - animationProperty: dance
     is_loop: 1
     track: 0
-  - animationProperty: breath
-    is_loop: 1
-    track: 2
 --- !u!1 &1600391839167166300
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +820,8 @@ MonoBehaviour:
   totalPartsToSolve: 5
   gameCompleted: 0
   firstNarration: {fileID: 8300000, guid: b3cf4a446045a7843b161f9e498156c8, type: 3}
-  partSolvedSfx: {fileID: 8300000, guid: b4f07a5872c2def49accca642b04fcb2, type: 3}
+  animalName: {fileID: 8300000, guid: 3b5146af058f6c34eb855cbad307e79e, type: 3}
+  animalSound: {fileID: 8300000, guid: b4f07a5872c2def49accca642b04fcb2, type: 3}
 --- !u!1 &1600391840189935949
 GameObject:
   m_ObjectHideFlags: 0

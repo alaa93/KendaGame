@@ -6,6 +6,7 @@ using DG.Tweening;
 using KendaGame.Tutorial;
 using Spine.Unity;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace KendaGame.Games {
   public class BoxesLettersController : MonoBehaviour {
@@ -44,10 +45,12 @@ namespace KendaGame.Games {
     private int unlockChunk = 1;
 
     public AudioClip firstNarration;
-    public AudioClip partSolvedSfx;
+    public AudioClip animalName;
+    public AudioClip animalSound;
 
 
-    private void Start() {
+
+        private void Start() {
       InitializeLetters();
       InitGameParts();
       AudioController.Instance.AddAudioToQueue(firstNarration);
@@ -125,8 +128,8 @@ namespace KendaGame.Games {
 
       AudioClip endingSfx = AudioController.Instance.commonSfx.GetEndingSfx();
       AudioController.Instance.PlaySfxAtPoint(endingSfx);
-      AudioController.Instance.AddAudioToQueue(partSolvedSfx);
-      AudioController.Instance.PlayAudioFromQueue();
+            AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { animalName, animalSound });
+            AudioController.Instance.PlayAudioFromQueue();
       if (LettersHelper.GetActiveLetterIndex() == 0) {
         endingAnim.AnimationState.AddAnimation(0, "idle", false,0);
        // yield return new WaitForSeconds(0.5f);

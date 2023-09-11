@@ -1989,7 +1989,8 @@ MonoBehaviour:
   totalPartsToSolve: 4
   gameCompleted: 0
   firstNarration: {fileID: 8300000, guid: b3cf4a446045a7843b161f9e498156c8, type: 3}
-  partSolvedSfx: {fileID: 8300000, guid: afbf3e3026accf14fa71bfc099ab2c62, type: 3}
+  animalName: {fileID: 8300000, guid: eecb8eca9d22b0449b44b059342e25a3, type: 3}
+  animalSound: {fileID: 8300000, guid: 84ded39a28115244aaf0112e256a18d8, type: 3}
 --- !u!1 &2524390536606705853
 GameObject:
   m_ObjectHideFlags: 0

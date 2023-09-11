@@ -638,11 +638,11 @@ MonoBehaviour:
   - {fileID: 6801936924487656970}
   letterPrefabs:
   - {fileID: 503044758352628199, guid: d3a253aaeed942f45b25cfeb9ba4f7d4, type: 3}
-  - {fileID: 2874795789144390965, guid: 42283c94d64353146a93e29b524ac8cf, type: 3}
-  - {fileID: 547568945980327126, guid: 5f168297957505b4ca77a85f0991cfd4, type: 3}
-  - {fileID: 503044758352628199, guid: d3a253aaeed942f45b25cfeb9ba4f7d4, type: 3}
-  - {fileID: 547568945980327126, guid: 8c57298bdd0f0f046a02f65537b4b4ca, type: 3}
-  - {fileID: 547568945980327126, guid: 4bdac5c38409260499e97cff0cf4abba, type: 3}
+  - {fileID: 547568945980327126, guid: ecaee5ebfe29f3846a1dc2f0304b9535, type: 3}
+  - {fileID: 503044758352628199, guid: eb771948efc13b341b0312128719fb9f, type: 3}
+  - {fileID: 547568945980327126, guid: de244ecbee27fe447b04fa5a2eaadff3, type: 3}
+  - {fileID: 547568945980327126, guid: 74c94c901d99e1f469b6cb8ddaa835d4, type: 3}
+  - {fileID: 503044758352628199, guid: c7b9fc29a2674cf41a9bf166096483c5, type: 3}
   - {fileID: 503044758352628199, guid: d3a253aaeed942f45b25cfeb9ba4f7d4, type: 3}
   - {fileID: 547568945980327126, guid: 78a5c2d0ca879c1428ca9161281e3792, type: 3}
   - {fileID: 503044758352628199, guid: d3a253aaeed942f45b25cfeb9ba4f7d4, type: 3}
@@ -652,7 +652,8 @@ MonoBehaviour:
   totalPartsToSolve: 4
   gameCompleted: 0
   firstNarration: {fileID: 8300000, guid: b3cf4a446045a7843b161f9e498156c8, type: 3}
-  partSolvedSfx: {fileID: 8300000, guid: f18d36c2c3b393246a37e2b3e9bd5ec9, type: 3}
+  animalName: {fileID: 8300000, guid: 02da9007b8376294cbbe92f00fca72f3, type: 3}
+  animalSound: {fileID: 8300000, guid: 33212b111199d9f4795e2f69e3109873, type: 3}
 --- !u!1 &833225335969985590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,9 +1280,6 @@ MonoBehaviour:
   - animationProperty: dance
     is_loop: 1
     track: 0
-  - animationProperty: breath
-    is_loop: 1
-    track: 2
 --- !u!1 &1708102177077201159
 GameObject:
   m_ObjectHideFlags: 0

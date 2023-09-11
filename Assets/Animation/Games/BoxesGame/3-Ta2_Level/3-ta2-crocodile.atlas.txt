@@ -2,26 +2,27 @@
 size:2048,2048
 filter:Linear,Linear
 pma:true
-scale:0.5
+scale:0.7
 1x/Asset 13
-bounds:1366,1261,204,309
+bounds:2,837,285,432
+rotate:90
 1x/Asset 14
-bounds:1476,1014,35,103
+bounds:554,839,48,144
 1x/Asset 15
-bounds:1452,1105,113,61
+bounds:2,886,158,85
 1x/Asset 16
-bounds:1414,1018,62,104
+bounds:514,977,86,145
 1x/Asset 17
-bounds:1508,1018,49,80
+bounds:365,1003,68,112
 1x/Asset 18
-bounds:1366,1065,55,195
+bounds:435,849,76,273
 1x/Asset 19
-bounds:1526,1151,32,97
+bounds:154,842,44,135
 3-t-word
-bounds:2,1009,1362,561
+bounds:2,1124,1907,785
 b-browser
-bounds:1366,1016,18,14
+bounds:2,973,25,20
 eye close
-bounds:1457,1250,81,18
+bounds:2,858,113,25
 eyes
-bounds:1366,1032,29,31
+bounds:117,847,41,43

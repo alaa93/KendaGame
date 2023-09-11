@@ -246,7 +246,7 @@ MonoBehaviour:
   updateTiming: 1
   unscaledTime: 0
   _animationName: idle
-  loop: 1
+  loop: 0
   timeScale: 1
 --- !u!61 &763456241119356976
 BoxCollider2D:
@@ -11590,7 +11590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.39000005, y: 0.21}
+  m_AnchoredPosition: {x: -0.31, y: 0.21}
   m_SizeDelta: {x: 8.3485, y: 9.7635}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &763456242113737004
@@ -11683,15 +11683,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58
-  m_fontSizeBase: 58
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

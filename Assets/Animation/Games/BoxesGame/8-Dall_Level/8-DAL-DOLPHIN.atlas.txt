@@ -2,22 +2,23 @@
 size:2048,2048
 filter:Linear,Linear
 pma:true
-scale:0.5
+scale:0.7
 1x/Asset 11
-bounds:1413,1024,22,26
+bounds:2,855,31,36
 1x/Asset 2
-bounds:1413,1282,197,328
+bounds:2,829,275,459
+rotate:90
 1x/Asset 3
-bounds:1413,1105,59,67
+bounds:643,830,82,94
 1x/Asset 4
-bounds:1413,1174,64,68
+bounds:552,839,90,95
 1x/Asset 5
-bounds:1413,1244,82,65
+bounds:458,836,115,91
 b-browser
-bounds:1413,1008,18,14
+bounds:45,1084,25,20
 dal word
-bounds:2,990,1409,620
+bounds:2,1106,1972,868
 eye close
-bounds:1413,1085,81,18
+bounds:696,831,113,25
 eyes
-bounds:1413,1052,29,31
+bounds:2,1061,41,43
