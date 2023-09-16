@@ -30,8 +30,8 @@ MonoBehaviour:
       TermType: 9
       Description: 
       Languages:
-      - Lato-Regular
-      - DroidKufi-Regular
+      - DANA-FAT SDF
+      - DANA-FAT SDF
       Flags: 0000
       Languages_Touch: []
     - Term: LocalizeFonts_Bold

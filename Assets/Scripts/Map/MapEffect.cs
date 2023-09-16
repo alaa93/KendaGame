@@ -1,7 +1,5 @@
 using KendaGame.Helpers;
-using Spine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -95,7 +93,7 @@ namespace KendaGame.UI {
       MapParticles[mapNumber].SetActive(true);
     }
 
-    private void GoToArea(int areaIndex) {
+    public void GoToArea(int areaIndex) {
       if (moveCoroutine != null) {
         StopCoroutine(moveCoroutine);
       }

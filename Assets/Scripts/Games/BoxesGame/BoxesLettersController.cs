@@ -208,6 +208,7 @@ namespace KendaGame.Games {
           instantiatedLetters[x].SetRunState(state);
         } else {
           instantiatedLetters[x].SetRunState(state);
+          instantiatedLetters[x].SetFreezeState(state);
           instantiatedLetters[x].SetDancingAnimation();
         }
       }

@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d3f876e9984424fa8cb4d4ab61602f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 4
+  id: 5
 --- !u!50 &2479807000237301130
 Rigidbody2D:
   serializedVersion: 4
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseDown: 0
-  id: 4
+  id: 5
   locked: 0
 --- !u!61 &2479807000904256973
 BoxCollider2D:

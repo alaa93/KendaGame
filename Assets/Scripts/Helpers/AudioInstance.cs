@@ -5,6 +5,10 @@ namespace KendaGame.Helpers {
     [SerializeField]
     AudioSource audioSource;
 
+    private void Awake() {
+      AudioController_MusicStateChanged(AudioController.Instance.GetMusicState());
+    }
+
     private void OnEnable() {
       AudioController.MusicStateChanged += AudioController_MusicStateChanged;
     }

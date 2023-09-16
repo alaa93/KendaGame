@@ -543,7 +543,7 @@ MonoBehaviour:
   disableRenderingOnOverride: 1
   updateTiming: 1
   unscaledTime: 0
-  _animationName: Dancing2
+  _animationName: 
   loop: 1
   timeScale: 1
 --- !u!114 &238363568651162069
