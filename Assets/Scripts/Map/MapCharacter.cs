@@ -16,7 +16,7 @@ public class MapCharacter : MonoBehaviour {
 
   private IEnumerator MoveCharacterRoutine() {
     int activeLetter = LettersHelper.GetActiveLetterIndex();
-    int lastActiveLetter = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted));
+    int lastActiveLetter = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted,"0"));
 
     DetermineArea(activeLetter);
 

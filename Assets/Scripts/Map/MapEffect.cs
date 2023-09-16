@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
+
 
 namespace KendaGame.UI {
   public class MapEffect : MonoBehaviour, IEndDragHandler {
@@ -20,6 +22,7 @@ namespace KendaGame.UI {
     private Coroutine moveCoroutine;
     private float[] targetMapPositions = { 1f, 0.5f, 0f };
     Vector2 dragStartPos;
+    [SerializeField] NarrationSounds narrationSounds;
 
 
     int currentArea =0;
@@ -33,6 +36,8 @@ namespace KendaGame.UI {
       area2Button.AddClickListener(() => GoToArea(1));
       area3Button.AddClickListener(() => GoToArea(0));
       SetMapProperties(0);
+      AudioController.Instance.PlayNarrationAtPoint(narrationSounds.mapLoadedClip);
+
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
@@ -104,6 +109,10 @@ namespace KendaGame.UI {
       currentArea = areaIndex;
       float startPosition = map.horizontalNormalizedPosition;
       moveCoroutine = StartCoroutine(Move(startPosition, targetMapPositions[areaIndex], moveDuration, areaIndex));
+    }
+    [Serializable]
+    public class NarrationSounds {
+      public AudioClip mapLoadedClip;
     }
   }
 }
