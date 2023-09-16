@@ -21,7 +21,7 @@ namespace KendaGame.Games {
     bool isDragging = false;
     GameObject targetbox;
     bool completed;
-    bool freeze;
+    bool freeze=true;
 
     private void Awake() {
       initialPos = this.transform.position;

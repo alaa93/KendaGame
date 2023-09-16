@@ -34,9 +34,9 @@ namespace KendaGame.Navigation {
 
     public void OpenClouds(Action<bool> onComplete, bool animated = true) {
       if (cloudClosed) {
-        GetLoadingClouds().upperCloud.transform.DOMoveY(GetTopScreenEdge().y, animated ? animationDuration : 0.0f);
-        GetLoadingClouds().leftCloud.transform.DOMoveX(GetLeftScreenEdge().x, animated ? animationDuration : 0.0f);
-        GetLoadingClouds().rightCloud.transform.DOMoveX(GetRightScreenEdge().x, animated ? animationDuration : 0.0f).OnComplete(() => {
+        GetLoadingClouds().upperCloud.transform.DOMoveY(GetTopScreenEdge().y+5, animated ? animationDuration : 0.0f);
+        GetLoadingClouds().leftCloud.transform.DOMoveX(GetLeftScreenEdge().x-5, animated ? animationDuration : 0.0f);
+        GetLoadingClouds().rightCloud.transform.DOMoveX(GetRightScreenEdge().x+5, animated ? animationDuration : 0.0f).OnComplete(() => {
           onComplete?.Invoke(animated);
         });
         AudioController.Instance.PlaySfxAtPoint(windSfx, animated ? 0.4f : 0f);

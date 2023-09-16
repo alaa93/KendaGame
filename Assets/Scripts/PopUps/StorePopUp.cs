@@ -1,7 +1,6 @@
 using DG.Tweening;
 using KendaGame.Helpers;
 using KendaGame.Navigation;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +11,8 @@ namespace KendaGame.UI {
     public GameObject[] mustache;
     [SerializeField] Sprite activeItemBackground;
     [SerializeField] Sprite inactiveItemBackground;
+    [SerializeField] Sprite priceImage;
     [SerializeField] NarrationSounds narrationSounds;
-
     [SerializeField]
     GameObject StoreMenu;
 
@@ -53,7 +52,8 @@ namespace KendaGame.UI {
         items[itemIndex].GetComponentInParent<Image>().sprite = activeItemBackground;
         for (int i = 0; i < items.Length; i++) {
           if (i != itemIndex) {
-            items[i].GetComponentsInParent<Image>()[1].sprite = inactiveItemBackground;
+            items[i].GetComponentsInParent<Image>()[0].sprite = inactiveItemBackground;
+            items[i].GetComponent<Image>().sprite = priceImage;
           }
         }
       }
@@ -73,8 +73,6 @@ namespace KendaGame.UI {
           StoreMenu.transform.DOShakePosition(0.5f, strength: new Vector3(50, 50, 0), vibrato: 20, randomness: 180).OnComplete(() => {
             PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(ErrorMessages.InsufficientFunds, ErrorMessages.LetsPlayToPurchaseMore);
           });
-
-
           AudioController.Instance.PlayNarrationAtPoint(narrationSounds.failPurchasingSound);
           SceneManager.Instance.CoinsAnimation();
         }

@@ -167,6 +167,7 @@ MonoBehaviour:
   skeletonAnimation: {fileID: 2874795789144390966}
   isGrounded: 0
   letterId: "\u0631"
+  freeze: 1
 --- !u!70 &3546311624318893944
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
