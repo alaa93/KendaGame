@@ -31151,6 +31151,8 @@ MonoBehaviour:
   - {fileID: 1631172920}
   - {fileID: 683888230}
   - {fileID: 1972110310}
+  narrationSounds:
+    mapLoadedClip: {fileID: 8300000, guid: 0827baa3a8969ed439418a8ea6cb1b28, type: 3}
   area1Button: {fileID: 1113743018}
   area2Button: {fileID: 1526168526}
   area3Button: {fileID: 382625144}
@@ -210127,11 +210129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41945fc139f4d7647a70c68cfb57a30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backGroundMusic: {fileID: 550851811}
-  map: {fileID: 219430057}
-  narrationSounds:
-    afterIntroClip: {fileID: 8300000, guid: 5e518196899e74d48b5b1003ff8d8f40, type: 3}
-    mapLoadedClip: {fileID: 8300000, guid: 0827baa3a8969ed439418a8ea6cb1b28, type: 3}
+  splashScreenController: {fileID: 0}
 --- !u!4 &1703042932
 Transform:
   m_ObjectHideFlags: 0

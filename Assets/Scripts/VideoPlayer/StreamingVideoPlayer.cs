@@ -1,78 +1,64 @@
 using KendaGame.Helpers;
 using KendaGame.Navigation;
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Video;
 
 namespace KendaGame.UI {
   public class StreamingVideoPlayer : MonoBehaviour {
+    [SerializeField] private SplashScreenController splashScreenController;
 
-	[SerializeField]
-	private AudioSource backGroundMusic;
-	private string videoName;
-	[SerializeField]
-	ScrollRect map;
-	[SerializeField]
-	NarrationSounds narrationSounds;
-	private LoadingBar loadingBar;
+    private string videoName;
+    private LoadingBar loadingBar;
+    public static StreamingVideoPlayer instance;
 
+    private void Awake() {
+      if (instance == null) {
+        instance = this;
+      } else {
+        Destroy(instance);
+      }
+    }
 
-	void Start() {
-	  int lastLetterCompletted = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted, "0"));
-	  if (lastLetterCompletted == 0 && StorageHelper.ReadStorage(StorageHelper.CanWatchIntro, "true") == "true") {
-		videoName = IslandVideos.FirstLandIntro;
-		StartVideo(videoName);
-	  } else if (lastLetterCompletted == 8 && StorageHelper.ReadStorage(StorageHelper.CanWatchOutro, "true") == "true") {
-		videoName = IslandVideos.FirstLandOutro;
-		StartVideo(videoName);
-	  } else {
-		AudioController.Instance.PlayNarrationAtPoint(narrationSounds.mapLoadedClip);
-	  }
-	}
+    public void StartVideo(string videoName, float timeToShowVideo) {
+      this.videoName = videoName;
+      GameObject camera = GameObject.Find("Main Camera");
+      var videoPlayer = camera.AddComponent<VideoPlayer>();
+      videoPlayer.playOnAwake = false;
+      videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
+      videoPlayer.url = videoName;
+      videoPlayer.isLooping = true;
+      videoPlayer.loopPointReached += EndReached;
+      videoPlayer.Prepare();
+      StartCoroutine(PlayVideoAfterPrepare(videoPlayer, timeToShowVideo));
+    }
 
-	void StartVideo(string videoName) {
-	  backGroundMusic.Pause();
-	  map.enabled = false;
-	  GameObject camera = GameObject.Find("Main Camera");
-	  var videoPlayer = camera.AddComponent<VideoPlayer>();
-	  videoPlayer.playOnAwake = false;
-	  videoPlayer.renderMode = VideoRenderMode.CameraNearPlane;
-	  videoPlayer.url = videoName;
-	  videoPlayer.isLooping = true;
-	  videoPlayer.loopPointReached += EndReached;
-	  videoPlayer.Prepare();
-	  StartCoroutine(PlayVideoAfterPrepare(videoPlayer));
+    private IEnumerator PlayVideoAfterPrepare(VideoPlayer videoPlayer, float timeToShowVideo) {
+      yield return new WaitForSeconds(timeToShowVideo);
+      if (!videoPlayer.isPrepared) {
+        loadingBar = PopUpsManager.Instance.LoadLoadingBar();
+        loadingBar.ShowLoadingBar();
 
-	}
-	IEnumerator PlayVideoAfterPrepare(VideoPlayer videoPlayer) {
-	  loadingBar = PopUpsManager.Instance.LoadLoadingBar();
-	  loadingBar.ShowLoadingBar();
-	  while (!videoPlayer.isPrepared) {
-		loadingBar.IncreaseLoadingBar(0.1f);
-		yield return new WaitForSeconds(1f);
-	  }
-	  loadingBar.HideLoadingBar();
+        while (!videoPlayer.isPrepared) {
+          loadingBar.IncreaseLoadingBar(0.1f);
+          yield return new WaitForSeconds(1f);
+        }
 
-	  videoPlayer.Play();
-	}
+        loadingBar.HideLoadingBar();
+      }
+      videoPlayer.Play();
+    }
 
-	void EndReached(VideoPlayer vp) {
-	  if (videoName == IslandVideos.FirstLandIntro) {
-		StorageHelper.WriteStorage(StorageHelper.CanWatchIntro, "false");
-	  } else {
-		StorageHelper.WriteStorage(StorageHelper.CanWatchOutro, "false");
-	  }
-	  Destroy(vp);
-	  AudioController.Instance.PlayNarrationAtPoint(narrationSounds.afterIntroClip);
-	  backGroundMusic.Play();
-	  map.enabled = true;
-	}
-	[Serializable]
-	public class NarrationSounds {
-	  public AudioClip afterIntroClip;
-	  public AudioClip mapLoadedClip;
-	}
+    private void EndReached(VideoPlayer vp) {
+      if (videoName == IslandVideos.FirstLandIntro) {
+        StorageHelper.WriteStorage(StorageHelper.CanWatchIntro, "false");
+      } else {
+        StorageHelper.WriteStorage(StorageHelper.CanWatchOutro, "false");
+      }
+      Destroy(vp);
+      if (SceneManager.Instance) {
+        splashScreenController.CheckUserLoginSession();
+      }
+    }
   }
 }
