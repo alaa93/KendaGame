@@ -24,6 +24,7 @@ namespace KendaGame.Helpers {
     private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "user-get-details-by-token-socialmedia";
     private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
+    private static readonly string User_Update_Time = "/user-update-player-time-by-token";
     private static readonly string GET_LETTERS_STATUS = "/user-get-letters-status-by-token";
 
     private static HTTPRequestHandler _instance;
@@ -78,11 +79,48 @@ namespace KendaGame.Helpers {
       StartCoroutine(GetUserDetailsBySocialMediaTokenRequest(token, statusCallback));
     }
 
-    public void GetStatusOfALLlettersInterface(Action<bool, Dictionary<string, LetterStatus>,string, string> statusCallback = null) {
+    public void UserUpdateTimeInterface(int timePlayed, bool showLoadingBar = false,
+      Action<bool> statusCallback = null) {
+      StartCoroutine(UserUpdateTime(timePlayed, showLoadingBar, statusCallback));
+    }
+    public void GetStatusOfALLlettersInterface(Action<bool, Dictionary<string, LetterStatus>, string, string> statusCallback = null) {
       StartCoroutine(GetStatusOfALLletters(statusCallback));
     }
 
-    private IEnumerator GetStatusOfALLletters(Action<bool, Dictionary<string, LetterStatus>,string, string> statusCallback = null) {
+    private IEnumerator UserUpdateTime(int timePlayed, bool showLoadingBar = false,
+      Action<bool> statusCallback = null) {
+      WWWForm formrequest = new WWWForm();
+      formrequest.AddField("time_played", timePlayed);
+      UnityWebRequest www = UnityWebRequest.Post(WEB_URL + User_Update_Time, formrequest);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      if (showLoadingBar) {
+        StartCoroutine(UploadProgressBar(www));
+      }
+      yield return www.SendWebRequest();
+      if (loadingBar != null && showLoadingBar) {
+        loadingBar.HideLoadingBar();
+      }
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false);
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(true);
+        } else {
+          Debug.Log(www.downloadHandler.text);
+          statusCallback?.Invoke(true);
+        }
+      } else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false);
+      }
+    }
+
+
+
+    private IEnumerator GetStatusOfALLletters(Action<bool, Dictionary<string, LetterStatus>, string, string> statusCallback = null) {
       WWWForm formRequest = new WWWForm();
       UnityWebRequest www = UnityWebRequest.Get(WEB_URL + GET_LETTERS_STATUS);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
@@ -99,12 +137,12 @@ namespace KendaGame.Helpers {
           error = AuthErrorCode.Email_Password_404;
         }
 
-        statusCallback?.Invoke(false, null, null,error);
+        statusCallback?.Invoke(false, null, null, error);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
 
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
-          statusCallback?.Invoke(false, null,null, AuthErrorCode.UnknownError);
+          statusCallback?.Invoke(false, null, null, AuthErrorCode.UnknownError);
         } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
             statusCallback?.Invoke(false, null, null, AuthErrorCode.Email_Password_404);
@@ -113,13 +151,10 @@ namespace KendaGame.Helpers {
             Dictionary<string, LetterStatus> letterStatuses = response.task_statuses;
             string letterStatusesJson = JsonConvert.SerializeObject(letterStatuses);
             string lastLetterOpened = response.last_opened_task;
-            statusCallback?.Invoke(true, letterStatuses,lastLetterOpened, AuthErrorCode.SignUp_Success);
+            statusCallback?.Invoke(true, letterStatuses, lastLetterOpened, AuthErrorCode.SignUp_Success);
           }
+          statusCallback?.Invoke(false, null, null, AuthErrorCode.UnknownError);
         }
-      } else {
-        Debug.Log("Unknown Response " + www.downloadHandler.text);
-        Debug.Log("Unknown Response error " + www.downloadHandler.error);
-        statusCallback?.Invoke(false, null, null, AuthErrorCode.UnknownError);
       }
     }
 
@@ -153,6 +188,8 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null);
       }
     }
+
+
 
     private IEnumerator SignUpRequest(string email, string password,
       Action<bool, UserSession, string> statusCallback = null) {
