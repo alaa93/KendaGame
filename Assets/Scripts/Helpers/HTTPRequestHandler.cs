@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using I2.Loc;
 using KendaGame.Navigation;
 using KendaGame.UI;
 using UnityEngine;
 using UnityEngine.Networking;
+using static KendaGame.Helpers.HTTPRequestHandler;
 using static KendaGame.Models.TracingModels;
 using static KendaGame.Models.UserModels;
 
@@ -22,7 +24,7 @@ namespace KendaGame.Helpers {
     private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "user-get-details-by-token-socialmedia";
     private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
-
+    private static readonly string GET_PROFILE_INFORMATION = "/user-get-letters-stars-by-token";
     private static HTTPRequestHandler _instance;
 
     public static HTTPRequestHandler Instance {
@@ -74,7 +76,37 @@ namespace KendaGame.Helpers {
       Action<bool, UserSession, string> statusCallback = null) {
       StartCoroutine(GetUserDetailsBySocialMediaTokenRequest(token, statusCallback));
     }
+    public void GetProfileInformationInterface(Action<bool, ResponseData> statusCallback=null) {
+      StartCoroutine(GetProfileInformation(statusCallback));
+    }
 
+    private IEnumerator GetProfileInformation(Action<bool, ResponseData> statusCallback) {
+      UnityWebRequest www = UnityWebRequest.Get(WEB_URL + GET_PROFILE_INFORMATION);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      StartCoroutine(UploadProgressBar(www));
+      yield return www.SendWebRequest();
+      if (loadingBar != null) {
+        loadingBar.HideLoadingBar();
+      }
+
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null);
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(true, null);
+        } else {
+          List<ProfileData> ratingDataList = new List<ProfileData>();
+          ratingDataList = JsonUtility.FromJson<List<ProfileData>>(www.downloadHandler.text);
+
+        }
+      } else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null);
+      }
+    }
     private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage,
       Action<bool, RatingData> statusCallback) {
       WWWForm formrequest = new WWWForm();
@@ -502,6 +534,19 @@ namespace KendaGame.Helpers {
 
       return token;
     }
+    [System.Serializable]
+    public class ResponseData {
+      public List<ProfileData> data;
+    }
+
+    [System.Serializable]
+    public class ProfileData {
+      public int StarRating;
+      public string created_at;
+      public string task;
+    }
+
+
   }
 }
 

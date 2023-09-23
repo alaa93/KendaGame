@@ -1,13 +1,15 @@
-using KendaGame.Helpers;
+﻿using KendaGame.Helpers;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using KendaGame.Navigation;
 
 
 namespace KendaGame.UI {
   public class MapEffect : MonoBehaviour, IEndDragHandler {
+    
 
     public ScrollRect map;
     public Sprite[] MapBackGrounds;
@@ -37,7 +39,7 @@ namespace KendaGame.UI {
       area3Button.AddClickListener(() => GoToArea(0));
       SetMapProperties(0);
       AudioController.Instance.PlayNarrationAtPoint(narrationSounds.mapLoadedClip);
-
+      SceneManager.Instance.SetCoinsObjectState(false);
     }
 
     public void OnBeginDrag(PointerEventData eventData) {

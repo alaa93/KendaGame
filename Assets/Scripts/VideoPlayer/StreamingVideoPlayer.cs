@@ -13,6 +13,7 @@ namespace KendaGame.UI {
     public static StreamingVideoPlayer instance;
 
     private void Awake() {
+      HTTPRequestHandler.Instance.GetProfileInformationInterface();
       if (instance == null) {
         instance = this;
       } else {
