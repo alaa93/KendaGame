@@ -15,20 +15,22 @@ public class MapCharacter : MonoBehaviour {
   }
 
   private IEnumerator MoveCharacterRoutine() {
-    int activeLetter = LettersHelper.GetActiveLetterIndex();
+    int lastLetterOpend = LettersHelper.GetLastLetterOpendIndex();
+    if(lastLetterOpend == -1) {
+      lastLetterOpend = 0;
+    }
     int lastActiveLetter = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted,"0"));
-
-    DetermineArea(activeLetter);
+    DetermineArea(lastActiveLetter);
 
     transform.localPosition = letterPosition[lastActiveLetter];
     PlayCharacterAnimation("Happy-Hi");
     yield return new WaitForSeconds(1f);
     PlayCharacterAnimation("_Idle");
 
-    if ((activeLetter + 1) == 29) {
+    if ((lastLetterOpend + 1) == 29) {
       ResetCharacterPosition();
     } else {
-      MoveCharacterToNextLetter(activeLetter);
+      MoveCharacterToNextLetter(lastLetterOpend);
     }
   }
 

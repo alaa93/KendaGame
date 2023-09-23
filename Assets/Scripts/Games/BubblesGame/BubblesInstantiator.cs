@@ -36,7 +36,7 @@ namespace KendaGame.Games {
     private bool canClickBubble = true;
     List<BubbleMovement> bubbles = new List<BubbleMovement>();
     TutorialController tutorialController;
-
+    Coroutine tutorialCoroutine;
     private int wrongAnswersNumber = 0;
     int wrongmax ;
 
@@ -45,14 +45,13 @@ namespace KendaGame.Games {
       incorrectLetters = LettersHelper.GetInCorrectLetters();
       shouldShowTutorial = true;
       if (shouldShowTutorial) {
-        canClickBubble = false;
+       // canClickBubble = false;
         BubbleMovement bubble = Instantiate(bubbleInstance, this.transform).GetComponent<BubbleMovement>();
         bubble.gameObject.SetActive(true);
         bubble.targetLetter = LettersHelper.GetActiveLetterIndex();
         bubble.letterText.text = LettersHelper.GetActiveLetter();
         bubbles.Add(bubble);
       }
-
       StartCoroutine(InstantiateBubbles());
     }
 
@@ -76,15 +75,17 @@ namespace KendaGame.Games {
           }
         }
       }
-
       if (shouldShowTutorial && bubbles.Count > 0) {
-        yield return new WaitForSeconds(2f);
-        bubbles[0].SetMovement(false);
-        tutorialController = PopUpsManager.Instance.LoadTutorial(null);
-        tutorialController.PlayTutorial(bubbles[0].transform, bubbles[0].transform, true);
-        yield return new WaitForSeconds(3f);
-        canClickBubble = true;
+        tutorialCoroutine = StartCoroutine(TutorialCoroutine());
       }
+    }
+    private IEnumerator TutorialCoroutine() {
+      yield return new WaitForSeconds(2f);
+      bubbles[0].SetMovement(false);
+      tutorialController = PopUpsManager.Instance.LoadTutorial(null);
+      tutorialController.PlayTutorial(bubbles[0].transform, bubbles[0].transform, true);
+      yield return new WaitForSeconds(3f);
+      canClickBubble = true;
     }
 
     public void OnCorrect() {
@@ -92,7 +93,7 @@ namespace KendaGame.Games {
         shouldShowTutorial = false;
         if (tutorialController != null) {
           tutorialController.HideTutorial(() => {
-            StartCoroutine(InstantiateBubbles());
+            //StartCoroutine(InstantiateBubbles());
           });
         }
       }
@@ -101,7 +102,7 @@ namespace KendaGame.Games {
         gameMusic.Stop();
         gameCompleted = true;
         AudioController.Instance.PlayAudioAtPoint(endingSfx);
-        StartCoroutine(OnGameCompleted(endingSfx.length + 0.5f, wrongAnswersNumber));
+        StartCoroutine(OnGameCompleted(endingSfx.length , wrongAnswersNumber));
       }
     }
 
@@ -123,6 +124,10 @@ namespace KendaGame.Games {
       coinsEffect.Play();
       SceneManager.Instance.IncrementCoins(10);
       OnCorrect();
+      if (tutorialCoroutine != null) {
+        StopCoroutine(tutorialCoroutine);
+        StartCoroutine(InstantiateBubbles());
+      }
     }
 
     public void RemoveObjectFromList(BubbleMovement objectToRemove) {
