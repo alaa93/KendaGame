@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using I2.Loc;
 using KendaGame.Navigation;
 using KendaGame.UI;
+using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using static KendaGame.Models.TracingModels;
@@ -12,7 +14,7 @@ using static KendaGame.Models.UserModels;
 namespace KendaGame.Helpers {
   public class HTTPRequestHandler : MonoBehaviour {
 
-    private static readonly string REQUEST_HEADER = "Token 8b38c163cdd104d13ca887f5c17fd4c3324c4a13";
+    private static readonly string REQUEST_HEADER = "Token 12c87794b19455196490c1e46df81e8768f78db3";
     private static readonly string WEB_URL = "http://137.184.184.223:8000";
     private static readonly string TRACING_MODULE = "/ClientPredict/";
     private static readonly string USER_REGISTER_MODULE = "/user-register";
@@ -22,6 +24,7 @@ namespace KendaGame.Helpers {
     private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "user-get-details-by-token-socialmedia";
     private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
+    private static readonly string GET_LETTERS_STATUS = "/user-get-letters-status-by-token";
 
     private static HTTPRequestHandler _instance;
 
@@ -75,6 +78,51 @@ namespace KendaGame.Helpers {
       StartCoroutine(GetUserDetailsBySocialMediaTokenRequest(token, statusCallback));
     }
 
+    public void GetStatusOfALLlettersInterface(Action<bool, Dictionary<string, LetterStatus>,string, string> statusCallback = null) {
+      StartCoroutine(GetStatusOfALLletters(statusCallback));
+    }
+
+    private IEnumerator GetStatusOfALLletters(Action<bool, Dictionary<string, LetterStatus>,string, string> statusCallback = null) {
+      WWWForm formRequest = new WWWForm();
+      UnityWebRequest www = UnityWebRequest.Get(WEB_URL + GET_LETTERS_STATUS);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      yield return www.SendWebRequest();
+
+      if (loadingBar != null) {
+        loadingBar.HideLoadingBar();
+      }
+
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        string error = AuthErrorCode.UnknownError;
+        if (www.downloadHandler.error.Contains("invalid user")) {
+          error = AuthErrorCode.Email_Password_404;
+        }
+
+        statusCallback?.Invoke(false, null, null,error);
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(false, null,null, AuthErrorCode.UnknownError);
+        } else {
+          if (www.downloadHandler.text.Contains("invalid user")) {
+            statusCallback?.Invoke(false, null, null, AuthErrorCode.Email_Password_404);
+          } else {
+            LetterStatusResponse response = JsonConvert.DeserializeObject<LetterStatusResponse>(www.downloadHandler.text);
+            Dictionary<string, LetterStatus> letterStatuses = response.task_statuses;
+            string letterStatusesJson = JsonConvert.SerializeObject(letterStatuses);
+            string lastLetterOpened = response.last_opened_task;
+            statusCallback?.Invoke(true, letterStatuses,lastLetterOpened, AuthErrorCode.SignUp_Success);
+          }
+        }
+      } else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null, null, AuthErrorCode.UnknownError);
+      }
+    }
+
     private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage,
       Action<bool, RatingData> statusCallback) {
       WWWForm formrequest = new WWWForm();
@@ -83,7 +131,6 @@ namespace KendaGame.Helpers {
       formrequest.AddField("ImageSource", cameraImage ? "Camera" : "Board");
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + TRACING_MODULE, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
-      StartCoroutine(UploadProgressBar(www));
       yield return www.SendWebRequest();
       if (loadingBar != null) {
         loadingBar.HideLoadingBar();
@@ -92,18 +139,15 @@ namespace KendaGame.Helpers {
       if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
         Debug.Log("Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(true, null);
-        }
-        else {
+        } else {
           RatingData ratingData = JsonUtility.FromJson<RatingData>(www.downloadHandler.text);
           statusCallback?.Invoke(true, ratingData);
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null);
@@ -136,24 +180,22 @@ namespace KendaGame.Helpers {
         }
 
         statusCallback?.Invoke(false, null, error);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-        }
-        else {
+        } else {
           UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
           statusCallback?.Invoke(true, user, AuthErrorCode.SignUp_Success);
           StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
       }
     }
+
 
     private IEnumerator SignInRequest(string email, string password,
       Action<bool, UserSession, string> statusCallback = null) {
@@ -177,24 +219,20 @@ namespace KendaGame.Helpers {
         }
 
         statusCallback?.Invoke(false, null, error);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-        }
-        else {
+        } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
             statusCallback?.Invoke(false, null, AuthErrorCode.Email_Password_404);
-          }
-          else {
+          } else {
             UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
             statusCallback?.Invoke(true, user, AuthErrorCode.Login_Success);
             StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
           }
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
@@ -227,24 +265,20 @@ namespace KendaGame.Helpers {
         }
 
         statusCallback?.Invoke(false, null, error);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-        }
-        else {
+        } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
             statusCallback?.Invoke(false, null, AuthErrorCode.Email_Password_404);
-          }
-          else {
+          } else {
             UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
             statusCallback?.Invoke(true, user, AuthErrorCode.Login_Success);
             StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
           }
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
@@ -281,13 +315,11 @@ namespace KendaGame.Helpers {
       if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
         Debug.Log("Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(true, null, AuthErrorCode.UnknownError);
-        }
-        else {
+        } else {
 
           PlayerConfigs playerConfigAfterRequest = JsonUtility.FromJson<PlayerConfigs>(www.downloadHandler.text);
           if (playerConfigAfterRequest.appconfig == playerConfigBeforeRequest) {
@@ -298,20 +330,18 @@ namespace KendaGame.Helpers {
             Debug.Log(playerConfigAfterRequest.appconfig.app_version);
             Debug.Log(playerConfigAfterRequest.appconfig.local_lang);
             statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "Success!");
-          }
-          else {
+          } else {
             statusCallback?.Invoke(true, playerConfigAfterRequest.appconfig, "didn't send to server!");
           }
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, "null response/unknown response.");
       }
     }
 
-    private IEnumerator RegisterBySocialMediaRequest(string firstname, string lastname, string registerBy,string token_SocialMedia,
+    private IEnumerator RegisterBySocialMediaRequest(string firstname, string lastname, string registerBy, string token_SocialMedia,
       Action<bool, UserSession, string> statusCallback = null) {
       WWWForm formrequest = new();
 
@@ -337,19 +367,16 @@ namespace KendaGame.Helpers {
         }
 
         statusCallback?.Invoke(false, null, error);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-        }
-        else {
+        } else {
           UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
           statusCallback?.Invoke(true, user, AuthErrorCode.SignUp_Success);
           StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
@@ -389,24 +416,20 @@ namespace KendaGame.Helpers {
         }
 
         statusCallback?.Invoke(false, null, error);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-        }
-        else {
+        } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
             statusCallback?.Invoke(false, null, AuthErrorCode.Email_Password_404);
-          }
-          else {
+          } else {
             UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
             statusCallback?.Invoke(true, user, AuthErrorCode.Login_Success);
             StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
           }
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
@@ -431,8 +454,7 @@ namespace KendaGame.Helpers {
           Debug.Log("Response error " + request.error);
           tcs.SetResult((false, request.error));
           //tcs.SetException(new UnityWebRequestException(request.error));
-        }
-        else {
+        } else {
           Debug.Log("Response success " + request.downloadHandler.text);
           tcs.SetResult((true, request.downloadHandler.text));
         }
@@ -457,19 +479,16 @@ namespace KendaGame.Helpers {
       if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
         Debug.Log("Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-      }
-      else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
-        }
-        else {
+        } else {
           UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
           statusCallback?.Invoke(true, user, "success!");
           StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
         }
-      }
-      else {
+      } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
@@ -502,6 +521,17 @@ namespace KendaGame.Helpers {
 
       return token;
     }
+  }
+  [Serializable]
+  public class LetterStatus {
+    public string status;
+    public string date_task_start;
+    public string date_task_close;
+  }
+  [Serializable]
+  public class LetterStatusResponse {
+    public Dictionary<string, LetterStatus> task_statuses;
+    public string last_opened_task;
   }
 }
 

@@ -6,6 +6,7 @@ using KendaGame.UI;
 using Spine.Unity;
 using DG.Tweening;
 using static KendaGame.Models.TracingModels;
+using static KendaGame.Models.UserModels;
 
 namespace KendaGame.Navigation {
   [RequireComponent(typeof(UIButtonAnimator))]
@@ -24,7 +25,6 @@ namespace KendaGame.Navigation {
     private SkeletonGraphic _lock;
 
     private void Awake() {
-
       letterText.text = LettersHelper.GetLetterByIndex(id);
       CheckLevel();
       LoadLetterRating();
@@ -32,9 +32,9 @@ namespace KendaGame.Navigation {
     }
 
     private void OnLetterClicked() {
-      /*   if (id > LastLetterCompleted) {
-           return;
-         }*/
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+        return;
+      }
       Debug.Log("map letter index " + id);
       SceneManager.Instance.OnMapLetterClicked(id);
     }
@@ -49,16 +49,10 @@ namespace KendaGame.Navigation {
       }
     }
     private void CheckLevel() {
-      if (StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex() + "_Completed=", "0") == "1") {
-        _lock.AnimationState.SetAnimation(0, "unlocked", false);
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+        return;
       }
-
-      /* LastLetterCompleted = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted, "0"));
-
-       if (id <= LastLetterCompleted) {
-         _lock.AnimationState.SetAnimation(0, "unlocked", false);
-       }*/
-
+      _lock.AnimationState.SetAnimation(0, "unlocked", false);
     }
   }
 }

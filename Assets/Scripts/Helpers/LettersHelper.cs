@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
 
 namespace KendaGame.Helpers {
@@ -8,13 +9,38 @@ namespace KendaGame.Helpers {
     "أ", "ب", "ت", "ث", "ج", "ح", "خ", "د", "ذ", "ر", "ز", "س", "ش", "ص", "ض", "ط", "ظ", "ع", "غ", "ف", "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"
 };
     static string[] arabicAlphabetClass = new string[] { "alef", "ba", "ta", "tha", "jem", "7ah", "kha", "dal", "thal", "ra", "zen", "sen", "shen", "sad", "thad", "taah", "thaaah", "aen", "gen", "fa", "qaf", "kaf", "lam", "mem", "non", "haa", "wow", "yah" };
-
+    static Dictionary<string, LetterStatus> lettersStatuses;
+    static string lastLetterOpen;
     public static void SetActiveLetter(string letter) {
       for (int x = 0; x < arabicAlphabet.Length; x++) {
         if (letter == arabicAlphabet[x]) {
           PlayerPrefs.SetInt("ActiveLetterIndex", x);
           break;
         }
+      }
+    }
+
+    public static int GetLastLetterOpendIndex() {
+      return LettersHelper.GetLetterClassIndex(lastLetterOpen);
+    }
+
+    public static void PreparingLettersStatuses() {
+      HTTPRequestHandler.Instance.GetStatusOfALLlettersInterface((success, letterStatuses, lastLetterOpened,error) => {
+        if (success) {
+          lettersStatuses = letterStatuses;
+          lastLetterOpen = lastLetterOpened;
+        } else {
+          Debug.Log(success);
+        }
+      });
+    }
+
+    public static string CheckIfLetterOpen(string letterName) {
+      if (lettersStatuses.ContainsKey(letterName)) {
+        LetterStatus letterStatus = lettersStatuses[letterName];
+        return letterStatus.status;
+      } else {
+        return "Closed";
       }
     }
 
@@ -34,7 +60,9 @@ namespace KendaGame.Helpers {
       return arabicAlphabetClass[GetActiveLetterIndex()];
     }
 
-
+    public static string GetLetterByIndexClass(int index) {
+      return arabicAlphabetClass[index];
+    }
     public static string GetLetterByIndex(int index) {
       return arabicAlphabet[index];
     }
@@ -42,6 +70,14 @@ namespace KendaGame.Helpers {
     public static int GetLetterIndex(string letter) {
       for (int x = 0; x < arabicAlphabet.Length; x++) {
         if (arabicAlphabet[x] == letter)
+          return x;
+      }
+      return -1;
+    }
+
+    public static int GetLetterClassIndex(string letter) {
+      for (int x = 0; x < arabicAlphabetClass.Length; x++) {
+        if (arabicAlphabetClass[x] == letter)
           return x;
       }
       return -1;
@@ -80,11 +116,9 @@ namespace KendaGame.Helpers {
     public static int GetIslandId(int activeLetter) {
       if (activeLetter < 8) {
         return 0;
-      } 
-      else if(activeLetter<18) {
+      } else if (activeLetter < 18) {
         return 1;
-      }
-      else{
+      } else {
         return 2;
       }
     }

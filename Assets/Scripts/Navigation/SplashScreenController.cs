@@ -15,6 +15,7 @@ namespace KendaGame.UI {
     SkeletonAnimation logoSpineAnim;
 
     private void Start() {
+      LettersHelper.PreparingLettersStatuses();
       SceneManager.Instance.OpenCloudsManually(onComplete: (animated) => {
         if (animated) {
           LoadNextScreen();
