@@ -22,10 +22,12 @@ namespace KendaGame.Helpers
 		public static string ISSFXMUTED = "ISSFXMUTE";
 		public static string ISNARRATIONMUTED = "IsNarrationMuted";
 		public static string PLAYERNAME = "StoredPlayerName";
+		public static string TIMESPENTINMINUTES = "TimeSpentInMinutes";
 
 
 
-		public static void WriteStorage(string key, string value)
+
+    public static void WriteStorage(string key, string value)
 		{
 			PlayerPrefs.SetString(key, value);
 			PlayerPrefs.Save();

@@ -22,6 +22,7 @@ namespace KendaGame.Helpers {
     private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "user-get-details-by-token-socialmedia";
     private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
+    private static readonly string User_Update_Time = "/user-update-player-time-by-token";
 
     private static HTTPRequestHandler _instance;
 
@@ -75,6 +76,41 @@ namespace KendaGame.Helpers {
       StartCoroutine(GetUserDetailsBySocialMediaTokenRequest(token, statusCallback));
     }
 
+    public void UserUpdateTimeInterface(int timePlayed, bool showLoadingBar = false,
+      Action<bool> statusCallback = null) {
+      StartCoroutine(UserUpdateTime(timePlayed,showLoadingBar,statusCallback));
+    }
+
+    private IEnumerator UserUpdateTime(int timePlayed, bool showLoadingBar=false,
+      Action<bool> statusCallback = null) {
+      WWWForm formrequest = new WWWForm();
+      formrequest.AddField("time_played",timePlayed);
+      UnityWebRequest www = UnityWebRequest.Post(WEB_URL + User_Update_Time, formrequest);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      if (showLoadingBar) {
+        StartCoroutine(UploadProgressBar(www));
+      }
+      yield return www.SendWebRequest();
+      if (loadingBar != null && showLoadingBar) {
+        loadingBar.HideLoadingBar();
+      }
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false);
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(true);
+        } else {
+          Debug.Log(www.downloadHandler.text);
+          statusCallback?.Invoke(true);
+        }
+      } else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false);
+      }
+    }
     private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage,
       Action<bool, RatingData> statusCallback) {
       WWWForm formrequest = new WWWForm();
@@ -109,6 +145,8 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null);
       }
     }
+
+
 
     private IEnumerator SignUpRequest(string email, string password,
       Action<bool, UserSession, string> statusCallback = null) {
