@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
+using static KendaGame.Models.TracingModels;
 
 namespace KendaGame.Helpers {
   public static class LettersHelper {
@@ -10,6 +11,8 @@ namespace KendaGame.Helpers {
 };
     static string[] arabicAlphabetClass = new string[] { "alef", "ba", "ta", "tha", "jem", "7ah", "kha", "dal", "thal", "ra", "zen", "sen", "shen", "sad", "thad", "taah", "thaaah", "aen", "gen", "fa", "qaf", "kaf", "lam", "mem", "non", "haa", "wow", "yah" };
     static Dictionary<string, LetterStatus> lettersStatuses;
+    static List<LetterProgress> lettersData;
+    static int lastSevenDaysTime;
     static string lastLetterOpen;
     public static void SetActiveLetter(string letter) {
       for (int x = 0; x < arabicAlphabet.Length; x++) {
@@ -35,6 +38,19 @@ namespace KendaGame.Helpers {
       });
     }
 
+    public static void PreparingLettersRating() {
+      HTTPRequestHandler.Instance.GetProfileInformationInterface ((success,profileData) => {
+        if (success) {
+          lettersData = profileData.data;
+          lastSevenDaysTime = profileData.last_seven_days_time;
+          Debug.Log("asd"+lettersData[0]);
+        }
+        else { 
+          Debug.Log(success); 
+        }
+      });
+    }
+
     public static string CheckIfLetterOpen(string letterName) {
       if (lettersStatuses.ContainsKey(letterName)) {
         LetterStatus letterStatus = lettersStatuses[letterName];
@@ -46,6 +62,18 @@ namespace KendaGame.Helpers {
 
     public static void SetActiveLetter(int letterIndex) {
       PlayerPrefs.SetInt("ActiveLetterIndex", letterIndex);
+    }
+
+    public static LetterProgress GetLetterRating(int letterIndex) {
+      return lettersData[letterIndex];
+    }
+    
+    public static List<LetterProgress> GetLetterProgress() {
+      return lettersData;
+    }
+
+    public static int GetLastSevenDaysTime() {
+      return lastSevenDaysTime;
     }
 
     public static int GetActiveLetterIndex() {

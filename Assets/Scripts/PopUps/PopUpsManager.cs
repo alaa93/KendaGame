@@ -15,6 +15,8 @@ namespace KendaGame.Navigation {
     public GameObject SettingsPopUpObject;
     public GameObject MenuPopUpObject;
     public GameObject storePopUpObject;
+    public GameObject parentsDashboardObject;
+
 
     private TutorialController tutorialController;
     private LoadingBar loadingBar;
@@ -24,6 +26,8 @@ namespace KendaGame.Navigation {
     private FeedbackPopUp feedbackPopUp;
     private SettingsPopUp settingsPopUp;
     private DashboardPopUp dashboardPopUp;
+    private ParentsDashboardPopUp parentsDashboardPopUp;
+
     private StorePopUp storePopUp;
 
     private static PopUpsManager _instance;
@@ -108,7 +112,17 @@ namespace KendaGame.Navigation {
       }
       return dashboardPopUp;
     }
-
+    public ParentsDashboardPopUp GetParentsDashboardPopUp() {
+      if (parentsDashboardPopUp == null) {
+        GameObject parentsDashboard = Instantiate(parentsDashboardObject, Parent, false);
+        parentsDashboardPopUp = parentsDashboard.GetComponent<ParentsDashboardPopUp>();
+        if (parentsDashboardPopUp != null) {
+          return parentsDashboardPopUp;
+        }
+        return null;
+      }
+      return parentsDashboardPopUp;
+    }
     public StorePopUp GetStorePopUp() {
       if (storePopUp == null) {
         GameObject storeObject = Instantiate(storePopUpObject, Parent, false);
@@ -154,6 +168,8 @@ namespace KendaGame.Navigation {
       }
       return loadingBar;
     }
+
+   
 
     public void DismissAll() {
       if (loadingBar != null) {

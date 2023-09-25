@@ -8,7 +8,7 @@ namespace KendaGame.Helpers {
   public static class ProgressHelper {
     public static LetterProgress FetchProgress() {
       LetterProgress letterProgress = new LetterProgress();
-      letterProgress.letter_id = LettersHelper.GetActiveLetter();
+      letterProgress.letter_id = LettersHelper.GetActiveLetterClass();
       letterProgress.letter_rating = 3;
       letterProgress.game_1_completed = int.Parse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_Game1_" + LettersHelper.GetActiveLetterIndex(), "0"));
       letterProgress.game_2_completed = int.Parse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_Game2_" + LettersHelper.GetActiveLetterIndex(),"0"));

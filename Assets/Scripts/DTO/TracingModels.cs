@@ -1,7 +1,16 @@
+using KendaGame.Helpers;
+using System.Collections.Generic;
+
 namespace KendaGame.Models {
   public static class TracingModels {
-
+    
     [System.Serializable]
+    public class DashBordData {
+      public List<LetterProgress> data;
+      public int last_seven_days_time;
+    }
+
+
     public class RatingData {
       public float PredictedScore;
       public string PredictedClass;
@@ -10,7 +19,6 @@ namespace KendaGame.Models {
       public string PredictedPoints;
     }
 
-    [System.Serializable]
     public class LetterProgress {
       public string letter_id;
       public int letter_rating;
