@@ -1047,7 +1047,7 @@ MonoBehaviour:
   timeScale: 1
   freeze: 0
   layoutScaleMode: 0
-  referenceSize: {x: 724.03265, y: 1443.0653}
+  referenceSize: {x: 1998.2947, y: 1118.4736}
   referenceScale: 1
   rectTransformSize: {x: 100, y: 100}
   editReferenceRect: 0
@@ -4463,8 +4463,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uFEF2\uFE91\uFEAE\uFECB"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
-  m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
+  m_fontAsset: {fileID: 11400000, guid: 12d6e24ccdfaafd469c8474bd591e555, type: 2}
+  m_sharedMaterial: {fileID: 332779677821832198, guid: 12d6e24ccdfaafd469c8474bd591e555,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -14803,7 +14803,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0b2dd84de0254ec095f32f9c952ffb3, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 359786382547655528, guid: a0b2dd84de0254ec095f32f9c952ffb3,
     type: 2}
   m_fontSharedMaterials: []
