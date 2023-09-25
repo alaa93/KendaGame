@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using I2.Loc;
 using KendaGame.Navigation;
 using KendaGame.UI;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using static KendaGame.Models.TracingModels;
