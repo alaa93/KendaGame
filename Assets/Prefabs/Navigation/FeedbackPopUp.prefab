@@ -175,18 +175,18 @@ MonoBehaviour:
   MaxCharactersInRTL: 0
   IgnoreNumbersInRTL: 1
   CorrectAlignmentForRTL: 1
-  AddSpacesToJoinedLanguages: 0
+  AddSpacesToJoinedLanguages: 1
   AllowLocalizedParameters: 1
   AllowParameters: 1
   TranslatedObjects: []
   LocalizeEvent:
     m_PersistentCalls:
       m_Calls: []
-  AlwaysForceLocalize: 0
+  AlwaysForceLocalize: 1
   LocalizeCallBack:
     Target: {fileID: 0}
     MethodName: 
-  mGUI_ShowReferences: 0
+  mGUI_ShowReferences: 1
   mGUI_ShowTems: 1
   mGUI_ShowCallback: 0
   mLocalizeTarget: {fileID: 0}
@@ -1059,7 +1059,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8962936491936258205}
   - {fileID: 8962936491105329264}
