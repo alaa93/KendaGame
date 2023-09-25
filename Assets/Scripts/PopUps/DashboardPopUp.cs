@@ -23,6 +23,9 @@ public class DashboardPopUp : MonoBehaviour {
   [SerializeField]
   Image profileImage,penIcon;
 
+  [SerializeField]
+  UIButtonAnimator parentsDashbordBtn;
+
   private string cachedPlayerName;
 
   private void Start() {
@@ -76,6 +79,7 @@ public class DashboardPopUp : MonoBehaviour {
       penIcon.gameObject.SetActive(true);
     });
     saveBtn.AddClickListener(OnSaveBtnClicked);
+    parentsDashbordBtn.AddClickListener(OnParentsDashboardClicked);
   }
 
   private void OnExitButtonPressed() {
@@ -122,6 +126,10 @@ public class DashboardPopUp : MonoBehaviour {
 
   private void OnSaveBtnClicked() {
     StorageHelper.WriteStorage(StorageHelper.PLAYERNAME, cachedPlayerName);
+  }
+
+  private void OnParentsDashboardClicked() {
+    PopUpsManager.Instance.GetParentsDashboardPopUp().ShowPopUp();
   }
 
   public void ClosePopUp() {

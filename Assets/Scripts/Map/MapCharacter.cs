@@ -20,7 +20,7 @@ public class MapCharacter : MonoBehaviour {
       lastLetterOpend = 0;
     }
     int lastActiveLetter = int.Parse(StorageHelper.ReadStorage(StorageHelper.LastLetterCompleted,"0"));
-    DetermineArea(lastActiveLetter);
+    DetermineArea(lastLetterOpend);
 
     transform.localPosition = letterPosition[lastActiveLetter];
     PlayCharacterAnimation("Happy-Hi");

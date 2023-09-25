@@ -466,6 +466,32 @@ MonoBehaviour:
       - "\u0627\u0644\u0646\u062C\u0648\u0645 \u0627\u0644\u0645\u0643\u062A\u0633\u0628\u0629"
       Flags: 0000
       Languages_Touch: []
+    - Term: parents.avaragetext
+      TermType: 0
+      Description: 
+      Languages:
+      - Average watching Time in the Last 7 Days
+      - "\u0645\u062A\u0648\u0633\u0637 \u200B\u200B\u0648\u0642\u062A \u0627\u0644\u0645\u0634\u0627\u0647\u062F\u0629
+        \u0641\u064A \u0622\u062E\u0631 7 \u0623\u064A\u0627\u0645"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: parents.WritingSkillsText
+      TermType: 0
+      Description: 
+      Languages:
+      - Skill (writing letters)
+      - "\u0645\u0647\u0627\u0631\u062A\u064A(\u0643\u062A\u0627\u0628\u0629 \u0627\u0644\u062D\u0631\u0648\u0641)"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: parents.AnalysisAndFocusText
+      TermType: 0
+      Description: 
+      Languages:
+      - Skills (analysis and focus)
+      - "\u0645\u0647\u0627\u0631\u062A\u064A (\u0627\u0644\u062A\u062D\u064A\u0644
+        \u0648 \u0627\u0644\u062A\u0631\u0643\u064A\u0632)"
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name

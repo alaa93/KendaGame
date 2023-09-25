@@ -1,6 +1,4 @@
 using KendaGame.Helpers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeHelper : MonoBehaviour
@@ -27,6 +25,5 @@ public class TimeHelper : MonoBehaviour
     int totalTimeSpendInMinutes = lastTimeSpentInMinutesInt + timeSpentInMinutesInt;
 
     StorageHelper.WriteStorage(StorageHelper.TIMESPENTINMINUTES,$"{totalTimeSpendInMinutes}");
-    Debug.Log(StorageHelper.ReadStorage(StorageHelper.TIMESPENTINMINUTES));
   }
 }

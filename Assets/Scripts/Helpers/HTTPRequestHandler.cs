@@ -21,11 +21,13 @@ namespace KendaGame.Helpers {
     private static readonly string USER_LOGIN_MODULE = "/user-login";
     private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/user-update-profile-by-token";
     private static readonly string UPDATE_PLAYER_CONFIG = "/user-update-appconfig-by-token";
-    private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "user-get-details-by-token-socialmedia";
+    private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "/user-update-letterprogress-by-token";
     private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
     private static readonly string User_Update_Time = "/user-update-player-time-by-token";
     private static readonly string GET_LETTERS_STATUS = "/user-get-letters-status-by-token";
+    private static readonly string GET_PROFILE_INFORMATION = "/user-get-letterprogress-by-token";
+
 
     private static HTTPRequestHandler _instance;
 
@@ -65,7 +67,7 @@ namespace KendaGame.Helpers {
     }
 
     public void UserUpdateLetterProgress(LetterProgress progress,
-      Action<bool, UserSession, string> statusCallback = null) {
+      Action<bool, string> statusCallback = null) {
       StartCoroutine(UserUpdateLetterProgressRequest(progress, statusCallback));
     }
 
@@ -86,7 +88,40 @@ namespace KendaGame.Helpers {
     public void GetStatusOfALLlettersInterface(Action<bool, Dictionary<string, LetterStatus>, string, string> statusCallback = null) {
       StartCoroutine(GetStatusOfALLletters(statusCallback));
     }
+    public void GetProfileInformationInterface(Action<bool, DashBordData> statusCallback=null,bool showLoadingBar=false) {
+      StartCoroutine(GetProfileInformation(statusCallback, showLoadingBar));
+    }
 
+    private IEnumerator GetProfileInformation(Action<bool, DashBordData> statusCallback,bool showLoadingBar) {
+      UnityWebRequest www = UnityWebRequest.Get(WEB_URL + GET_PROFILE_INFORMATION);
+      www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      if (showLoadingBar) {
+        StartCoroutine(UploadProgressBar(www));
+      }
+      yield return www.SendWebRequest();
+      if (loadingBar != null&&showLoadingBar) {
+        loadingBar.HideLoadingBar();
+      }
+
+      if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.error)) {
+        Debug.Log("Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null);
+      } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
+        Debug.Log("Response success " + www.downloadHandler.text);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+          statusCallback?.Invoke(true, null);
+        } else {
+          DashBordData responseData = JsonConvert.DeserializeObject<DashBordData>(www.downloadHandler.text);
+          statusCallback?.Invoke(true, responseData);
+          Debug.Log(responseData.data[0].letter_id);
+
+        }
+      } else {
+        Debug.Log("Unknown Response " + www.downloadHandler.text);
+        Debug.Log("Unknown Response error " + www.downloadHandler.error);
+        statusCallback?.Invoke(false, null);
+      }
+    }
     private IEnumerator UserUpdateTime(int timePlayed, bool showLoadingBar = false,
       Action<bool> statusCallback = null) {
       WWWForm formrequest = new WWWForm();
@@ -108,7 +143,6 @@ namespace KendaGame.Helpers {
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(true);
         } else {
-          Debug.Log(www.downloadHandler.text);
           statusCallback?.Invoke(true);
         }
       } else {
@@ -423,7 +457,7 @@ namespace KendaGame.Helpers {
 
 
     private IEnumerator UserUpdateLetterProgressRequest(LetterProgress progress,
-      Action<bool, UserSession, string> statusCallback = null) {
+      Action<bool, string> statusCallback = null) {
 
       WWWForm formrequest = new WWWForm();
 
@@ -452,24 +486,23 @@ namespace KendaGame.Helpers {
           error = AuthErrorCode.Email_Password_404;
         }
 
-        statusCallback?.Invoke(false, null, error);
+        statusCallback?.Invoke(false , error);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
-          statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+          statusCallback?.Invoke(false , AuthErrorCode.UnknownError);
         } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
-            statusCallback?.Invoke(false, null, AuthErrorCode.Email_Password_404);
+            statusCallback?.Invoke(false, AuthErrorCode.Email_Password_404);
           } else {
-            UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
-            statusCallback?.Invoke(true, user, AuthErrorCode.Login_Success);
+            statusCallback?.Invoke(true, AuthErrorCode.Login_Success);
             StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
           }
         }
       } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);
         Debug.Log("Unknown Response error " + www.downloadHandler.error);
-        statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
+        statusCallback?.Invoke(false, AuthErrorCode.UnknownError);
       }
     }
 

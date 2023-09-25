@@ -16,6 +16,7 @@ namespace KendaGame.UI {
 
     private void Start() {
       LettersHelper.PreparingLettersStatuses();
+      LettersHelper.PreparingLettersRating();
       SceneManager.Instance.OpenCloudsManually(onComplete: (animated) => {
         if (animated) {
           LoadNextScreen();
