@@ -70,6 +70,7 @@ public class DashboardPopUp : MonoBehaviour {
 
   private void InitializeButtons() {
     exitButton.AddClickListener(OnExitButtonPressed);
+    parentsDashbordBtn.AddClickListener(OnParentsDashboardClicked);
     changePhoto.AddClickListener(OnChangePhotoClick);
     playerName.onValueChanged.AddListener(OnPlayerNameChanged);
     playerName.onSelect.AddListener((value) => {
@@ -79,7 +80,6 @@ public class DashboardPopUp : MonoBehaviour {
       penIcon.gameObject.SetActive(true);
     });
     saveBtn.AddClickListener(OnSaveBtnClicked);
-    parentsDashbordBtn.AddClickListener(OnParentsDashboardClicked);
   }
 
   private void OnExitButtonPressed() {

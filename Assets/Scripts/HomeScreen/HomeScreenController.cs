@@ -30,10 +30,10 @@ namespace KendaGame.UI
 			settingsBtn.AddClickListener(OnSettingsBtnClicked);
 			menuBtn.AddClickListener(OnMenuButtonClicked);
 			storeBtn.AddClickListener(OnStoreButtonClicked);
-			if (PlayerPrefs.GetInt("GenderSelected", 0) == 0)
+			/*if (PlayerPrefs.GetInt("GenderSelected", 0) == 0)
 			{
 				PopUpsManager.Instance.GetGenderPopUp().ShowPopUp();
-			}
+			}*/
 		}
 
 		private void OnPlayBtnClicked()
