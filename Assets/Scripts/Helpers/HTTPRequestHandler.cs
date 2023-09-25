@@ -200,6 +200,7 @@ namespace KendaGame.Helpers {
       formrequest.AddField("ImageSource", cameraImage ? "Camera" : "Board");
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + TRACING_MODULE, formrequest);
       www.SetRequestHeader("Authorization", REQUEST_HEADER);
+      StartCoroutine(UploadProgressBar(www));
       yield return www.SendWebRequest();
       if (loadingBar != null) {
         loadingBar.HideLoadingBar();
