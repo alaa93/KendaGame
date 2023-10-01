@@ -88,7 +88,7 @@ namespace KendaGame.Helpers {
     public void GetStatusOfALLlettersInterface(Action<bool, Dictionary<string, LetterStatus>, string, string> statusCallback = null) {
       StartCoroutine(GetStatusOfALLletters(statusCallback));
     }
-    public void GetProfileInformationInterface(Action<bool, DashBordData> statusCallback=null,bool showLoadingBar=false) {
+    public void GetProfileInformationInterface(Action<bool, DashBordData> statusCallback=null,bool showLoadingBar=true) {
       StartCoroutine(GetProfileInformation(statusCallback, showLoadingBar));
     }
 
@@ -113,8 +113,6 @@ namespace KendaGame.Helpers {
         } else {
           DashBordData responseData = JsonConvert.DeserializeObject<DashBordData>(www.downloadHandler.text);
           statusCallback?.Invoke(true, responseData);
-          Debug.Log(responseData.data[0].letter_id);
-
         }
       } else {
         Debug.Log("Unknown Response " + www.downloadHandler.text);

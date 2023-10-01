@@ -34,12 +34,21 @@ public class ParentsDashboardPopUp : MonoBehaviour {
   float writingSkillsScore = 0;
   float numberOfPlayedLetter = 0;
   float analysisAndFocus = 0;
-
   private void Start() {
-    timeText.text = LettersHelper.GetLastSevenDaysTime().ToString();
-    lettersRating = LettersHelper.GetLetterProgress();
-    SetAnalysisAndWritingScore();
-    ChangeCurrentLetterRating(0);
+
+  }
+
+  public void PreparingLettersRating() {
+    HTTPRequestHandler.Instance.GetProfileInformationInterface((success, profileData) => {
+
+      if (success) {
+        gameObject.SetActive(true);
+        lettersRating = profileData.data;
+        timeText.text = profileData.last_seven_days_time.ToString();
+        SetAnalysisAndWritingScore();
+        ChangeCurrentLetterRating(0);
+      }
+    });
   }
   public void SetAnalysisAndWritingScore() {
     foreach (var letter in lettersRating) {
@@ -71,6 +80,11 @@ public class ParentsDashboardPopUp : MonoBehaviour {
   }
 
   public void ShowPopUp() {
-    gameObject.SetActive(!gameObject.activeInHierarchy);
+    if (!gameObject.activeInHierarchy) {
+      PreparingLettersRating();
+
+    } else {
+      gameObject.SetActive(false);
+    }
   }
 }
