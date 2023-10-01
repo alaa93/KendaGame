@@ -23,9 +23,6 @@ public class DashboardPopUp : MonoBehaviour {
   [SerializeField]
   Image profileImage,penIcon;
 
-  [SerializeField]
-  UIButtonAnimator parentsDashbordBtn;
-
   private string cachedPlayerName;
 
   private void Start() {
@@ -47,6 +44,7 @@ public class DashboardPopUp : MonoBehaviour {
   private void LoadCachedImage() {
     string storedUser = StorageHelper.ReadStorage(StorageHelper.UserSession);
     if (!string.IsNullOrEmpty(storedUser)) {
+      Debug.Log("stored user "+storedUser);
       UserSession user = JsonUtility.FromJson<UserSession>(storedUser);
       if (user != null) {
         Debug.Log("user.profile.profile_photo " + user.profile.profile_photo);
@@ -70,7 +68,6 @@ public class DashboardPopUp : MonoBehaviour {
 
   private void InitializeButtons() {
     exitButton.AddClickListener(OnExitButtonPressed);
-    parentsDashbordBtn.AddClickListener(OnParentsDashboardClicked);
     changePhoto.AddClickListener(OnChangePhotoClick);
     playerName.onValueChanged.AddListener(OnPlayerNameChanged);
     playerName.onSelect.AddListener((value) => {
@@ -109,8 +106,6 @@ public class DashboardPopUp : MonoBehaviour {
           PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(AuthErrorCode.UpdateProfile_Photo_Title_Msg, AuthErrorCode.UpdateProfile_Failed);
         }
       });
-    } else {
-      Debug.Log(success);
     }
   }
 
@@ -126,10 +121,6 @@ public class DashboardPopUp : MonoBehaviour {
 
   private void OnSaveBtnClicked() {
     StorageHelper.WriteStorage(StorageHelper.PLAYERNAME, cachedPlayerName);
-  }
-
-  private void OnParentsDashboardClicked() {
-    PopUpsManager.Instance.GetParentsDashboardPopUp().ShowPopUp();
   }
 
   public void ClosePopUp() {

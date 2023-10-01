@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,13 +27,16 @@ namespace KendaGame.Helpers {
       return LettersHelper.GetLetterClassIndex(lastLetterOpen);
     }
 
-    public static void PreparingLettersStatuses() {
+    public static void PreparingLettersStatuses(Action<bool> onComplete) {
       HTTPRequestHandler.Instance.GetStatusOfALLlettersInterface((success, letterStatuses, lastLetterOpened,error) => {
         if (success) {
           lettersStatuses = letterStatuses;
           lastLetterOpen = lastLetterOpened;
+          //Map logic goes here
+          onComplete?.Invoke(true);
         } else {
-          Debug.Log(success);
+          Debug.Log("PreparingLettersStatuses "+success);
+          onComplete?.Invoke(false);
         }
       });
     }
@@ -42,7 +46,6 @@ namespace KendaGame.Helpers {
         if (success) {
           lettersData = profileData.data;
           lastSevenDaysTime = profileData.last_seven_days_time;
-          Debug.Log("asd"+lettersData[0]);
         }
         else { 
           Debug.Log(success); 

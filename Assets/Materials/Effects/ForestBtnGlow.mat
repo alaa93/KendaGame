@@ -78,7 +78,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ShinyFX_Intensity_1: 0.34
+    - _ShinyFX_Intensity_1: 0.1
     - _ShinyFX_Pos_1: 0
     - _ShinyFX_Size_1: -0.1
     - _ShinyFX_Smooth_1: 1

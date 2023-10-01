@@ -497,7 +497,6 @@ namespace KendaGame.Helpers {
             statusCallback?.Invoke(false, AuthErrorCode.Email_Password_404);
           } else {
             statusCallback?.Invoke(true, AuthErrorCode.Login_Success);
-            StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
           }
         }
       } else {

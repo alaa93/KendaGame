@@ -15,7 +15,6 @@ namespace KendaGame.UI {
     SkeletonAnimation logoSpineAnim;
 
     private void Start() {
-      LettersHelper.PreparingLettersStatuses();
       LettersHelper.PreparingLettersRating();
       SceneManager.Instance.OpenCloudsManually(onComplete: (animated) => {
         if (animated) {
@@ -72,11 +71,7 @@ namespace KendaGame.UI {
     }
 
     private bool CheckEmailSession() {
-      if (string.IsNullOrEmpty(StorageHelper.ReadStorage(StorageHelper.UserSession))) {
-        return true;
-      } else {
-        return false;
-      }
+      return !string.IsNullOrEmpty(StorageHelper.ReadStorage(StorageHelper.UserSession));
     }
 
   }

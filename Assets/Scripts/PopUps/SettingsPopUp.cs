@@ -4,7 +4,7 @@ using TMPro;
 using I2.Loc;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using KendaGame.Navigation;
 
 namespace KendaGame.UI {
   public class SettingsPopUp : MonoBehaviour {
@@ -18,6 +18,8 @@ namespace KendaGame.UI {
     Image sfxMute;
     [SerializeField]
     UIButtonAnimator exitButton;
+    [SerializeField]
+    UIButtonAnimator parentsDashbordBtn;
     private bool isMusicMuted;
     private bool isSfxMuted;
     [SerializeField] Image arabicLanguageIcon;
@@ -36,6 +38,7 @@ namespace KendaGame.UI {
       musicButton.AddClickListener(OnMusicButtonPressed);
       sfxButton.AddClickListener(OnSfxButtonPressed);
       exitButton.AddClickListener(ShowPopUp);
+      parentsDashbordBtn.AddClickListener(OnParentsDashboardClicked);
     }
 
     private void OnMusicButtonPressed() {
@@ -89,6 +92,11 @@ namespace KendaGame.UI {
 
     public void ClosePopUp() {
       gameObject.SetActive(false);
+    }
+
+    private void OnParentsDashboardClicked() {
+      PopUpsManager.Instance.GetParentsDashboardPopUp().ShowPopUp();
+      ShowPopUp();
     }
   }
 }

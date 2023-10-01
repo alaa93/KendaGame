@@ -15001,7 +15001,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829079808530510
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20997,7 +20997,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829080080312929
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21815,7 +21815,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829080401429948
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27623,7 +27623,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829080656173479
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28078,7 +28078,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829080773550279
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -28431,7 +28431,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829080891785353
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29769,7 +29769,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829081360987632
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -31738,7 +31738,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829081773823724
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32127,7 +32127,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &7764829081840618524
 MeshFilter:
   m_ObjectHideFlags: 0

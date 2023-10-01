@@ -14,6 +14,10 @@ public class ParentsDashboardPopUp : MonoBehaviour {
   Image cureentLetterImage;
   [SerializeField]
   Image currentStarImage;
+  [SerializeField]
+  Image cureentLetterBackGround;
+  [SerializeField]
+  Sprite [] currentLettersBackGround;
 
   [SerializeField]
   Sprite[] starsImage;
@@ -53,6 +57,11 @@ public class ParentsDashboardPopUp : MonoBehaviour {
     int rating = (lettersRating[letterIndex].tracing_advanced_completed + lettersRating[letterIndex].tracing_basic_completed) / 2;
     if (rating >= 0) {
       currentStarImage.sprite = starsImage[Mathf.Clamp(rating, 0, starsImage.Length - 1)];
+    }
+    if (CheckIfLetterPlayed(letterIndex)) {
+      cureentLetterBackGround.sprite = currentLettersBackGround[1];
+    } else {
+      cureentLetterBackGround.sprite = currentLettersBackGround[0];
     }
     cureentLetterImage.sprite = lettersImage[Mathf.Clamp(letterIndex, 0, lettersImage.Length - 1)];
   }
