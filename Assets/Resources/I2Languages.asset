@@ -446,8 +446,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "\u062A\u0642\u0631\u064A\u0631"
-      - Report
+      - "\u0627\u0644\u0627\u0635\u0648\u0627\u062A"
+      - Sound
       Flags: 0000
       Languages_Touch: []
     - Term: settings.music_label
@@ -498,6 +498,14 @@ MonoBehaviour:
       Languages:
       - "\u062A\u0642\u0631\u064A\u0631"
       - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: settings.report_label
+      TermType: 0
+      Description: 
+      Languages:
+      - "\uFE97\uFED8\uFEAE\uFEF3\uFEAE"
+      - Report
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
