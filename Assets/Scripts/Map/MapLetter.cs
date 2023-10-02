@@ -27,14 +27,13 @@ namespace KendaGame.Navigation {
     private void Awake() {
       letterText.text = LettersHelper.GetLetterByIndex(id);
       LoadLetterRating();
-      CheckLevel();
       btn.AddClickListener(OnLetterClicked);
     }
 
     private void OnLetterClicked() {
-     /* if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
         return;
-      }*/
+      }
       Debug.Log("map letter index " + id);
       SceneManager.Instance.OnMapLetterClicked(id);
     }
@@ -49,9 +48,9 @@ namespace KendaGame.Navigation {
       }
     }
     public void CheckLevel() {
-     /* if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
         return;
-      }*/
+      }
       _lock.AnimationState.SetAnimation(0, "unlocked", false);
     }
   }

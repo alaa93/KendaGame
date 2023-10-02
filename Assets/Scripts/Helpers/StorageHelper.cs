@@ -23,6 +23,8 @@ namespace KendaGame.Helpers
 		public static string ISNARRATIONMUTED = "IsNarrationMuted";
 		public static string PLAYERNAME = "StoredPlayerName";
 		public static string TIMESPENTINMINUTES = "TimeSpentInMinutes";
+		public static string TOKEN = "token";
+
 
 
 

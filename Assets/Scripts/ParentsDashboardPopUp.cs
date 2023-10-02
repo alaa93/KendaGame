@@ -34,10 +34,7 @@ public class ParentsDashboardPopUp : MonoBehaviour {
   float writingSkillsScore = 0;
   float numberOfPlayedLetter = 0;
   float analysisAndFocus = 0;
-  private void Start() {
-
-  }
-
+ 
   public void PreparingLettersRating() {
     HTTPRequestHandler.Instance.GetProfileInformationInterface((success, profileData) => {
 
