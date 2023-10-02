@@ -68,6 +68,7 @@ public class DashboardPopUp : MonoBehaviour {
 
   private void InitializeButtons() {
     exitButton.AddClickListener(OnExitButtonPressed);
+    parentsDashbordBtn.AddClickListener(OnParentsDashboardClicked);
     changePhoto.AddClickListener(OnChangePhotoClick);
     playerName.onValueChanged.AddListener(OnPlayerNameChanged);
     playerName.onSelect.AddListener((value) => {
