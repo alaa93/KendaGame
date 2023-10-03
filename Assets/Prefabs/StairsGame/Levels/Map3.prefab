@@ -622,7 +622,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944599760333082
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6434,7 +6434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3110944600033942345
 Transform:
   m_ObjectHideFlags: 0
@@ -6593,7 +6593,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944600033942325
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7261,7 +7261,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944600258012092
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7817,7 +7817,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944600375646940
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13362,7 +13362,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944600649254599
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14818,7 +14818,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944601213535218
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15196,7 +15196,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944601287775639
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15502,7 +15502,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944601357586279
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17156,7 +17156,7 @@ MonoBehaviour:
   unscaledTime: 0
   _animationName: 
   loop: 0
-  timeScale: 1
+  timeScale: 0.75
 --- !u!33 &3110944601683916427
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -26,7 +26,6 @@ namespace KendaGame.Navigation {
 
     private void Awake() {
       letterText.text = LettersHelper.GetLetterByIndex(id);
-      CheckLevel();
       LoadLetterRating();
       btn.AddClickListener(OnLetterClicked);
     }
@@ -48,7 +47,7 @@ namespace KendaGame.Navigation {
         }
       }
     }
-    private void CheckLevel() {
+    public void CheckLevel() {
       if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
         return;
       }

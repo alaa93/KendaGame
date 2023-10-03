@@ -3103,7 +3103,7 @@ MonoBehaviour:
   - {x: 0.4, y: 0.4, z: 0.4}
   - {x: 0.35, y: 0.35, z: 0.4}
   - {x: 0.4, y: 0.4, z: 0.4}
-  - {x: 0.4, y: 0.2, z: 0.4}
+  - {x: 0.4, y: 0.3, z: 0.4}
   - {x: 0.4, y: 0.4, z: 0.4}
   - {x: 0.5, y: 0.5, z: 0.4}
   - {x: 0.5, y: 0.5, z: 0.4}
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   - {x: 575, y: -375, z: 0}
   - {x: 600, y: -425, z: 0}
   - {x: 600, y: -450, z: 0}
-  - {x: 600, y: -400, z: 0}
+  - {x: 576, y: -370, z: 0}
   - {x: 600, y: -450, z: 0}
   - {x: 600, y: -450, z: 0}
   - {x: 600, y: -450, z: 0}
@@ -5249,7 +5249,7 @@ RectTransform:
   m_GameObject: {fileID: 1899563186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 78754795}
@@ -5257,7 +5257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: -350}
+  m_AnchoredPosition: {x: 576, y: -370}
   m_SizeDelta: {x: 118.35596, y: 308.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899563189
@@ -5280,7 +5280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  skeletonDataAsset: {fileID: 11400000, guid: 8867d7e956311194fb74728c9cb89d3c, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 740b9e794972a0243bc781056af74c46, type: 2}
   additiveMaterial: {fileID: 2100000, guid: 2e8245019faeb8c43b75f9ca3ac8ee34, type: 2}
   multiplyMaterial: {fileID: 2100000, guid: e74a1f8978a7da348a721508d0d58834, type: 2}
   screenMaterial: {fileID: 2100000, guid: bab24c479f34eec45be6ea8595891569, type: 2}

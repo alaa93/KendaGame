@@ -21,9 +21,6 @@ public class TimeHelper : MonoBehaviour
     float timeSpentInSeconds = endTime - startTime;
     float timeSpentInMinutes = timeSpentInSeconds / 60f;
     int timeSpentInMinutesInt = Mathf.FloorToInt(timeSpentInMinutes);
-    int lastTimeSpentInMinutesInt=int.Parse(StorageHelper.ReadStorage(StorageHelper.TIMESPENTINMINUTES, "0"));
-    int totalTimeSpendInMinutes = lastTimeSpentInMinutesInt + timeSpentInMinutesInt;
-
-    StorageHelper.WriteStorage(StorageHelper.TIMESPENTINMINUTES,$"{totalTimeSpendInMinutes}");
+    StorageHelper.WriteStorage(StorageHelper.TIMESPENTINMINUTES,$"{timeSpentInMinutesInt}");
   }
 }

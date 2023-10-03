@@ -271,11 +271,10 @@ namespace KendaGame.UI {
       }
       string animation = "1Stars_lose";
       ShowLetterComparison(ratingData.cropped_img_base64);
-      bool successfullyRated = success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass() && ratingData.StarRating > 1;
+      bool successfullyRated = success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass();
       animation = successfullyRated ? $"{ratingData.StarRating}Stars" : animation;
       skeletonGraphic.AnimationState.SetAnimation(0, animation, false);
-      int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int currentRating);
-      currentRating += successfullyRated ? Math.Clamp(ratingData.StarRating, 0, 1) : 0;
+      int currentRating = successfullyRated ? ratingData.StarRating : 0;
       currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
       StorageHelper.WriteStorage(StorageHelper.MapLetterProgress + "_Advance_" + LettersHelper.GetActiveLetterIndex(), currentRating.ToString());
       StorageHelper.WriteStorage(StorageHelper.LastLetterCompleted, (LettersHelper.GetActiveLetterIndex() + 1).ToString());
@@ -323,8 +322,7 @@ namespace KendaGame.UI {
       if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {
         if (ratingData != null) {
           letterRatingPopUp.PlayStarsAnimation(ratingData.StarRating);
-          int.TryParse(StorageHelper.ReadStorage(StorageHelper.MapLetterProgress + "_" + LettersHelper.GetActiveLetterIndex()), out int storedRating);
-          currentRating = storedRating + Math.Clamp(ratingData.StarRating, 0, 1);
+          currentRating = ratingData.StarRating;
           currentRating = currentRating > 3 ? 3 : currentRating;// because current rating shouldn't be greater than 3 stars
         }
       } else {

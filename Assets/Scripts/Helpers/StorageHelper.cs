@@ -8,7 +8,7 @@ namespace KendaGame.Helpers
 		public static string CurrentLocale = "ar";
 		public static string MapLetterProgress = "MapLetterProgress";
 		public static string CoinsAmount = "CoinsAmount";
-		public static string UserSession = "UserSession";
+		public static string UserSession= "UserSession";
 		public static string LastLetterCompleted = "LastLetterCompleted";
 		public static string CanWatchIntro = "CanWatchIntro";
 		public static string CanWatchOutro = "CanWatchOutro";
@@ -23,6 +23,8 @@ namespace KendaGame.Helpers
 		public static string ISNARRATIONMUTED = "IsNarrationMuted";
 		public static string PLAYERNAME = "StoredPlayerName";
 		public static string TIMESPENTINMINUTES = "TimeSpentInMinutes";
+		public static string TOKEN = "token";
+
 
 
 
