@@ -31,6 +31,7 @@ namespace KendaGame.RegistrationScreens {
 
     private void Awake() {
       skipBtn.AddClickListener(() => {
+        PlayerPrefs.DeleteAll();
         AutoLogin();
       }, true);
 
