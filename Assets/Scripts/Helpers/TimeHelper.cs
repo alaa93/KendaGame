@@ -8,7 +8,7 @@ public class TimeHelper : MonoBehaviour
 
   void Start() {
     startTime = Time.realtimeSinceStartup;
-    HTTPRequestHandler.Instance.UserUpdateTimeInterface(int.Parse(StorageHelper.ReadStorage(StorageHelper.TIMESPENTINMINUTES, "0")));
+    HTTPRequestHandler.Instance.UserUpdateTimeInterface(int.Parse(StorageHelper.ReadStorage(StorageHelper.TIMESPENTINMINUTES, "-1")));
     Debug.Log(StorageHelper.ReadStorage(StorageHelper.TIMESPENTINMINUTES));
 
   }
