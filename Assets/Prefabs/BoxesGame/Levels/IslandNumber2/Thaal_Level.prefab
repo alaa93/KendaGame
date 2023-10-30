@@ -1584,13 +1584,14 @@ GameObject:
   - component: {fileID: 969574370342032460}
   - component: {fileID: 5403667589929628946}
   - component: {fileID: 3846643893574431280}
+  - component: {fileID: 1752458326415980783}
   m_Layer: 0
   m_Name: draggable (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &233497074698879143
 Transform:
   m_ObjectHideFlags: 0
@@ -1699,6 +1700,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.87, y: 6.52}
   m_EdgeRadius: 0
+--- !u!114 &1752458326415980783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756497145399743400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091114d5e83ea4c16bc249bb87fc3e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionOffet: 14
 --- !u!1 &4137163817210541606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,13 +2189,14 @@ GameObject:
   - component: {fileID: 6868670305699484667}
   - component: {fileID: 4426192594950142846}
   - component: {fileID: 1112719837324390156}
+  - component: {fileID: 1428043651641781401}
   m_Layer: 0
   m_Name: draggable (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6869202558383553600
 Transform:
   m_ObjectHideFlags: 0
@@ -2290,6 +2305,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.08, y: 3.8}
   m_EdgeRadius: 0
+--- !u!114 &1428043651641781401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6742958365020936272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091114d5e83ea4c16bc249bb87fc3e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionOffet: 13
 --- !u!1 &6813774713808124381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,13 +2708,14 @@ GameObject:
   - component: {fileID: 5449851125100538424}
   - component: {fileID: 7705321487874052315}
   - component: {fileID: 4889099699091143541}
+  - component: {fileID: 8493730834771716034}
   m_Layer: 0
   m_Name: draggable (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1919812068544334829
 Transform:
   m_ObjectHideFlags: 0
@@ -2795,6 +2824,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.08, y: 3.8}
   m_EdgeRadius: 0
+--- !u!114 &8493730834771716034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103536168877649161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091114d5e83ea4c16bc249bb87fc3e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionOffet: 12
 --- !u!1 &7212120425797611342
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,13 +3069,14 @@ GameObject:
   - component: {fileID: 6501243219210632009}
   - component: {fileID: 386012311322814025}
   - component: {fileID: 7442560427532693516}
+  - component: {fileID: 4417138399566474508}
   m_Layer: 0
   m_Name: draggable (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6593683232071927869
 Transform:
   m_ObjectHideFlags: 0
@@ -3142,6 +3185,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.731309, y: 9.36}
   m_EdgeRadius: 0
+--- !u!114 &4417138399566474508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276309605905786096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091114d5e83ea4c16bc249bb87fc3e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionOffet: 5
 --- !u!1 &7453401221507965036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3471,13 +3527,14 @@ GameObject:
   - component: {fileID: 4705866213889173781}
   - component: {fileID: 479929059250344837}
   - component: {fileID: 7024463225952990772}
+  - component: {fileID: 3237685230444953857}
   m_Layer: 0
   m_Name: draggable (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2180211871538806360
 Transform:
   m_ObjectHideFlags: 0
@@ -3586,3 +3643,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.4243298, y: 3.7153933}
   m_EdgeRadius: 0
+--- !u!114 &3237685230444953857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961792040117250270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091114d5e83ea4c16bc249bb87fc3e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionOffet: 3

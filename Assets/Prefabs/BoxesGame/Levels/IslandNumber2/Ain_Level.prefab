@@ -1751,7 +1751,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.16, y: 5.06}
+    oldSize: {x: 5.16, y: 5.08}
     newSize: {x: 2.44, y: 2.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1925,7 +1925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4637503264399709449
 Transform:
   m_ObjectHideFlags: 0
@@ -1934,7 +1934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4799776280150536473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.12, y: 1.28, z: 0}
+  m_LocalPosition: {x: 3.23, y: 0.73, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.30585715}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2326,7 +2326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &94114715001509649
 Transform:
   m_ObjectHideFlags: 0
@@ -2335,7 +2335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7156599758146568599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.73, y: 1.02, z: 0}
+  m_LocalPosition: {x: -4.23, y: 1.02, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.28968182}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2426,7 +2426,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.16, y: 5.06}
+    oldSize: {x: 5.16, y: 5.08}
     newSize: {x: 11.870742, y: 15.679999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2989,7 +2989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4940026604680995188
 Transform:
   m_ObjectHideFlags: 0
@@ -2998,7 +2998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8932136661167590841}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.164, y: 1.946, z: 0}
+  m_LocalPosition: {x: 1.61, y: 2.23, z: 0}
   m_LocalScale: {x: 0.2427319, y: 0.20126553, z: 0.30585715}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3200,7 +3200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &408557730772705956
 Transform:
   m_ObjectHideFlags: 0
