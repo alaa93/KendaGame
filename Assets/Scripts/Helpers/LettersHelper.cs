@@ -45,7 +45,7 @@ namespace KendaGame.Helpers {
         LetterStatus letterStatus = lettersStatuses[letterName];
         return letterStatus.status;
       } else {
-        return "Closed";
+        return "false";
       }
     }
 

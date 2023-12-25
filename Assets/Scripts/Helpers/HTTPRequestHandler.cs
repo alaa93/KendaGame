@@ -13,20 +13,28 @@ using static KendaGame.Models.UserModels;
 
 namespace KendaGame.Helpers {
   public class HTTPRequestHandler : MonoBehaviour {
+    //Done
+    private static readonly string REQUEST_HEADER = "Bearer 2|GepUeo3atfYDVZXQ8Iyw3MGDBCj4e3eqeHxBW1DX04ff775f";
+    private static readonly string WEB_URL = "https://habar.kenda-ai.com";
+    private static readonly string AI_URL="https://ai.kenda-ai.com";
+    private static readonly string User_Update_Time = "/api/player-time/v1/user-update-player-time-by-token";
+    private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/api/students/v1/user-update-profile-by-token";
+    private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "/api/letter-progress/v1/user-update-letter-progress-by-token";
+    private static readonly string USER_LOGIN_MODULE = "/api/students/v1/login";
 
-    private static readonly string REQUEST_HEADER = "Token 12c87794b19455196490c1e46df81e8768f78db3";
-    private static readonly string WEB_URL = "http://137.184.184.223:8000";
-    private static readonly string TRACING_MODULE = "/ClientPredict/";
+    //Error
+    private static readonly string GET_PROFILE_INFORMATION = "/api/letter-progress/v1/user-get-letter-progress-by-token";
+    private static readonly string GET_LETTERS_STATUS = "/api/tasks/v1/student-tasks";
+
+    //TODO
+    private static readonly string TRACING_MODULE = "/ClientPredict";
     private static readonly string USER_REGISTER_MODULE = "/user-register";
-    private static readonly string USER_LOGIN_MODULE = "/user-login";
-    private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/user-update-profile-by-token";
-    private static readonly string UPDATE_PLAYER_CONFIG = "/user-update-appconfig-by-token";
-    private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "/user-update-letterprogress-by-token";
-    private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
+
+    //Deleted
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
-    private static readonly string User_Update_Time = "/user-update-player-time-by-token";
-    private static readonly string GET_LETTERS_STATUS = "/user-get-letters-status-by-token";
-    private static readonly string GET_PROFILE_INFORMATION = "/user-get-letterprogress-by-token";
+    private static readonly string UPDATE_PLAYER_CONFIG = "/user-update-appconfig-by-token";
+    private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
+
 
     private static HTTPRequestHandler _instance;
 
@@ -44,8 +52,8 @@ namespace KendaGame.Helpers {
 
     private LoadingBar loadingBar;
 
-    public void UploadTracingLetter(byte[] bytes, bool cameraImage, Action<bool, RatingData> statusCallback) {
-      StartCoroutine(UploadTracingLetterProcess(bytes, cameraImage, statusCallback));
+    public void UploadTracingLetter(string file,byte[] bytes, bool cameraImage, Action<bool, RatingData> statusCallback) {
+      StartCoroutine(UploadTracingLetterProcess(file,bytes, cameraImage, statusCallback));
     }
 
     public void SignUpWithEmail(string email, string password,
@@ -121,6 +129,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null);
       }
     }
+
     private IEnumerator UserUpdateTime(int timePlayed, bool showLoadingBar = false,
       Action<bool> statusCallback = null) {
       WWWForm formrequest = new WWWForm();
@@ -138,7 +147,7 @@ namespace KendaGame.Helpers {
         Debug.Log("Response error " + www.downloadHandler.error);
         statusCallback?.Invoke(false);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
-        Debug.Log("Response success " + www.downloadHandler.text);
+        Debug.Log("Response success" + www.downloadHandler.text);
         if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
           statusCallback?.Invoke(true);
         } else {
@@ -172,7 +181,7 @@ namespace KendaGame.Helpers {
           statusCallback?.Invoke(false, null, null, AuthErrorCode.UnknownError);
         } else {
           LetterStatusResponse response = JsonConvert.DeserializeObject<LetterStatusResponse>(www.downloadHandler.text);
-          Dictionary<string, LetterStatus> letterStatuses = response.task_statuses;
+          Dictionary<string, LetterStatus> letterStatuses = response.data;
           string letterStatusesJson = JsonConvert.SerializeObject(letterStatuses);
           string lastLetterOpened = response.last_opened_task;
           statusCallback?.Invoke(true, letterStatuses, lastLetterOpened, AuthErrorCode.SignUp_Success);
@@ -184,13 +193,17 @@ namespace KendaGame.Helpers {
       }
     }
 
-    private IEnumerator UploadTracingLetterProcess(byte[] bytes, bool cameraImage,
+    private IEnumerator UploadTracingLetterProcess(string file,byte[] bytes, bool cameraImage,
       Action<bool, RatingData> statusCallback) {
       WWWForm formrequest = new WWWForm();
-      formrequest.AddBinaryData("Imageurl", bytes, "letter.png", "image/png");
+
+      // formrequest.AddBinaryData("file", bytes, "letter.png", "image/png");
+
+      formrequest.AddField("file", file);
+      formrequest.AddField("task_id", LettersHelper.GetActiveLetterIndex()+1);
       formrequest.AddField("RequiredClass", LettersHelper.GetActiveLetterClass());
       formrequest.AddField("ImageSource", cameraImage ? "Camera" : "Board");
-      UnityWebRequest www = UnityWebRequest.Post(WEB_URL + TRACING_MODULE, formrequest);
+      UnityWebRequest www = UnityWebRequest.Post(AI_URL + TRACING_MODULE, formrequest);
       www.SetRequestHeader("Authorization", StorageHelper.ReadStorage(StorageHelper.TOKEN, REQUEST_HEADER));
       StartCoroutine(UploadProgressBar(www));
       yield return www.SendWebRequest();
@@ -206,6 +219,7 @@ namespace KendaGame.Helpers {
           statusCallback?.Invoke(true, null);
         } else {
           RatingData ratingData = JsonUtility.FromJson<RatingData>(www.downloadHandler.text);
+          Debug.Log(ratingData.StarRating);
           statusCallback?.Invoke(true, ratingData);
         }
       } else {
@@ -263,8 +277,9 @@ namespace KendaGame.Helpers {
     private IEnumerator SignInRequest(string email, string password,
       Action<bool, UserSession, string> statusCallback = null) {
       WWWForm formrequest = new WWWForm();
-      formrequest.AddField("email", email);
+      formrequest.AddField("student_identifier", email);
       formrequest.AddField("password", password);
+      formrequest.AddField("device_name", SystemInfo.deviceName);
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_LOGIN_MODULE, formrequest);
       www.SetRequestHeader("Authorization", StorageHelper.ReadStorage(StorageHelper.TOKEN, REQUEST_HEADER));
       StartCoroutine(UploadProgressBar(www));
@@ -293,7 +308,7 @@ namespace KendaGame.Helpers {
             UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
             statusCallback?.Invoke(true, user, AuthErrorCode.Login_Success);
             StorageHelper.WriteStorage(StorageHelper.UserSession, www.downloadHandler.text);
-            StorageHelper.WriteStorage(StorageHelper.TOKEN, "Token "+ user.token);
+            StorageHelper.WriteStorage(StorageHelper.TOKEN, "Bearer " + user.token);
           }
         }
       } else {
@@ -586,13 +601,14 @@ namespace KendaGame.Helpers {
   }
   [Serializable]
   public class LetterStatus {
+    public string task_id;
     public string status;
-    public string date_task_start;
-    public string date_task_close;
+    public string skill_name;
+    public string application;
   }
   [Serializable]
   public class LetterStatusResponse {
-    public Dictionary<string, LetterStatus> task_statuses;
+    public Dictionary<string, LetterStatus> data;
     public string last_opened_task;
   }
 }

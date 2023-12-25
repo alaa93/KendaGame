@@ -31,7 +31,7 @@ namespace KendaGame.Navigation {
     }
 
     private void OnLetterClicked() {
-      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "false") {
         return;
       }
       Debug.Log("map letter index " + id);
@@ -48,7 +48,7 @@ namespace KendaGame.Navigation {
       }
     }
     public void CheckLevel() {
-      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "false") {
         return;
       }
       _lock.AnimationState.SetAnimation(0, "unlocked", false);
