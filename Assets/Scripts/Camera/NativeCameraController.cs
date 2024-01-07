@@ -21,6 +21,11 @@ public class NativeCameraController : MonoBehaviour {
       webCamTexture.Play();
     }
   }
+  public void StopCamera() {
+    if (webCamTexture != null && webCamTexture.isPlaying) {
+      webCamTexture.Stop();
+    }
+  }
 
   private void OnDestroy() {
     if (webCamTexture != null && webCamTexture.isPlaying) {

@@ -21814,6 +21814,7 @@ MonoBehaviour:
     failPurchasingSound: {fileID: 8300000, guid: 109c020511e3cce4fa287f66b4c7d5c7,
       type: 3}
   StoreMenu: {fileID: 7043397387539722074}
+  habarSpineAttachment: {fileID: 0}
 --- !u!1 &7043397387115423017
 GameObject:
   m_ObjectHideFlags: 0

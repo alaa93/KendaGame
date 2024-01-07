@@ -13,27 +13,24 @@ using static KendaGame.Models.UserModels;
 
 namespace KendaGame.Helpers {
   public class HTTPRequestHandler : MonoBehaviour {
+    
     //Done
     private static readonly string REQUEST_HEADER = "Bearer 2|GepUeo3atfYDVZXQ8Iyw3MGDBCj4e3eqeHxBW1DX04ff775f";
     private static readonly string WEB_URL = "https://habar.kenda-ai.com";
-    private static readonly string AI_URL="https://ai.kenda-ai.com";
+    private static readonly string AI_URL= "https://ai.kenda-ai.com";
     private static readonly string User_Update_Time = "/api/player-time/v1/user-update-player-time-by-token";
     private static readonly string USER_UPDATE_PROFILE_BY_TOKEN = "/api/students/v1/user-update-profile-by-token";
     private static readonly string USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA = "/api/letter-progress/v1/user-update-letter-progress-by-token";
     private static readonly string USER_LOGIN_MODULE = "/api/students/v1/login";
-
-    //Error
     private static readonly string GET_PROFILE_INFORMATION = "/api/letter-progress/v1/user-get-letter-progress-by-token";
     private static readonly string GET_LETTERS_STATUS = "/api/tasks/v1/student-tasks";
-
-    //TODO
     private static readonly string TRACING_MODULE = "/ClientPredict";
-    private static readonly string USER_REGISTER_MODULE = "/user-register";
 
     //Deleted
     private static readonly string GET_USER_DETIALS_BY_SOCIALMEDIA_TOKEN = "/user-get-details-by-token-socialmedia";
     private static readonly string UPDATE_PLAYER_CONFIG = "/user-update-appconfig-by-token";
     private static readonly string USER_REGISTER_BY_SOCIALMEDIA = "/user-register-by-socialmedia";
+    private static readonly string USER_REGISTER_MODULE = "/user-register";
 
 
     private static HTTPRequestHandler _instance;
@@ -475,9 +472,8 @@ namespace KendaGame.Helpers {
       formrequest.AddField("game_2_completed", progress.game_2_completed.ToString());
       formrequest.AddField("game_3_completed", progress.game_3_completed.ToString());
       formrequest.AddField("coloring_completed", progress.coloring_completed.ToString());
-      formrequest.AddField("tracing_basic_completed", progress.tracing_basic_completed.ToString());
+      formrequest.AddField("tracing_basic_coloring_rating", progress.tracing_basic_coloring_rating.ToString());
       formrequest.AddField("tracing_advanced_completed", progress.tracing_advanced_completed.ToString());
-
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_GET_DETAILS_BY_TOKEN_SOCIALMEDIA, formrequest);
       www.SetRequestHeader("Authorization", StorageHelper.ReadStorage(StorageHelper.TOKEN, REQUEST_HEADER));
       StartCoroutine(UploadProgressBar(www));

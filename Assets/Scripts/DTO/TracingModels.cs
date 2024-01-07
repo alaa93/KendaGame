@@ -26,7 +26,7 @@ namespace KendaGame.Models {
       public int game_2_completed;
       public int game_3_completed;
       public int coloring_completed;
-      public int tracing_basic_completed;
+      public int tracing_basic_coloring_rating;
       public int tracing_advanced_completed;
     }
   }

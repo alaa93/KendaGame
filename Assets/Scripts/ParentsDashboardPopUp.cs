@@ -50,7 +50,7 @@ public class ParentsDashboardPopUp : MonoBehaviour {
   public void SetAnalysisAndWritingScore() {
     foreach (var letter in lettersRating) {
       if (letter != null && letter.letter_rating != 0) {
-        writingSkillsScore += (letter.tracing_advanced_completed + letter.tracing_basic_completed) / 2;
+        writingSkillsScore += (letter.tracing_advanced_completed + letter.tracing_basic_coloring_rating) / 2;
         analysisAndFocus += (letter.game_1_completed + letter.game_2_completed) / 2;
         numberOfPlayedLetter++;
       }
@@ -60,7 +60,7 @@ public class ParentsDashboardPopUp : MonoBehaviour {
   }
 
   public void ChangeCurrentLetterRating(int letterIndex) {
-    int rating = (lettersRating[letterIndex].tracing_advanced_completed + lettersRating[letterIndex].tracing_basic_completed) / 2;
+    int rating = (lettersRating[letterIndex].tracing_advanced_completed + lettersRating[letterIndex].tracing_basic_coloring_rating) / 2;
     if (rating >= 0) {
       currentStarImage.sprite = starsImage[Mathf.Clamp(rating, 0, starsImage.Length - 1)];
     }

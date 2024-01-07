@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using KendaGame.Helpers;
+using UnityEngine.Events;
 
 public class SpineAttachmentUI : MonoBehaviour {
   // Start is called before the first frame update
@@ -14,8 +15,6 @@ public class SpineAttachmentUI : MonoBehaviour {
   string mustachesSlot = "attachment_mustache";
   string hatsSlot = "attachment_hats";
   string hatsSlotBack = "attachment_hats_back";
-
-
 
 
 
@@ -44,6 +43,11 @@ public class SpineAttachmentUI : MonoBehaviour {
 
     skeleton = GetComponent<SkeletonGraphic>();
 
+    Init();
+
+  }
+
+  public void Init() {
     int UsedHat = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedHat, "100"));
     int UsedMustache = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedMustache, "100"));
     int UsedGlasses = int.Parse(StorageHelper.ReadStorage(StorageHelper.UsedGlasses, "100"));
@@ -51,7 +55,6 @@ public class SpineAttachmentUI : MonoBehaviour {
     if (UsedMustache != 100) skeleton.Skeleton.SetAttachment(mustachesSlot, MustachAttachment[UsedMustache]);
     if (UsedHat != 100) skeleton.Skeleton.SetAttachment(hatsSlot, HatsAttachment[UsedHat]);
     if (UsedGlasses != 100) skeleton.Skeleton.SetAttachment(galssesSlot, GlassesAttachment[UsedGlasses]);
-
   }
 
 

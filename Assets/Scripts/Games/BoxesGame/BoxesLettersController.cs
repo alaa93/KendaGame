@@ -48,9 +48,9 @@ namespace KendaGame.Games {
     public AudioClip animalName;
     public AudioClip animalSound;
 
+    bool canPlayTutorial=true;
 
-
-        private void Start() {
+    private void Start() {
       InitializeLetters();
       InitGameParts();
       AudioController.Instance.AddAudioToQueue(firstNarration);
@@ -78,7 +78,7 @@ namespace KendaGame.Games {
             Invoke(nameof(StartCharactersWave), x + Random.Range(0.5f, 2f));
           }
         } else {
-          if(x == 0) {
+          if (x == 0) {
             Invoke(nameof(StartCharactersWave), Random.Range(1, 2));
           }
         }
@@ -93,7 +93,7 @@ namespace KendaGame.Games {
     }
 
     public void OnCorrectLetter(BoxesTreasureBox box) {
-      if(gameCompleted) {
+      if (gameCompleted) {
         return;
       }
       correctCount++;
@@ -106,9 +106,9 @@ namespace KendaGame.Games {
         for (int x = 0; x < instantiatedLetters.Length; x++) {
           instantiatedLetters[x].SetRunState(false);
           instantiatedLetters[x].Jump();
-        } 
+        }
       }
-      if (tutorialController != null && tutorialController.IsTutorialPlaying()) {
+      if (tutorialController != null) {
         tutorialController.HideTutorial(() => {
           //PlayerPrefs.SetInt(tutorialPrefsKey, 1);
           OnTutorialCompleted();
@@ -128,16 +128,16 @@ namespace KendaGame.Games {
 
       AudioClip endingSfx = AudioController.Instance.commonSfx.GetEndingSfx();
       AudioController.Instance.PlaySfxAtPoint(endingSfx);
-            AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { animalName, animalSound });
-            AudioController.Instance.PlayAudioFromQueue();
+      AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { animalName, animalSound });
+      AudioController.Instance.PlayAudioFromQueue();
       if (LettersHelper.GetActiveLetterIndex() == 0) {
-        endingAnim.AnimationState.AddAnimation(0, "idle", false,0);
-       // yield return new WaitForSeconds(0.5f);
+        endingAnim.AnimationState.AddAnimation(0, "idle", false, 0);
+        // yield return new WaitForSeconds(0.5f);
         endingAnim.AnimationState.AddAnimation(0, "Letters", false, 0);
         endingAnim.AnimationState.SetAnimation(0, "swimming", false);
-                endingAnim.AnimationState.AddAnimation(0, "idle", false, 0);
+        endingAnim.AnimationState.AddAnimation(0, "idle", false, 0);
 
-                yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(6f);
       } else {
         yield return new WaitForSeconds(7f);
       }
@@ -230,8 +230,10 @@ namespace KendaGame.Games {
     }
 
     public void CheckPlayTutorial(Transform startPos, string letterId) {
-      if (PlayerPrefs.GetInt(tutorialPrefsKey, 0) == 0 && letterId == LettersHelper.GetActiveLetter() && tutorialController == null) {
+      if (PlayerPrefs.GetInt(tutorialPrefsKey, 0) == 0 && letterId == LettersHelper.GetActiveLetter() && tutorialController == null&&canPlayTutorial) {
+        SetLetterMoveState(true);
         PlayTutorial(startPos, letterId);
+        canPlayTutorial = false;
       }
     }
 
@@ -242,9 +244,9 @@ namespace KendaGame.Games {
     private void PlayTutorial(Transform startPos, string letterId) {
       cachedLetterId = letterId;
       SetLetterMoveState(false);
-      if(tutorialController == null) {
+      if (tutorialController == null) {
         tutorialController = PopUpsManager.Instance.LoadTutorial(null);
-        if(tutorialController != null) {
+        if (tutorialController != null) {
           tutorialController.PlayTutorial(startPos, boxTrigger.transform);
         }
       }

@@ -66,7 +66,10 @@ namespace KendaGame.UI {
     }
 
 
-    private void OnLogoutButtonPressed() {
+    public void OnLogoutButtonPressed() {
+      PlayerPrefs.DeleteAll();
+      SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
+
     }
 
     public void ChangeLanguage(int langIndex){

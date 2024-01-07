@@ -6,6 +6,8 @@ namespace KendaGame.Games {
     public int id = 0;
     [SerializeField]
     TextMeshPro title;
+    [SerializeField]
+    bool canClick=true;
 
     public void InitRock(int id, string title) {
       this.id = id;
@@ -21,7 +23,9 @@ namespace KendaGame.Games {
     }
 
     private void OnMouseDown() {
-      StairsLevelManager.Instance.OnRockSelected(this);
+      if (canClick) {
+        StairsLevelManager.Instance.OnRockSelected(this);
+      }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -40,6 +44,10 @@ namespace KendaGame.Games {
 
     public void ShowTitle() {
       title.enabled = true;
+    }
+
+    public void SetCanClick(bool status) {
+      canClick = status;
     }
   }
 }

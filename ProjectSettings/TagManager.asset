@@ -7,6 +7,7 @@ TagManager:
   - TreasureBox
   - Ground
   - Tutorial
+  - Habar
   layers:
   - Default
   - TransparentFX

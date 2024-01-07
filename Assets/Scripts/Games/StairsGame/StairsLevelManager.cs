@@ -1,4 +1,4 @@
-using KendaGame.Helpers;
+ using KendaGame.Helpers;
 using KendaGame.Navigation;
 using ScorpionSteps.Utils;
 using Spine.Unity;
@@ -99,8 +99,11 @@ namespace KendaGame.Games {
 
             for (int i = 0; i <= endIndex; i++) {
               if (i < targetRockId || (i == targetRockId + 1 && targetRockId % 2 != 0)) {
+                
                 levelRocks[i].GetComponent<SkeletonAnimation>().state.SetAnimation(0, "brust", false);
-              } else if (i == targetRockId) continue;
+                levelRocks[i].GetComponent<StairsRock>().SetCanClick(false);
+              } else if (i == targetRockId) levelRocks[i].GetComponent<StairsRock>().SetCanClick(false);
+              
               else {
                 levelRocks[i].SetActive(true);
                 levelRocks[i].GetComponent<SkeletonAnimation>().state.SetAnimation(0, "in", false);

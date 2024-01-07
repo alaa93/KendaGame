@@ -4785,8 +4785,7 @@ ParticleSystem:
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7129936449210574519, guid: fcd4bb05783f1804d904593623936e53,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2931672075735540012}
@@ -10462,6 +10461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015575465479431}
+  canClick: 1
 --- !u!50 &9000015574188561931
 Rigidbody2D:
   serializedVersion: 4
@@ -11441,6 +11441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015574667950264}
+  canClick: 1
 --- !u!50 &9000015574451692632
 Rigidbody2D:
   serializedVersion: 4
@@ -17170,6 +17171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015576185057267}
+  canClick: 1
 --- !u!50 &9000015574802172807
 Rigidbody2D:
   serializedVersion: 4
@@ -17739,6 +17741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015574364011849}
+  canClick: 1
 --- !u!50 &9000015574964842226
 Rigidbody2D:
   serializedVersion: 4
@@ -18295,6 +18298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015576169509167}
+  canClick: 1
 --- !u!50 &9000015575082080146
 Rigidbody2D:
   serializedVersion: 4
@@ -19045,6 +19049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015575866214944}
+  canClick: 1
 --- !u!50 &9000015575385099952
 Rigidbody2D:
   serializedVersion: 4
@@ -20843,6 +20848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015575738163174}
+  canClick: 1
 --- !u!50 &9000015575854267339
 Rigidbody2D:
   serializedVersion: 4
@@ -21476,6 +21482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015574153782946}
+  canClick: 0
 --- !u!50 &9000015575977695447
 Rigidbody2D:
   serializedVersion: 4
@@ -21782,6 +21789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 9000015575158237956}
+  canClick: 1
 --- !u!50 &9000015576048452135
 Rigidbody2D:
   serializedVersion: 4
