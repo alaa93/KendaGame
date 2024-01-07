@@ -1561,7 +1561,6 @@ GameObject:
   - component: {fileID: 4568188471857921054}
   - component: {fileID: 4567585858499777445}
   - component: {fileID: 6727752040315910944}
-  - component: {fileID: 8016430052210634578}
   - component: {fileID: 1980068759167932039}
   m_Layer: 0
   m_Name: draggable (3)
@@ -1652,32 +1651,6 @@ MonoBehaviour:
   mouseDown: 0
   id: 3
   locked: 0
---- !u!61 &8016430052210634578
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4441381062271408142}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.52, y: 2.56}
-    newSize: {x: 11.870742, y: 15.679999}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.52, y: 2.56}
-  m_EdgeRadius: 0
 --- !u!61 &1980068759167932039
 BoxCollider2D:
   m_ObjectHideFlags: 0
