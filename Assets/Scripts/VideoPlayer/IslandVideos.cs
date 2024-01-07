@@ -1,7 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class IslandVideos : MonoBehaviour
 {
-    public static string FirstLandIntro = "https://kenda-ai.com/app_videos/IntroLand1.mp4";
-    public static string FirstLandOutro = "https://kenda-ai.com/app_videos/outro%2010mb.mp4";
+    public static string FirstLandIntro = "https://habar.s3.amazonaws.com/Videos/IntroLand1.mp4";
+    public static string FirstLandOutro = "https://habar.s3.amazonaws.com/Videos/OutroLand1.mp4";
 }

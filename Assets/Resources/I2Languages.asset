@@ -26,6 +26,14 @@ MonoBehaviour:
       - Habbar
       Flags: 0000
       Languages_Touch: []
+    - Term: InsufficientFunds
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
+      - Insufficient funds
+      Flags: 0000
+      Languages_Touch: []
     - Term: LocalizeFonts
       TermType: 9
       Description: 
@@ -40,6 +48,14 @@ MonoBehaviour:
       Languages:
       - DANA-FAT SDF
       - DANA-FAT SDF
+      Flags: 0000
+      Languages_Touch: []
+    - Term: LogOut
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u062A\u0633\u062C\u064A\u0644 \u062E\u0631\u0648\u062C"
+      - Log Out
       Flags: 0000
       Languages_Touch: []
     - Term: Signup
@@ -118,6 +134,30 @@ MonoBehaviour:
         email address.
       Flags: 0000
       Languages_Touch: []
+    - Term: insufficient_funds
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
+      - insufficient funds
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lang_ar
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0627\u0644\u0639\u0631\u0628\u064A\u0629"
+      - Arabic
+      Flags: 0000
+      Languages_Touch: []
+    - Term: lang_en
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0625\u0646\u062C\u0644\u064A\u0632\u064A"
+      - English
+      Flags: 0000
+      Languages_Touch: []
     - Term: language_text
       TermType: 0
       Description: 
@@ -126,12 +166,63 @@ MonoBehaviour:
       - Language
       Flags: 0000
       Languages_Touch: []
+    - Term: lets_play_to_purchase_more
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0647\u064A\u0627 \u0644\u0646\u0644\u0639\u0628 \u0644\u0646\u062A\u0645\u0643\u0646
+        \u0645\u0646 \u0634\u0631\u0627\u0621 \u0627\u0644\u0645\u0632\u064A\u062F"
+      - Let's play to be able to purchase more
+      Flags: 0000
+      Languages_Touch: []
     - Term: login
       TermType: 0
       Description: 
       Languages:
       - "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644"
       - Login
+      Flags: 0000
+      Languages_Touch: []
+    - Term: message_generic.error
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u062E\u0637\u0623"
+      - Error
+      Flags: 0000
+      Languages_Touch: []
+    - Term: message_generic.no_enough_coins_message
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0644\u0627 \u064A\u0648\u062C\u062F \u0639\u0645\u0644\u0627\u062A \u0643\u0627\u0641\u064A\u0629"
+      - Not enough Coins
+      Flags: 0000
+      Languages_Touch: []
+    - Term: parents.AnalysisAndFocusText
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0645\u0647\u0627\u0631\u062A\u064A (\u0627\u0644\u062A\u062D\u064A\u0644
+        \u0648 \u0627\u0644\u062A\u0631\u0643\u064A\u0632)"
+      - Skills (analysis and focus)
+      Flags: 0000
+      Languages_Touch: []
+    - Term: parents.WritingSkillsText
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0645\u0647\u0627\u0631\u062A\u064A(\u0643\u062A\u0627\u0628\u0629 \u0627\u0644\u062D\u0631\u0648\u0641)"
+      - Skill (writing letters)
+      Flags: 0000
+      Languages_Touch: []
+    - Term: parents.avaragetext
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0645\u062A\u0648\u0633\u0637 \u200B\u200B\u0648\u0642\u062A \u0627\u0644\u0645\u0634\u0627\u0647\u062F\u0629
+        \u0641\u064A \u0622\u062E\u0631 7 \u0623\u064A\u0627\u0645 \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
+      - Average viewing time over the last 7 days in minutes
       Flags: 0000
       Languages_Touch: []
     - Term: password_text
@@ -150,6 +241,14 @@ MonoBehaviour:
       - Confirm pasword...
       Flags: 0000
       Languages_Touch: []
+    - Term: player_profile_stars_earned
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0627\u0644\u0646\u062C\u0648\u0645 \u0627\u0644\u0645\u0643\u062A\u0633\u0628\u0629"
+      - Stars Earned
+      Flags: 0000
+      Languages_Touch: []
     - Term: player_profile_title
       TermType: 0
       Description: 
@@ -165,6 +264,22 @@ MonoBehaviour:
       - "\u0627\u0646\u062A\u0647\u062A \u0627\u0644\u0645\u0631\u062D\u0644\u0629
         \u0628\u0646\u062C\u0627\u062D"
       - Level Completed
+      Flags: 0000
+      Languages_Touch: []
+    - Term: privacy_policy_btn
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629"
+      - Privacy Policy
+      Flags: 0000
+      Languages_Touch: []
+    - Term: privacy_policy_link
+      TermType: 0
+      Description: 
+      Languages:
+      - https://kenda-ai.com/
+      - https://kenda-ai.com/
       Flags: 0000
       Languages_Touch: []
     - Term: registration.app_languages.ar
@@ -199,28 +314,30 @@ MonoBehaviour:
       - Skip
       Flags: 0000
       Languages_Touch: []
-    - Term: tracing.rating_in_progress
+    - Term: registration_screens.login_title
       TermType: 0
       Description: 
       Languages:
-      - "\u062C\u0627\u0631\u064D \u0627\u0644\u062A\u0642\u064A\u064A\u0645..."
-      - Rating In Progress...
+      - "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644"
+      - Login
       Flags: 0000
       Languages_Touch: []
-    - Term: verify_account_text
+    - Term: registration_screens.signup_title
       TermType: 0
       Description: 
       Languages:
-      - "\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u062D\u0633\u0627\u0628"
-      - Verify Account
+      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644"
+      - Sign Up
       Flags: 0000
       Languages_Touch: []
-    - Term: registration_screens.validation_title
+    - Term: registration_screens.validate_email_404
       TermType: 0
       Description: 
       Languages:
-      - "\u062A\u0635\u062D\u064A\u062D"
-      - Validation
+      - "\u0628\u0631\u064A\u062F \u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A
+        \u0623\u0648 \u0643\u0644\u0645\u0629 \u0645\u0631\u0648\u0631\u063A\u064A\u0631
+        \u0635\u062D\u064A\u062D\u0629"
+      - Incorrect email or password
       Flags: 0000
       Languages_Touch: []
     - Term: registration_screens.validate_email_error
@@ -259,28 +376,21 @@ MonoBehaviour:
       - Password does not match
       Flags: 0000
       Languages_Touch: []
-    - Term: registration_screens.login_title
+    - Term: registration_screens.validation_title
       TermType: 0
       Description: 
       Languages:
-      - "\u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644"
-      - Login
+      - "\u062A\u0635\u062D\u064A\u062D"
+      - Validation
       Flags: 0000
       Languages_Touch: []
-    - Term: registration_screens.signup_title
+    - Term: registration_screens_status_email_already_used
       TermType: 0
       Description: 
       Languages:
-      - "\u0627\u0644\u062A\u0633\u062C\u064A\u0644"
-      - Sign Up
-      Flags: 0000
-      Languages_Touch: []
-    - Term: registration_screens_status_login_canceled
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u062A\u0645 \u0627\u0644\u063A\u0627\u0621 \u0627\u0644\u062F\u062E\u0648\u0644"
-      - Login Canceled!
+      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A
+        \u0645\u0633\u062C\u0644 \u0645\u0633\u0628\u0642\u0627"
+      - The email address is already in use
       Flags: 0000
       Languages_Touch: []
     - Term: registration_screens_status_invalid_password
@@ -289,6 +399,14 @@ MonoBehaviour:
       Languages:
       - "\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631 \u063A\u064A\u0631 \u0635\u062D\u064A\u062D\u0629"
       - Invlid Password, Try again!
+      Flags: 0000
+      Languages_Touch: []
+    - Term: registration_screens_status_login_canceled
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u062A\u0645 \u0627\u0644\u063A\u0627\u0621 \u0627\u0644\u062F\u062E\u0648\u0644"
+      - Login Canceled!
       Flags: 0000
       Languages_Touch: []
     - Term: registration_screens_status_signin_success
@@ -308,6 +426,14 @@ MonoBehaviour:
       - Signup Canceled!
       Flags: 0000
       Languages_Touch: []
+    - Term: registration_screens_status_signup_success
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u062A\u0645 \u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0628\u0646\u062C\u0627\u062D"
+      - User Created Successfully
+      Flags: 0000
+      Languages_Touch: []
     - Term: registration_screens_status_signup_unknown_error
       TermType: 0
       Description: 
@@ -317,63 +443,60 @@ MonoBehaviour:
       - Unknown Error Occured, Try again
       Flags: 0000
       Languages_Touch: []
-    - Term: registration_screens_status_signup_success
+    - Term: settings.dashbord_label
       TermType: 0
       Description: 
       Languages:
-      - "\u062A\u0645 \u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0628\u0646\u062C\u0627\u062D"
-      - User Created Successfully
+      - "\u062A\u0642\u0631\u064A\u0631"
+      - 
       Flags: 0000
       Languages_Touch: []
-    - Term: registration_screens_status_email_already_used
+    - Term: settings.music_label
       TermType: 0
       Description: 
       Languages:
-      - "\u0627\u0644\u0628\u0631\u064A\u062F \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A
-        \u0645\u0633\u062C\u0644 \u0645\u0633\u0628\u0642\u0627"
-      - The email address is already in use
+      - "\u0627\u0644\u0645\u0648\u0633\u064A\u0642\u0649"
+      - Music
       Flags: 0000
       Languages_Touch: []
-    - Term: privacy_policy_btn
+    - Term: settings.report_label
       TermType: 0
       Description: 
       Languages:
-      - "\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u062E\u0635\u0648\u0635\u064A\u0629"
-      - Privacy Policy
+      - "\u062A\u0642\u0631\u064A\u0631"
+      - Report
       Flags: 0000
       Languages_Touch: []
-    - Term: privacy_policy_link
+    - Term: settings.sounds_label
       TermType: 0
       Description: 
       Languages:
-      - https://kenda-ai.com/
-      - https://kenda-ai.com/
+      - "\u0627\u0644\u0627\u0635\u0648\u0627\u062A"
+      - Sound
       Flags: 0000
       Languages_Touch: []
-    - Term: message_generic.no_enough_coins_message
+    - Term: tracing.rating_in_progress
       TermType: 0
       Description: 
       Languages:
-      - "\u0644\u0627 \u064A\u0648\u062C\u062F \u0639\u0645\u0644\u0627\u062A \u0643\u0627\u0641\u064A\u0629"
-      - Not enough Coins
+      - "\u062C\u0627\u0631\u064D \u0627\u0644\u062A\u0642\u064A\u064A\u0645..."
+      - Rating In Progress...
       Flags: 0000
       Languages_Touch: []
-    - Term: message_generic.error
+    - Term: update_profile_photo
       TermType: 0
       Description: 
       Languages:
-      - "\u062E\u0637\u0623"
-      - Error
+      - "\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A"
+      - Profile Photo
       Flags: 0000
       Languages_Touch: []
-    - Term: registration_screens.validate_email_404
+    - Term: update_profile_photo_fail
       TermType: 0
       Description: 
       Languages:
-      - "\u0628\u0631\u064A\u062F \u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A
-        \u0623\u0648 \u0643\u0644\u0645\u0629 \u0645\u0631\u0648\u0631\u063A\u064A\u0631
-        \u0635\u062D\u064A\u062D\u0629"
-      - Incorrect email or password
+      - "\u0641\u0634\u0644 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0635\u0648\u0631\u0629"
+      - Fail to upload photo
       Flags: 0000
       Languages_Touch: []
     - Term: update_profile_photo_success
@@ -385,127 +508,12 @@ MonoBehaviour:
       - Photo Uploaded successfully
       Flags: 0000
       Languages_Touch: []
-    - Term: update_profile_photo_fail
+    - Term: verify_account_text
       TermType: 0
       Description: 
       Languages:
-      - "\u0641\u0634\u0644 \u062A\u062D\u0645\u064A\u0644 \u0627\u0644\u0635\u0648\u0631\u0629"
-      - Fail to upload photo
-      Flags: 0000
-      Languages_Touch: []
-    - Term: update_profile_photo
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A"
-      - Profile Photo
-      Flags: 0000
-      Languages_Touch: []
-    - Term: InsufficientFunds
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
-      - Insufficient funds
-      Flags: 0000
-      Languages_Touch: []
-    - Term: insufficient_funds
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0627\u0644\u0645\u0628\u0644\u063A \u063A\u064A\u0631 \u0643\u0627\u0641"
-      - insufficient funds
-      Flags: 0000
-      Languages_Touch: []
-    - Term: lets_play_to_purchase_more
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0647\u064A\u0627 \u0644\u0646\u0644\u0639\u0628 \u0644\u0646\u062A\u0645\u0643\u0646
-        \u0645\u0646 \u0634\u0631\u0627\u0621 \u0627\u0644\u0645\u0632\u064A\u062F"
-      - Let's play to be able to purchase more
-      Flags: 0000
-      Languages_Touch: []
-    - Term: lang_en
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0625\u0646\u062C\u0644\u064A\u0632\u064A"
-      - English
-      Flags: 0000
-      Languages_Touch: []
-    - Term: lang_ar
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0627\u0644\u0639\u0631\u0628\u064A\u0629"
-      - Arabic
-      Flags: 0000
-      Languages_Touch: []
-    - Term: settings.sounds_label
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0627\u0644\u0627\u0635\u0648\u0627\u062A"
-      - Sound
-      Flags: 0000
-      Languages_Touch: []
-    - Term: settings.music_label
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0627\u0644\u0645\u0648\u0633\u064A\u0642\u0649"
-      - Music
-      Flags: 0000
-      Languages_Touch: []
-    - Term: player_profile_stars_earned
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0627\u0644\u0646\u062C\u0648\u0645 \u0627\u0644\u0645\u0643\u062A\u0633\u0628\u0629"
-      - Stars Earned
-      Flags: 0000
-      Languages_Touch: []
-    - Term: parents.avaragetext
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0645\u062A\u0648\u0633\u0637 \u200B\u200B\u0648\u0642\u062A \u0627\u0644\u0645\u0634\u0627\u0647\u062F\u0629
-        \u0641\u064A \u0622\u062E\u0631 7 \u0623\u064A\u0627\u0645 \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
-      - Average viewing time over the last 7 days in minutes
-      Flags: 0000
-      Languages_Touch: []
-    - Term: parents.WritingSkillsText
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0645\u0647\u0627\u0631\u062A\u064A(\u0643\u062A\u0627\u0628\u0629 \u0627\u0644\u062D\u0631\u0648\u0641)"
-      - Skill (writing letters)
-      Flags: 0000
-      Languages_Touch: []
-    - Term: parents.AnalysisAndFocusText
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0645\u0647\u0627\u0631\u062A\u064A (\u0627\u0644\u062A\u062D\u064A\u0644
-        \u0648 \u0627\u0644\u062A\u0631\u0643\u064A\u0632)"
-      - Skills (analysis and focus)
-      Flags: 0000
-      Languages_Touch: []
-    - Term: settings.dashbord_label
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u062A\u0642\u0631\u064A\u0631"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: settings.report_label
-      TermType: 0
-      Description: 
-      Languages:
-      - "\uFE97\uFED8\uFEAE\uFEF3\uFEAE"
-      - Report
+      - "\u062A\u0648\u062B\u064A\u0642 \u0627\u0644\u062D\u0633\u0627\u0628"
+      - Verify Account
       Flags: 0000
       Languages_Touch: []
     CaseInsensitiveTerms: 0

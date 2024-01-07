@@ -31,7 +31,7 @@ namespace KendaGame.Navigation {
     }
 
     private void OnLetterClicked() {
-      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "false") {
         return;
       }
       Debug.Log("map letter index " + id);
@@ -40,7 +40,7 @@ namespace KendaGame.Navigation {
 
     private void LoadLetterRating() {
       LetterProgress letterProgress = ProgressHelper.FetchProgress(id);
-      int storedRating = (letterProgress.tracing_advanced_completed + letterProgress.tracing_basic_completed) / 2;
+      int storedRating = (letterProgress.tracing_advanced_completed + letterProgress.tracing_basic_coloring_rating) / 2;
       if (storedRating != -1) {
         for (int x = 0; x < storedRating; x++) {
           rating[x].sprite = MapController.Instance.coloredStar;
@@ -48,7 +48,7 @@ namespace KendaGame.Navigation {
       }
     }
     public void CheckLevel() {
-      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "Closed") {
+      if (LettersHelper.CheckIfLetterOpen(LettersHelper.GetLetterByIndexClass(id)) == "false") {
         return;
       }
       _lock.AnimationState.SetAnimation(0, "unlocked", false);

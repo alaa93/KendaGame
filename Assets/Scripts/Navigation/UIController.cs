@@ -37,17 +37,17 @@ namespace KendaGame.Navigation {
       backBtn.gameObject.SetActive(false);
       settingsBtn.gameObject.SetActive(false);
       homeBtn.gameObject.SetActive(false);
-            backBtn.AddClickListener(() => {
+      backBtn.AddClickListener(() => {
         SceneManager.Instance.OnBackClicked();
       });
       settingsBtn.AddClickListener(() => {
         SceneManager.Instance.OnSettingsBtnClicked();
       });
 
-            homeBtn.AddClickListener(() => {
-                SceneManager.Instance.OnHomeClicked();
-            });
-        }
+      homeBtn.AddClickListener(() => {
+        SceneManager.Instance.OnHomeClicked();
+      });
+    }
 
     public void SetBackBtnState(bool state) {
       backBtn.gameObject.SetActive(state);
@@ -56,15 +56,15 @@ namespace KendaGame.Navigation {
     public void SetSettingsBtnState(bool state) {
       settingsBtn.gameObject.SetActive(state);
     }
-        
-        public void SetHomeBtnState(bool state) {
+
+    public void SetHomeBtnState(bool state) {
       homeBtn.gameObject.SetActive(state);
     }
 
     public void SetCoinsObjectState(bool state) {
       coinsObject.gameObject.SetActive(state);
     }
-    
+
 
     public void IncrementCoins(int addedAmount) {
       coinsAmount += addedAmount;

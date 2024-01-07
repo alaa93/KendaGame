@@ -520,6 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944600515130873}
+  canClick: 1
 --- !u!50 &3110944599760333081
 Rigidbody2D:
   serializedVersion: 4
@@ -6491,6 +6492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944600757698630}
+  canClick: 1
 --- !u!50 &3110944600033942346
 Rigidbody2D:
   serializedVersion: 4
@@ -7159,6 +7161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944599657181192}
+  canClick: 1
 --- !u!50 &3110944600258012083
 Rigidbody2D:
   serializedVersion: 4
@@ -7715,6 +7718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944601463045230}
+  canClick: 1
 --- !u!50 &3110944600375646931
 Rigidbody2D:
   serializedVersion: 4
@@ -13260,6 +13264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944601493562034}
+  canClick: 1
 --- !u!50 &3110944600649254598
 Rigidbody2D:
   serializedVersion: 4
@@ -14716,6 +14721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944601711724385}
+  canClick: 1
 --- !u!50 &3110944601213535217
 Rigidbody2D:
   serializedVersion: 4
@@ -15094,6 +15100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944599999523811}
+  canClick: 0
 --- !u!50 &3110944601287775638
 Rigidbody2D:
   serializedVersion: 4
@@ -15400,6 +15407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944601004140101}
+  canClick: 1
 --- !u!50 &3110944601357586278
 Rigidbody2D:
   serializedVersion: 4
@@ -17054,6 +17062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   title: {fileID: 3110944601567154855}
+  canClick: 1
 --- !u!50 &3110944601683916426
 Rigidbody2D:
   serializedVersion: 4

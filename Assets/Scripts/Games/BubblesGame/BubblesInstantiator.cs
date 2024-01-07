@@ -66,11 +66,16 @@ namespace KendaGame.Games {
           bubbles.Add(bubble);
           if (correctCounter >= wrongmax) {
             correctCounter = 0;
-            wrongmax = Random.Range(1, 5);
+            wrongmax = Random.Range(2, 5);
             bubble.targetLetter = LettersHelper.GetActiveLetterIndex();
             bubble.letterText.text = LettersHelper.GetActiveLetter();
           } else {
-            bubble.targetLetter = Random.Range(0, incorrectLetters.Length - 1);
+            if (LettersHelper.GetActiveLetterIndex()<24) {
+              bubble.targetLetter = Random.Range(LettersHelper.GetActiveLetterIndex() + 2, incorrectLetters.Length - 1);
+            } else {
+              bubble.targetLetter = Random.Range(0, LettersHelper.GetActiveLetterIndex() - 1);
+            }
+
             bubble.letterText.text = incorrectLetters[bubble.targetLetter];
           }
         }

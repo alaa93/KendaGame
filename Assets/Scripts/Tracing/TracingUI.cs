@@ -32,7 +32,10 @@ namespace KendaGame.UI {
     [SerializeField]
     private Sprite[] fontSizeImage;
     [SerializeField]
+    GameObject submitBtn;
+    [SerializeField]
     private UIButtonAnimator fontSizeMainButton;
+    [SerializeField] UIButtonAnimator prepareBoardForDrawingButton;
 
     [Header("LettetSkeleton")]
     [SerializeField] private SkeletonGraphic letterSkeleton;
@@ -72,6 +75,7 @@ namespace KendaGame.UI {
     UIButtonAnimator cameraBtn, cameraSubmitBtn;
     [SerializeField]
     NativeCameraController nativeCamera;
+
     Texture2D cameraScreenshot;
     bool isCameraTracing = false;
 
@@ -100,7 +104,6 @@ namespace KendaGame.UI {
 
     private void Start() {
       int ActiveLetterIndex = LettersHelper.GetActiveLetterIndex();
-      Debug.Log(ActiveLetterIndex);
       AudioController.Instance.AddAudiosToQueue(new List<AudioClip> { startAudio, characterVoice[ActiveLetterIndex],
       characterName[ActiveLetterIndex]});
       AudioController.Instance.PlayAudioFromQueue();
@@ -112,7 +115,10 @@ namespace KendaGame.UI {
         isCameraTracing = true;
         PrepareBoardForCamera();
       }, true);
-
+      prepareBoardForDrawingButton.AddClickListener(() => {
+        isCameraTracing = false;
+        PrepareBoardForDrawing();
+      }, false);
       cameraSubmitBtn.AddClickListener(async () => {
         cameraScreenshot = await nativeCamera.CaptureCameraScreen();
         if (cameraScreenshot != null) {
@@ -130,6 +136,20 @@ namespace KendaGame.UI {
       }
       nativeCamera.StartCamera();
     }
+
+    private void PrepareBoardForDrawing() {
+      for (int x = 0; x < partsToHideForCamera.Length; x++) {
+        partsToHideForCamera[x].SetActive(true);
+      }
+
+      for (int x = 0; x < partsToShowForCamera.Length; x++) {
+        partsToShowForCamera[x].SetActive(false);
+      }
+
+      nativeCamera.StopCamera();
+    }
+
+
 
     private void SetTracingGuide(bool state) {
       if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingBasic) {
@@ -211,6 +231,7 @@ namespace KendaGame.UI {
     public void OnTracingLetterCompleted() {
       AudioUtils.FadeOutAudio(musicLoop, 0.4f);
       letterSkeleton.gameObject.SetActive(false);
+      submitBtn.gameObject.SetActive(false);
       StartCoroutine(PrepareLetterForUpload(OnRatingCompleted));
     }
 
@@ -232,14 +253,18 @@ namespace KendaGame.UI {
       }
       yield return 0;
       byte[] bytes = texture.EncodeToPNG();
+      string base64String = Convert.ToBase64String(bytes);
+      Debug.Log("Base64 String: " + base64String);
+
       texture2D = texture;
       if (screenshotRef != null) {
         screenshotRef.texture = texture;
       }
       SetPartsOnScreenShot(true);
-      HTTPRequestHandler.Instance.UploadTracingLetter(bytes, isCamera, onComplete);
+      HTTPRequestHandler.Instance.UploadTracingLetter(base64String,bytes, isCamera, onComplete);
       SetPlayerTracingLetter(texture);
     }
+
 
     private void SetPlayerTracingLetter(Texture2D texture2D) {
       if (SceneManager.Instance.GetActiveScene() == SceneManager.Scenes.TracingAdvanced) {
@@ -317,6 +342,9 @@ namespace KendaGame.UI {
     }
 
     private void ShowNormalRating(bool success, RatingData ratingData) {
+      Debug.Log("ratingData != null   "+ (ratingData.PredictedClass));
+      Debug.Log(LettersHelper.GetActiveLetterClass());
+
       int currentRating = 0;
       LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.GetLetterRatingPopUp();
       if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {

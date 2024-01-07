@@ -100,7 +100,7 @@ namespace KendaGame.Navigation {
     }
 
     public void OnBackClicked() {
-      if(PopUpsManager.Instance.IsGameRatingActive()) {
+      if (PopUpsManager.Instance.IsGameRatingActive()) {
         PopUpsManager.Instance.GetGameRatingPopUp().gameObject.SetActive(false);
       }
       if (PopUpsManager.Instance.IsLetterRatingActive()) {
@@ -116,13 +116,12 @@ namespace KendaGame.Navigation {
     }
 
 
-        public void OnHomeClicked()
-        {
-            navigationStack.Clear();
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(Scenes.HomeScreen.ToString());
-        }
+    public void OnHomeClicked() {
+      navigationStack.Clear();
+      UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(Scenes.Map.ToString());
+    }
 
-        public void SetBackBtnState(bool state) {
+    public void SetBackBtnState(bool state) {
       uiController.SetBackBtnState(state);
     }
 
@@ -145,29 +144,28 @@ namespace KendaGame.Navigation {
       if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name == Scenes.HomeScreen.ToString()) {
         uiController.SetBackBtnState(false);
         uiController.SetSettingsBtnState(false);
-                uiController.SetHomeBtnState(false);
+        uiController.SetHomeBtnState(false);
 
 
-            }
-            else {
+      } else {
         uiController.SetBackBtnState(true);
         uiController.SetSettingsBtnState(true);
-                if (scene.name == Scenes.Map.ToString())
-                
+        if (scene.name == Scenes.Map.ToString())
 
-                    uiController.SetHomeBtnState(false);
-                else
-                    uiController.SetHomeBtnState(true);
 
-            }
-            //|| scene.name == Scenes.Map.ToString() removed by hamzeh based on Mumen notes
-            if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString()  || scene.name != Scenes.HomeScreen.ToString() || !scene.name.Contains("Game")) {
+          uiController.SetHomeBtnState(false);
+        else
+          uiController.SetHomeBtnState(true);
+
+      }
+      //|| scene.name == Scenes.Map.ToString() removed by hamzeh based on Mumen notes
+      if (scene.name == Scenes.LoginScene.ToString() || scene.name == Scenes.SplashScreen.ToString() || scene.name != Scenes.HomeScreen.ToString() || !scene.name.Contains("Game")) {
         uiController.SetCoinsObjectState(false);
       } else {
         uiController.SetCoinsObjectState(true);
       }
-            //|| scene.name == Scenes.Map.ToString() added here by hamzeh based on Mumen notes
-            if (scene.name == Scenes.HomeScreen.ToString() || scene.name == Scenes.Map.ToString()) {
+      //|| scene.name == Scenes.Map.ToString() added here by hamzeh based on Mumen notes
+      if (scene.name == Scenes.HomeScreen.ToString() || scene.name == Scenes.Map.ToString()) {
         uiController.SetCoinsObjectState(true);
       }
 

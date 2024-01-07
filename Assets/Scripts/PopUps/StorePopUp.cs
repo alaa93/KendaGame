@@ -16,15 +16,17 @@ namespace KendaGame.UI {
     [SerializeField]
     GameObject StoreMenu;
 
-
     private int coins;
     private int currentHatIndex = -1;
     private int currentGlassesIndex = -1;
     private int currentMustacheIndex = -1;
+    [SerializeField] SpineAttachmentUI habarSpineAttachment;
+
 
     private void OnEnable() {
       SceneManager.Instance.SetCoinsObjectState(true);
       coins = int.Parse(StorageHelper.ReadStorage(StorageHelper.CoinsAmount, "0"));
+      habarSpineAttachment = GameObject.FindGameObjectWithTag("Habar").GetComponent<SpineAttachmentUI>();
     }
 
     private void OnDisable() {
@@ -69,6 +71,7 @@ namespace KendaGame.UI {
           SaveCoins(-itemPrice);
           StorageHelper.WriteStorage(usedItemType, $"{itemIndex}");
           EquipItem(items, itemIndex);
+          habarSpineAttachment.Init();
         } else {
           StoreMenu.transform.DOShakePosition(0.5f, strength: new Vector3(50, 50, 0), vibrato: 20, randomness: 180).OnComplete(() => {
             PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp(ErrorMessages.InsufficientFunds, ErrorMessages.LetsPlayToPurchaseMore);
@@ -80,6 +83,7 @@ namespace KendaGame.UI {
         changeFunction(itemIndex);
         StorageHelper.WriteStorage(usedItemType, $"{itemIndex}");
         EquipItem(items, itemIndex);
+        habarSpineAttachment.Init();
       }
     }
 
