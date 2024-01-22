@@ -258,8 +258,6 @@ namespace KendaGame.UI {
       yield return 0;
       byte[] bytes = texture.EncodeToPNG();
       string base64String = Convert.ToBase64String(bytes);
-      Debug.Log("Base64 String: " + base64String);
-
       texture2D = texture;
       if (screenshotRef != null) {
         screenshotRef.texture = texture;
@@ -347,9 +345,6 @@ namespace KendaGame.UI {
     }
 
     private void ShowNormalRating(bool success, RatingData ratingData) {
-      Debug.Log("ratingData != null   "+ (ratingData.PredictedClass));
-      Debug.Log(LettersHelper.GetActiveLetterClass());
-
       int currentRating = 0;
       LetterRatingPopUp letterRatingPopUp = PopUpsManager.Instance.GetLetterRatingPopUp();
       if (success && ratingData != null && ratingData.PredictedClass == LettersHelper.GetActiveLetterClass()) {

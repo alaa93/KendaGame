@@ -174,7 +174,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, null, AuthErrorCode.UnknownError);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server Error")) {
           statusCallback?.Invoke(false, null, null, AuthErrorCode.UnknownError);
         } else {
           LetterStatusResponse response = JsonConvert.DeserializeObject<LetterStatusResponse>(www.downloadHandler.text);
@@ -212,8 +212,8 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
-          statusCallback?.Invoke(true, null);
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server")) {
+          statusCallback?.Invoke(false, null);
         } else {
           RatingData ratingData = JsonUtility.FromJson<RatingData>(www.downloadHandler.text);
           Debug.Log(ratingData.StarRating);
@@ -256,7 +256,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, error);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server Error")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
         } else {
           UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
@@ -296,7 +296,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, error);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server Error")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
         } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
@@ -343,7 +343,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, error);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server Error")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
         } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
@@ -393,7 +393,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server Error")) {
           statusCallback?.Invoke(true, null, AuthErrorCode.UnknownError);
         } else {
 
@@ -445,7 +445,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false, null, error);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server Error")) {
           statusCallback?.Invoke(false, null, AuthErrorCode.UnknownError);
         } else {
           UserSession user = JsonUtility.FromJson<UserSession>(www.downloadHandler.text);
@@ -493,7 +493,7 @@ namespace KendaGame.Helpers {
         statusCallback?.Invoke(false , error);
       } else if (www.downloadHandler != null && !string.IsNullOrEmpty(www.downloadHandler.text)) {
         Debug.Log("Response success " + www.downloadHandler.text);
-        if (www.downloadHandler.text.Contains("<!DOCTYPE html>")) {
+        if (www.downloadHandler.text.Contains("<!DOCTYPE html>") || www.downloadHandler.text.Contains("Internal Server Error")) {
           statusCallback?.Invoke(false , AuthErrorCode.UnknownError);
         } else {
           if (www.downloadHandler.text.Contains("invalid user")) {
