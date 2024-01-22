@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>208217938983-dpugs34no5eko5dr6j3k1ga15ipjr3ir.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.208217938983-dpugs34no5eko5dr6j3k1ga15ipjr3ir</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>208217938983-mh84aq6e917fo61c4k5ln0dqp9mrrnj9.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAtU5GwxBVbvyvfQ_9kbln5RsrzK-WV3eY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>208217938983</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.KendaAI.HabbarGame</string>
+	<key>PROJECT_ID</key>
+	<string>habbar-game</string>
+	<key>STORAGE_BUCKET</key>
+	<string>habbar-game.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:208217938983:ios:0dd92166291c4ef8704202</string>
+</dict>
+</plist>
