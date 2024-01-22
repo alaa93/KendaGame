@@ -1488,6 +1488,8 @@ MonoBehaviour:
     type: 3}
   parentsDashboardObject: {fileID: 4998455031230844538, guid: 3821083c2ac541c4c8e37947d5d2b8e2,
     type: 3}
+  Offer3MonthsPopUpObject: {fileID: 8962936491546838304, guid: c49036e50c83344adb136df672409fef,
+    type: 3}
 --- !u!1 &4759960178631716387
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,6 +39,10 @@ namespace KendaGame.RegistrationScreens {
       }, true);
     }
 
+    private void Start() {
+      PopUpsManager.Instance.GetOffer3MonthsPopUp().ShowPopUp();
+    }
+
     public void ShowScreen(int screenId) {
       ClearActiveScreens();
       RegistrationScreens[screenId].SetActive(true);

@@ -16,7 +16,7 @@ namespace KendaGame.Navigation {
     public GameObject MenuPopUpObject;
     public GameObject storePopUpObject;
     public GameObject parentsDashboardObject;
-
+    public GameObject Offer3MonthsPopUpObject;
 
     private TutorialController tutorialController;
     private LoadingBar loadingBar;
@@ -27,7 +27,7 @@ namespace KendaGame.Navigation {
     private SettingsPopUp settingsPopUp;
     private DashboardPopUp dashboardPopUp;
     private ParentsDashboardPopUp parentsDashboardPopUp;
-
+    private Offer3MonthsPopup offer3MonthsPopup;
     private StorePopUp storePopUp;
 
     private static PopUpsManager _instance;
@@ -88,6 +88,18 @@ namespace KendaGame.Navigation {
         return null;
       }
       return feedbackPopUp;
+    }
+
+    public Offer3MonthsPopup GetOffer3MonthsPopUp() {
+      if (offer3MonthsPopup == null) {
+        GameObject popup = Instantiate(Offer3MonthsPopUpObject, Parent, false);
+        offer3MonthsPopup = popup.GetComponent<Offer3MonthsPopup>();
+        if (offer3MonthsPopup != null) {
+          return offer3MonthsPopup;
+        }
+        return null;
+      }
+      return offer3MonthsPopup;
     }
 
     public SettingsPopUp GetSettingsPopUp() {

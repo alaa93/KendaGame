@@ -516,6 +516,28 @@ MonoBehaviour:
       - Verify Account
       Flags: 0000
       Languages_Touch: []
+    - Term: popups.offer_3months_btn_title
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0645\u062C\u0627\u0646\u0627 \u0644\u0645\u062F\u0629 3 \u0634\u0647\u0648\u0631"
+      - 'Start free trial '
+      Flags: 0000
+      Languages_Touch: []
+    - Term: popups.offer_3months_message
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u064A\u0645\u0643\u0646\u0643 \u062A\u0633\u062C\u064A\u0644 \u0627\u0644\u062F\u062E\u0648\u0644\n\n\u0627\u0644\u0627\u064A\u0645\u064A\u0644
+        : kenda@kenda.com\n\u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631: 202400"
+      - 'Log in now
+
+
+        Email: kenda@kenda.com
+
+        [assword: 202400'
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: App_Name
