@@ -35,6 +35,8 @@ namespace KendaGame.RegistrationScreens {
       }, true);
 
       privacyPolicyBtn.AddClickListener(() => {
+     Debug.Log("LINK "+LocalizationManager.GetTermTranslation("privacy_policy_link"));
+     //Application.OpenURL("http://kenda-ai.com/privacy_policy.html");
         Application.OpenURL(LocalizationManager.GetTermTranslation("privacy_policy_link"));
       }, true);
     }

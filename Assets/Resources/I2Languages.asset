@@ -278,8 +278,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - https://kenda-ai.com/
-      - https://kenda-ai.com/
+      - http://kenda-ai.com/privacy_policy.html
+      - http://kenda-ai.com/privacy_policy.html
       Flags: 0000
       Languages_Touch: []
     - Term: registration.app_languages.ar
@@ -448,7 +448,7 @@ MonoBehaviour:
       Description: 
       Languages:
       - "\u062A\u0642\u0631\u064A\u0631"
-      - 
+      - Report
       Flags: 0000
       Languages_Touch: []
     - Term: settings.music_label
@@ -531,7 +531,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbzoSTi2vA0nI7pRgaxefwvDuKxL--hIb3s5vpHNti1ygofoEoLy8S2EZWUxlOXOT95B2w/exec
     Google_SpreadsheetKey: 1M4yfRXvWjbfKooNAq--nWtBaxLHg-Gp1C8Prsc-A2wM
     Google_SpreadsheetName: I2Loc KendaGame Localization
-    Google_LastUpdatedVersion: 1689626908964
+    Google_LastUpdatedVersion: 1705736654613
     Google_Password: bn98FXoh
     GoogleUpdateFrequency: 2
     GoogleInEditorCheckFrequency: 2
