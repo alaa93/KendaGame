@@ -14,9 +14,6 @@ namespace KendaGame.UI {
   public class TracingUI : MonoBehaviour {
  
     [SerializeField]
-    GameObject bord;
-
-    [SerializeField]
     AudioSource musicLoop;
     [SerializeField]
     UIButtonAnimator[] fontSizeBtns;
@@ -242,7 +239,6 @@ namespace KendaGame.UI {
       AudioController.Instance.PlaySfxAtPoint(cameraShutter);
       SetTracingGuide(false);
       SetPartsOnScreenShot(false);
-      bord.SetActive(false);
       yield return new WaitForEndOfFrame();
       Debug.Log("uploading screenshot to server...");
       Texture2D texture = null;
@@ -277,7 +273,6 @@ namespace KendaGame.UI {
     }
 
     private void OnRatingCompleted(bool success, RatingData ratingData) {
-      bord.SetActive(true);
       if (isCameraTracing) {
         for (int x = 0; x < partsToHideForCamera.Length; x++) {
           partsToHideForCamera[x].SetActive(true);

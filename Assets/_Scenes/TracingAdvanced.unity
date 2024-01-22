@@ -4035,7 +4035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d90d2babc4274469bf0aa3c4ba4d85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bord: {fileID: 78754794}
   musicLoop: {fileID: 439238594}
   fontSizeBtns:
   - {fileID: 904297570}
@@ -4213,6 +4212,7 @@ MonoBehaviour:
   - {fileID: 871719319}
   - {fileID: 1334946330}
   - {fileID: 776545742}
+  - {fileID: 78754794}
   skeletonGraphic: {fileID: 1287928576}
   popUpAnimatedLetterAligments:
   - {x: 0, y: 0}
@@ -4532,8 +4532,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100903759}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1908, y: -0.1605, z: 115.5597}
-  m_LocalScale: {x: 0.5671829, y: 0.72948676, z: 1.8044509}
+  m_LocalPosition: {x: 0.2192, y: -0.057, z: 111.27}
+  m_LocalScale: {x: 0.59733313, y: 0.8254836, z: 1.3578674}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602378348}

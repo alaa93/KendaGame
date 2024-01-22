@@ -2714,7 +2714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d90d2babc4274469bf0aa3c4ba4d85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bord: {fileID: 78754794}
   musicLoop: {fileID: 598075475}
   fontSizeBtns:
   - {fileID: 157533569}
@@ -2885,7 +2884,8 @@ MonoBehaviour:
   letterGuide: {fileID: 0}
   playerLetter: {fileID: 0}
   animatedTracingGuideRating: {fileID: 0}
-  partsToHide: []
+  partsToHide:
+  - {fileID: 78754794}
   skeletonGraphic: {fileID: 0}
   popUpAnimatedLetterAligments: []
   popUpAnimatedLetterScale: []
@@ -3150,8 +3150,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100903759}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.18, y: 0.1, z: 115.5597}
-  m_LocalScale: {x: 0.788583, y: 0.8467596, z: 1.8044509}
+  m_LocalPosition: {x: 0.2192, y: -0.057, z: 111.27}
+  m_LocalScale: {x: 0.59733313, y: 0.8254836, z: 1.3578674}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 602378348}
