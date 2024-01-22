@@ -4035,6 +4035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d90d2babc4274469bf0aa3c4ba4d85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bord: {fileID: 78754794}
   musicLoop: {fileID: 439238594}
   fontSizeBtns:
   - {fileID: 904297570}
