@@ -13,8 +13,8 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Kenda AI
-  productName: "\u062D\u0628\u0627\u0631 \u062A\u0639\u0644\u0645 \u0643\u062A\u0627\u0628\u0629
-    \u0627\u0644\u062D\u0631\u0648\u0641"
+  productName: "\u062D\u0628\u0627\u0631: \u062A\u0639\u0644\u064A\u0645 \u0627\u0644\u0639\u0631\u0628\u064A\u0629
+    \u0644\u0644\u0623\u0637\u0641\u0627\u0644"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -168,9 +168,9 @@ PlayerSettings:
     iPhone: 204
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 7
+  AndroidBundleVersionCode: 15
   AndroidMinSdkVersion: 22
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 34
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -256,8 +256,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Desktop/hamza.keystore'
-  AndroidKeyaliasName: a
+  AndroidKeystoreName: '{inproject}: Assets/keystore/uploadKeystore.keystore'
+  AndroidKeyaliasName: habbar123
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -280,7 +280,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: bfffbb558c8a2445ea021f8dae6ae0f6, type: 3}
+      m_Icon: {fileID: 2800000, guid: 3d995f85ecda94ca1b4e14dacc69dfca, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
