@@ -58,22 +58,7 @@ namespace KendaGame.RegistrationScreens {
 
 
     }
-
-    public void OnFirebaseEmailLoginBtnPressed() {
-      LoadingBar loadingBar = PopUpsManager.Instance.LoadLoadingBar();
-      loadingBar.ShowLoadingBar();
-      loadingBar.IncreaseloadingBarByAnim(0.1f);
-      emailSignInController.SignInWithEmailFirebase(loginEmailField.text, loginPasswordField.text, (success, status) => {
-        Debug.Log("OnEmailLoginBtnPressed - Sign in with email completed");
-        loadingBar.HideLoadingBar();
-        if (success) {
-          AutoLogin();
-        } else {
-          PopUpsManager.Instance.GetFeedbackPopUp().ShowPopUp("registration_screens.login_title", status);
-        }
-      });
-    }
-
+    
     public void OnEmailLoginBtnPressed() {
       emailSignInController.SignInWithEmail(loginEmailField.text, loginPasswordField.text, (success, status) => {
         Debug.Log("OnEmailLoginBtnPressed - Sign in with email completed");

@@ -2,7 +2,6 @@ using UnityEngine;
 using KendaGame.Navigation;
 using System.Threading.Tasks;
 using Spine.Unity;
-using Firebase.Auth;
 using KendaGame.Helpers;
 
 namespace KendaGame.UI {
@@ -40,33 +39,11 @@ namespace KendaGame.UI {
     }
 
       public void CheckUserLoginSession() {
-#if !UNITY_EDITOR
-      FirebaseAuth auth = FirebaseAuth.DefaultInstance;
-      FirebaseUser user = auth.CurrentUser;
-      if (auth != null && user != null) {
-        string name = user.DisplayName;
-        string email = user.Email;
-        System.Uri photo_url = user.PhotoUrl;
-        // The user's Id, unique to the Firebase project.
-        // Do NOT use this value to authenticate with your backend server, if you
-        // have one; use User.TokenAsync() instead.
-        string uid = user.UserId;
-        Debug.Log("Logged in user " + uid + " name " + name + "email " + email);
-        SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
-      } else {
-        if (CheckEmailSession()) {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
-        } else {
-          SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
-        }
-      }
-      #else
       if (CheckEmailSession()) {
         SceneManager.Instance.MoveTo(SceneManager.Scenes.HomeScreen.ToString());
       } else {
         SceneManager.Instance.MoveTo(SceneManager.Scenes.LoginScene.ToString());
       }
-      #endif
     }
 
     private bool CheckEmailSession() {
