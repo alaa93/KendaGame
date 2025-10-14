@@ -32,7 +32,7 @@ namespace KendaGame.Games {
       StairsCharacter stairsCharacter = collision.gameObject.GetComponent<StairsCharacter>();
 
       if(stairsCharacter != null) {
-        stairsCharacter.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        stairsCharacter.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         stairsCharacter.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         StairsLevelManager.Instance.OnRockTouched(this);
       }

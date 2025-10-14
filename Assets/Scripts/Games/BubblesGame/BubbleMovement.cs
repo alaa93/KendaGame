@@ -51,7 +51,7 @@ namespace KendaGame.Games {
 
     private void OnTriggerEnter2D(Collider2D collision) {
       if (collision.tag == "TreasureBox" && clicked && targetLetter == LettersHelper.GetActiveLetterIndex()) {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.isKinematic = true;
         GetComponent<Collider2D>().isTrigger = true;
         this.transform.DOMove(new Vector3(-7.38f, -2.2f, 0f), 0.3f);
@@ -122,7 +122,7 @@ namespace KendaGame.Games {
 
     public void SetMovement(bool state) {
       if (!state) {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         rb.isKinematic = true;
       } else {
         rb.isKinematic = false;

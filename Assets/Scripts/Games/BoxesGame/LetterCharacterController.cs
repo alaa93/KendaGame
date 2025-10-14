@@ -35,11 +35,11 @@ namespace KendaGame.Games {
 
     private void Update() {
       if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
       }
 
       if (isGrounded && canRun) {
-        rb.velocity = new Vector2(runningDirection == 1 ? moveSpeed : -moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(runningDirection == 1 ? moveSpeed : -moveSpeed, rb.linearVelocity.y);
         if (skeletonAnimation.AnimationName != "runinng" && !isDragging) {
           skeletonAnimation.AnimationState.SetAnimation(0, "runinng", true);
         }
@@ -109,7 +109,7 @@ namespace KendaGame.Games {
 
     public void Jump(bool forceJump = false) {
       if (isGrounded || forceJump) {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
       }
     }
 
