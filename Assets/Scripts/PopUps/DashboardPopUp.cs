@@ -88,7 +88,7 @@ public class DashboardPopUp : MonoBehaviour {
   }
 
   public void OnChangePhotoClick() {
-    GalleryHelper.PickImage(PhotoChangeCompleted);
+    //GalleryHelper.PickImage(PhotoChangeCompleted);
   }
 
   private void PhotoChangeCompleted(bool success, Texture2D image) {

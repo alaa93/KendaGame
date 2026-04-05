@@ -320,8 +320,8 @@ namespace KendaGame.Helpers {
       WWWForm formrequest = new WWWForm();
       formrequest.AddField("gender", gender);
       formrequest.AddField("phone", phone);
-      profilePhoto = GalleryHelper.GetReadableTexture(profilePhoto);
-      byte[] photoBytes = profilePhoto.EncodeToJPG();
+      profilePhoto = null;//GalleryHelper.GetReadableTexture(profilePhoto);
+      byte[] photoBytes = null;//profilePhoto.EncodeToJPG();
       formrequest.AddBinaryData("profile_photo", photoBytes, "profile.png", "image/png");
       UnityWebRequest www = UnityWebRequest.Post(WEB_URL + USER_UPDATE_PROFILE_BY_TOKEN, formrequest);
       www.SetRequestHeader("Authorization", StorageHelper.ReadStorage(StorageHelper.TOKEN, REQUEST_HEADER));
